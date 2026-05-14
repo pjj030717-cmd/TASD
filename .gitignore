@@ -5,6 +5,8 @@ autodl-tmp/
 *.safetensors
 *.model
 *.ckpt
+*.pt
+*.pth
 
 # Python
 __pycache__/
@@ -42,6 +44,8 @@ wheels/
 venv/
 env/
 .venv/
+*/venv/
+*/env/
 
 # 日志
 *.log
@@ -49,3 +53,8 @@ env/
 # 临时文件
 *.tmp
 .DS_Store
+
+# 外部克隆的仓库
+fsd/
+FLy-main/
+experiments/
