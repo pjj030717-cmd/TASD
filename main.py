@@ -1,17 +1,19 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import argparse
+import os
 
 from autoregressive_decode import autoregressive_decode
 from speculative_decode import speculative_decode
+from gpu_utils import check_gpu_before_use, select_free_gpu
 
 
 def main():
     parser = argparse.ArgumentParser(description="标准自回归解码 vs 标准推测解码 对比测试")
-    parser.add_argument("--target_model", type=str, default="/root/data/models/Qwen/Qwen2.5-7B-Instruct",
-                        help="Target 模型路径")
-    parser.add_argument("--draft_model", type=str, default="/root/autodl-tmp/models/Qwen/Qwen2.5-1.5B-Instruct",
-                        help="Draft 模型路径")
+    parser.add_argument("--target_model", type=str, default="./models/Qwen2.5-72B-Instruct-AWQ",
+                        help="Target 模型路径 (4-bit AWQ 量化)")
+    parser.add_argument("--draft_model", type=str, default="./models/Qwen2.5-7B-Instruct-GPTQ-Int4",
+                        help="Draft 模型路径 (4-bit GPTQ 量化)")
     parser.add_argument("--prompt", type=str,
                         default="请详细解释一下什么是量子计算，以及它对未来的影响。",
                         help="输入 Prompt")
@@ -25,7 +27,28 @@ def main():
                         help="跳过自回归解码")
     parser.add_argument("--skip_spec", action="store_true",
                         help="跳过推测解码")
+    parser.add_argument("--gpu", type=int, default=None,
+                        help="指定使用的 GPU ID，不指定则自动选择空闲 GPU")
+    parser.add_argument("--no_wait", action="store_true",
+                        help="不等待 GPU 释放，如果 GPU 被占用则直接退出")
     args = parser.parse_args()
+
+    if args.gpu is not None:
+        gpu_id = args.gpu
+        print(f"使用指定的 GPU: {gpu_id}")
+    else:
+        gpu_id = select_free_gpu()
+        if gpu_id == -1:
+            print("错误: 没有可用的 GPU，程序退出")
+            return
+        print(f"自动选择空闲 GPU: {gpu_id}")
+
+    if not check_gpu_before_use(gpu_id, wait=not args.no_wait):
+        print(f"错误: GPU {gpu_id} 不可用，程序退出")
+        return
+
+    os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
+    print(f"已设置 CUDA_VISIBLE_DEVICES={gpu_id}")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"设备: {device}")
@@ -40,11 +63,11 @@ def main():
         print(f"\n{'#'*60}")
         print(f"# 测试 1: 标准自回归解码")
         print(f"{'#'*60}")
-        print(f"\n加载 Target 模型: {args.target_model}")
+        print(f"\n加载 Target 模型 (4-bit AWQ): {args.target_model}")
         target_model = AutoModelForCausalLM.from_pretrained(
             args.target_model,
-            torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None,
+            torch_dtype="auto",
+            device_map="auto",
             trust_remote_code=True,
         )
         target_model.eval()
@@ -67,20 +90,20 @@ def main():
         print(f"# 测试 2: 标准推测解码")
         print(f"{'#'*60}")
 
-        print(f"\n加载 Target 模型: {args.target_model}")
+        print(f"\n加载 Target 模型 (4-bit AWQ): {args.target_model}")
         target_model = AutoModelForCausalLM.from_pretrained(
             args.target_model,
-            torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None,
+            torch_dtype="auto",
+            device_map="auto",
             trust_remote_code=True,
         )
         target_model.eval()
 
-        print(f"\n加载 Draft 模型: {args.draft_model}")
+        print(f"\n加载 Draft 模型 (4-bit GPTQ): {args.draft_model}")
         draft_model = AutoModelForCausalLM.from_pretrained(
             args.draft_model,
-            torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None,
+            torch_dtype="auto",
+            device_map="auto",
             trust_remote_code=True,
         )
         draft_model.eval()
