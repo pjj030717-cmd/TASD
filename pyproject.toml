@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "speculative-decoding"
+version = "0.1.0"
+description = "标准自回归 vs 标准推测解码的实现与对比测试"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "transformers>=4.40",
+    "accelerate>=0.28",
+]
+
+[project.optional-dependencies]
+dev = [
+    "modelscope",
+]

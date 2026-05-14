@@ -1,0 +1,51 @@
+# 模型文件
+models/
+autodl-tmp/
+*.bin
+*.safetensors
+*.model
+*.ckpt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 虚拟环境
+venv/
+env/
+.venv/
+
+# 日志
+*.log
+
+# 临时文件
+*.tmp
+.DS_Store
