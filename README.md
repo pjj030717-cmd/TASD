@@ -1,108 +1,145 @@
 # Speculative Decoding 实验
 
-标准自回归 vs 标准推测解码的实现与对比测试。
+多解码方法对比实验平台：自回归 / 标准推测解码 / FLy / FSD
 
 ## 项目结构
 
 ```
-/root/data/
-├── autoregressive_decode.py   # 标准自回归解码
-├── speculative_decode.py      # 标准推测解码
-├── main.py                    # 主测试脚本
-└── requirements.txt           # 依赖
+experiments/
+├── src/                          # 核心代码
+│   ├── main.py                   # 主入口
+│   ├── gpu_utils.py              # GPU 检查工具
+│   ├── download_models.py        # 模型下载脚本
+│   ├── autoregressive_decode.py  # 自回归解码
+│   └── speculative_decode.py     # 推测解码
+├── decoding_methods/             # 各解码方法配置
+│   ├── fly/                      # FLy 松散推测解码
+│   ├── fsd/                      # FSD 模糊推测解码
+│   ├── autoregressive/           # 自回归基线
+│   └── speculative/              # 标准推测解码
+├── configs/                      # 配置文件
+│   └── fly/                      # FLy JSON 配置
+├── envs/                         # Conda 虚拟环境
+│   ├── fly/                      # FLy (transformers 4.57.6)
+│   ├── fsd/                      # FSD (transformers 4.44.0)
+│   ├── autoregressive/           # 自回归 (transformers 5.8.1)
+│   └── speculative/              # 推测解码 (transformers 5.8.1)
+├── models/                       # 模型权重（不提交到 Git）
+│   ├── Qwen2.5-72B-Instruct-AWQ/ # Target 模型 (4-bit AWQ)
+│   └── Qwen2.5-7B-Instruct-GPTQ-Int4/  # Draft 模型 (4-bit GPTQ)
+├── third_party/                  # 第三方仓库
+│   ├── FLy-main/                 # FLy 框架源码
+│   └── fsd/                      # FSD 框架源码
+├── pyproject.toml
+└── requirements.txt
 ```
 
-## 环境要求
+## 环境配置
 
-- Python 3.10+
-- CUDA 12.x
-- NVIDIA GPU (建议 32GB+ VRAM)
-
-### 安装依赖
+### 安装 Miniconda
 
 ```bash
-pip install -r requirements.txt
+# Miniconda 已安装在 /data/jjpan/miniconda3
+source ~/.bashrc
+```
+
+### 激活对应环境
+
+```bash
+# FLy 框架
+conda activate /data/jjpan/experiments/envs/fly
+
+# FSD 框架
+conda activate /data/jjpan/experiments/envs/fsd
+
+# 自回归基线
+conda activate /data/jjpan/experiments/envs/autoregressive
+
+# 标准推测解码
+conda activate /data/jjpan/experiments/envs/speculative
 ```
 
 ## 模型准备
 
-本项目使用 Qwen2.5 系列，Target 和 Draft 共享同一 tokenizer（同系列天然共享 vocab）。
+本项目使用 Qwen2.5 系列量化模型：
 
-### 通过 ModelScope 下载
+| 角色 | 模型 | 量化 | 大小 |
+|------|------|------|------|
+| Target | Qwen2.5-72B-Instruct | 4-bit AWQ | ~39GB |
+| Draft | Qwen2.5-7B-Instruct | 4-bit GPTQ | ~5.3GB |
 
-```python
-from modelscope import snapshot_download
+### 下载模型
 
-# Target: 14B
-snapshot_download('Qwen/Qwen2.5-14B-Instruct', cache_dir='/root/autodl-tmp/models')
-
-# Target: 7B
-snapshot_download('Qwen/Qwen2.5-7B-Instruct', cache_dir='/root/data/models')
-
-# Draft: 1.5B
-snapshot_download('Qwen/Qwen2.5-1.5B-Instruct', cache_dir='/root/autodl-tmp/models')
-
-# Draft: 0.5B
-snapshot_download('Qwen/Qwen2.5-0.5B-Instruct', cache_dir='/root/autodl-tmp/models')
+```bash
+conda activate /data/jjpan/experiments/envs/fly
+python src/download_models.py
 ```
 
 ## 运行
 
+### GPU 检查
+
+运行前会自动检查 GPU 占用情况，不会抢占其他同学的进程。
+
 ```bash
-# 默认参数: Target 7B + Draft 1.5B, 贪心模式, gamma=5, 128 tokens
-python main.py
+# 查看 GPU 状态
+nvitop
 
-# 自定义 Target / Draft
-python main.py --target_model /path/to/target --draft_model /path/to/draft
-
-# 自定义参数
-python main.py --gamma 3 --max_new_tokens 256
-
-# 只跑自回归
-python main.py --skip_spec
-
-# 只跑推测解码
-python main.py --skip_ar
-
-# 采样模式
-python main.py --temperature 0.8 --top_p 0.9
+# 或
+nvidia-smi
 ```
 
-## 算法说明
+### 自回归解码
 
-### 标准自回归解码
-
-每一步生成一个 token，拼接到输入序列后继续下一轮：
-
-```python
-for step in range(max_new_tokens):
-    logits = model(input_ids + past_key_values)
-    next_token = argmax(logits)
-    input_ids = concat(input_ids, next_token)
+```bash
+conda activate /data/jjpan/experiments/envs/autoregressive
+python src/main.py --skip_spec
 ```
 
-### 标准推测解码 (Speculative Decoding)
+### 标准推测解码
 
-1. **Draft 阶段**: 小模型自回归生成 gamma 个候选 token
-2. **Verify 阶段**: 大模型一次前向，得到每个候选位置的 logits
-3. **Accept/Reject**:
-   - 贪心模式: Target 预测 == Draft token → 接受，否则用 Target 预测替换
-   - 采样模式: 基于 p_target / p_draft 概率比决定；拒绝时从 max(0, p_target - p_draft) 修正分布采样
+```bash
+conda activate /data/jjpan/experiments/envs/speculative
+python src/main.py
+```
 
-## 实验结果
+### FLy 松散推测解码
 
-测试环境: NVIDIA RTX 5090 (31.4GB VRAM)
+```bash
+conda activate /data/jjpan/experiments/envs/fly
+export HF_ALLOW_CODE_EVAL=1
+fly --model hf \
+    --model_args pretrained=./models/Qwen2.5-7B-Instruct-GPTQ-Int4,config_path=configs/fly/FLy_Qwen2.5_72b.json \
+    --tasks humaneval_instruct \
+    --batch_size 1 \
+    --apply_chat_template \
+    --confirm_run_unsafe_code
+```
 
-| # | Target | Draft | 接受率 | 自回归速度 | 推测速度 | 实际加速 |
-|---|--------|-------|:------:|:----------:|:--------:|:--------:|
-| 1 | 14B | 1.5B | 98.0% | 0.6 tok/s | 2.8 tok/s | **4.81x** |
-| 2 | 7B | 0.5B | 39.7% | 57.0 tok/s | 35.9 tok/s | 0.63x |
-| 3 | 7B | 1.5B | 52.9% | 57.2 tok/s | 37.6 tok/s | 0.66x |
+### FSD 模糊推测解码
 
-### 关键发现
+```bash
+conda activate /data/jjpan/experiments/envs/fsd
+python third_party/fsd/csqa_eval_example.py \
+    --small_model_id ./models/Qwen2.5-7B-Instruct-GPTQ-Int4 \
+    --large_model_id ./models/Qwen2.5-72B-Instruct-AWQ \
+    --fsd_div_threshold 0.4 \
+    --fsd_div_type "js_div" \
+    --num_evals 5
+```
 
-- 推测解码的有效性取决于 **Draft 比 Target 快多少** 以及 **接受率多高**
-- 14B + 1.5B 接受率 98% 且速度差足够大（14B 被 offload 到 CPU），加速 4.81x
-- 7B 在 RTX 5090 上自回归已经很快（~57 tok/s），Draft 额外开销反而拖慢整体
-- Draft 不能太小：0.5B 对 7B 接受率仅 40%，远不如 1.5B 的 53%
-- 推测解码在 A100 80GB 等大显存卡上效果更好（14B 可全放 GPU，加速比依然可观）
+## 解码方法对比
+
+| 方法 | 原理 | 优势 | 适用场景 |
+|------|------|------|----------|
+| 自回归 | 逐 token 生成 | 质量最高 | 基线对比 |
+| 标准推测 | Draft 生成 + Target 验证 | 精确匹配加速 | Draft 质量好时 |
+| FLy | 语义正确即接受 | 接受率更高 | 宽松场景 |
+| FSD | 散度阈值判断 | 可控精度/速度权衡 | 灵活调参 |
+
+## GPU 使用注意
+
+- 运行前自动检查 GPU 可用性
+- 不会强制终止其他用户的进程
+- 多进程可共享同一 GPU（显存足够即可）
+- 建议优先使用 GPU 4（通常最空闲）
