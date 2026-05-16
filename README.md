@@ -65,8 +65,8 @@ conda activate /data/jjpan/experiments/envs/speculative
 
 | 角色 | 模型 | 量化 | 大小 |
 |------|------|------|------|
-| Target | Qwen2.5-72B-Instruct | 4-bit AWQ | ~39GB |
-| Draft | Qwen2.5-7B-Instruct | 4-bit GPTQ | ~5.3GB |
+| Target | Qwen2.5-72B-Instruct | 4-bit AWQ | ~36GB |
+| Draft | Qwen2.5-7B-Instruct | 4-bit GPTQ | ~3.5GB |
 
 ### 下载模型
 
@@ -77,30 +77,29 @@ python src/download_models.py
 
 ## 运行
 
-### GPU 检查
-
-运行前会自动检查 GPU 占用情况，不会抢占其他同学的进程。
+### 单 GPU 模式
 
 ```bash
-# 查看 GPU 状态
-nvitop
-
-# 或
-nvidia-smi
-```
-
-### 自回归解码
-
-```bash
+# 自回归解码
 conda activate /data/jjpan/experiments/envs/autoregressive
 python src/main.py --skip_spec
-```
 
-### 标准推测解码
-
-```bash
+# 标准推测解码
 conda activate /data/jjpan/experiments/envs/speculative
 python src/main.py
+```
+
+### 多 GPU 模型并行模式
+
+```bash
+# 使用 2 张 GPU 运行推测解码
+python src/main.py --num_gpus 2
+
+# 使用 2 张 GPU 运行自回归解码
+python src/main.py --num_gpus 2 --skip_spec
+
+# 指定特定 GPU
+python src/main.py --gpu 0
 ```
 
 ### FLy 松散推测解码
@@ -142,4 +141,5 @@ python third_party/fsd/csqa_eval_example.py \
 - 运行前自动检查 GPU 可用性
 - 不会强制终止其他用户的进程
 - 多进程可共享同一 GPU（显存足够即可）
+- 支持多 GPU 模型并行（`--num_gpus` 参数）
 - 建议优先使用 GPU 4（通常最空闲）

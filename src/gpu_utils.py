@@ -166,3 +166,79 @@ def check_gpu_before_use(gpu_id: int, wait: bool = True, max_wait_minutes: int =
     
     print(f"\n将等待 GPU 变为可用（最多 {max_wait_minutes} 分钟）...")
     return wait_for_gpu(gpu_id, max_wait_minutes=max_wait_minutes)
+
+
+def check_multi_gpus_available(gpu_ids: list, min_free_memory_mb: int = 10000, wait: bool = True) -> bool:
+    """检查多张 GPU 是否都可用（用于模型并行）
+    
+    Args:
+        gpu_ids: 要检查的 GPU ID 列表
+        min_free_memory_mb: 每张 GPU 最小可用显存（MB）
+        wait: 是否等待 GPU 变为可用
+    
+    Returns:
+        bool: 所有 GPU 是否都可用
+    """
+    print(f"\n检查多张 GPU 可用性: {gpu_ids}")
+    
+    all_available = True
+    for gpu_id in gpu_ids:
+        gpu_usage = get_gpu_usage(gpu_id)
+        processes = get_gpu_processes(gpu_id)
+        
+        if gpu_usage is None:
+            print(f"GPU {gpu_id}: 无法获取信息")
+            all_available = False
+            continue
+        
+        free_mb = gpu_usage["memory_free"]
+        if free_mb >= min_free_memory_mb and len(processes) == 0:
+            print(f"GPU {gpu_id}: 空闲 ✓ [显存: {free_mb:.0f} MB 可用]")
+        elif free_mb >= min_free_memory_mb:
+            print(f"GPU {gpu_id}: 有进程但显存充足 [显存: {free_mb:.0f} MB 可用, 进程: {len(processes)}]")
+        else:
+            print(f"GPU {gpu_id}: 显存不足 [显存: {free_mb:.0f} MB 可用]")
+            all_available = False
+    
+    return all_available
+
+
+def select_multi_gpus(num_gpus: int = 2, min_free_memory_mb: int = 10000) -> list:
+    """自动选择多张空闲 GPU 用于模型并行
+    
+    Args:
+        num_gpus: 需要的 GPU 数量
+        min_free_memory_mb: 每张 GPU 最小可用显存（MB）
+    
+    Returns:
+        list: 可用的 GPU ID 列表
+    """
+    if not torch.cuda.is_available():
+        print("警告: 未检测到 CUDA 设备")
+        return []
+    
+    total_gpus = torch.cuda.device_count()
+    print(f"\n检测到 {total_gpus} 个 GPU，正在选择 {num_gpus} 张用于模型并行...")
+    
+    available_gpus = []
+    for gpu_id in range(total_gpus):
+        if len(available_gpus) >= num_gpus:
+            break
+            
+        gpu_usage = get_gpu_usage(gpu_id)
+        processes = get_gpu_processes(gpu_id)
+        
+        if gpu_usage and gpu_usage["memory_free"] >= min_free_memory_mb:
+            if len(processes) == 0:
+                print(f"GPU {gpu_id}: 空闲 ✓ [显存: {gpu_usage['memory_free']:.0f} MB 可用]")
+                available_gpus.append(gpu_id)
+            else:
+                print(f"GPU {gpu_id}: 有进程但显存充足 [显存: {gpu_usage['memory_free']:.0f} MB 可用]")
+                available_gpus.append(gpu_id)
+        else:
+            print(f"GPU {gpu_id}: 显存不足 [显存: {gpu_usage['memory_free'] if gpu_usage else 0:.0f} MB 可用]")
+    
+    if len(available_gpus) < num_gpus:
+        print(f"警告: 只找到 {len(available_gpus)} 张可用 GPU，需要 {num_gpus} 张")
+    
+    return available_gpus
