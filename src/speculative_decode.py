@@ -32,7 +32,7 @@ def speculative_decode(
 
     if verbose:
         print(f"\n{'='*60}")
-        print(f"标准推测解码开始")
+        print(f"标准推测解码 (KV cache 优化)")
         print(f"Target 模型: {target_model.config.name_or_path}")
         print(f"Draft 模型: {draft_model.config.name_or_path}")
         print(f"Prompt: {prompt[:80]}...")
@@ -40,45 +40,44 @@ def speculative_decode(
         print(f"Gamma: {gamma}")
         print(f"{'='*60}")
 
-    current_ids = input_ids
+    with torch.no_grad():
+        target_out = target_model(input_ids=input_ids, use_cache=True)
+        target_past = target_out.past_key_values
+        target_last_logits = target_out.logits[:, -1, :]
+
+        draft_out = draft_model(input_ids=input_ids, use_cache=True)
+        draft_past = draft_out.past_key_values
 
     while len(generated_ids) < max_new_tokens:
-        draft_ids = current_ids.clone()
-        draft_past = None
         draft_tokens = []
 
-        for _ in range(gamma):
+        for step in range(gamma):
             if len(generated_ids) + len(draft_tokens) >= max_new_tokens:
                 break
 
-            t0 = time.time()
-            with torch.no_grad():
-                if draft_past is not None:
+            if step == 0:
+                logits = target_last_logits
+            else:
+                t0 = time.time()
+                with torch.no_grad():
+                    draft_input = torch.tensor([[draft_tokens[-1]]], device=device)
                     draft_out = draft_model(
-                        input_ids=draft_ids[:, -1:],
+                        input_ids=draft_input,
                         past_key_values=draft_past,
                         use_cache=True,
                     )
-                else:
-                    draft_out = draft_model(
-                        input_ids=draft_ids,
-                        use_cache=True,
-                    )
-            draft_forward_count += 1
-            draft_total_time += time.time() - t0
-
-            draft_logits = draft_out.logits[:, -1, :]
-            draft_past = draft_out.past_key_values
+                    draft_past = draft_out.past_key_values
+                    logits = draft_out.logits[:, -1, :]
+                    draft_forward_count += 1
+                    draft_total_time += time.time() - t0
 
             if temperature == 0.0:
-                next_tok = torch.argmax(draft_logits, dim=-1)
-                draft_probs = None
+                next_tok = torch.argmax(logits, dim=-1)
             else:
-                draft_probs = F.softmax(draft_logits / temperature, dim=-1)
-                next_tok = torch.multinomial(draft_probs, num_samples=1)
+                probs = F.softmax(logits / temperature, dim=-1)
+                next_tok = torch.multinomial(probs, num_samples=1)
 
             draft_tokens.append(next_tok.item())
-            draft_ids = torch.cat([draft_ids, next_tok.unsqueeze(0)], dim=1)
 
             if next_tok.item() == tokenizer.eos_token_id:
                 break
@@ -86,89 +85,84 @@ def speculative_decode(
         if len(draft_tokens) == 0:
             break
 
-        verify_ids = torch.cat(
-            [current_ids, torch.tensor([draft_tokens], device=device)],
-            dim=1,
-        )
+        n_draft = len(draft_tokens)
 
         t0 = time.time()
         with torch.no_grad():
+            draft_tensor = torch.tensor([draft_tokens], device=device)
             target_out = target_model(
-                input_ids=verify_ids,
+                input_ids=draft_tensor,
+                past_key_values=target_past,
                 use_cache=True,
             )
+        target_past = target_out.past_key_values
+        target_logits = target_out.logits
         target_forward_count += 1
         target_total_time += time.time() - t0
 
-        target_logits = target_out.logits[:, current_ids.shape[1] - 1:, :]
-
-        if temperature == 0.0:
-            target_preds = torch.argmax(target_logits[:, :-1, :], dim=-1)
-            draft_probs_all = None
-        else:
-            target_probs_all = F.softmax(target_logits[:, :-1, :] / temperature, dim=-1)
-            draft_probs_all_list = []
-            draft_past2 = None
-            draft_ids2 = current_ids.clone()
-            for _ in range(len(draft_tokens)):
-                with torch.no_grad():
-                    if draft_past2 is not None:
-                        d_out = draft_model(
-                            input_ids=draft_ids2[:, -1:],
-                            past_key_values=draft_past2,
-                            use_cache=True,
-                        )
-                    else:
-                        d_out = draft_model(
-                            input_ids=draft_ids2,
-                            use_cache=True,
-                        )
-                d_logits = d_out.logits[:, -1, :]
-                draft_past2 = d_out.past_key_values
-                draft_probs_all_list.append(F.softmax(d_logits / temperature, dim=-1))
-                draft_ids2 = torch.cat([draft_ids2, torch.tensor([[draft_tokens[_]]], device=device)], dim=1)
-            draft_probs_all = torch.stack(draft_probs_all_list, dim=1)
-
-        n_draft = len(draft_tokens)
         all_accepted = True
-        accept_count = 0
+        accepted_count = 0
 
         for i in range(n_draft):
             draft_tok = draft_tokens[i]
 
+            if i == 0:
+                verify_logits = target_last_logits
+            else:
+                verify_logits = target_logits[:, i - 1, :]
+
             if temperature == 0.0:
-                if target_preds[0, i] == draft_tok:
+                target_pred = torch.argmax(verify_logits, dim=-1).item()
+                if target_pred == draft_tok:
                     generated_ids.append(draft_tok)
                     total_accepted += 1
-                    accept_count += 1
+                    accepted_count += 1
                 else:
-                    generated_ids.append(target_preds[0, i].item())
+                    generated_ids.append(target_pred)
                     all_accepted = False
-                    accept_count += 1
+                    accepted_count += 1
                     break
             else:
-                p_target = target_probs_all[0, i, draft_tok].item()
-                p_draft = draft_probs_all[0, i, draft_tok].item()
+                p_target = F.softmax(verify_logits / temperature, dim=-1)[0, draft_tok].item()
+
+                t0 = time.time()
+                with torch.no_grad():
+                    if i == 0:
+                        full_seq = torch.tensor([input_ids[0].tolist() + generated_ids], device=device)
+                        d_out = draft_model(input_ids=full_seq, use_cache=True)
+                    else:
+                        d_in = torch.tensor([[draft_tokens[i - 1]]], device=device)
+                        d_out = draft_model(
+                            input_ids=d_in,
+                            past_key_values=draft_past,
+                            use_cache=True,
+                        )
+                    draft_past = d_out.past_key_values
+                    d_logits = d_out.logits[:, -1, :]
+                    draft_forward_count += 1
+                    draft_total_time += time.time() - t0
+
+                p_draft = F.softmax(d_logits / temperature, dim=-1)[0, draft_tok].item()
 
                 if p_draft <= p_target:
                     generated_ids.append(draft_tok)
                     total_accepted += 1
-                    accept_count += 1
+                    accepted_count += 1
                 else:
                     accept_prob = p_target / p_draft
                     if torch.rand(1).item() < accept_prob:
                         generated_ids.append(draft_tok)
                         total_accepted += 1
-                        accept_count += 1
+                        accepted_count += 1
                     else:
-                        adjusted_probs = torch.clamp(
-                            target_probs_all[0, i] - draft_probs_all[0, i], min=0.0
-                        )
+                        target_probs = F.softmax(verify_logits / temperature, dim=-1)
+                        draft_probs = F.softmax(d_logits / temperature, dim=-1)
+                        adjusted_probs = torch.clamp(target_probs - draft_probs, min=0.0)
                         adjusted_probs = adjusted_probs / adjusted_probs.sum()
                         next_tok = torch.multinomial(adjusted_probs, num_samples=1).item()
                         generated_ids.append(next_tok)
                         all_accepted = False
-                        accept_count += 1
+                        accepted_count += 1
                         break
 
             if generated_ids[-1] == tokenizer.eos_token_id:
@@ -181,9 +175,31 @@ def speculative_decode(
                 (len(generated_ids) > 0 and generated_ids[-1] == tokenizer.eos_token_id):
             break
 
-        current_ids = torch.tensor(
-            [input_ids[0].tolist() + generated_ids], device=device
-        )
+        if all_accepted:
+            target_last_logits = target_logits[:, -1, :]
+            t0 = time.time()
+            with torch.no_grad():
+                last_token = torch.tensor([[draft_tokens[-1]]], device=device)
+                draft_out = draft_model(
+                    input_ids=last_token,
+                    past_key_values=draft_past,
+                    use_cache=True,
+                )
+                draft_past = draft_out.past_key_values
+                draft_forward_count += 1
+                draft_total_time += time.time() - t0
+        else:
+            full_seq = torch.tensor([input_ids[0].tolist() + generated_ids], device=device)
+            with torch.no_grad():
+                target_out = target_model(input_ids=full_seq, use_cache=True)
+            target_past = target_out.past_key_values
+            target_last_logits = target_out.logits[:, -1, :]
+            target_forward_count += 1
+            target_total_time += time.time() - t0
+
+            with torch.no_grad():
+                draft_out = draft_model(input_ids=full_seq, use_cache=True)
+            draft_past = draft_out.past_key_values
 
     total_time = time.time() - start_time
 

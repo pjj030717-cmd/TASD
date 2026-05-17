@@ -5,11 +5,12 @@ import os
 
 from autoregressive_decode import autoregressive_decode
 from speculative_decode import speculative_decode
+from fsd_decode import fsd_decode
 from gpu_utils import check_gpu_before_use, select_free_gpu, check_multi_gpus_available, select_multi_gpus
 
 
 def main():
-    parser = argparse.ArgumentParser(description="标准自回归解码 vs 标准推测解码 对比测试")
+    parser = argparse.ArgumentParser(description="标准自回归解码 vs 标准推测解码 vs FSD 对比测试")
     parser.add_argument("--target_model", type=str, default="./models/Qwen2.5-72B-Instruct-AWQ",
                         help="Target 模型路径 (4-bit AWQ 量化)")
     parser.add_argument("--draft_model", type=str, default="./models/Qwen2.5-7B-Instruct-GPTQ-Int4",
@@ -27,6 +28,13 @@ def main():
                         help="跳过自回归解码")
     parser.add_argument("--skip_spec", action="store_true",
                         help="跳过推测解码")
+    parser.add_argument("--fsd", action="store_true",
+                        help="使用 Fuzzy Speculative Decoding (FSD)")
+    parser.add_argument("--fsd_div_type", type=str, default="js_div",
+                        choices=["js_div", "kl_div", "tv_div"],
+                        help="FSD 散度类型")
+    parser.add_argument("--fsd_div_threshold", type=float, default=0.4,
+                        help="FSD 散度阈值")
     parser.add_argument("--gpu", type=int, default=None,
                         help="指定使用的 GPU ID，不指定则自动选择空闲 GPU")
     parser.add_argument("--num_gpus", type=int, default=1,
@@ -82,35 +90,12 @@ def main():
     ar_text, ar_stats = None, None
     spec_text, spec_stats = None, None
 
-    if not args.skip_ar:
-        print(f"\n{'#'*60}")
-        print(f"# 测试 1: 标准自回归解码")
-        print(f"{'#'*60}")
-        print(f"\n加载 Target 模型 (4-bit AWQ): {args.target_model}")
-        target_model = AutoModelForCausalLM.from_pretrained(
-            args.target_model,
-            torch_dtype="auto",
-            device_map="auto",
-            trust_remote_code=True,
-        )
-        target_model.eval()
-
-        print(f"\n开始自回归解码...")
-        ar_text, ar_stats = autoregressive_decode(
-            model=target_model,
-            tokenizer=tokenizer,
-            prompt=args.prompt,
-            max_new_tokens=args.max_new_tokens,
-            temperature=args.temperature,
-            verbose=True,
-        )
-
-        del target_model
-        torch.cuda.empty_cache()
-
     if not args.skip_spec:
         print(f"\n{'#'*60}")
-        print(f"# 测试 2: 标准推测解码")
+        if args.fsd:
+            print(f"# 测试 1: Fuzzy Speculative Decoding (FSD)")
+        else:
+            print(f"# 测试 1: 标准推测解码")
         print(f"{'#'*60}")
 
         print(f"\n加载 Target 模型 (4-bit AWQ): {args.target_model}")
@@ -131,20 +116,64 @@ def main():
         )
         draft_model.eval()
 
-        print(f"\n开始推测解码...")
-        spec_text, spec_stats = speculative_decode(
-            target_model=target_model,
-            draft_model=draft_model,
+        if args.fsd:
+            print(f"\n开始 FSD 解码...")
+            spec_text, spec_stats = fsd_decode(
+                target_model=target_model,
+                draft_model=draft_model,
+                tokenizer=tokenizer,
+                prompt=args.prompt,
+                max_new_tokens=args.max_new_tokens,
+                gamma=args.gamma,
+                temperature=args.temperature,
+                fsd_div_type=args.fsd_div_type,
+                fsd_div_threshold=args.fsd_div_threshold,
+                verbose=True,
+            )
+        else:
+            print(f"\n开始推测解码...")
+            spec_text, spec_stats = speculative_decode(
+                target_model=target_model,
+                draft_model=draft_model,
+                tokenizer=tokenizer,
+                prompt=args.prompt,
+                max_new_tokens=args.max_new_tokens,
+                gamma=args.gamma,
+                temperature=args.temperature,
+                verbose=True,
+            )
+
+        del draft_model
+        torch.cuda.empty_cache()
+
+    if not args.skip_ar:
+        print(f"\n{'#'*60}")
+        print(f"# 测试 2: 标准自回归解码")
+        print(f"{'#'*60}")
+
+        if not args.skip_spec:
+            print(f"\n复用已加载的 Target 模型 (4-bit AWQ): {args.target_model}")
+        else:
+            print(f"\n加载 Target 模型 (4-bit AWQ): {args.target_model}")
+            target_model = AutoModelForCausalLM.from_pretrained(
+                args.target_model,
+                torch_dtype="auto",
+                device_map="auto",
+                trust_remote_code=True,
+            )
+            target_model.eval()
+
+        print(f"\n开始自回归解码...")
+        ar_text, ar_stats = autoregressive_decode(
+            model=target_model,
             tokenizer=tokenizer,
             prompt=args.prompt,
             max_new_tokens=args.max_new_tokens,
-            gamma=args.gamma,
             temperature=args.temperature,
             verbose=True,
         )
 
         del target_model
-        del draft_model
         torch.cuda.empty_cache()
 
     if not args.skip_ar and not args.skip_spec:
@@ -164,7 +193,9 @@ def main():
         print(f"\n推测解码特有指标:")
         print(f"  Target 前向次数: {spec_stats['target_forward_count']}")
         print(f"  Draft 前向次数: {spec_stats['draft_forward_count']}")
-        print(f"  接受率: {spec_stats['acceptance_rate']:.2%}")
+        if args.fsd:
+            print(f"  FSD 接受率: {spec_stats['fsd_acceptance_rate']:.2%}")
+        print(f"  总接受率: {spec_stats['acceptance_rate']:.2%}")
         print(f"  等效加速比: {spec_stats['speedup_vs_target_calls']:.2f}x")
 
         print(f"\n结果一致性检查:")

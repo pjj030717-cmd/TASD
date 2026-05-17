@@ -1,5 +1,5 @@
 {
-    "target_model_path": "/data/jjpan/experiments/models/Qwen2.5-72B-Instruct-AWQ",
+    "target_model_path": "/cloud/cloud-ssd1/-/models/Qwen2.5-72B-Instruct-AWQ",
     "use_sd": true,
     "temperature": 0.0,
     "dual_tok": false,

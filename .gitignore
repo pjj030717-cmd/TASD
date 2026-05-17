@@ -46,6 +46,7 @@ env/
 .venv/
 */venv/
 */env/
+envs/
 
 # 日志
 *.log
@@ -54,7 +55,11 @@ env/
 *.tmp
 .DS_Store
 
-# 外部克隆的仓库
-fsd/
-FLy-main/
-experiments/
+# 第三方仓库（保留目录，不提交内容）
+third_party/
+
+# 结果文件（JSON/JSONL）
+results/*.json
+results/*.jsonl
+results/**/*.json
+results/**/*.jsonl
