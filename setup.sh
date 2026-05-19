@@ -40,14 +40,14 @@ mkdir -p third_party
 
 if [ ! -d "third_party/FLy-main" ]; then
     echo "克隆 FLy..."
-    git clone https://github.com/AMD-AGI/FLy.git third_party/FLy-main
+    git clone git@github.com:AMD-AGI/FLy.git third_party/FLy-main
 else
     echo "FLy 已存在"
 fi
 
 if [ ! -d "third_party/fsd" ]; then
     echo "克隆 FSD..."
-    git clone https://github.com/maxholsman/fsd.git third_party/fsd
+    git clone git@github.com:maxholsman/fsd.git third_party/fsd
 else
     echo "FSD 已存在"
 fi

@@ -2,10 +2,17 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import argparse
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'decoding_methods', 'fsd'))
 
 from autoregressive_decode import autoregressive_decode
 from speculative_decode import speculative_decode
-from fsd_decode import fsd_decode
+try:
+    from fsd_decode import fsd_decode
+except ImportError:
+    fsd_decode = None
 from gpu_utils import check_gpu_before_use, select_free_gpu, check_multi_gpus_available, select_multi_gpus
 
 

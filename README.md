@@ -1,8 +1,5 @@
 # Speculative Decoding 实验
 
-<<<<<<< HEAD
-多解码方法对比实验平台：自回归 / 标准推测解码 / FLy / FSD / EAGLE
-=======
 多解码方法对比实验平台：自回归 / 标准推测解码 / FLy / FSD / TASD
 
 ## 快速开始
@@ -63,8 +60,11 @@ fly --model hf --model_args pretrained=./models/Qwen2.5-7B-Instruct-GPTQ-Int4,co
 # FSD 框架
 conda activate ./envs/fsd
 python third_party/fsd/csqa_eval_example.py --small_model_id ./models/Qwen2.5-7B-Instruct-GPTQ-Int4 --large_model_id ./models/Qwen2.5-72B-Instruct-AWQ --fsd_div_threshold 0.4 --fsd_div_type "js_div" --num_evals 5
+
+# TASD 框架
+conda activate ./envs/speculative
+python src/tasd_decode.py
 ```
->>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 
 ## 项目结构
 
@@ -76,25 +76,10 @@ experiments/
 │   ├── download_models.py        # 模型下载脚本
 │   ├── autoregressive_decode.py  # 自回归解码
 │   ├── speculative_decode.py     # 推测解码
-<<<<<<< HEAD
-│   └── fsd/                      # FSD 模块
-│       ├── __init__.py
-│       └── fsd_utils.py
-├── decoding_methods/             # 各解码方法配置
-│   └── fly/                      # FLy 松散推测解码
-│       ├── FLy_Qwen2.5_72b.json
-│       └── start_fly.sh
-├── third_party/                  # 第三方仓库（不提交到 Git）
-│   ├── fsd/                      # FSD 框架源码
-│   ├── FLy-main/                 # FLy 框架源码
-│   └── EAGLE/                    # EAGLE 框架源码
-├── envs/                         # Conda 虚拟环境（不提交到 Git）
-├── models/                       # 模型权重（不提交到 Git）
-├── results/                      # 实验结果（Markdown 日志保留，JSON 不提交）
-├── pyproject.toml
-└── requirements.txt
-=======
-│   └── tasd_solver.py            # TASD 参数优化求解器
+│   ├── tasd_decode.py            # TASD 质量驱动宽松验证推测解码
+│   ├── tasd_solver.py            # TASD 参数优化求解器
+│   ├── speed_bench.py            # SPEED-Bench 数据集测试
+│   └── humaneval_bench.py        # HumanEval 数据集测试
 ├── decoding_methods/             # 各解码方法配置
 │   ├── fly/                      # FLy 配置
 │   ├── fsd/                      # FSD 配置
@@ -107,7 +92,6 @@ experiments/
 ├── download_models.sh            # 模型下载脚本
 ├── .gitignore
 └── README.md
->>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 ```
 
 ## 环境说明
@@ -116,57 +100,51 @@ experiments/
 |------|------|--------------|------|
 | FLy | `envs/fly` | 4.57.6 | FLy 松散推测解码 |
 | FSD | `envs/fsd` | 4.44.0 | FSD 模糊推测解码 |
-| speculative | `envs/speculative` | 5.8.1 | 自回归/推测解码 |
+| speculative | `envs/speculative` | 5.8.1 | 自回归/推测解码/TASD |
 
-<<<<<<< HEAD
-```bash
-# Miniconda 已安装在 /usr/local/miniconda3
-source ~/.bashrc
-```
-
-### 激活对应环境
-
-```bash
-# FSD 框架 (transformers 4.44.0)
-conda activate /cloud/cloud-ssd1/-/envs/fsd
-
-# FLy 框架 (transformers 4.57.6)
-conda activate /cloud/cloud-ssd1/-/envs/fly
-
-# 自回归基线 (transformers 5.8.1)
-conda activate /cloud/cloud-ssd1/-/envs/autoregressive
-
-# 标准推测解码 (transformers 5.8.1)
-conda activate /cloud/cloud-ssd1/-/envs/speculative
-```
-
-## 模型准备
-
-### Qwen2.5 系列
-=======
 ## 模型说明
->>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 
 | 角色 | 模型 | 量化 | 大小 |
 |------|------|------|------|
 | Target | Qwen2.5-72B-Instruct | 4-bit AWQ | ~36GB |
 | Draft | Qwen2.5-7B-Instruct | 4-bit GPTQ | ~3.5GB |
 
-<<<<<<< HEAD
-### Llama-3.1 系列
+## TASD 框架
 
-| 角色 | 模型 | 量化 | 大小 |
-|------|------|------|------|
-| Target | Llama-3.1-70B-Instruct | 4-bit AWQ | ~38GB |
-| Draft | Llama-3.1-8B-Instruct | 4-bit AWQ | ~5.4GB |
-| EAGLE | EAGLE-Llama-3.1-70B-Instruct | FP16 | ~4GB |
+TASD（质量驱动的免训练宽松验证推测解码）是本项目的核心创新。
 
-### 下载模型
+### 核心思想
+
+- 不要求 draft 和 target 输出完全一致
+- 允许在 ε 宽容度内接受 draft token
+- 通过 KL 散度或概率比值判断是否接受
+
+### 理论保证
+
+质量损失上界：Δ ≤ k · √(ε/2)
+
+其中 k 是草稿长度，ε 是宽容度阈值。
+
+### 运行 TASD
 
 ```bash
-conda activate /cloud/cloud-ssd1/-/envs/fly
-python src/download_models.py
+# 基础运行
+python src/tasd_decode.py
+
+# HumanEval 基准测试
+python src/humaneval_bench.py --max_samples 10
+
+# SPEED-Bench 基准测试
+python src/speed_bench.py
 ```
+
+### 性能对比（HumanEval）
+
+| 方法 | 速度 (tok/s) | 接受率 |
+|------|-------------|--------|
+| 自回归 (AR) | 11.8 | - |
+| TASD (γ=5, ε=0.05) | 15.3 | 95.74% |
+| FLy | 24.5 | - |
 
 ## 运行
 
@@ -198,63 +176,35 @@ python third_party/fsd/csqa_eval_example.py \
 ### EAGLE 推测解码
 
 ```bash
-conda activate /cloud/cloud-ssd1/-/envs/fly
-cd third_party
-python llama70b_eagle_test.py
+conda activate /cloud/cloud-ssd1/-/envs/speculative
+python third_party/EAGLE/eval.py \
+    --base_model ./models/llama-3.1-70b \
+    --ea_model ./models/eagle-llama-3.1-70b \
+    --eval_task humaneval
 ```
-
-=======
->>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
-## 解码方法对比
-
-| 方法 | 原理 | 优势 | 适用场景 |
-|------|------|------|----------|
-| 自回归 | 逐 token 生成 | 质量最高 | 基线对比 |
-| 标准推测 | Draft 生成 + Target 验证 | 精确匹配加速 | Draft 质量好时 |
-| FLy | 语义正确即接受 | 接受率更高 | 宽松场景 |
-| FSD | 散度阈值判断 | 可控精度/速度权衡 | 灵活调参 |
-<<<<<<< HEAD
-| EAGLE | 轻量草稿头复用隐藏层 | 无需独立 Draft 模型 | 显存受限时 |
 
 ## 实验结果
 
-详见 [results/](results/) 目录。
+实验结果保存在 `results/` 目录下：
 
-### 实验 1: FSD vs 标准推测解码 (Qwen2.5-72B)
+- `experiment_comparison.md` - 方法对比
+- `experiment_1_fsd_vs_sd.md` - FSD vs 标准推测解码
+- `experiment_2_fly.md` - FLy 性能测试
 
-| 方法 | 生成速度 (tokens/s) | 耗时 (s) | 加速比 |
-|------|---------------------|----------|--------|
-| FSD (JS 散度, 阈值 0.4) | 7.3 | 17.6 | 1.53x |
-| 标准推测解码 | 4.7 | 27.0 | 1.0x |
+## 开发
 
-### 实验 2: FLy + ngram (Qwen2.5-72B)
+### 添加新的解码方法
 
-| 方法 | 总 token | 总时间 (s) | 速度 (tok/s) | 加速比 |
-|------|----------|------------|--------------|--------|
-| 自回归 | 2560 | 259.04 | 9.88 | 1.00x |
-| 标准推测解码 | 2560 | 170.01 | 15.06 | 1.52x |
-| FLy + ngram | 2693 | 162.72 | 16.55 | 1.67x |
+1. 在 `src/` 下创建新的解码模块
+2. 在 `main.py` 中注册新的解码器
+3. 更新 `decoding_methods/` 配置
 
-### 实验 3: Llama-3.1-70B-Instruct-AWQ 全方法对比
+### 运行测试
 
-| 方法 | 总 token | 总时间 (s) | 速度 (tok/s) | 加速比 |
-|------|----------|------------|--------------|--------|
-| 自回归 | 2282 | 225.79 | 10.11 | 1.00x |
-| 标准推测解码 | 2282 | 137.40 | 16.61 | 1.64x |
-| FLy + ngram | 2456 | 126.14 | 19.47 | 1.93x |
-| EAGLE | 2333 | 119.31 | 19.55 | 1.93x |
+```bash
+# 单元测试
+pytest tests/
 
-**关键发现：**
-- EAGLE 和 FLy + ngram 并列第一，均达到约 1.93x 加速比
-- EAGLE 优势：不需要独立 Draft 模型（草稿头仅 4GB vs Llama-3.1-8B-AWQ 的 5.4GB）
-- EAGLE 总显存占用更低：42GB vs 43.4GB
-=======
-| TASD | 理论约束优化参数 | 自动求解最优参数 | 理论保证 |
->>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
-
-## GPU 使用注意
-
-- 运行前自动检查 GPU 可用性
-- 不会强制终止其他用户的进程
-- 多进程可共享同一 GPU（显存足够即可）
-- 支持多 GPU 模型并行（`--num_gpus` 参数）
+# 集成测试
+python src/tasd_test.py
+```
