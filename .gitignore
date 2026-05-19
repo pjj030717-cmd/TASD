@@ -1,64 +1,45 @@
-# 模型文件
+# 模型权重（太大，不提交）
 models/
-autodl-tmp/
 *.bin
 *.safetensors
-*.model
-*.ckpt
 *.pt
-*.pth
+*.ckpt
 
-# Python
+# 虚拟环境
+envs/
+venv/
+.venv/
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.eggs/
+*.pyc
 
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb
+# 第三方仓库（有独立 Git）
+third_party/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# 虚拟环境
-venv/
-env/
-.venv/
-*/venv/
-*/env/
-envs/
-
-# 日志
-*.log
-
-# 临时文件
-*.tmp
+# 系统文件
 .DS_Store
+Thumbs.db
 
-# 第三方仓库（保留目录，不提交内容）
-third_party/
+# 日志和临时文件
+*.log
+*.tmp
+*.cache
+outputs/
+runs/
 
-# 结果文件（JSON/JSONL）
+# Jupyter
+.ipynb_checkpoints/
+
+# Conda
+.conda/
+conda-meta/
+
+# 结果文件
 results/*.json
 results/*.jsonl
 results/**/*.json

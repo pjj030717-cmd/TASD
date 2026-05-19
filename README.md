@@ -1,6 +1,70 @@
 # Speculative Decoding 实验
 
+<<<<<<< HEAD
 多解码方法对比实验平台：自回归 / 标准推测解码 / FLy / FSD / EAGLE
+=======
+多解码方法对比实验平台：自回归 / 标准推测解码 / FLy / FSD / TASD
+
+## 快速开始
+
+### 1. 克隆仓库
+
+```bash
+git clone https://github.com/pjj030717-cmd/-.git
+cd experiments
+```
+
+### 2. 一键安装环境
+
+```bash
+bash setup.sh
+```
+
+此脚本会自动：
+- 检测 CUDA 环境
+- 安装 Miniconda（如未安装）
+- 克隆第三方仓库（FLy、FSD）
+- 创建 3 个 conda 环境
+
+### 3. 下载模型
+
+```bash
+bash download_models.sh
+```
+
+或手动下载：
+```bash
+# HuggingFace
+huggingface-cli download Qwen/Qwen2.5-72B-Instruct-AWQ --local-dir ./models/Qwen2.5-72B-Instruct-AWQ
+huggingface-cli download Qwen/Qwen2.5-7B-Instruct-GPTQ-Int4 --local-dir ./models/Qwen2.5-7B-Instruct-GPTQ-Int4
+
+# ModelScope
+python -c "from modelscope import snapshot_download; snapshot_download('Qwen/Qwen2.5-72B-Instruct-AWQ', cache_dir='./models')"
+```
+
+### 4. 运行测试
+
+```bash
+# 单 GPU 模式
+conda activate ./envs/speculative
+python src/main.py
+
+# 多 GPU 模型并行（2 张卡）
+python src/main.py --num_gpus 2
+
+# 自回归基线
+python src/main.py --skip_spec
+
+# FLy 框架
+conda activate ./envs/fly
+export HF_ALLOW_CODE_EVAL=1
+fly --model hf --model_args pretrained=./models/Qwen2.5-7B-Instruct-GPTQ-Int4,config_path=configs/fly/FLy_Qwen2.5_72b.json --tasks humaneval_instruct --batch_size 1 --apply_chat_template --confirm_run_unsafe_code
+
+# FSD 框架
+conda activate ./envs/fsd
+python third_party/fsd/csqa_eval_example.py --small_model_id ./models/Qwen2.5-7B-Instruct-GPTQ-Int4 --large_model_id ./models/Qwen2.5-72B-Instruct-AWQ --fsd_div_threshold 0.4 --fsd_div_type "js_div" --num_evals 5
+```
+>>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 
 ## 项目结构
 
@@ -12,6 +76,7 @@ experiments/
 │   ├── download_models.py        # 模型下载脚本
 │   ├── autoregressive_decode.py  # 自回归解码
 │   ├── speculative_decode.py     # 推测解码
+<<<<<<< HEAD
 │   └── fsd/                      # FSD 模块
 │       ├── __init__.py
 │       └── fsd_utils.py
@@ -28,12 +93,32 @@ experiments/
 ├── results/                      # 实验结果（Markdown 日志保留，JSON 不提交）
 ├── pyproject.toml
 └── requirements.txt
+=======
+│   └── tasd_solver.py            # TASD 参数优化求解器
+├── decoding_methods/             # 各解码方法配置
+│   ├── fly/                      # FLy 配置
+│   ├── fsd/                      # FSD 配置
+│   ├── autoregressive/           # 自回归配置
+│   └── speculative/              # 推测解码配置
+├── configs/                      # 配置文件
+├── models/                       # 模型权重（需下载）
+├── third_party/                  # 第三方仓库（setup.sh 自动克隆）
+├── setup.sh                      # 一键安装脚本
+├── download_models.sh            # 模型下载脚本
+├── .gitignore
+└── README.md
+>>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 ```
 
-## 环境配置
+## 环境说明
 
-### 安装 Miniconda
+| 环境 | 路径 | transformers | 用途 |
+|------|------|--------------|------|
+| FLy | `envs/fly` | 4.57.6 | FLy 松散推测解码 |
+| FSD | `envs/fsd` | 4.44.0 | FSD 模糊推测解码 |
+| speculative | `envs/speculative` | 5.8.1 | 自回归/推测解码 |
 
+<<<<<<< HEAD
 ```bash
 # Miniconda 已安装在 /usr/local/miniconda3
 source ~/.bashrc
@@ -58,12 +143,16 @@ conda activate /cloud/cloud-ssd1/-/envs/speculative
 ## 模型准备
 
 ### Qwen2.5 系列
+=======
+## 模型说明
+>>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 
 | 角色 | 模型 | 量化 | 大小 |
 |------|------|------|------|
 | Target | Qwen2.5-72B-Instruct | 4-bit AWQ | ~36GB |
 | Draft | Qwen2.5-7B-Instruct | 4-bit GPTQ | ~3.5GB |
 
+<<<<<<< HEAD
 ### Llama-3.1 系列
 
 | 角色 | 模型 | 量化 | 大小 |
@@ -114,6 +203,8 @@ cd third_party
 python llama70b_eagle_test.py
 ```
 
+=======
+>>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 ## 解码方法对比
 
 | 方法 | 原理 | 优势 | 适用场景 |
@@ -122,6 +213,7 @@ python llama70b_eagle_test.py
 | 标准推测 | Draft 生成 + Target 验证 | 精确匹配加速 | Draft 质量好时 |
 | FLy | 语义正确即接受 | 接受率更高 | 宽松场景 |
 | FSD | 散度阈值判断 | 可控精度/速度权衡 | 灵活调参 |
+<<<<<<< HEAD
 | EAGLE | 轻量草稿头复用隐藏层 | 无需独立 Draft 模型 | 显存受限时 |
 
 ## 实验结果
@@ -156,6 +248,9 @@ python llama70b_eagle_test.py
 - EAGLE 和 FLy + ngram 并列第一，均达到约 1.93x 加速比
 - EAGLE 优势：不需要独立 Draft 模型（草稿头仅 4GB vs Llama-3.1-8B-AWQ 的 5.4GB）
 - EAGLE 总显存占用更低：42GB vs 43.4GB
+=======
+| TASD | 理论约束优化参数 | 自动求解最优参数 | 理论保证 |
+>>>>>>> 26bec06 (chore: 添加一键安装脚本,模型下载脚本,.gitignore,更新README)
 
 ## GPU 使用注意
 
