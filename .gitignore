@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+models/
+data/
+logs/
+tensorboard/
+*.log
+/__pypackages__/
+*.egg-info/
+.ipynb_checkpoints/
