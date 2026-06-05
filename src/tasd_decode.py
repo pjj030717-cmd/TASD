@@ -174,10 +174,17 @@ def tasd_decode(
     window_len=2,
     draft_tokenizer=None,
     draft_blocks=2,
+    enable_guard=True,
+    enable_relaxed_accept=True,
+    adaptive_policy=None,
 ):
     """
     TASD speculative decoding with structural guard, proper KV cache,
     multi-block draft, and comprehensive stats.
+
+    Args:
+        enable_guard: If False, skip structural guard check
+        enable_relaxed_accept: If False, only accept draft_tok == target_argmax (strict)
 
     Note on reference: reference is NOT used in decoding. It is only
     passed to the evaluator for structural quality assessment.
@@ -236,6 +243,13 @@ def tasd_decode(
     eos_drafted = False
     eos_accepted = False
 
+    # Adaptive policy stats
+    adaptive_round_drafted = []
+    adaptive_round_accepted = []
+    adaptive_round_top3_hits = []
+    adaptive_round_top5_hits = []
+    adaptive_topk_computed = 0
+
     generated_ids = []
     max_iterations = max_new_tokens + 50
 
@@ -260,6 +274,10 @@ def tasd_decode(
             if remaining <= 0:
                 stop_reason = "max_tokens"
                 break
+
+            # --- Adaptive policy: update draft_len / top_k_accept ---
+            if adaptive_policy is not None:
+                draft_len, top_k_accept = adaptive_policy.get_params()
 
             # If too many consecutive repairs, degrade to AR
             if consecutive_repair_count >= 5:
@@ -395,6 +413,8 @@ def tasd_decode(
 
             # Verify each draft token
             accept_mask = []
+            round_top3_hits = 0
+            round_top5_hits = 0
             for i, draft_tok in enumerate(draft_tokens):
                 if i == 0:
                     logit_for_token = last_target_logit
@@ -408,7 +428,7 @@ def tasd_decode(
                 target_argmax = logit_for_token.argmax().item()
                 if draft_tok == target_argmax:
                     accept_mask.append(True)
-                else:
+                elif enable_relaxed_accept:
                     probs = torch.softmax(logit_for_token, dim=-1)
                     _, topk_indices = torch.topk(probs, top_k_accept)
                     if draft_tok in topk_indices.tolist():
@@ -417,6 +437,16 @@ def tasd_decode(
                         accept_mask.append(True)
                     else:
                         accept_mask.append(False)
+
+                # --- Top-k hit tracking (for adaptive policy) ---
+                if adaptive_policy is not None:
+                    probs = torch.softmax(logit_for_token, dim=-1)
+                    _, top3_idx = torch.topk(probs, 3)
+                    _, top5_idx = torch.topk(probs, 5)
+                    if draft_tok in top3_idx.tolist():
+                        round_top3_hits += 1
+                    if draft_tok in top5_idx.tolist():
+                        round_top5_hits += 1
 
             total_drafted += len(draft_tokens)
 
@@ -450,7 +480,7 @@ def tasd_decode(
             token_accept += strict_prefix_len
 
             # Window acceptance beyond strict prefix
-            if strict_prefix_len < len(draft_tokens):
+            if enable_relaxed_accept and strict_prefix_len < len(draft_tokens):
                 window_start = strict_prefix_len
                 while window_start < len(draft_tokens):
                     window_end = min(window_start + window_len, len(draft_tokens))
@@ -464,7 +494,7 @@ def tasd_decode(
                         break
 
             # Prefix budget acceptance
-            if len(accepted_tokens) < len(draft_tokens):
+            if enable_relaxed_accept and len(accepted_tokens) < len(draft_tokens):
                 remaining_draft = draft_tokens[len(accepted_tokens):]
                 for idx, tok in enumerate(remaining_draft):
                     pos_in_draft = len(accepted_tokens) + idx
@@ -490,15 +520,16 @@ def tasd_decode(
             prefix_accept += len(accepted_tokens)
 
             # --- Guard check ---
-            accepted_text = tokenizer.decode(accepted_tokens, skip_special_tokens=True)
-            safe, guard_keep_count, risk_type = guard.check(
-                accepted_text, tokens=accepted_tokens, tokenizer=tokenizer
-            )
+            if enable_guard:
+                accepted_text = tokenizer.decode(accepted_tokens, skip_special_tokens=True)
+                safe, guard_keep_count, risk_type = guard.check(
+                    accepted_text, tokens=accepted_tokens, tokenizer=tokenizer
+                )
 
-            if not safe:
-                guard.trim_count += 1
-                trim_reasons.append(risk_type)
-                accepted_tokens = accepted_tokens[:guard_keep_count]
+                if not safe:
+                    guard.trim_count += 1
+                    trim_reasons.append(risk_type)
+                    accepted_tokens = accepted_tokens[:guard_keep_count]
 
             accepted_count = len(accepted_tokens)
 
@@ -554,6 +585,26 @@ def tasd_decode(
                 repair_reasons.append("all_draft_rejected")
 
             total_accepted += accepted_count
+
+            # --- Record round stats for adaptive policy ---
+            if adaptive_policy is not None:
+                # safe is only defined inside enable_guard block; default True if guard disabled
+                guard_safe = locals().get("safe", True)
+                guard_triggered_this_round = 1 if (enable_guard and not guard_safe) else 0
+                has_off_structure = any(
+                    r in ("off_structure", "def_class_import", "import_outside", "class_def")
+                    for r in trim_reasons[-1:] if trim_reasons
+                )
+                adaptive_policy.record_round(
+                    drafted=len(draft_tokens),
+                    accepted=accepted_count,
+                    top3_hits=round_top3_hits,
+                    top5_hits=round_top5_hits,
+                    repair_count=1 if accepted_count == 0 else 0,
+                    guard_triggers=guard_triggered_this_round,
+                    off_structure=has_off_structure,
+                )
+                adaptive_topk_computed += 1
 
             # Check for EOS in generated
             if tokenizer.eos_token_id in generated_ids:
@@ -637,6 +688,9 @@ def tasd_decode(
         "failed": failed,
         "error_type": error_type,
         "error_msg": error_msg,
+        # Adaptive policy
+        "adaptive_topk_computed": adaptive_topk_computed,
+        "adaptive_policy_summary": adaptive_policy.get_summary() if adaptive_policy is not None else None,
     }
 
     return {

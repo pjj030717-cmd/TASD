@@ -1,0 +1,483 @@
+{
+  "benchmark_name": "dict_config",
+  "sample_count": 10,
+  "model_setting": "target=Qwen2.5-7B-Instruct, draft=Qwen2.5-3B-Instruct",
+  "temperature": 0.0,
+  "max_new_tokens": 128,
+  "tokenizer_check": {
+    "same_vocab": true,
+    "same_encoding": true
+  },
+  "ar_summary": {
+    "tokens_per_second": 38.46,
+    "total_tokens": 1173,
+    "total_time": 30.4997,
+    "avg_tokens_per_sample": 117.3
+  },
+  "tasd_summary": {
+    "tokens_per_second": 24.63,
+    "total_tokens": 1312,
+    "total_time": 53.2742,
+    "avg_tokens_per_sample": 131.2,
+    "tasd_speedup": 0.6403
+  },
+  "tasd_avg_stats": {
+    "accept_rate": 0.8162,
+    "target_model_forwards": 22.5,
+    "draft_model_forwards": 20.0,
+    "draft_time_share": 0.8717,
+    "total_drafted": 156.0,
+    "total_accepted": 126.0,
+    "token_accept": 154.6,
+    "prefix_accept": 156.0,
+    "prefix_budget_used": 0.0,
+    "window_len": 2.0,
+    "window_accept_count": 0.8,
+    "guard_trigger_count": 5.3,
+    "trim_count": 5.3,
+    "repair_count": 2.5,
+    "consecutive_repair_count": 0.6,
+    "generated_length": 131.2,
+    "tokens_per_second": 24.976,
+    "elapsed_time": 5.3274,
+    "score": 0.9183,
+    "severe_rate": 0.0459,
+    "off_structure_rate": 0.0211,
+    "repetition_rate": 0.0124,
+    "truncation_rate": 0.0841
+  },
+  "ar_results": [
+    {
+      "sample_idx": 0,
+      "sample_name": "dict_config_01",
+      "generated_text": " \n            \"requires_grad\": True\n        },\n        \"zero_init_residual\": False,\n        \"replace_stride_with_dilation\": [False, False, True],\n        \"out_indices\": (0, 1, 2, 3),\n        \"style\": \"pytorch\"\n    },\n    \"neck\": {\n        \"type\": \"FPN\",\n        \"in_channels\": [256, 512, 1024, 2048],\n        \"out_channels\": 256,\n        \"num_outs\": 5\n    },\n    \"rpn_head\": {\n",
+      "generated_tokens": 128,
+      "tokens_per_second": 26.21,
+      "elapsed_time": 4.8834
+    },
+    {
+      "sample_idx": 1,
+      "sample_name": "dict_config_02",
+      "generated_text": " \n        \"pipeline\": [\n            {\"type\": \"LoadImageFromFile\"},\n            {\"type\": \"LoadAnnotations\", \"with_bbox\": True, \"with_mask\": False},\n            {\"type\": \"Resize\", \"img_scale\": (800, 1333), \"keep_ratio\": True},\n            {\"type\": \"RandomFlip\", \"flip_ratio\": 0.5},\n            {\"type\": \"Normalize\", \"mean\": [123.675, 116.28, 103.53], \"std\": [58.395, 5",
+      "generated_tokens": 128,
+      "tokens_per_second": 43.78,
+      "elapsed_time": 2.9234
+    },
+    {
+      "sample_idx": 2,
+      "sample_name": "dict_config_03",
+      "generated_text": "  # L2 regularization\n    },\n    \"scheduler\": {\n        \"type\": \"ReduceLROnPlateau\",\n        \"factor\": 0.5,\n        \"patience\": 3,\n        \"verbose\": True,\n        \"min_lr\": 1e-6,\n    },\n    \"epochs\": 100,\n    \"batch_size\": 8,\n    \"num_workers\": 4,\n    \"device\": \"cuda\" if torch.cuda.is_available() else \"cpu\",\n} To configure a training setup for a machine learning model using the provided `TRAIN_CONFIG`, we need to ensure that all the",
+      "generated_tokens": 128,
+      "tokens_per_second": 43.87,
+      "elapsed_time": 2.9175
+    },
+    {
+      "sample_idx": 3,
+      "sample_name": "dict_config_04",
+      "generated_text": " \n            \"datefmt\": \"%Y-%m-%d %H:%M:%S\"\n        },\n    },\n    \"handlers\": {\n        \"console\": {\n            \"level\": \"DEBUG\",\n            \"class\": \"logging.StreamHandler\",\n            \"formatter\": \"standard\",\n        },\n    },\n    \"loggers\": {\n        \"\": {  # root logger\n            \"handlers\": [\"console\"],\n            \"level\": \"INFO\",\n            \"propagate\": True,\n        },\n    },\n}",
+      "generated_tokens": 102,
+      "tokens_per_second": 38.99,
+      "elapsed_time": 2.6158
+    },
+    {
+      "sample_idx": 4,
+      "sample_name": "dict_config_05",
+      "generated_text": "  # (height, width)\n        \"keep_ratio\": False,\n    },\n    {\n        \"type\": \"Normalize\",\n        \"mean\": [123.675, 116.28, 103.53],\n        \"std\": [58.395, 57.12, 57.375],\n        \"to_rgb\": True,\n    },\n    {\n        \"type\": \"Pad\",\n        \"size_divisor\": 32,\n    },\n    {\n        \"type\": \"DefaultFormatBundle\",\n    },\n    {\n        \"",
+      "generated_tokens": 128,
+      "tokens_per_second": 41.95,
+      "elapsed_time": 3.0514
+    },
+    {
+      "sample_idx": 5,
+      "sample_name": "dict_config_06",
+      "generated_text": "  # 是否开启类别指标\n            \"iou_thrs\": [0.5],  # 指标阈值\n            \"score_thr\": 0.001,  # 预测分数阈值\n        },\n        {\n            \"type\": \"COCOEval\",\n            \"metric\": \"segm\",\n            \"classwise\": True,\n            \"iou_thrs\": [0.5],\n            \"score_thr\": 0.001,\n        },\n    ],\n    \"interval\": 1,  # 每隔多少个epoch进行一次评估\n    \"save",
+      "generated_tokens": 128,
+      "tokens_per_second": 35.05,
+      "elapsed_time": 3.6515
+    },
+    {
+      "sample_idx": 6,
+      "sample_name": "dict_config_07",
+      "generated_text": "  # probability of flip\n        dict(type=\"ToTensor\"),\n        dict(type=\"Normalize\", mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),\n    ],\n    \"val_pipeline\": [\n        dict(type=\"Resize\", size=256),\n        dict(type=\"CenterCrop\", size=224),\n        dict(type=\"ToTensor\"),\n        dict(type=\"Normalize\", mean=[0.485, 0.456, 0.4",
+      "generated_tokens": 128,
+      "tokens_per_second": 37.71,
+      "elapsed_time": 3.3945
+    },
+    {
+      "sample_idx": 7,
+      "sample_name": "dict_config_08",
+      "generated_text": "  # 7x7\n        \"out_channels\": 256,\n        \"featmap_strides\": [4, 8, 16, 32],\n    },\n    \"bbox_head\": {\n        \"type\": \"Shared2FCBBoxHead\",\n        \"in_channels\": 256,\n        \"fc_out_channels\": 1024,\n        \"roi_feat_size\": 7,\n        \"num_classes\": 10,\n        \"reg_class_agnostic\": False,\n        \"bbox_coder\": {\n            \"type\": \"DeltaXYWHBBoxCoder\",\n            \"",
+      "generated_tokens": 128,
+      "tokens_per_second": 42.92,
+      "elapsed_time": 2.9823
+    },
+    {
+      "sample_idx": 8,
+      "sample_name": "dict_config_09",
+      "generated_text": "  # 500\n    },\n    \"scheduler\": {\n        \"type\": \"CosineAnnealingLR\",\n        \"T_max\": 20000,  # 20000\n        \"eta_min\": 1e-6,\n    },\n}",
+      "generated_tokens": 61,
+      "tokens_per_second": 43.15,
+      "elapsed_time": 1.4136
+    },
+    {
+      "sample_idx": 9,
+      "sample_name": "dict_config_10",
+      "generated_text": "  # Use this if your data is on a GPU\n    },\n    \"val\": {\n        \"batch_size\": 32,\n        \"shuffle\": False,\n        \"num_workers\": 4,\n        \"pin_memory\": True,  # Use this if your data is on a GPU\n    },\n    \"test\": {\n        \"batch_size\": 32,\n        \"shuffle\": False,\n        \"num_workers\": 4,\n        \"pin_memory\": True,  # Use this if your data is on a GPU\n    },\n}",
+      "generated_tokens": 114,
+      "tokens_per_second": 42.76,
+      "elapsed_time": 2.6663
+    }
+  ],
+  "tasd_results": [
+    {
+      "sample_idx": 0,
+      "sample_name": "dict_config_01",
+      "generated_text": " \n            \"requires_grad\": True\n        },\n        \"out_indices\": (0, 1, 2, 3),\n        \"style\": \"pytorch\"\n    },\n    \"head\": {\n        \"type\": \"LinearClsHead\",\n        \"in_channels\": 2048,\n        \"num_classes\": 1000,\n        \"loss_cls\": {\n            \"type\": \"CrossEntropyLoss\",\n            \"use_sigmoid\": False,\n            \"loss_weight\": 1.0\n        }\n    }\n}import torch\nfrom torchvision.models import resnet50\nfrom mmcv.runner import load_checkpoint\n\n#",
+      "generated_tokens": 133,
+      "tokens_per_second": 20.29,
+      "elapsed_time": 6.5549,
+      "stats": {
+        "accept_rate": 0.6738,
+        "target_model_forwards": 33,
+        "draft_model_forwards": 26,
+        "draft_time_share": 0.8506,
+        "total_drafted": 187,
+        "total_accepted": 126,
+        "token_accept": 187,
+        "prefix_accept": 187,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 10,
+        "trim_count": 10,
+        "repair_count": 7,
+        "consecutive_repair_count": 0,
+        "generated_length": 133,
+        "tokens_per_second": 20.29,
+        "elapsed_time": 6.5549
+      },
+      "quality": {
+        "score": 0.755,
+        "severe_rate": 0.1,
+        "off_structure_rate": 0.1,
+        "repetition_rate": 0.05,
+        "truncation_rate": 0.15
+      }
+    },
+    {
+      "sample_idx": 1,
+      "sample_name": "dict_config_02",
+      "generated_text": "  # 指定训练图片的根目录\n    },\n    \"val\": {\n        \"ann_file\": \"annotations/instances_val2017.json\",\n        \"img_prefix\": \"val2017/\",\n    },\n    \"test\": {\n        \"ann_file\": \"annotations/instances_val2017.json\",\n        \"img_prefix\": \"val2017/\",\n    },\n}  # type: ignore\n\n# 定义数据集类\nclass ImageDataset(Dataset):\n    def __init__(self, data_cfg, mode=\"train\"):\n        self.data_cfg = data_cfg\n        self.mode = mode\n        self",
+      "generated_tokens": 135,
+      "tokens_per_second": 20.44,
+      "elapsed_time": 6.6049,
+      "stats": {
+        "accept_rate": 0.6823,
+        "target_model_forwards": 28,
+        "draft_model_forwards": 24,
+        "draft_time_share": 0.8826,
+        "total_drafted": 192,
+        "total_accepted": 131,
+        "token_accept": 192,
+        "prefix_accept": 192,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 11,
+        "trim_count": 11,
+        "repair_count": 4,
+        "consecutive_repair_count": 0,
+        "generated_length": 135,
+        "tokens_per_second": 20.44,
+        "elapsed_time": 6.6049
+      },
+      "quality": {
+        "score": 0.8556,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.1111,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.1111
+      }
+    },
+    {
+      "sample_idx": 2,
+      "sample_name": "dict_config_03",
+      "generated_text": "  # try 0.05\n        \"eps\": 1e-8,\n    },\n    \"scheduler\": {\n        \"type\": \"WarmupCosineAnnealingLR\",\n        \"warmup_steps\": 1000,\n        \"T_max\": 20000,\n        \"eta_min\": 0,\n    },\n    \"batch_size\": 32,\n    \"num_workers\": 4,\n    \"max_epochs\": 20,\n    \"seed\": 42,\n    \"device\": \"cuda:0\",\n    \"model_name\": \"bert-base-uncased\",\n   ",
+      "generated_tokens": 129,
+      "tokens_per_second": 27.03,
+      "elapsed_time": 4.7719,
+      "stats": {
+        "accept_rate": 0.8889,
+        "target_model_forwards": 19,
+        "draft_model_forwards": 18,
+        "draft_time_share": 0.8884,
+        "total_drafted": 144,
+        "total_accepted": 128,
+        "token_accept": 144,
+        "prefix_accept": 144,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 3,
+        "trim_count": 3,
+        "repair_count": 1,
+        "consecutive_repair_count": 0,
+        "generated_length": 129,
+        "tokens_per_second": 27.03,
+        "elapsed_time": 4.7719
+      },
+      "quality": {
+        "score": 0.98,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0667
+      }
+    },
+    {
+      "sample_idx": 3,
+      "sample_name": "dict_config_04",
+      "generated_text": "  # noqa\n        },\n    },\n    \"handlers\": {\n        \"default\": {\n            \"level\": \"DEBUG\",\n            \"formatter\": \"standard\",\n            \"class\": \"logging.StreamHandler\",\n        },\n    },\n    \"loggers\": {\n        \"\": {  # root logger\n            \"handlers\": [\"default\"],\n            \"level\": \"DEBUG\",\n            \"propagate\": True,\n        }\n    },\n}import logging\n\n# Configure the logging settings\nlogging.config.dictConfig(LOGGING_CONFIG)\n\n# Create a logger\nlogger = logging.getLogger(__name__)\n\n# Example usage of the logger\nlogger.debug(\"This is",
+      "generated_tokens": 128,
+      "tokens_per_second": 23.76,
+      "elapsed_time": 5.3873,
+      "stats": {
+        "accept_rate": 0.7962,
+        "target_model_forwards": 25,
+        "draft_model_forwards": 22,
+        "draft_time_share": 0.875,
+        "total_drafted": 157,
+        "total_accepted": 125,
+        "token_accept": 157,
+        "prefix_accept": 157,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 8,
+        "trim_count": 8,
+        "repair_count": 3,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 23.76,
+        "elapsed_time": 5.3873
+      },
+      "quality": {
+        "score": 0.863,
+        "severe_rate": 0.037,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0741,
+        "truncation_rate": 0.1481
+      }
+    },
+    {
+      "sample_idx": 4,
+      "sample_name": "dict_config_05",
+      "generated_text": "  # Resize the image to a fixed size\n    },\n    {\n        \"type\": \"Normalize\",\n        \"mean\": [104.00698793, 116.66876762, 122.67891434],\n        \"std\": [1., 1., 1.],\n    },\n    {\n        \"type\": \"PadToSquare\",\n        \"pad_value\": 128,\n    },\n    {\n        \"type\": \"ToCHW\",\n    },\n    {\n        \"type\": \"Flip\",\n        \"flip_prob",
+      "generated_tokens": 132,
+      "tokens_per_second": 29.45,
+      "elapsed_time": 4.482,
+      "stats": {
+        "accept_rate": 0.9706,
+        "target_model_forwards": 17,
+        "draft_model_forwards": 17,
+        "draft_time_share": 0.8984,
+        "total_drafted": 136,
+        "total_accepted": 132,
+        "token_accept": 136,
+        "prefix_accept": 136,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 1,
+        "trim_count": 1,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 132,
+        "tokens_per_second": 29.45,
+        "elapsed_time": 4.482
+      },
+      "quality": {
+        "score": 0.8824,
+        "severe_rate": 0.2353,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 5,
+      "sample_name": "dict_config_06",
+      "generated_text": "  # 是否需要类别级别指标\n            \"score_type\": \"AP\",  # 指标类型，可选值为\"AP\"、\"AR\"、\"AUC\"\n            \"iou_thresholds\": [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95],  # IOU阈值\n            \"max_dets\": [1, 10, 100]  #",
+      "generated_tokens": 128,
+      "tokens_per_second": 24.81,
+      "elapsed_time": 5.1584,
+      "stats": {
+        "accept_rate": 0.7059,
+        "target_model_forwards": 22,
+        "draft_model_forwards": 17,
+        "draft_time_share": 0.7617,
+        "total_drafted": 136,
+        "total_accepted": 96,
+        "token_accept": 136,
+        "prefix_accept": 136,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 5,
+        "trim_count": 5,
+        "repair_count": 5,
+        "consecutive_repair_count": 5,
+        "generated_length": 128,
+        "tokens_per_second": 24.81,
+        "elapsed_time": 5.1584
+      },
+      "quality": {
+        "score": 1.0,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 6,
+      "sample_name": "dict_config_07",
+      "generated_text": " \n        dict(type=\"ToTensor\"),\n        dict(type=\"Normalize\", mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])\n    ],\n    \"val_pipeline\": [\n        dict(type=\"Resize\", size=256),\n        dict(type=\"CenterCrop\", size=224),\n        dict(type=\"ToTensor\"),\n        dict(type=\"Normalize\", mean=[0.485, 0.456, 0.406], std=[0.2",
+      "generated_tokens": 131,
+      "tokens_per_second": 24.26,
+      "elapsed_time": 5.3999,
+      "stats": {
+        "accept_rate": 0.8,
+        "target_model_forwards": 23,
+        "draft_model_forwards": 20,
+        "draft_time_share": 0.8838,
+        "total_drafted": 160,
+        "total_accepted": 128,
+        "token_accept": 160,
+        "prefix_accept": 160,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 5,
+        "trim_count": 5,
+        "repair_count": 3,
+        "consecutive_repair_count": 0,
+        "generated_length": 131,
+        "tokens_per_second": 24.26,
+        "elapsed_time": 5.3999
+      },
+      "quality": {
+        "score": 0.925,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.25
+      }
+    },
+    {
+      "sample_idx": 7,
+      "sample_name": "dict_config_08",
+      "generated_text": "  # 7x7\n        \"out_channels\": 256,\n        \"featmap_strides\": [4, 8, 16, 32],\n    },\n    \"shared_head\": {\n        \"type\": \"ResNetV1cSharedHead\",\n        \"num_stages\": 2,\n        \"depths\": [5, 5],\n        \"widen_factor\": 1,\n        \"strides\": [4, 8, 16, 32],\n        \"norm_cfg\": {\"type\": \"BN\", \"requires_grad\": True},\n    },\n    \"neck\": {\"type\":",
+      "generated_tokens": 133,
+      "tokens_per_second": 25.54,
+      "elapsed_time": 5.2082,
+      "stats": {
+        "accept_rate": 0.825,
+        "target_model_forwards": 21,
+        "draft_model_forwards": 20,
+        "draft_time_share": 0.8908,
+        "total_drafted": 160,
+        "total_accepted": 132,
+        "token_accept": 146,
+        "prefix_accept": 160,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 8,
+        "guard_trigger_count": 5,
+        "trim_count": 5,
+        "repair_count": 1,
+        "consecutive_repair_count": 0,
+        "generated_length": 133,
+        "tokens_per_second": 25.54,
+        "elapsed_time": 5.2082
+      },
+      "quality": {
+        "score": 1.0,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 8,
+      "sample_name": "dict_config_09",
+      "generated_text": "  # 500\n    },\n    \"scheduler\": {\n        \"type\": \"CosineAnnealingLR\",\n        \"T_max\": 20000,  # 20000\n        \"eta_min\": 0.000001,\n    },\n    \"optimizer\": {\n        \"type\": \"AdamW\",\n        \"lr\": 0.0001,\n        \"weight_decay\": 0.01,\n        \"eps\": 1e-8,\n        \"betas\": (0.9, 0.999),\n    },\n",
+      "generated_tokens": 128,
+      "tokens_per_second": 26.79,
+      "elapsed_time": 4.7772,
+      "stats": {
+        "accept_rate": 0.8819,
+        "target_model_forwards": 19,
+        "draft_model_forwards": 18,
+        "draft_time_share": 0.8876,
+        "total_drafted": 144,
+        "total_accepted": 127,
+        "token_accept": 144,
+        "prefix_accept": 144,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 3,
+        "trim_count": 3,
+        "repair_count": 1,
+        "consecutive_repair_count": 1,
+        "generated_length": 128,
+        "tokens_per_second": 26.79,
+        "elapsed_time": 4.7772
+      },
+      "quality": {
+        "score": 0.9786,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0714
+      }
+    },
+    {
+      "sample_idx": 9,
+      "sample_name": "dict_config_10",
+      "generated_text": "  # for cuda\n        \"drop_last\": True,\n    },\n    \"val\": {\n        \"batch_size\": 32,\n        \"shuffle\": False,\n        \"num_workers\": 4,\n        \"pin_memory\": True,  # for cuda\n        \"drop_last\": False,\n    },\n}\n\nMODEL_CONFIG = {\n    \"model_name\": \"resnet18\",\n    \"pretrained\": True,\n    \"num_classes\": 10,\n}\n\nOPTIMIZER_CONFIG = {\n    \"optimizer_name\": \"SGD\",\n    \"lr\": 0.001,\n    \"momentum\": 0.9,\n    \"weight",
+      "generated_tokens": 135,
+      "tokens_per_second": 27.39,
+      "elapsed_time": 4.9295,
+      "stats": {
+        "accept_rate": 0.9375,
+        "target_model_forwards": 18,
+        "draft_model_forwards": 18,
+        "draft_time_share": 0.898,
+        "total_drafted": 144,
+        "total_accepted": 135,
+        "token_accept": 144,
+        "prefix_accept": 144,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 2,
+        "trim_count": 2,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 135,
+        "tokens_per_second": 27.39,
+        "elapsed_time": 4.9295
+      },
+      "quality": {
+        "score": 0.9435,
+        "severe_rate": 0.087,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0435
+      }
+    }
+  ]
+}

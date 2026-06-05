@@ -171,9 +171,8 @@ def greedy_sd_decode(
 
         # --- Handle acceptance outcome ---
         if accepted_count == len(draft_tokens):
-            # All draft tokens accepted: sample one more from target
-            # The logit for the next token is at target_logits[0, -1, :]
-            # (or last_target_logit if no draft tokens were generated)
+            # All draft tokens accepted: cache already covers all k drafts correctly
+            # Sample one more bonus token from target
             if len(draft_tokens) > 0:
                 extra_logit = target_logits[0, -1, :]
             else:
@@ -184,7 +183,7 @@ def greedy_sd_decode(
             total_accepted += 1
             total_drafted += 1
 
-            # Update KV cache with extra token and get next logit in ONE forward
+            # Append bonus token to both caches
             extra_tensor = torch.tensor([[extra_token]], device=device)
             with torch.no_grad():
                 new_logits, target_past = _forward_with_cache(target_model, extra_tensor, target_past)
@@ -198,35 +197,30 @@ def greedy_sd_decode(
             last_target_logit = new_logits[0, -1, :]
             last_draft_logit = last_target_logit.to(draft_device)
 
-        elif accepted_count == 0:
-            # No tokens accepted: use target's prediction for first position
-            fallback_token = _greedy_sample(last_target_logit)
-            generated_ids.append(fallback_token)
-
-            # Update KV cache with fallback token and get next logit in ONE forward
-            fallback_tensor = torch.tensor([[fallback_token]], device=device)
-            with torch.no_grad():
-                new_logits, target_past = _forward_with_cache(target_model, fallback_tensor, target_past)
-                target_forwards += 1
-
-            draft_fallback_tensor = torch.tensor([[fallback_token]], device=draft_device)
-            with torch.no_grad():
-                _, draft_past = _forward_with_cache(draft_model, draft_fallback_tensor, draft_past)
-                draft_forwards += 1
-
-            last_target_logit = new_logits[0, -1, :]
-            last_draft_logit = last_target_logit.to(draft_device)
-
         else:
-            # Partial acceptance: use target's token at rejection position
-            # The rejection happened at position accepted_count
-            # target_logits[0, accepted_count - 1, :] predicts draft_tokens[accepted_count]
-            # We use target's argmax as the replacement
-            replacement_token = target_logits[0, accepted_count - 1, :].argmax().item()
+            # Rejection (partial or zero): must ROLL BACK KV cache before appending
+            # Verify phase left cache at: prefix + old_generated + k draft tokens
+            # Correct cache should be: prefix + old_generated + accepted_count (this round)
+            # generated_ids already includes the newly accepted tokens from the loop above
+            # Roll back to cumulative length, then append replacement token
+
+            # 1. Roll back target cache to correct prefix
+            target_past.crop(prompt_len + len(generated_ids))
+
+            # 2. Roll back draft cache to correct prefix
+            draft_past.crop(prompt_len + len(generated_ids))
+
+            # 3. Get replacement token: target's prediction at first rejected position
+            if accepted_count == 0:
+                replacement_token = _greedy_sample(last_target_logit)
+            else:
+                # target_logits[0, accepted_count - 1] predicts draft_tokens[accepted_count]
+                replacement_token = target_logits[0, accepted_count - 1, :].argmax().item()
+
             generated_ids.append(replacement_token)
             total_accepted += 1
 
-            # Update KV cache with replacement token and get next logit in ONE forward
+            # 4. Append replacement token to BOTH caches and get next logit
             replacement_tensor = torch.tensor([[replacement_token]], device=device)
             with torch.no_grad():
                 new_logits, target_past = _forward_with_cache(target_model, replacement_tensor, target_past)

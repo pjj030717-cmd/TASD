@@ -9,3 +9,6 @@ tensorboard/
 /__pypackages__/
 *.egg-info/
 .ipynb_checkpoints/
+.autodl/
+FLy-main/
+benchmark_sources/

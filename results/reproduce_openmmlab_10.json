@@ -1,0 +1,483 @@
+{
+  "benchmark_name": "openmmlab",
+  "sample_count": 10,
+  "model_setting": "target=Qwen2.5-7B-Instruct, draft=Qwen2.5-3B-Instruct",
+  "temperature": 0.0,
+  "max_new_tokens": 128,
+  "tokenizer_check": {
+    "same_vocab": true,
+    "same_encoding": true
+  },
+  "ar_summary": {
+    "tokens_per_second": 37.34,
+    "total_tokens": 1280,
+    "total_time": 34.2801,
+    "avg_tokens_per_sample": 128.0
+  },
+  "tasd_summary": {
+    "tokens_per_second": 24.18,
+    "total_tokens": 1281,
+    "total_time": 52.9704,
+    "avg_tokens_per_sample": 128.1,
+    "tasd_speedup": 0.6477
+  },
+  "tasd_avg_stats": {
+    "accept_rate": 0.9852,
+    "target_model_forwards": 16.5,
+    "draft_model_forwards": 16.3,
+    "draft_time_share": 0.8954,
+    "total_drafted": 130.1,
+    "total_accepted": 127.9,
+    "token_accept": 130.1,
+    "prefix_accept": 130.1,
+    "prefix_budget_used": 0.0,
+    "window_len": 2.0,
+    "window_accept_count": 0.0,
+    "guard_trigger_count": 0.3,
+    "trim_count": 0.3,
+    "repair_count": 0.2,
+    "consecutive_repair_count": 0.0,
+    "generated_length": 128.1,
+    "tokens_per_second": 24.731,
+    "elapsed_time": 5.297,
+    "score": 0.9774,
+    "severe_rate": 0.0303,
+    "off_structure_rate": 0.0,
+    "repetition_rate": 0.0,
+    "truncation_rate": 0.0248
+  },
+  "ar_results": [
+    {
+      "sample_idx": 0,
+      "sample_name": "openmmlab_01",
+      "generated_text": "  # 4\n        out_indices=(0, 1, 2, 3),  # 0, 1, 2, 3\n        frozen_stages=1,  # 1\n        norm_cfg=dict(type=\"BN\", requires_grad=True),\n        norm_eval=True,\n        style=\"pytorch\",\n    ),\n    neck=dict(\n        type=\"FPN\",\n        in_channels=[256, 512, 1024, 2048],\n        out_channels=256,\n        num_outs=5,\n    ),\n    rpn_head=dict",
+      "generated_tokens": 128,
+      "tokens_per_second": 25.05,
+      "elapsed_time": 5.1105
+    },
+    {
+      "sample_idx": 1,
+      "sample_name": "openmmlab_02",
+      "generated_text": " to_rgb=True)\ntrain_pipeline = [\n    dict(type='LoadImageFromFile'),\n    dict(type='LoadAnnotations', with_bbox=True),\n    dict(type='Resize', img_scale=(1333, 800), keep_ratio=True),\n    dict(type='RandomFlip', flip_ratio=0.5),\n    dict(type='Normalize', **img_norm_cfg),\n    dict(type='Pad', size_divisor=32),\n    dict(type='DefaultFormatBundle'),\n    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels']),\n]\ntest_pipeline = [\n    dict(type='LoadImageFromFile'),\n",
+      "generated_tokens": 128,
+      "tokens_per_second": 31.13,
+      "elapsed_time": 4.1124
+    },
+    {
+      "sample_idx": 2,
+      "sample_name": "openmmlab_03",
+      "generated_text": " hooks=[dict(type=\"TextLoggerHook\"), dict(type=\"TensorboardLoggerHook\")]\n)\n\n# model settings\nmodel = dict(\n    type=\"MaskRCNN\",\n    backbone=dict(\n        type=\"ResNet\",\n        depth=50,\n        num_stages=4,\n        out_indices=(0, 1, 2, 3),\n        frozen_stages=1,\n        norm_cfg=dict(type=\"BN\", requires_grad=True),\n        norm_eval=True,\n        style=\"pytorch\",\n    ),\n    neck=dict(type=\"FPN\", in_channels=[256, 512, 1024",
+      "generated_tokens": 128,
+      "tokens_per_second": 44.68,
+      "elapsed_time": 2.8649
+    },
+    {
+      "sample_idx": 3,
+      "sample_name": "openmmlab_04",
+      "generated_text": "  # 0.0005\n)\noptimizer_config = dict(grad_clip=None)\n# learning policy\nlr_config = dict(policy=\"step\", step=[8, 11])\nrunner = dict(type=\"EpochBasedRunner\", max_epochs=12)  # 12\n\n# runtime settings\ncheckpoint_config = dict(interval=1)\nevaluation = dict(interval=1, metric=\"mAP\")  # , save_best=\"auto\")  # mAP\nlog_config = dict(\n    interval=50, hooks=[dict(type=\"TextLoggerHook\"), dict(type=\"TensorboardLoggerHook\")]\n)  #",
+      "generated_tokens": 128,
+      "tokens_per_second": 44.78,
+      "elapsed_time": 2.8585
+    },
+    {
+      "sample_idx": 4,
+      "sample_name": "openmmlab_05",
+      "generated_text": " # 3\n        strides=[4, 8, 16, 32, 64]\n    ),\n    bbox_coder=dict(\n        type=\"DeltaXYWHBBoxCoder\",\n        target_means=[.0, .0, .0, .0],\n        target_stds=[1.0, 1.0, 1.0, 1.0]\n    ),\n    loss_cls=dict(\n        type=\"CrossEntropyLoss\", use_sigmoid=True, loss_weight=1.0\n    ),\n    loss_bbox=dict(type=\"L1Loss\", loss_weight=1.0)\n)\n\n",
+      "generated_tokens": 128,
+      "tokens_per_second": 44.7,
+      "elapsed_time": 2.8638
+    },
+    {
+      "sample_idx": 5,
+      "sample_name": "openmmlab_06",
+      "generated_text": "  # 256\n        featmap_strides=[4, 8, 16, 32],\n    ),\n    bbox_head=dict(\n        type=\"Shared2FCBBoxHead\",\n        in_channels=256,\n        fc_out_channels=1024,\n        roi_feat_size=7,\n        num_classes=10,\n        bbox_coder=dict(\n            type=\"DeltaXYWHBBoxCoder\",\n            target_means=[0.0, 0.0, 0.0, 0.0],\n            target_stds=[0.1, 0.1,",
+      "generated_tokens": 128,
+      "tokens_per_second": 44.5,
+      "elapsed_time": 2.8763
+    },
+    {
+      "sample_idx": 6,
+      "sample_name": "openmmlab_07",
+      "generated_text": "  # 0\n    ),\n    rcnn=dict(\n        score_thr=0.05,\n        nms=dict(type=\"nms\", iou_threshold=0.5),\n        max_per_img=100,\n    ),\n)\n\n# model settings\nmodel = dict(\n    type=\"FasterRCNN\",\n    backbone=dict(\n        type=\"ResNet\",\n        depth=50,\n        num_stages=4,\n        out_indices=(0, 1, 2, 3),\n        frozen_stages=1,\n        norm_cfg=dict(type=\"BN\", requires_grad=True),\n        norm_eval=True,\n",
+      "generated_tokens": 128,
+      "tokens_per_second": 45.07,
+      "elapsed_time": 2.8401
+    },
+    {
+      "sample_idx": 7,
+      "sample_name": "openmmlab_08",
+      "generated_text": "  # annotation file\n        img_prefix=data_root + \"train2017/\",  # image folder\n        pipeline=train_pipeline),\n    val=dict(\n        type=dataset_type,\n        ann_file=data_root + \"annotations/instances_val2017.json\",\n        img_prefix=data_root + \"val2017/\",\n        pipeline=test_pipeline),\n    test=dict(\n        type=dataset_type,\n        ann_file=data_root + \"annotations/instances_val2017.json\",\n        img_prefix=data_root + \"val2017/\",\n        pipeline=test_pipeline))\n\n# model settings\nmodel = dict(\n    type",
+      "generated_tokens": 128,
+      "tokens_per_second": 42.96,
+      "elapsed_time": 2.9796
+    },
+    {
+      "sample_idx": 8,
+      "sample_name": "openmmlab_09",
+      "generated_text": "  # C2-C5\n        frozen_stages=1,\n        norm_cfg=dict(type=\"BN\", requires_grad=True),\n        norm_eval=True,\n        style=\"pytorch\",\n        init_cfg=dict(type=\"Pretrained\", checkpoint=\"torchvision://resnet50\"),\n    ),\n    neck=dict(\n        type=\"FPN\",\n        in_channels=[256, 512, 1024, 2048],\n        out_channels=256,\n        start_level=1,\n        add_extra_convs=\"on_input\",\n        num_outs=5,\n    ),\n    bbox_head",
+      "generated_tokens": 128,
+      "tokens_per_second": 31.16,
+      "elapsed_time": 4.1084
+    },
+    {
+      "sample_idx": 9,
+      "sample_name": "openmmlab_10",
+      "generated_text": " contrast_range=(0.5, 1.5), saturation_range=(0.5, 1.5),\n        hue_delta=18\n    ),\n    dict(type=\"Expand\", mean=[0, 0, 0], to_rgb=True, ratio_range=(1, 4)),\n    dict(type=\"MinIoURandomCrop\"),\n    dict(type=\"Resize\", img_scale=(640, 640), keep_ratio=False),\n    dict(type=\"Normalize\", mean=[123.675, 116.28, 103.53], std=[5",
+      "generated_tokens": 128,
+      "tokens_per_second": 34.92,
+      "elapsed_time": 3.6656
+    }
+  ],
+  "tasd_results": [
+    {
+      "sample_idx": 0,
+      "sample_name": "openmmlab_01",
+      "generated_text": "  # 3, 4, 23, 3\n        out_indices=(0, 1, 2, 3),  # 0: conv-1/2; 1: conv-2/3; 2: conv-3/4; 3: conv-4/5\n        frozen_stages=1,\n        norm_cfg=dict(type=\"BN\", requires_grad=True),\n        norm_eval=True,\n        style=\"pytorch\",\n        init_cfg=dict(type=\"Pretrained\", checkpoint=\"torchvision://resnet50\"),\n    ),\n    neck=dict(\n        type=\"FPN",
+      "generated_tokens": 128,
+      "tokens_per_second": 30.01,
+      "elapsed_time": 4.2647,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.8893,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 30.01,
+        "elapsed_time": 4.2647
+      },
+      "quality": {
+        "score": 1.0,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 1,
+      "sample_name": "openmmlab_02",
+      "generated_text": "  # coco\n    to_rgb=True,\n)\ntrain_pipeline = [\n    dict(type=\"LoadImageFromFile\"),\n    dict(type=\"LoadAnnotations\", with_bbox=True),\n    dict(type=\"Resize\", img_scale=(1333, 800), keep_ratio=True),\n    dict(type=\"RandomFlip\", flip_ratio=0.5),\n    dict(type=\"Normalize\", **img_norm_cfg),\n    dict(type=\"Pad\", size_divisor=32),\n    dict(type=\"DefaultFormatBundle\"),\n    dict(type=\"Collect\", keys=[\"img\", \"gt_bboxes\", \"gt_labels\"]),\n]\ntest_pipeline = [\n    dict",
+      "generated_tokens": 128,
+      "tokens_per_second": 25.3,
+      "elapsed_time": 5.0595,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.8992,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 25.3,
+        "elapsed_time": 5.0595
+      },
+      "quality": {
+        "score": 0.8933,
+        "severe_rate": 0.1333,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.1333
+      }
+    },
+    {
+      "sample_idx": 2,
+      "sample_name": "openmmlab_03",
+      "generated_text": " hooks=[dict(type=\"TextLoggerHook\"), dict(type=\"TensorboardLoggerHook\")]\n)\n\n# model settings\nmodel = dict(\n    type=\"FCOS\",\n    backbone=dict(\n        type=\"ResNet\",\n        depth=50,\n        num_stages=4,\n        out_indices=(0, 1, 2, 3),\n        frozen_stages=1,\n        norm_cfg=dict(type=\"BN\", requires_grad=True),\n        norm_eval=True,\n        style=\"pytorch\",\n        init_cfg=dict(type=\"Pretrained\", checkpoint=\"torchvision://resnet50\"),\n    ),\n    neck=dict(\n        type=\"",
+      "generated_tokens": 128,
+      "tokens_per_second": 21.11,
+      "elapsed_time": 6.0627,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.9006,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 21.11,
+        "elapsed_time": 6.0627
+      },
+      "quality": {
+        "score": 0.9579,
+        "severe_rate": 0.0526,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0526
+      }
+    },
+    {
+      "sample_idx": 3,
+      "sample_name": "openmmlab_04",
+      "generated_text": "  # this is the original config\n)\noptimizer_config = dict(grad_clip=None)\n# learning policy\nlr_config = dict(policy=\"step\", step=[8, 11])\nrunner = dict(type=\"EpochBasedRunner\", max_epochs=12)import torch\n\n# Define the optimizer\noptimizer = torch.optim.SGD(\n    params=[\n        {\"params\": model.backbone.parameters(), \"lr\": 0.01},\n        {\"params\": model.neck.parameters(), \"lr\": 0.01},\n        {\"params\": model.head.parameters(), \"lr\": 0.02},\n    ],\n    lr=",
+      "generated_tokens": 129,
+      "tokens_per_second": 19.49,
+      "elapsed_time": 6.6195,
+      "stats": {
+        "accept_rate": 0.8523,
+        "target_model_forwards": 21,
+        "draft_model_forwards": 19,
+        "draft_time_share": 0.8823,
+        "total_drafted": 149,
+        "total_accepted": 127,
+        "token_accept": 149,
+        "prefix_accept": 149,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 3,
+        "trim_count": 3,
+        "repair_count": 2,
+        "consecutive_repair_count": 0,
+        "generated_length": 129,
+        "tokens_per_second": 19.49,
+        "elapsed_time": 6.6195
+      },
+      "quality": {
+        "score": 0.9667,
+        "severe_rate": 0.0667,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 4,
+      "sample_name": "openmmlab_05",
+      "generated_text": "  # 0.5, 1.0, 2.0\n        strides=[4, 8, 16, 32, 64],\n    ),\n    bbox_coder=dict(\n        type=\"DeltaXYWHBBoxCoder\",\n        target_means=[.0, .0, .0, .0],\n        target_stds=[1.0, 1.0, 1.0, 1.0],\n    ),\n    loss_cls=dict(\n        type=\"CrossEntropyLoss\", use_sigmoid=True, loss_weight=1.0\n    ),\n    loss_bbox=dict(type",
+      "generated_tokens": 128,
+      "tokens_per_second": 28.09,
+      "elapsed_time": 4.556,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.8989,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 28.09,
+        "elapsed_time": 4.556
+      },
+      "quality": {
+        "score": 1.0,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 5,
+      "sample_name": "openmmlab_06",
+      "generated_text": " \n        featmap_strides=[4, 8, 16, 32]),\n    bbox_head=dict(\n        type=\"Shared2FCBBoxHead\",\n        in_channels=256,\n        fc_out_channels=1024,\n        roi_feat_size=7,\n        num_classes=2,\n        bbox_coder=dict(\n            type=\"DeltaXYWHBBoxCoder\",\n            target_means=[0., 0., 0., 0.],\n            target_stds=[0.1, 0.1, 0.2, 0.2]),\n        reg_class_agnostic=False",
+      "generated_tokens": 128,
+      "tokens_per_second": 24.76,
+      "elapsed_time": 5.17,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.8959,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 24.76,
+        "elapsed_time": 5.17
+      },
+      "quality": {
+        "score": 1.0,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 6,
+      "sample_name": "openmmlab_07",
+      "generated_text": "  # not used\n        score_thr=0.05,\n    ),\n    rcnn=dict(\n        score_thr=0.05,\n        nms=dict(type=\"nms\", iou_threshold=0.5),\n        max_per_img=100,\n    ),\n)\n\n# model settings\nmodel = dict(\n    type=\"CascadeRCNN\",\n    pretrained=\"torchvision://resnet50\",\n    backbone=dict(\n        type=\"ResNet\",\n        depth=50,\n        num_stages=4,\n        out_indices=(0, 1, 2, 3),\n        frozen_stages=",
+      "generated_tokens": 128,
+      "tokens_per_second": 31.37,
+      "elapsed_time": 4.0808,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.8919,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 31.37,
+        "elapsed_time": 4.0808
+      },
+      "quality": {
+        "score": 0.975,
+        "severe_rate": 0.05,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 7,
+      "sample_name": "openmmlab_08",
+      "generated_text": "  # noqa\n        img_prefix=data_root + \"train2017/\",\n        pipeline=train_pipeline),\n    val=dict(\n        type=dataset_type,\n        ann_file=data_root + \"annotations/instances_val2017.json\",  # noqa\n        img_prefix=data_root + \"val2017/\",\n        pipeline=test_pipeline),\n    test=dict(\n        type=dataset_type,\n        ann_file=data_root + \"annotations/instances_val2017.json\",  # noqa\n        img_prefix=data_root + \"val2017/\",\n        pipeline=test_pipeline))\n\n# optimizer\noptimizer = dict(type='",
+      "generated_tokens": 128,
+      "tokens_per_second": 23.09,
+      "elapsed_time": 5.5434,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.899,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 23.09,
+        "elapsed_time": 5.5434
+      },
+      "quality": {
+        "score": 0.9812,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0625
+      }
+    },
+    {
+      "sample_idx": 8,
+      "sample_name": "openmmlab_09",
+      "generated_text": "  # C2, C3, C4, C5\n        frozen_stages=-1,\n        norm_cfg=dict(type=\"BN\", requires_grad=True),\n        norm_eval=False,\n        style=\"pytorch\",\n        init_cfg=dict(type=\"Pretrained\", checkpoint=\"torchvision://resnet50\"),\n    ),\n    neck=dict(\n        type=\"FPN\",\n        in_channels=[256, 512, 1024, 2048],\n        out_channels=256,\n        start_level=1,\n        add_extra_convs=\"on_output\",  # use P5",
+      "generated_tokens": 128,
+      "tokens_per_second": 22.26,
+      "elapsed_time": 5.7498,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.8974,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 22.26,
+        "elapsed_time": 5.7498
+      },
+      "quality": {
+        "score": 1.0,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    },
+    {
+      "sample_idx": 9,
+      "sample_name": "openmmlab_10",
+      "generated_text": "  # 10\n        contrast_range=(0.5, 1.5),  # (0.5, 1.5)\n        saturation_range=(0.5, 1.5),  # (0.5, 1.5)\n        hue_delta=18,  # 18\n    ),\n    dict(\n        type=\"RandomCrop\",\n        crop_type=\"absolute_range\",\n        crop_size=(512, 512),\n        allow_negative_crop=True,\n    ),\n    dict(type=\"Resize\", img_scale=(512, 512), keep_ratio",
+      "generated_tokens": 128,
+      "tokens_per_second": 21.83,
+      "elapsed_time": 5.864,
+      "stats": {
+        "accept_rate": 1.0,
+        "target_model_forwards": 16,
+        "draft_model_forwards": 16,
+        "draft_time_share": 0.8993,
+        "total_drafted": 128,
+        "total_accepted": 128,
+        "token_accept": 128,
+        "prefix_accept": 128,
+        "prefix_budget_used": 0,
+        "window_len": 2,
+        "window_accept_count": 0,
+        "guard_trigger_count": 0,
+        "trim_count": 0,
+        "repair_count": 0,
+        "consecutive_repair_count": 0,
+        "generated_length": 128,
+        "tokens_per_second": 21.83,
+        "elapsed_time": 5.864
+      },
+      "quality": {
+        "score": 1.0,
+        "severe_rate": 0.0,
+        "off_structure_rate": 0.0,
+        "repetition_rate": 0.0,
+        "truncation_rate": 0.0
+      }
+    }
+  ]
+}
