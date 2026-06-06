@@ -4,6 +4,8 @@
 **Settings**: max_new_tokens=128, n=20 per benchmark
 **Fixed**: enable_guard=True, enable_relaxed_accept=True, prefix_budget=0.2, window_len=2
 
+> **Archive**: This search used the 3B draft model. Current main results use 1.5B draft (see `results/comparison_4method_80.md`).
+
 ## Results (ranked by average speedup)
 
 | Sweep | dl | db | k | OpenMMLab TPS | OpenMMLab Spd | DictConfig TPS | DictConfig Spd | Avg Spd | Accept | SQ |

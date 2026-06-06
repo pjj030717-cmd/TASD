@@ -50,13 +50,13 @@ from src.tasd_decode import tasd_decode
 
 result = tasd_decode(
     target_model=target_model,      # e.g., Qwen2.5-14B-Instruct-AWQ
-    draft_model=draft_model,         # e.g., Qwen2.5-3B-Instruct
+    draft_model=draft_model,         # e.g., Qwen2.5-1.5B-Instruct
     tokenizer=tokenizer,
     prompt="train_pipeline = [",
     structure_type="pipeline_stage_config",
     max_new_tokens=128,
     temperature=0.0,
-    draft_len=8,
+    draft_len=16,
     draft_blocks=2,
     top_k_accept=3,
     min_token_prob=1e-4,
@@ -72,7 +72,7 @@ result = tasd_decode(
 |-----------|---------|-------------|
 | `max_new_tokens` | 128 | Maximum tokens to generate |
 | `temperature` | 0.0 | Sampling temperature (greedy when 0) |
-| `draft_len` | 8 | Tokens per draft block |
+| `draft_len` | 16 | Tokens per draft block |
 | `draft_blocks` | 2 | Number of draft blocks per round |
 | `top_k_accept` | 3 | Relaxed acceptance: accept draft token if in top-k |
 | `min_token_prob` | 1e-4 | Accept draft token if probability above threshold |
@@ -98,38 +98,87 @@ TASD is designed for structured code completion with repeated skeletons:
 Benchmark scripts:
 
 ```bash
-# Full experiment (AR + Greedy SD + TASD on 80 samples)
-python run_kv_cache_exp.py --benchmarks argparse dict_config openmmlab --sample-limit 80
+# Main 4-method comparison (6 benchmarks × 80 samples)
+python run_4method_comparison.py   # AR + Greedy SD + FLY + TASD
 
-# Generate benchmark samples (protocol-compliant)
-python generate_benchmarks.py
+# N-gram SpecDec (6 benchmarks × 80 samples)
+python run_ngram_480.py
 
-# GSD-only (supplementary baseline)
-python run_gsd_only.py
+# N-gram pilot (3 benchmarks × 20 samples)
+python run_ngram_pilot.py
 
-# Structure coverage scan
-python final_structure_coverage_scan.py
+# FLY pilot
+python run_fly_pilot.py
+
+# Ablation studies
+python run_ablation.py
+
+# Draft model comparison (1.5B vs 3B)
+python run_draft_1_5b_eval.py
 ```
 
 ## Baselines
 
 - **AR**: Standard autoregressive greedy decoding
-- **Greedy SD**: Standard speculative decoding with strict argmax matching (no relaxation, no guard)
+- **Greedy SD**: Deterministic argmax-matching speculative decoding baseline (k=16, no relaxation, no guard)
+- **FLY**: N-gram draft + draft model + window acceptance (k=15, use_ngram=True, max_ngram_size=4, num_ngram_pred_tokens=6, win_len=6, entropy_thre=0.3)
+- **N-gram SD**: Training-free speculative decoding using prompt n-gram matching (n=3-8, draft up to 16 tokens, zero model overhead) — included as 3×20 diagnostic pilot
 
 ## Results Summary
 
-Qwen2.5-14B-Instruct-AWQ (target) + Qwen2.5-3B-Instruct (draft), max_new_tokens=128, n=80:
+### Main 4-Method Result (6 benchmarks × 80 samples)
 
-| Benchmark | AR TPS | Greedy SD | TASD | TASD Speedup |
-|-----------|--------|-----------|------|-------------|
-| Real-Python-Argparse | 32.98 | 0.82x | 42.92 | **1.30x** |
-| Real-Python-DictConfig | 32.67 | 0.87x | 42.62 | **1.30x** |
-| OpenMMLab-Config | 32.91 | 0.80x | 47.34 | **1.44x** |
-| Rich-CLI-Option-Groups | 33.14 | 0.83x | 49.12 | **1.48x** |
-| Complex-Nested-Config | 32.71 | 0.85x | 48.23 | **1.47x** |
-| Pipeline-Stage-Config | 32.24 | 0.80x | 49.36 | **1.53x** |
+**Target**: Qwen2.5-14B-Instruct-AWQ | **Draft**: Qwen2.5-1.5B-Instruct
+**Settings**: temperature=0.0, max_new_tokens=128, TASD: draft_blocks=2, draft_len=16, top_k_accept=3
 
-TASD achieves 1.30x-1.53x speedup over AR across 6 benchmark categories while preserving structural quality on par with Greedy SD. See [benchmark coverage report](results/benchmark_coverage_section_draft.md) and [selection protocol](results/benchmark_selection_protocol.md) for details.
+Full report: [results/comparison_4method_80.md](results/comparison_4method_80.md)
+
+| Method | TPS | Speedup | SQ |
+|--------|-----|---------|----|
+| AR | 33.2 | 1.00x | 0.8910 |
+| Greedy SD | 22.0 | 0.66x | 0.8612 |
+| FLY | 54.5 | 1.64x | 0.8895 |
+| TASD | 64.2 | 1.93x | 0.8825 |
+
+TASD achieves 1.93x average speedup over AR, with per-benchmark range 1.80x–2.01x. Structural quality (SQ) is comparable to AR (0.8825 vs 0.8910).
+
+### N-gram Diagnostic Pilot (3 benchmarks × 20 samples)
+
+Full report: [results/comparison_5method_ngram_pilot.md](results/comparison_5method_ngram_pilot.md)
+
+| Method | TPS | Speedup | SQ |
+|--------|-----|---------|----|
+| AR | 33.5 | 1.00x | 0.8915 |
+| Greedy SD | 19.8 | 0.59x | 0.8370 |
+| N-gram SD | 49.0 | 1.46x | 0.8512 |
+| FLY | 43.1 | 1.29x | 0.8823 |
+| TASD | 61.4 | 1.83x | 0.8999 |
+
+N-gram SD (zero model overhead) achieves 1.46x but with lower SQ. TASD maintains 1.83x with SQ on par with AR.
+
+### Per-Benchmark Breakdown (Main 4-Method, 6×80)
+
+| Benchmark | AR | Greedy SD | FLY | TASD |
+|-----------|-----|-----------|-----|------|
+| Real-Python-Argparse | 33.2 | 31.4 | 63.9 | 61.9 |
+| Real-Python-DictConfig | 33.3 | 21.8 | 58.7 | 60.0 |
+| OpenMMLab-Config | 33.2 | 22.1 | 35.1 | 64.0 |
+| Rich-CLI-Option-Groups | 32.9 | 20.5 | 69.5 | 66.1 |
+| Complex-Nested-Config | 33.3 | 18.8 | 57.9 | 66.4 |
+| Pipeline-Stage-Config | 33.4 | 17.5 | 41.7 | 66.7 |
+
+### Archive: 3B Draft Model Results (Deprecated)
+
+The following results used Qwen2.5-3B-Instruct as draft model with draft_len=8. They are retained for historical reference but superseded by the 1.5B draft results above:
+
+| Benchmark | AR TPS | Greedy SD | TASD (3B) | TASD Speedup |
+|-----------|--------|-----------|-----------|-------------|
+| Real-Python-Argparse | 32.98 | 0.82x | 42.92 | 1.30x |
+| Real-Python-DictConfig | 32.67 | 0.87x | 42.62 | 1.30x |
+| OpenMMLab-Config | 32.91 | 0.80x | 47.34 | 1.44x |
+| Rich-CLI-Option-Groups | 33.14 | 0.83x | 49.12 | 1.48x |
+| Complex-Nested-Config | 32.71 | 0.85x | 48.23 | 1.47x |
+| Pipeline-Stage-Config | 32.24 | 0.80x | 49.36 | 1.53x |
 
 ## Citation
 

@@ -6,6 +6,9 @@
 **TASD config**: draft_len=16, draft_blocks=2, top_k_accept=3 (optimized per speed search)
 **SQ scoring**: `src/evaluator.py` penalty-based structural quality score
 
+> **Deprecated.** Superseded by `results/comparison_4method_80.md` (14B-AWQ + 1.5B draft).
+> This table used Qwen2.5-3B-Instruct as draft model. Retained for historical reference only.
+
 *d16_b2_k3 improves TASD speedup from 1.30x-1.53x to 1.44x-1.65x across six benchmarks.*
 
 ## Main Table (AR vs Greedy SD vs TASD, all n=80)

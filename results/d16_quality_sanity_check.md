@@ -52,7 +52,9 @@ Max absolute SQ diff: 0.0156. All within +/-0.02. SQ is stable across configs.
 ## Conclusion
 
 - d16_b2_k3 passes all sanity checks after evaluator bug fix
-- Speedup: 1.44x-1.65x (up from 1.30x-1.53x with d8)
+- Speedup: 1.44x-1.65x (up from 1.30x-1.53x with d8) — **archive results with 3B draft**
 - SQ: Stable within +/-0.02 of d8
 - Adopted as official default TASD config
 - d8_b2_k3 retained as conservative baseline for ablation
+
+> **Note**: This analysis used Qwen2.5-3B-Instruct as draft model. Current main results use Qwen2.5-1.5B-Instruct (see `results/comparison_4method_80.md`).

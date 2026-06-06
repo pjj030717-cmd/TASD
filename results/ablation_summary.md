@@ -3,6 +3,8 @@
 **Model**: Qwen2.5-14B-Instruct-AWQ (target) + Qwen2.5-3B-Instruct (draft)
 **Settings**: max_new_tokens=128, n=10 per benchmark, temperature=0.0
 
+> **Archive**: This ablation used the 3B draft model. Current main results use 1.5B draft (see `results/comparison_4method_80.md`).
+
 ## Average Across 3 Benchmarks
 
 | Variant | TPS | Speedup | Accept | SQ | Repair | GuardTrig |

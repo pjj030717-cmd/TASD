@@ -1,6 +1,51 @@
 ## Total Experiment Table
 
-All benchmarks: Qwen2.5-14B-Instruct-AWQ (target) + Qwen2.5-3B-Instruct (draft), temperature=0, max_new_tokens=128, KV cache enabled.
+### Current Main Results (14B-AWQ + 1.5B, 6 benchmarks × 80 samples)
+
+**Target**: Qwen2.5-14B-Instruct-AWQ | **Draft**: Qwen2.5-1.5B-Instruct
+**Settings**: temperature=0.0, max_new_tokens=128
+**TASD config**: draft_blocks=2, draft_len=16, top_k_accept=3
+**FLY config**: k=15, use_ngram=True, max_ngram_size=4, num_ngram_pred_tokens=6, win_len=6, entropy_thre=0.3
+
+Full report: [comparison_4method_80.md](comparison_4method_80.md)
+
+| Method | Avg TPS | Speedup | SQ | OffStr | Trunc | Rep |
+|--------|---------|---------|----|--------|-------|-----|
+| AR | 33.2 | 1.00x | 0.8910 | 0.0159 | 0.0675 | 0.0004 |
+| Greedy SD | 22.0 | 0.66x | 0.8612 | 0.0068 | 0.2534 | 0.0666 |
+| FLY | 54.5 | 1.64x | 0.8895 | 0.0068 | 0.0712 | 0.0083 |
+| TASD | 64.2 | 1.93x | 0.8825 | 0.0267 | 0.0767 | 0.0306 |
+
+### Per-Benchmark (6×80)
+
+| Benchmark | AR | Greedy SD | FLY | TASD |
+|-----------|-----|-----------|-----|------|
+| Real-Python-Argparse | 33.2 | 31.4 | 63.9 | 61.9 |
+| Real-Python-DictConfig | 33.3 | 21.8 | 58.7 | 60.0 |
+| OpenMMLab-Config | 33.2 | 22.1 | 35.1 | 64.0 |
+| Rich-CLI-Option-Groups | 32.9 | 20.5 | 69.5 | 66.1 |
+| Complex-Nested-Config | 33.3 | 18.8 | 57.9 | 66.4 |
+| Pipeline-Stage-Config | 33.4 | 17.5 | 41.7 | 66.7 |
+
+### N-gram Diagnostic Pilot (3 benchmarks × 20 samples)
+
+Full report: [comparison_5method_ngram_pilot.md](comparison_5method_ngram_pilot.md)
+
+| Method | TPS | Speedup | SQ | Accept | Match% |
+|--------|-----|---------|----|--------|--------|
+| AR | 33.5 | 1.00x | 0.8915 | 1.00 | - |
+| Greedy SD | 19.8 | 0.59x | 0.8370 | 0.36 | - |
+| N-gram SD | 49.0 | 1.46x | 0.8512 | 0.56 | 0.140 |
+| FLY | 43.1 | 1.29x | 0.8823 | 8.71 | - |
+| TASD | 61.4 | 1.83x | 0.8999 | 0.91 | - |
+
+---
+
+### Deprecated: Archive Results (14B + 3B, draft_len=8)
+
+> **Deprecated.** Superseded by `results/comparison_4method_80.md`.
+> These results used Qwen2.5-3B-Instruct as draft model with draft_len=8.
+> They are retained for historical reference only.
 
 | Benchmark | AR TPS | GSD TPS | GSD Spd | GSD Accept | TASD TPS | TASD Spd | TASD Accept | GSD SQ | TASD SQ | GSD OffStr | TASD OffStr | GSD Trunc | TASD Trunc |
 |-----------|--------|---------|---------|------------|----------|----------|-------------|--------|---------|------------|-------------|-----------|------------|

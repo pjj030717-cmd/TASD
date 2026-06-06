@@ -1,5 +1,8 @@
 # Final Total Experiment Table
 
+> **Deprecated.** Superseded by `results/comparison_4method_80.md` (14B-AWQ + 1.5B draft, 6×80).
+> This table used Qwen2.5-3B-Instruct as draft model. Retained for historical reference only.
+
 **Model**: Qwen2.5-14B-Instruct-AWQ (target) + Qwen2.5-3B-Instruct (draft)
 **Settings**: temperature=0.0, max_new_tokens=128, KV cache enabled
 **Sample count**: n=80 for all benchmarks and all methods
