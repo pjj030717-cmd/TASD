@@ -8,7 +8,7 @@
 | Method | Draft | Verification | Description |
 |--------|-------|-------------|-------------|
 | AR | none | none | Autoregressive (target-only) |
-| Greedy SD | 1.5B model, k=16 | strict argmax | Standard speculative decoding |
+| Greedy SD | 1.5B model, k=16 | strict argmax | Greedy SD / deterministic argmax-matching speculative decoding baseline |
 | N-gram SD | n-gram lookup, n=3-8, draft=16 | strict argmax | Prompt/history matching, no draft |
 | FLY | 1.5B model, n-gram, k=15 | window (win_len=6) | FLY official: n-gram draft + window |
 | TASD | 1.5B model, b=2x16 | top-k=3, guard | Multi-block + relaxed + structural guard |
@@ -64,15 +64,15 @@
 
 - **AR**: 33.2 TPS (baseline)
 - **Greedy SD**: 22.0 TPS (0.66x) — strict argmax, accept rate 0.35
-- **N-gram SD**: 46.9 TPS (1.41x) — training-free, no draft model, +24.9 over GSD
+- **N-gram SD**: 46.9 TPS (1.41x) — training-free, no additional draft-model overhead, +24.9 over GSD
 - **FLY**: 54.5 TPS (1.64x) — n-gram draft + window accept, +7.6 over N-gram
 - **TASD**: 64.2 TPS (1.93x) — multi-block + relaxed + guard, +9.7 over FLY
 
 ## Key Findings
 
-1. **Greedy SD fails on structured code** (0.57x AR): 1.5B draft is too weak for strict argmax matching
-2. **N-gram SpecDec (1.52x) is the strongest training-free baseline with zero model overhead**, but match rate is only ~14%
-3. **FLY (1.64x)** adds a draft model + window acceptance on top of N-gram's draft mechanism; the model contribution is +8.5 TPS
-4. **TASD (1.93x)** adds multi-block draft (32 tokens/round) and structural guard; the multi-block contribution is +9.7 TPS
-5. **TASD leads on structurally complex benchmarks** (OpenMMLab +82%, Pipeline-Stage +60% over N-gram)
-6. **N-gram negates the 'TASD just copies prompt' criticism**: N-gram copies prompt patterns yet is 25% slower than TASD. TASD's speed comes from draft model understanding, not repetition.
+1. **Greedy SD remains below AR (0.66x)**, showing that strict argmax speculative decoding is ineffective in this setting.
+2. **N-gram SD reaches 1.41x speedup without an additional draft model**, but remains below FLY and TASD.
+3. **FLY (1.64x)** adds a draft model + window acceptance on top of N-gram's draft mechanism; the model contribution is +7.6 TPS over N-gram.
+4. **TASD (1.93x)** adds multi-block draft (32 tokens/round) and structural guard; the multi-block contribution is +9.7 TPS over FLY.
+5. **TASD leads on structurally complex benchmarks** (OpenMMLab +77%, Pipeline-Stage +65% over N-gram).
+6. **N-gram negates the 'TASD just copies prompt' criticism**: N-gram copies prompt patterns yet is 37% slower than TASD. TASD's speed comes from draft model understanding, not repetition.

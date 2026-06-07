@@ -8,7 +8,7 @@
 | Method | Description |
 |--------|-------------|
 | AR | Autoregressive (target-only) |
-| Greedy SD | Standard speculative decoding, argmax match, k=16 |
+| Greedy SD | Greedy SD / deterministic argmax-matching speculative decoding baseline, k=16 |
 | FLY | Relaxed SD with n-gram draft + window acceptance, k=15, win_len=6 |
 | TASD | Multi-block draft (b=2x16), relaxed accept (k=3), guard, KV-cache incremental |
 

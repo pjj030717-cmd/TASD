@@ -8,7 +8,7 @@
 | Method | Draft | Verification | Description |
 |--------|-------|-------------|-------------|
 | AR | none | none | Autoregressive (target-only) |
-| Greedy SD | 1.5B model, k=16 | strict argmax | Standard speculative decoding |
+| Greedy SD | 1.5B model, k=16 | strict argmax | Greedy SD / deterministic argmax-matching speculative decoding baseline |
 | N-gram SD | n-gram lookup, n=3-8, draft=16 | strict argmax | Prompt/history pattern matching, no draft model |
 | FLY | 1.5B model, n-gram, k=15 | window (win_len=6) | FLY official protocol |
 | TASD | 1.5B model, b=2x16 | top-k=3, guard | Multi-block + relaxed + structural guard |

@@ -122,7 +122,7 @@ python run_draft_1_5b_eval.py
 - **AR**: Standard autoregressive greedy decoding
 - **Greedy SD**: Deterministic argmax-matching speculative decoding baseline (k=16, no relaxation, no guard)
 - **FLY**: N-gram draft + draft model + window acceptance (k=15, use_ngram=True, max_ngram_size=4, num_ngram_pred_tokens=6, win_len=6, entropy_thre=0.3)
-- **N-gram SD**: Training-free speculative decoding using prompt n-gram matching (n=3-8, draft up to 16 tokens, zero model overhead) — included as 3×20 diagnostic pilot
+- **N-gram SD**: Training-free speculative decoding using prompt n-gram matching (n=3-8, draft up to 16 tokens, no additional draft-model overhead) — included as a full 6-benchmark × 80-sample baseline
 
 ## Results Summary
 
@@ -142,19 +142,19 @@ Full report: [results/comparison_4method_80.md](results/comparison_4method_80.md
 
 TASD achieves 1.93x average speedup over AR, with per-benchmark range 1.80x–2.01x. Structural quality (SQ) is comparable to AR (0.8825 vs 0.8910).
 
-### N-gram Diagnostic Pilot (3 benchmarks × 20 samples)
+### N-gram Full Baseline (6 benchmarks × 80 samples)
 
-Full report: [results/comparison_5method_ngram_pilot.md](results/comparison_5method_ngram_pilot.md)
+Full report: [results/comparison_5method_6x80.md](results/comparison_5method_6x80.md)
 
 | Method | TPS | Speedup | SQ |
 |--------|-----|---------|----|
-| AR | 33.5 | 1.00x | 0.8915 |
-| Greedy SD | 19.8 | 0.59x | 0.8370 |
-| N-gram SD | 49.0 | 1.46x | 0.8512 |
-| FLY | 43.1 | 1.29x | 0.8823 |
-| TASD | 61.4 | 1.83x | 0.8999 |
+| AR | 33.2 | 1.00x | 0.8910 |
+| Greedy SD | 22.0 | 0.66x | 0.8612 |
+| N-gram SD | 46.9 | 1.41x | 0.8232 |
+| FLY | 54.5 | 1.64x | 0.8895 |
+| TASD | 64.2 | 1.93x | 0.8825 |
 
-N-gram SD (zero model overhead) achieves 1.46x but with lower SQ. TASD maintains 1.83x with SQ on par with AR.
+N-gram SD (no additional draft-model overhead) achieves 1.41x speedup. Earlier 3×20 pilot results are retained only as preliminary diagnostics.
 
 ### Per-Benchmark Breakdown (Main 4-Method, 6×80)
 

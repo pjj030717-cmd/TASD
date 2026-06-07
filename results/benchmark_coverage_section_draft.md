@@ -27,17 +27,17 @@ Full report: [comparison_4method_80.md](comparison_4method_80.md)
 | Complex-Nested-Config | 33.3 | 18.8 | 57.9 | 66.4 |
 | Pipeline-Stage-Config | 33.4 | 17.5 | 41.7 | 66.7 |
 
-### N-gram Diagnostic Pilot (3 benchmarks × 20 samples)
+### N-gram Full Baseline (6 benchmarks × 80 samples)
 
-Full report: [comparison_5method_ngram_pilot.md](comparison_5method_ngram_pilot.md)
+Full report: [comparison_5method_6x80.md](comparison_5method_6x80.md)
 
 | Method | TPS | Speedup | SQ | Accept | Match% |
 |--------|-----|---------|----|--------|--------|
-| AR | 33.5 | 1.00x | 0.8915 | 1.00 | - |
-| Greedy SD | 19.8 | 0.59x | 0.8370 | 0.36 | - |
-| N-gram SD | 49.0 | 1.46x | 0.8512 | 0.56 | 0.140 |
-| FLY | 43.1 | 1.29x | 0.8823 | 8.71 | - |
-| TASD | 61.4 | 1.83x | 0.8999 | 0.91 | - |
+| AR | 33.2 | 1.00x | 0.8910 | 1.00 | - |
+| Greedy SD | 22.0 | 0.66x | 0.8612 | 0.41 | - |
+| N-gram SD | 46.9 | 1.41x | 0.8232 | 0.57 | 0.272 |
+| FLY | 54.5 | 1.64x | 0.8895 | MAT=9.48 | - |
+| TASD | 64.2 | 1.93x | 0.8825 | 0.96 | - |
 
 ---
 
