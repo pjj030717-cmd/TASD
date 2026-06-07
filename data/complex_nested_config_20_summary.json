@@ -1,0 +1,38 @@
+{
+  "sample_count": 20,
+  "raw_candidate_count": 1302,
+  "valid_candidate_count": 1027,
+  "selected_sample_count": 20,
+  "source_file_count": 20,
+  "repo_count": 7,
+  "source_counts": {
+    "Complex-Nested-Config": 20
+  },
+  "repo_counts": {
+    "python-pygments": 8,
+    "python-torchvision": 6,
+    "python-torchao": 1,
+    "python-tornado": 1,
+    "open-mmlab/mmpose": 2,
+    "python-debugpy": 1,
+    "python-sympy": 1
+  },
+  "avg_prompt_lines": 12.8,
+  "avg_reference_lines": 115.5,
+  "avg_prompt_chars": 260.7,
+  "avg_reference_chars": 2002.9,
+  "min_prompt_chars": 107,
+  "max_prompt_chars": 739,
+  "min_reference_chars": 219,
+  "max_reference_chars": 8643,
+  "invalid_prompt_seed_count": 0,
+  "invalid_reference_count": 0,
+  "reference_too_short_count": 263,
+  "duplicate_removed_count": 12,
+  "selection_seed": 20260604,
+  "notes": [
+    "Extracted 20 real samples from source code for complex_nested_config_20",
+    "Phase: pilot (20 samples)",
+    "Used strict + relaxed extractors"
+  ]
+}

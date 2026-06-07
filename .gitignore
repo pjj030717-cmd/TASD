@@ -1,14 +1,43 @@
+# Python
 __pycache__/
 *.pyc
-.DS_Store
-models/
-data/
-logs/
-tensorboard/
-*.log
-/__pypackages__/
+*.pyo
 *.egg-info/
-.ipynb_checkpoints/
-.autodl/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Models (large files)
+models/
+*.modelscope_cache/
+
+# External repos / benchmark sources
 FLy-main/
 benchmark_sources/
+
+# Data (benchmark data files - keep if needed)
+# data/
+
+# Autodl internal
+.autodl/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Temporary
+*.tmp
+*.log

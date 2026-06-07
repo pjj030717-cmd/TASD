@@ -1,0 +1,51 @@
+{
+  "sample_count": 80,
+  "raw_candidate_count": 1302,
+  "valid_candidate_count": 1027,
+  "selected_sample_count": 80,
+  "source_file_count": 68,
+  "repo_count": 20,
+  "source_counts": {
+    "Complex-Nested-Config": 80
+  },
+  "repo_counts": {
+    "python-torch": 5,
+    "python-modelscope": 4,
+    "python-pygments": 24,
+    "python-datasets": 1,
+    "python-zmq": 1,
+    "python-debugpy": 8,
+    "python-boltons": 1,
+    "python-pip": 1,
+    "open-mmlab/mmpose": 6,
+    "python-wcwidth": 1,
+    "python-sympy": 2,
+    "python-torchvision": 14,
+    "python-transformers": 4,
+    "python-tornado": 1,
+    "python-PIL": 1,
+    "python-numpy": 2,
+    "python-networkx": 1,
+    "python-jedi": 1,
+    "python-bleach": 1,
+    "python-pandas": 1
+  },
+  "avg_prompt_lines": 12.38,
+  "avg_reference_lines": 181.78,
+  "avg_prompt_chars": 303.71,
+  "avg_reference_chars": 3503.68,
+  "min_prompt_chars": 95,
+  "max_prompt_chars": 739,
+  "min_reference_chars": 220,
+  "max_reference_chars": 59263,
+  "invalid_prompt_seed_count": 0,
+  "invalid_reference_count": 0,
+  "reference_too_short_count": 263,
+  "duplicate_removed_count": 12,
+  "selection_seed": 20260604,
+  "notes": [
+    "Extracted 80 real samples from source code for complex_nested_config_80",
+    "Phase: pilot (20 samples)",
+    "Used strict + relaxed extractors"
+  ]
+}

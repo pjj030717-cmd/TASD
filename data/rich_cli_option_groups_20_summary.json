@@ -1,0 +1,40 @@
+{
+  "sample_count": 20,
+  "raw_candidate_count": 115,
+  "valid_candidate_count": 115,
+  "selected_sample_count": 20,
+  "source_file_count": 20,
+  "repo_count": 10,
+  "source_counts": {
+    "Rich-CLI-Option-Groups": 20
+  },
+  "repo_counts": {
+    "python-modelscope": 6,
+    "python-pygments": 1,
+    "python-torchgen": 2,
+    "python-conda": 2,
+    "python-pip": 2,
+    "python-torch": 1,
+    "python-rich": 1,
+    "python-IPython": 1,
+    "python-torchao": 2,
+    "python-fontTools": 2
+  },
+  "avg_prompt_lines": 9.25,
+  "avg_reference_lines": 48.95,
+  "avg_prompt_chars": 317.15,
+  "avg_reference_chars": 1676.0,
+  "min_prompt_chars": 118,
+  "max_prompt_chars": 522,
+  "min_reference_chars": 387,
+  "max_reference_chars": 3122,
+  "invalid_prompt_seed_count": 0,
+  "invalid_reference_count": 0,
+  "reference_too_short_count": 0,
+  "duplicate_removed_count": 0,
+  "selection_seed": 20260604,
+  "notes": [
+    "Extracted 20 real samples from source code for rich_cli_option_groups_20",
+    "Phase: pilot (20 samples)"
+  ]
+}

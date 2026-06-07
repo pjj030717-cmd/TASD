@@ -137,6 +137,383 @@ def _get_gpu_memory():
     return 0.0
 
 
+class FailureAwareFallback:
+    """
+    TASD-F v2: Failure-aware fallback with fixed 2-token AR fallback.
+
+    Monitors runtime failure signals (rolling accept rate, consecutive zero
+    accept rounds, recent repairs) and briefly falls back to target-only AR
+    for 2 tokens when divergence is detected, then resumes TASD.
+
+    This is the only TASD-F variant used in the final method.
+    TASD-F v3 (progressive/boundary/probe fallback) was abandoned as a
+    negative result due to severe slowdowns on short Argparse structures.
+
+    Configuration:
+        fallback_tokens=2
+        fallback_guarded=False
+    """
+    def __init__(self):
+        self.fallback_tokens = 2
+        self.guarded = False
+        self.guarded_trim_count = 0
+        self.fallback_count = 0
+        self.cooldown_rounds = 0
+        self.fallback_cooldown = 0
+        self.rolling_accept_rate = []
+        self.consecutive_zero_accept_rounds = 0
+        self.recent_repairs = []
+        self.trigger_count = 0
+        self.total_fallback_tokens = 0
+
+    def record_round(self, drafted: int, accepted: int, repair: int):
+        accept_rate = accepted / max(drafted, 1)
+        self.rolling_accept_rate.append(accept_rate)
+        if len(self.rolling_accept_rate) > 5:
+            self.rolling_accept_rate.pop(0)
+        if accepted == 0:
+            self.consecutive_zero_accept_rounds += 1
+        else:
+            self.consecutive_zero_accept_rounds = 0
+        if repair:
+            self.recent_repairs.append(1)
+        else:
+            self.recent_repairs.append(0)
+        if len(self.recent_repairs) > 5:
+            self.recent_repairs.pop(0)
+
+    def should_trigger(self) -> tuple:
+        if self.fallback_cooldown > 0:
+            return False, ""
+        rolling = sum(self.rolling_accept_rate) / max(len(self.rolling_accept_rate), 1)
+        repairs = sum(self.recent_repairs[-3:])
+        if rolling < 0.5 or self.consecutive_zero_accept_rounds >= 2 or repairs >= 2:
+            return True, f"low_accept_{rolling:.2f}"
+        return False, ""
+
+    def start_fallback(self, reason: str):
+        self.fallback_count += 1
+        self.trigger_count += 1
+        self.fallback_cooldown = 1
+
+    def end_fallback(self, generated: int):
+        self.total_fallback_tokens += generated
+
+    def tick_cooldown(self):
+        if self.fallback_cooldown > 0:
+            self.fallback_cooldown -= 1
+
+    def get_summary(self) -> dict:
+        return {
+            "trigger_count": self.trigger_count,
+            "fallback_count": self.fallback_count,
+            "fallback_tokens": self.fallback_tokens,
+            "total_fallback_tokens": self.total_fallback_tokens,
+            "guarded_trim_count": self.guarded_trim_count,
+        }
+
+
+class ProfitGuard:
+    """
+    Experimental safety analysis / future work. Not part of the final TASD or TASD-F method.
+
+    Runtime profitability monitor for TASD speculative decoding (v2).
+
+    v2 improvements over v1:
+    - Structure-specific min_generated thresholds (Argparse: 64, others: 48)
+    - Severe-only trigger: only fallback on truly bad cases
+    - Expected recovery check: don't fallback if remaining tokens can't
+      amortize the speculative overhead already incurred
+    - More conservative overall — only triggers on severe divergence
+
+    Trigger conditions (any one, AND must pass recovery check):
+    1. Severe low accept: rolling_accept_rate < 0.35 over min_rounds
+    2. High repair: repair_count >= 3 over recent 3 rounds
+    3. Consecutive zero-accept: 2 rounds with accepted_count == 0
+
+    Fallback: directly use target AR to generate remaining tokens.
+    """
+
+    # Structure-specific minimum generated tokens before fallback
+    STRUCT_MIN_GENERATED = {
+        "argparse": 64,
+        "dict_config": 48,
+        "openmmlab_config": 48,
+        "rich_cli_option_groups": 48,
+        "complex_nested_config": 48,
+        "pipeline_stage_config": 48,
+    }
+
+    def __init__(
+        self,
+        min_rounds=2,
+        min_generated=None,  # None = use structure-specific default
+        accept_threshold=0.35,  # Severe-only: much lower than v1's 0.55
+        repair_threshold=3,  # Severe-only: higher than v1's 2
+        speed_margin=0.95,
+        ar_tps_estimate=None,
+        mode="fallback_to_ar",
+        structure_type=None,  # For structure-specific thresholds
+        enable_recovery_check=True,
+    ):
+        self.min_rounds = min_rounds
+        # Structure-specific min_generated
+        if min_generated is not None:
+            self.min_generated = min_generated
+        elif structure_type is not None:
+            self.min_generated = self.STRUCT_MIN_GENERATED.get(structure_type, 48)
+        else:
+            self.min_generated = 48
+
+        self.accept_threshold = accept_threshold
+        self.repair_threshold = repair_threshold
+        self.speed_margin = speed_margin
+        self.ar_tps_estimate = ar_tps_estimate
+        self.mode = mode
+        self.structure_type = structure_type
+        self.enable_recovery_check = enable_recovery_check
+
+        # Rolling stats
+        self.recent_accept_rates = []  # per-round accept rates
+        self.recent_repair_counts = []  # per-round repair counts (0 or 1)
+        self.consecutive_zero_accept = 0
+
+        # State
+        self.triggered = False
+        self.trigger_reason = None
+        self.trigger_step = None
+        self.generated_before_fallback = 0
+        self.elapsed_before_fallback = 0.0
+        self.remaining_tokens = 0
+
+        # Stats recording
+        self.rolling_accept_rate_at_trigger = 0.0
+        self.repair_count_recent_at_trigger = 0
+
+    def record_round(self, drafted: int, accepted: int, repair: int):
+        """Record stats after each TASD round."""
+        round_rate = accepted / drafted if drafted > 0 else 0.0
+        self.recent_accept_rates.append(round_rate)
+        self.recent_repair_counts.append(repair)
+
+        if accepted == 0:
+            self.consecutive_zero_accept += 1
+        else:
+            self.consecutive_zero_accept = 0
+
+    def _check_recovery_feasible(self, generated_count: int, remaining: int, elapsed_time: float) -> bool:
+        """
+        Check if fallback to AR can actually recover.
+
+        If remaining tokens are too few to amortize the overhead already
+        incurred, don't fallback — it would make things worse.
+
+        Returns True if recovery is feasible (should fallback).
+        """
+        if not self.enable_recovery_check:
+            return True
+
+        # If remaining tokens are very few, fallback won't help much
+        if remaining < 16:
+            return False
+
+        # If we've already generated enough and remaining is substantial,
+        # AR fallback is likely to help
+        if remaining >= 32:
+            return True
+
+        # Middle ground: check if we have enough remaining to offset overhead
+        # Estimate: AR time for remaining = remaining / ar_tps
+        # If ar_tps is unknown, assume fallback is safe if remaining > 24
+        if self.ar_tps_estimate is not None and self.ar_tps_estimate > 0:
+            est_ar_remaining_time = remaining / self.ar_tps_estimate
+            # If estimated AR time for remaining is less than 1 second,
+            # the overhead amortization is minimal
+            if est_ar_remaining_time < 0.5:
+                return False
+
+        return True
+
+    def should_trigger(self, generated_count: int, elapsed_time: float, remaining: int = 0) -> tuple:
+        """
+        Check if profit guard should trigger fallback.
+        Returns (should_trigger: bool, reason: str).
+
+        v2: Only triggers on SEVERE conditions, not mild degradation.
+        """
+        if self.triggered:
+            return False, ""
+
+        # Don't trigger too early — need enough generated tokens
+        if generated_count < self.min_generated:
+            return False, ""
+
+        rates = self.recent_accept_rates
+        repairs = self.recent_repair_counts
+
+        triggered = False
+        reason = ""
+
+        # 1. Severe low accept rate trigger (threshold: 0.35, not 0.55)
+        if len(rates) >= self.min_rounds:
+            recent = rates[-self.min_rounds:]
+            rolling = sum(recent) / len(recent)
+            if rolling < self.accept_threshold:
+                triggered = True
+                reason = "severe_low_accept_rate"
+
+        # 2. Severe repair trigger (threshold: 3, not 2)
+        if not triggered and len(repairs) >= 3:
+            recent_repairs = sum(repairs[-3:])
+            if recent_repairs >= self.repair_threshold:
+                triggered = True
+                reason = "severe_high_repair"
+
+        # 3. Consecutive zero-accept trigger
+        if not triggered and self.consecutive_zero_accept >= 2:
+            triggered = True
+            reason = "consecutive_zero_accept"
+
+        if not triggered:
+            return False, ""
+
+        # Recovery check: only fallback if it can actually help
+        if not self._check_recovery_feasible(generated_count, remaining, elapsed_time):
+            return False, f"{reason}_but_no_recovery"
+
+        return True, reason
+
+    def trigger(self, reason: str, generated_count: int, elapsed_time: float, remaining: int):
+        """Record the fallback trigger."""
+        self.triggered = True
+        self.trigger_reason = reason
+        self.trigger_step = generated_count
+        self.generated_before_fallback = generated_count
+        self.elapsed_before_fallback = elapsed_time
+        self.remaining_tokens = remaining
+
+        # Record stats at trigger point
+        if self.recent_accept_rates:
+            n = min(3, len(self.recent_accept_rates))
+            self.rolling_accept_rate_at_trigger = sum(self.recent_accept_rates[-n:]) / n
+        if self.recent_repair_counts:
+            n = min(3, len(self.recent_repair_counts))
+            self.repair_count_recent_at_trigger = sum(self.recent_repair_counts[-n:])
+
+    def get_summary(self) -> dict:
+        return {
+            "profit_guard_triggered": self.triggered,
+            "profit_guard_reason": self.trigger_reason,
+            "profit_guard_trigger_step": self.trigger_step,
+            "profit_guard_generated_before_fallback": self.generated_before_fallback,
+            "profit_guard_elapsed_before_fallback": round(self.elapsed_before_fallback, 4),
+            "profit_guard_rolling_accept_rate": round(self.rolling_accept_rate_at_trigger, 4),
+            "profit_guard_repair_count_recent": self.repair_count_recent_at_trigger,
+            "profit_guard_ar_tps_estimate": self.ar_tps_estimate,
+            "profit_guard_remaining_tokens": self.remaining_tokens,
+        }
+
+
+class CommentStringFallback:
+    """
+    Lightweight detector for high-risk regions in config generation:
+    - Comment lines (starting with #)
+    - Long string values containing file paths / dataset names
+    - Multi-line comment blocks
+
+    Designed to be conservative: only triggers on genuinely risky patterns,
+    not on normal inline strings like type='LoadImage'.
+
+    When triggered, caller should switch to conservative TASD params.
+    """
+    # Path patterns that indicate file/dataset references (not just _val in key names)
+    PATH_PATTERNS = [
+        r"'[^']{15,}\.(?:json|pkl|txt|jpg|png|yaml|py)[^']*'",
+        r'"[^"]{15,}\.(?:json|pkl|txt|jpg|png|yaml|py)[^"]*"',
+        r"'/(?:images|data|annotations|checkpoints|results)/[^']*'",
+        r'"/(?:images|data|annotations|checkpoints|results)/[^"]*"',
+    ]
+    _path_re = [re.compile(p) for p in PATH_PATTERNS]
+
+    def __init__(self, lookback_chars=200, nl_word_threshold=5):
+        self.lookback = lookback_chars
+        self.nl_word_threshold = nl_word_threshold
+        # Stats
+        self.trigger_count = 0
+        self.fallback_tokens = 0
+        self.fallback_regions = []
+        self.fallback_reasons = []
+        self.accept_rate_before = []
+        self.accept_rate_after = []
+
+    def is_high_risk(self, generated_text: str) -> tuple:
+        """
+        Check if current position is in a high-risk region.
+        Returns (is_risk: bool, reason: str).
+        """
+        recent = generated_text[-self.lookback:] if len(generated_text) > self.lookback else generated_text
+        lines = recent.split('\n')
+        last_line = lines[-1] if lines else ""
+
+        # 1. Comment line detection (only for actual comment lines, not inline)
+        stripped = last_line.lstrip()
+        if stripped.startswith('#'):
+            return True, "comment_line"
+
+        # 2. Long string with file extension (not short inline strings)
+        for pat in self._path_re:
+            if pat.search(recent):
+                return True, "long_path_string"
+
+        # 3. Multi-line comment block: check if last 3+ lines are comments
+        comment_lines = 0
+        for line in reversed(lines):
+            s = line.strip()
+            if s.startswith('#') or s == '':
+                if s.startswith('#'):
+                    comment_lines += 1
+            else:
+                break
+        if comment_lines >= 2:
+            return True, "comment_block"
+
+        # 4. Very long natural-language text (not config keys)
+        # Only trigger if there's a long stretch of alphabetic words
+        # with NO code symbols at all (not even = or () )
+        alpha_words = re.findall(r'\b[a-zA-Z]{5,}\b', recent)
+        code_symbols = recent.count('=') + recent.count('(') + recent.count(')') + recent.count('{') + recent.count('}') + recent.count('[') + recent.count(']') + recent.count(':') + recent.count("'")
+        if len(alpha_words) >= self.nl_word_threshold and code_symbols == 0:
+            return True, "pure_nl_text"
+
+        return False, ""
+
+    def record_trigger(self, reason: str, tokens_in_fallback: int = 0,
+                       accept_before: float = 0.0, accept_after: float = 0.0):
+        self.trigger_count += 1
+        self.fallback_tokens += tokens_in_fallback
+        self.fallback_reasons.append(reason)
+        self.fallback_regions.append({
+            "reason": reason,
+            "tokens": tokens_in_fallback,
+            "accept_before": round(accept_before, 4),
+            "accept_after": round(accept_after, 4),
+        })
+        if accept_before > 0:
+            self.accept_rate_before.append(accept_before)
+        if accept_after > 0:
+            self.accept_rate_after.append(accept_after)
+
+    def get_summary(self) -> dict:
+        return {
+            "trigger_count": self.trigger_count,
+            "fallback_tokens": self.fallback_tokens,
+            "fallback_reasons": self.fallback_reasons,
+            "fallback_regions": self.fallback_regions,
+            "avg_accept_before": round(sum(self.accept_rate_before) / len(self.accept_rate_before), 4) if self.accept_rate_before else 0,
+            "avg_accept_after": round(sum(self.accept_rate_after) / len(self.accept_rate_after), 4) if self.accept_rate_after else 0,
+        }
+
+
 def _is_early_stop_condition(token, tokenizer, structure_type, generated_text_so_far):
     """
     Check if we should stop drafting early based on:
@@ -177,6 +554,16 @@ def tasd_decode(
     enable_guard=True,
     enable_relaxed_accept=True,
     adaptive_policy=None,
+    enable_comment_string_fallback=False,
+    enable_failure_aware_fallback=False,  # TASD-F v2: optional 2-token runtime fallback
+    enable_profit_guard=False,
+    profit_guard_ar_tps_estimate=None,
+    profit_guard_min_rounds=2,
+    profit_guard_min_generated=24,
+    profit_guard_accept_threshold=0.55,
+    profit_guard_repair_threshold=2,
+    profit_guard_speed_margin=0.95,
+    profit_guard_mode="fallback_to_ar",
 ):
     """
     TASD speculative decoding with structural guard, proper KV cache,
@@ -184,7 +571,15 @@ def tasd_decode(
 
     Args:
         enable_guard: If False, skip structural guard check
-        enable_relaxed_accept: If False, only accept draft_tok == target_argmax (strict)
+        enable_relaxed_accept: If False, only accept draft_tok == target argmax (strict)
+        enable_profit_guard: If True, enable ProfitGuard to fallback to AR when unprofitable
+        profit_guard_ar_tps_estimate: Estimated AR TPS for wall-clock comparison
+        profit_guard_min_rounds: Minimum rounds of low accept to trigger
+        profit_guard_min_generated: Minimum tokens generated before trigger can fire
+        profit_guard_accept_threshold: Rolling accept rate threshold for trigger
+        profit_guard_repair_threshold: Repair count threshold for trigger
+        profit_guard_speed_margin: Speed margin for wall-clock loss trigger
+        profit_guard_mode: Fallback mode (only "fallback_to_ar" supported)
 
     Note on reference: reference is NOT used in decoding. It is only
     passed to the evaluator for structural quality assessment.
@@ -208,6 +603,36 @@ def tasd_decode(
     draft_device = next(draft_model.parameters()).device
 
     guard = StructuralGuard(structure_type=structure_type)
+
+    # Comment/string fallback detector
+    fallback_detector = None
+    if enable_comment_string_fallback:
+        fallback_detector = CommentStringFallback()
+
+    # Failure-aware fallback detector (TASD-F v2)
+    failure_fallback = None
+    if enable_failure_aware_fallback:
+        failure_fallback = FailureAwareFallback()
+
+    # Profit guard
+    profit_guard = None
+    if enable_profit_guard:
+        profit_guard = ProfitGuard(
+            min_rounds=profit_guard_min_rounds,
+            min_generated=profit_guard_min_generated,
+            accept_threshold=profit_guard_accept_threshold,
+            repair_threshold=profit_guard_repair_threshold,
+            speed_margin=profit_guard_speed_margin,
+            ar_tps_estimate=profit_guard_ar_tps_estimate,
+            mode=profit_guard_mode,
+            structure_type=structure_type,
+        )
+
+    # Default TASD params (can be overridden by fallback)
+    _default_draft_len = draft_len
+    _default_draft_blocks = draft_blocks
+    _default_top_k_accept = top_k_accept
+    _default_prefix_budget = prefix_budget
 
     # Stats
     total_drafted = 0
@@ -278,6 +703,98 @@ def tasd_decode(
             # --- Adaptive policy: update draft_len / top_k_accept ---
             if adaptive_policy is not None:
                 draft_len, top_k_accept = adaptive_policy.get_params()
+
+            # --- Comment/string fallback: detect high-risk regions ---
+            in_fallback = False
+            fallback_reason = ""
+            if fallback_detector is not None and generated_ids:
+                generated_text_so_far = tokenizer.decode(generated_ids, skip_special_tokens=True)
+                is_risk, risk_reason = fallback_detector.is_high_risk(generated_text_so_far)
+                if is_risk:
+                    in_fallback = True
+                    fallback_reason = risk_reason
+                    draft_len = 4
+                    draft_blocks = 1
+                    top_k_accept = 1
+                    prefix_budget = 0.0
+                else:
+                    # Restore defaults when leaving high-risk region
+                    draft_len = _default_draft_len
+                    draft_blocks = _default_draft_blocks
+                    top_k_accept = _default_top_k_accept
+                    prefix_budget = _default_prefix_budget
+
+            # --- Failure-aware fallback: detect runtime failures (TASD-F v2) ---
+            in_failure_fallback = False
+            fb_reason = ""
+            if failure_fallback is not None and generated_ids:
+                should_fb, fb_reason = failure_fallback.should_trigger()
+                if should_fb:
+                    in_failure_fallback = True
+                    failure_fallback.start_fallback(fb_reason)
+
+            # --- Execute short AR fallback if triggered (TASD-F v2: unguarded 2-token) ---
+            if in_failure_fallback:
+                fb_tokens = failure_fallback.fallback_tokens
+                fb_remaining = min(fb_tokens, remaining)
+                if fb_remaining > 0:
+                    current_ids = torch.cat(
+                        [input_ids, torch.tensor([generated_ids], device=device)], dim=1
+                    ) if generated_ids else input_ids
+                    with torch.no_grad():
+                        ar_output = target_model.generate(
+                            current_ids,
+                            max_new_tokens=fb_remaining,
+                            do_sample=False,
+                            pad_token_id=tokenizer.eos_token_id,
+                        )
+                    new_tokens = ar_output[0][current_ids.shape[1]:].tolist()
+                    generated_ids.extend(new_tokens)
+
+                    # Re-prefill KV caches with full sequence after AR
+                    _cuda_sync()
+                    full_ids = torch.cat(
+                        [input_ids, torch.tensor([generated_ids], device=device)], dim=1
+                    )
+                    with torch.no_grad():
+                        _, target_past = _forward_with_cache(target_model, full_ids, None)
+                        target_model_forwards += 1
+                        draft_full = full_ids.to(draft_device)
+                        _, draft_past = _forward_with_cache(draft_model, draft_full, None)
+                        draft_model_forwards += 1
+
+                    # Get last logits from one-token forward
+                    if new_tokens:
+                        with torch.no_grad():
+                            next_tensor = torch.tensor([[new_tokens[-1]]], device=device)
+                            repair_logits, target_past = _forward_with_cache(
+                                target_model, next_tensor, target_past
+                            )
+                            last_target_logit = repair_logits[0, -1, :]
+                            target_model_forwards += 1
+                        with torch.no_grad():
+                            draft_next = torch.tensor([[new_tokens[-1]]], device=draft_device)
+                            draft_logits_out, draft_past = _forward_with_cache(
+                                draft_model, draft_next, draft_past
+                            )
+                            last_draft_logit = draft_logits_out[0, -1, :].to(device)
+                            draft_model_forwards += 1
+
+                    failure_fallback.end_fallback(len(new_tokens))
+
+                    # Check termination
+                    if len(generated_ids) >= max_new_tokens:
+                        stop_reason = "max_tokens"
+                        break
+                    if tokenizer.eos_token_id in new_tokens:
+                        eos_pos = generated_ids.index(tokenizer.eos_token_id)
+                        generated_ids = generated_ids[:eos_pos]
+                        stop_reason = "eos"
+                        break
+
+            # --- Failure-aware fallback: tick cooldown ---
+            if failure_fallback is not None:
+                failure_fallback.tick_cooldown()
 
             # If too many consecutive repairs, degrade to AR
             if consecutive_repair_count >= 5:
@@ -533,6 +1050,16 @@ def tasd_decode(
 
             accepted_count = len(accepted_tokens)
 
+            # --- Record fallback stats ---
+            if in_fallback and fallback_detector is not None:
+                round_accept = accepted_count / len(draft_tokens) if draft_tokens else 0
+                fallback_detector.record_trigger(
+                    reason=fallback_reason,
+                    tokens_in_fallback=accepted_count,
+                    accept_before=round_accept,
+                    accept_after=round_accept,
+                )
+
             # --- Apply accepted tokens or repair ---
             if accepted_tokens:
                 generated_ids.extend(accepted_tokens)
@@ -605,6 +1132,53 @@ def tasd_decode(
                     off_structure=has_off_structure,
                 )
                 adaptive_topk_computed += 1
+
+            # --- Record round stats for failure-aware fallback ---
+            if failure_fallback is not None:
+                failure_fallback.record_round(
+                    drafted=len(draft_tokens),
+                    accepted=accepted_count,
+                    repair=1 if accepted_count == 0 else 0,
+                )
+
+            # --- Record round stats for profit guard ---
+            if profit_guard is not None and not profit_guard.triggered:
+                profit_guard.record_round(
+                    drafted=len(draft_tokens),
+                    accepted=accepted_count,
+                    repair=1 if accepted_count == 0 else 0,
+                )
+
+            # --- Profit guard: check if we should fallback to AR ---
+            if profit_guard is not None and not profit_guard.triggered:
+                current_elapsed = time.time() - wall_start
+                should_pg, pg_reason = profit_guard.should_trigger(
+                    generated_count=len(generated_ids),
+                    elapsed_time=current_elapsed,
+                    remaining=remaining,
+                )
+                if should_pg:
+                    profit_guard.trigger(
+                        reason=pg_reason,
+                        generated_count=len(generated_ids),
+                        elapsed_time=current_elapsed,
+                        remaining=remaining,
+                    )
+                    # Fallback to AR for remaining tokens
+                    current_ids = torch.cat(
+                        [input_ids, torch.tensor([generated_ids], device=device)], dim=1
+                    ) if generated_ids else input_ids
+                    with torch.no_grad():
+                        ar_output = target_model.generate(
+                            current_ids,
+                            max_new_tokens=remaining,
+                            do_sample=False,
+                            pad_token_id=tokenizer.eos_token_id,
+                        )
+                    new_tokens = ar_output[0][current_ids.shape[1]:].tolist()
+                    generated_ids.extend(new_tokens)
+                    stop_reason = "profit_guard_fallback_to_ar"
+                    break
 
             # Check for EOS in generated
             if tokenizer.eos_token_id in generated_ids:
@@ -691,6 +1265,11 @@ def tasd_decode(
         # Adaptive policy
         "adaptive_topk_computed": adaptive_topk_computed,
         "adaptive_policy_summary": adaptive_policy.get_summary() if adaptive_policy is not None else None,
+        # Comment/string fallback
+        "comment_string_fallback": fallback_detector.get_summary() if fallback_detector is not None else None,
+        "failure_aware_fallback": failure_fallback.get_summary() if failure_fallback is not None else None,
+        # Profit guard
+        "profit_guard": profit_guard.get_summary() if profit_guard is not None else None,
     }
 
     return {

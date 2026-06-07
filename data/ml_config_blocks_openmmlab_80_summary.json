@@ -1,0 +1,24 @@
+{
+  "sample_count": 80,
+  "source_counts": {
+    "OpenMMLab-mmdetection": 16,
+    "OpenMMLab-mmsegmentation": 16,
+    "OpenMMLab-mmpretrain": 16,
+    "OpenMMLab-mmpose": 16,
+    "OpenMMLab-mmocr": 16
+  },
+  "repo_counts": {
+    "open-mmlab/mmdetection": 16,
+    "open-mmlab/mmsegmentation": 16,
+    "open-mmlab/mmpretrain": 16,
+    "open-mmlab/mmpose": 16,
+    "open-mmlab/mmocr": 16
+  },
+  "avg_prompt_lines": 4.21,
+  "avg_reference_lines": 10.76,
+  "avg_prompt_chars": 118.17,
+  "avg_reference_chars": 347.64,
+  "invalid_prompt_seed_count": 0,
+  "invalid_reference_count": 0,
+  "notes": "Extracted 80 real samples from source code for ml_config_blocks_openmmlab_80"
+}

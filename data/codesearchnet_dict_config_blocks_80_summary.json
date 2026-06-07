@@ -1,0 +1,29 @@
+{
+  "sample_count": 80,
+  "source_counts": {
+    "CodeSearchNet-Python": 80
+  },
+  "repo_counts": {
+    "python-setup_utils.py": 1,
+    "python-ipython_pygments_lexers.py": 1,
+    "python-typing_extensions.py": 1,
+    "python-boltons": 4,
+    "python-cffi": 3,
+    "python-charset_normalizer": 2,
+    "python-conda": 33,
+    "python-conda_content_trust": 1,
+    "python-conda_libmamba_solver": 1,
+    "python-cryptography": 1,
+    "python-idna": 2,
+    "python-menuinst": 3,
+    "python-packaging": 2,
+    "python-pip": 25
+  },
+  "avg_prompt_lines": 4.66,
+  "avg_reference_lines": 65.26,
+  "avg_prompt_chars": 177.59,
+  "avg_reference_chars": 2622.7,
+  "invalid_prompt_seed_count": 0,
+  "invalid_reference_count": 0,
+  "notes": "Extracted 80 real samples from source code for codesearchnet_dict_config_blocks_80"
+}

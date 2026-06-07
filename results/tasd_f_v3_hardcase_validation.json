@@ -1,0 +1,1941 @@
+{
+  "_note": "Abandoned variant. TASD-F-v3 is not used in the final method because it causes severe slowdowns on short Argparse structures.",
+  "phase": "hard_case_validation",
+  "per_method": {
+    "tasd": {
+      "count": 24,
+      "speedup_mean": 0.8311,
+      "speedup_median": 0.8128,
+      "below_1x": 15,
+      "below_1_2x": 17,
+      "structural_quality_score": 0.0,
+      "off_structure_rate": 0.0,
+      "repair_count": 3.83
+    },
+    "tasd_f": {
+      "count": 24,
+      "speedup_mean": 0.9162,
+      "speedup_median": 0.9216,
+      "below_1x": 14,
+      "below_1_2x": 16,
+      "structural_quality_score": 0.0,
+      "off_structure_rate": 0.0,
+      "repair_count": 1.42
+    },
+    "tasd_f_v3": {
+      "count": 24,
+      "speedup_mean": 0.7945,
+      "speedup_median": 1.0012,
+      "below_1x": 12,
+      "below_1_2x": 17,
+      "structural_quality_score": 0.0,
+      "off_structure_rate": 0.0,
+      "repair_count": 0.96,
+      "fallback_trigger_count": 26,
+      "fallback_level_counts": {
+        "1": 6,
+        "2": 20,
+        "3": 0
+      }
+    }
+  },
+  "per_sample": {
+    "tasd": [
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 22,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 8.17,
+        "speedup": 0.24630690382876091,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 14,
+        "generated_tokens": 128,
+        "elapsed_time": 15.6594,
+        "truncated": false,
+        "stop_reason": "consecutive_repair_limit",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 73,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 8.8,
+        "speedup": 0.26529996985227616,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 15,
+        "generated_tokens": 128,
+        "elapsed_time": 14.5492,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 59,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 10.81,
+        "speedup": 0.3308846036118763,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 128,
+        "elapsed_time": 11.8424,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 2,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 11.18,
+        "speedup": 0.3422099785736149,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 128,
+        "elapsed_time": 11.4509,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 1,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 14.76,
+        "speedup": 0.4517906336088154,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 128,
+        "elapsed_time": 8.6697,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 70,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 16.2,
+        "speedup": 0.4922515952597995,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 7,
+        "generated_tokens": 128,
+        "elapsed_time": 7.9002,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 64,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 17.48,
+        "speedup": 0.5311455484655121,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 6,
+        "generated_tokens": 128,
+        "elapsed_time": 7.3243,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 33,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 19.81,
+        "speedup": 0.5972264094060897,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 5,
+        "generated_tokens": 128,
+        "elapsed_time": 6.4599,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 48,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 22.99,
+        "speedup": 0.6985718626557278,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 4,
+        "generated_tokens": 128,
+        "elapsed_time": 5.5676,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 30,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 23.3,
+        "speedup": 0.7024419656315948,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 4,
+        "generated_tokens": 128,
+        "elapsed_time": 5.4924,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 61,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 22.96,
+        "speedup": 0.692191739523666,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 4,
+        "generated_tokens": 128,
+        "elapsed_time": 5.5758,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 0,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 26.75,
+        "speedup": 0.8128228501975084,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 3,
+        "generated_tokens": 128,
+        "elapsed_time": 4.7844,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 2,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 26.61,
+        "speedup": 0.8085688240656336,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 3,
+        "generated_tokens": 128,
+        "elapsed_time": 4.8109,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 13,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 27.86,
+        "speedup": 0.8527701254973982,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 3,
+        "generated_tokens": 128,
+        "elapsed_time": 4.594,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 69,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 28.19,
+        "speedup": 0.8498643352426891,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 128,
+        "elapsed_time": 4.5406,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 18,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 33.23,
+        "speedup": 1.0171411080501989,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 4,
+        "generated_tokens": 128,
+        "elapsed_time": 3.8517,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 38,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 35.82,
+        "speedup": 1.0798914681941514,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 128,
+        "elapsed_time": 3.5734,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 57,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 43.24,
+        "speedup": 1.3235384144475053,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 3,
+        "generated_tokens": 128,
+        "elapsed_time": 2.9603,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 40,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 41.66,
+        "speedup": 1.2751760024487295,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 3.0728,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 52,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 44.05,
+        "speedup": 1.3483318028772573,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 2.9056,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 77,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 42.29,
+        "speedup": 1.2944597490052034,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 3,
+        "generated_tokens": 128,
+        "elapsed_time": 3.027,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 29,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 41.43,
+        "speedup": 1.2588878760255242,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 4,
+        "generated_tokens": 128,
+        "elapsed_time": 3.0897,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 78,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 41.7,
+        "speedup": 1.2764003673094582,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 3,
+        "generated_tokens": 128,
+        "elapsed_time": 3.0693,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 7,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 45.68,
+        "speedup": 1.3982246709519437,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 2.802,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": null
+      }
+    ],
+    "tasd_f": [
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 22,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 30.57,
+        "speedup": 0.9216159179981911,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 4.1866,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 5,
+          "fallback_count": 5,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 10,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 73,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 32.1,
+        "speedup": 0.967741935483871,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 3.9872,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 5,
+          "fallback_count": 5,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 10,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 59,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 24.77,
+        "speedup": 0.7581879400061218,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 130,
+        "elapsed_time": 5.249,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 7,
+          "fallback_count": 7,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 14,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 2,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 23.84,
+        "speedup": 0.7297214569941842,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 130,
+        "elapsed_time": 5.4531,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 7,
+          "fallback_count": 7,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 14,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 1,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 19.75,
+        "speedup": 0.6045301499846955,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 130,
+        "elapsed_time": 6.583,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 8,
+          "fallback_count": 8,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 16,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 70,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 36.74,
+        "speedup": 1.1163780006077182,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 130,
+        "elapsed_time": 3.5387,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 2,
+          "fallback_count": 2,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 4,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 64,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 29.3,
+        "speedup": 0.890306897599514,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 130,
+        "elapsed_time": 4.4363,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 5,
+          "fallback_count": 5,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 10,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 33,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 10.9,
+        "speedup": 0.3286101899306602,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 130,
+        "elapsed_time": 11.9241,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 19,
+          "fallback_count": 19,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 38,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 48,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 41.13,
+        "speedup": 1.2497721057429354,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 3.1124,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 1,
+          "fallback_count": 1,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 2,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 30,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 6.84,
+        "speedup": 0.206210431112451,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 7,
+        "generated_tokens": 130,
+        "elapsed_time": 19.0121,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 30,
+          "fallback_count": 30,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 60,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 61,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 27.62,
+        "speedup": 0.8326801326499849,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 128,
+        "elapsed_time": 4.6347,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 6,
+          "fallback_count": 6,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 12,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 0,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 19.51,
+        "speedup": 0.5928289273776969,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 130,
+        "elapsed_time": 6.6627,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 7,
+          "fallback_count": 7,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 14,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 2,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 20.15,
+        "speedup": 0.6122759039805531,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 130,
+        "elapsed_time": 6.4512,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 7,
+          "fallback_count": 7,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 14,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 13,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 37.86,
+        "speedup": 1.1588613406795225,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 130,
+        "elapsed_time": 3.4335,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 2,
+          "fallback_count": 2,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 4,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 69,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 22.13,
+        "speedup": 0.6671691287307807,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 128,
+        "elapsed_time": 5.7833,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 7,
+          "fallback_count": 7,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 14,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 18,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 40.8,
+        "speedup": 1.248852157943067,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 128,
+        "elapsed_time": 3.1369,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 1,
+          "fallback_count": 1,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 2,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 38,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 9.88,
+        "speedup": 0.2978595116068737,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 130,
+        "elapsed_time": 13.1592,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 22,
+          "fallback_count": 22,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 44,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 57,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 44.42,
+        "speedup": 1.359657177838996,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 130,
+        "elapsed_time": 2.9266,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 1,
+          "fallback_count": 1,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 2,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 40,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 28.05,
+        "speedup": 0.8585858585858586,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 130,
+        "elapsed_time": 4.6345,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 5,
+          "fallback_count": 5,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 10,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 52,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 42.98,
+        "speedup": 1.31558004285277,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 2.9784,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 1,
+          "fallback_count": 1,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 2,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 77,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 42.07,
+        "speedup": 1.2877257422711967,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 130,
+        "elapsed_time": 3.0898,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 1,
+          "fallback_count": 1,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 2,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 29,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 43.45,
+        "speedup": 1.3202673959282896,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 130,
+        "elapsed_time": 2.9917,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 1,
+          "fallback_count": 1,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 2,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 78,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 42.18,
+        "speedup": 1.2910927456382002,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 130,
+        "elapsed_time": 3.0821,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 1,
+          "fallback_count": 1,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 2,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 7,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 44.81,
+        "speedup": 1.3715947352310989,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 2.8564,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": {
+          "trigger_count": 0,
+          "fallback_count": 0,
+          "fallback_tokens": 2,
+          "total_fallback_tokens": 0,
+          "guarded_trim_count": 0
+        },
+        "progressive_fallback": null
+      }
+    ],
+    "tasd_f_v3": [
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 22,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 1.84,
+        "speedup": 0.055471811878203194,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 2,
+        "elapsed_time": 1.0859,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "argparse": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 73,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 1.91,
+        "speedup": 0.05758215254748266,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 2,
+        "elapsed_time": 1.0456,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "argparse": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 59,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 19.51,
+        "speedup": 0.5971839608203244,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 32,
+        "elapsed_time": 1.6403,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 2,
+          "fallback_level_counts": {
+            "1": 1,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 2,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 1,
+          "post_fallback_probe_accept_rates": [
+            0.1875
+          ],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.38": 1,
+            "low_accept_rate_0.17": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 2
+          },
+          "total_fallback_count": 2
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 2,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 18.64,
+        "speedup": 0.5705540250994796,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 32,
+        "elapsed_time": 1.7171,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 2,
+          "fallback_level_counts": {
+            "1": 1,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 2,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 1,
+          "post_fallback_probe_accept_rates": [
+            0.1875
+          ],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.38": 1,
+            "low_accept_rate_0.17": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 2
+          },
+          "total_fallback_count": 2
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 1,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 28.79,
+        "speedup": 0.8812366085093357,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 0,
+        "generated_tokens": 44,
+        "elapsed_time": 1.5284,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.19": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 70,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 33.13,
+        "speedup": 1.006684898207232,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 67,
+        "elapsed_time": 2.0221,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.03": 1
+          },
+          "fallback_by_structure_type": {
+            "openmmlab_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 64,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 22.8,
+        "speedup": 0.6927985414767549,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 34,
+        "elapsed_time": 1.491,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "openmmlab_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 33,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 1.94,
+        "speedup": 0.05848658426288815,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 2,
+        "elapsed_time": 1.0302,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "argparse": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 48,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 45.77,
+        "speedup": 1.3907626861136435,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 2.7963,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 1,
+            "2": 0,
+            "3": 0
+          },
+          "fallback_tokens_total": 2,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 3,
+          "post_fallback_probe_accept_rates": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.30": 1
+          },
+          "fallback_by_structure_type": {
+            "openmmlab_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 30,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 1.92,
+        "speedup": 0.05788362978595116,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 2,
+        "elapsed_time": 1.044,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "argparse": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 61,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 1.82,
+        "speedup": 0.0548688574012662,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 2,
+        "elapsed_time": 1.0986,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "argparse": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 0,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 32.95,
+        "speedup": 1.0012154360376786,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 68,
+        "elapsed_time": 2.0635,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.09": 1
+          },
+          "fallback_by_structure_type": {
+            "openmmlab_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 2,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 33.18,
+        "speedup": 1.0082041932543302,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 68,
+        "elapsed_time": 2.0492,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.09": 1
+          },
+          "fallback_by_structure_type": {
+            "openmmlab_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 13,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 35.09,
+        "speedup": 1.0740740740740742,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 107,
+        "elapsed_time": 3.0496,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 2,
+          "fallback_level_counts": {
+            "1": 1,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 2,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 4,
+          "post_fallback_probe_accept_rates": [
+            1.0,
+            1.0,
+            0.4688,
+            0.0
+          ],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.38": 1,
+            "low_accept_rate_0.23": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 2
+          },
+          "total_fallback_count": 2
+        }
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 69,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 1.9,
+        "speedup": 0.057280675309014165,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 2,
+        "elapsed_time": 1.0521,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "argparse": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 18,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 41.66,
+        "speedup": 1.2751760024487295,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 2,
+        "generated_tokens": 128,
+        "elapsed_time": 3.0725,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 1,
+            "2": 0,
+            "3": 0
+          },
+          "fallback_tokens_total": 2,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 4,
+          "post_fallback_probe_accept_rates": [
+            1.0,
+            1.0,
+            0.0,
+            1.0
+          ],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.34": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-Argparse",
+        "sample_idx": 38,
+        "structure_type": "argparse",
+        "ar_tps": 33.17,
+        "tps": 1.93,
+        "speedup": 0.058185107024419654,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 2,
+        "elapsed_time": 1.0381,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.02": 1
+          },
+          "fallback_by_structure_type": {
+            "argparse": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 57,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 51.3,
+        "speedup": 1.5702479338842974,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 121,
+        "elapsed_time": 2.3586,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.23": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 40,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 31.08,
+        "speedup": 0.9513314967860421,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 62,
+        "elapsed_time": 1.9951,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.12": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 52,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 43.49,
+        "speedup": 1.3311906948270584,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 128,
+        "elapsed_time": 2.9433,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 0,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 0,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {},
+          "fallback_by_structure_type": {},
+          "total_fallback_count": 0
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 77,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 44.09,
+        "speedup": 1.349556167737986,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 124,
+        "elapsed_time": 2.8123,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.21": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "OpenMMLab-Config",
+        "sample_idx": 29,
+        "structure_type": "openmmlab_config",
+        "ar_tps": 32.91,
+        "tps": 51.19,
+        "speedup": 1.5554542692190825,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 130,
+        "elapsed_time": 2.5393,
+        "truncated": false,
+        "stop_reason": "max_tokens",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 1,
+            "2": 0,
+            "3": 0
+          },
+          "fallback_tokens_total": 2,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 1,
+          "post_fallback_probe_accept_rates": [
+            1.0
+          ],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.30": 1
+          },
+          "fallback_by_structure_type": {
+            "openmmlab_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 78,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 44.79,
+        "speedup": 1.3709825528007344,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 124,
+        "elapsed_time": 2.7684,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.21": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      },
+      {
+        "benchmark": "Real-Python-DictConfig",
+        "sample_idx": 7,
+        "structure_type": "dict_config",
+        "ar_tps": 32.67,
+        "tps": 34.01,
+        "speedup": 1.0410162228344046,
+        "sq": 0,
+        "off_structure": 0,
+        "repair_count": 1,
+        "generated_tokens": 68,
+        "elapsed_time": 1.9996,
+        "truncated": false,
+        "stop_reason": "error:ValueError",
+        "failure_aware_fallback": null,
+        "progressive_fallback": {
+          "trigger_count": 1,
+          "fallback_level_counts": {
+            "1": 0,
+            "2": 1,
+            "3": 0
+          },
+          "fallback_tokens_total": 0,
+          "fallback_to_boundary_count": 0,
+          "fallback_guard_trim_count": 0,
+          "cooldown_skip_count": 0,
+          "emergency_fallback_count": 0,
+          "post_fallback_probe_count": 0,
+          "post_fallback_probe_accept_rates": [],
+          "fallback_reason_counts": {
+            "low_accept_rate_0.05": 1
+          },
+          "fallback_by_structure_type": {
+            "dict_config": 1
+          },
+          "total_fallback_count": 1
+        }
+      }
+    ]
+  }
+}

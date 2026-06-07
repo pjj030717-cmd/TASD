@@ -1,0 +1,27 @@
+{
+  "sample_count": 80,
+  "source_counts": {
+    "CodeSearchNet-Python": 80
+  },
+  "repo_counts": {
+    "python-isympy.py": 2,
+    "python-charset_normalizer": 1,
+    "python-conda": 22,
+    "python-conda_libmamba_solver": 1,
+    "python-conda_package_handling": 3,
+    "python-pip": 19,
+    "python-pkg_resources": 1,
+    "python-setuptools": 1,
+    "python-wheel": 3,
+    "python-markdown_it": 1,
+    "python-rich": 3,
+    "python-accelerate": 23
+  },
+  "avg_prompt_lines": 16.34,
+  "avg_reference_lines": 16.79,
+  "avg_prompt_chars": 584.33,
+  "avg_reference_chars": 612.94,
+  "invalid_prompt_seed_count": 0,
+  "invalid_reference_count": 5,
+  "notes": "Extracted 80 real samples from source code for codesearchnet_argparse_blocks_80"
+}

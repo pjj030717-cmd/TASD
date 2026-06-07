@@ -1,0 +1,35 @@
+{
+  "sample_count": 80,
+  "raw_candidate_count": 1347,
+  "valid_candidate_count": 1157,
+  "selected_sample_count": 80,
+  "source_file_count": 77,
+  "repo_count": 5,
+  "source_counts": {
+    "Pipeline-Stage-Config": 80
+  },
+  "repo_counts": {
+    "open-mmlab/mmpretrain": 19,
+    "open-mmlab/mmpose": 25,
+    "open-mmlab/mmdetection": 21,
+    "open-mmlab/mmocr": 6,
+    "open-mmlab/mmsegmentation": 9
+  },
+  "avg_prompt_lines": 4.09,
+  "avg_reference_lines": 10.88,
+  "avg_prompt_chars": 129.09,
+  "avg_reference_chars": 370.99,
+  "min_prompt_chars": 61,
+  "max_prompt_chars": 268,
+  "min_reference_chars": 171,
+  "max_reference_chars": 2305,
+  "invalid_prompt_seed_count": 0,
+  "invalid_reference_count": 190,
+  "reference_too_short_count": 0,
+  "duplicate_removed_count": 0,
+  "selection_seed": 20260604,
+  "notes": [
+    "Extracted 80 real samples from source code for pipeline_stage_config_80",
+    "Phase: pilot (20 samples)"
+  ]
+}

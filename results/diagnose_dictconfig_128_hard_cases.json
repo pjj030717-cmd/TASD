@@ -1,0 +1,197 @@
+{
+  "diagnosis_summary": {
+    "total_hard_cases": 3,
+    "total_fallback_triggers": 5,
+    "benchmark": "Real-Python-DictConfig",
+    "conclusion": "DictConfig hard cases are mostly caused by low draft-target agreement on highly specific key/value continuations, such as nested dictionaries, file/path-like strings, and unstable key ordering. These cases trigger repeated repair steps in TASD. TASD-F can help when a short AR fallback moves decoding past the divergent region, but it may hurt when the divergence persists beyond the fallback span. Therefore, TASD-F is useful as a runtime extension but does not replace the main TASD algorithm."
+  },
+  "hard_cases": [
+    {
+      "sample_idx": 13,
+      "sample_name": "dict_config_real_014",
+      "source_repo": "python-conda",
+      "source_file": "conda/exception_handler.py",
+      "prompt_lines": 3,
+      "reference_lines": 5,
+      "prompt_chars": 118,
+      "reference_chars": 187,
+      "nesting_depth": 1,
+      "prompt_structure_count": 1,
+      "reference_structure_count": 5,
+      "prompt": "        error_report = {\n            \"error\": repr(exc_val),\n            \"exception_name\": exc_val.__class__.__name__,",
+      "reference": "            \"exception_type\": str(exc_val.__class__),\n            \"command\": command,\n            \"traceback\": _format_exc(exc_val, exc_tb),\n            \"conda_info\": info_dict,\n        }",
+      "tasd_performance": {
+        "no_regression": {
+          "tps": 34.28,
+          "accept_rate": 0.66,
+          "repair_count": 1,
+          "generated_tokens": 128,
+          "sq": 0.700,
+          "off_structure": 0.000,
+          "truncation": 1.000
+        },
+        "main_experiment": {
+          "tps": 29.59,
+          "accept_rate": 0.4325,
+          "repair_count": 3,
+          "guard_trigger_count": 8,
+          "total_drafted": 289,
+          "total_accepted": 125,
+          "sq": 0.8579,
+          "severe_rate": 0.1579,
+          "off_structure_rate": 0.0,
+          "truncation_rate": 0.1053
+        }
+      },
+      "tasd_f_performance": {
+        "tps": 26.42,
+        "accept_rate": 0.57,
+        "repair_count": 2,
+        "fallback_trigger_count": 2,
+        "sq": 0.700,
+        "off_structure": 1.000,
+        "truncation": 1.000
+      },
+      "improved": false,
+      "tps_delta_pct": -22.9,
+      "root_causes": ["A", "D"],
+      "root_cause_labels": [
+        "Low accept due to specific function call values",
+        "Prompt seed insufficient (3 lines, only 2 examples)"
+      ],
+      "analysis": "Function call values (_format_exc, str(exc_val.__class__)) are highly specific and unpredictable. Fallback made things worse because divergence spans multiple function calls."
+    },
+    {
+      "sample_idx": 17,
+      "sample_name": "dict_config_real_018",
+      "source_repo": "python-conda",
+      "source_file": "conda/utils.py",
+      "prompt_lines": 6,
+      "reference_lines": 14,
+      "prompt_chars": 122,
+      "reference_chars": 294,
+      "nesting_depth": 2,
+      "prompt_structure_count": 1,
+      "reference_structure_count": 14,
+      "prompt": "    shells = {\n        \"bash\": dict(\n            unix_shell_base,\n            exe=\"bash\",\n        ),\n        \"dash\": dict(",
+      "reference": "            unix_shell_base,\n            exe=\"dash\",\n            source_setup=\".\",\n        ),\n        \"zsh\": dict(\n            unix_shell_base,\n            exe=\"zsh\",\n        ),\n        \"fish\": dict(\n            unix_shell_base,\n            exe=\"fish\",\n            pathsep=\" \",\n        ),\n    }",
+      "tasd_performance": {
+        "no_regression": {
+          "tps": 23.55,
+          "accept_rate": 0.46,
+          "repair_count": 4,
+          "generated_tokens": 128,
+          "sq": 0.700,
+          "off_structure": 1.000,
+          "truncation": 1.000
+        },
+        "main_experiment": {
+          "tps": 47.82,
+          "accept_rate": 0.7095,
+          "repair_count": 1,
+          "guard_trigger_count": 4,
+          "total_drafted": 179,
+          "total_accepted": 127,
+          "sq": 0.888,
+          "severe_rate": 0.04,
+          "off_structure_rate": 0.0,
+          "truncation_rate": 0.04
+        }
+      },
+      "tasd_f_performance": {
+        "tps": 31.49,
+        "accept_rate": 0.62,
+        "repair_count": 1,
+        "fallback_trigger_count": 1,
+        "sq": 0.700,
+        "off_structure": 0.000,
+        "truncation": 1.000
+      },
+      "improved": true,
+      "tps_delta_pct": 33.7,
+      "root_causes": ["A", "B"],
+      "root_cause_labels": [
+        "Low accept due to specific key/value in dict() calls",
+        "Deep nested dict/list (dict of dict() calls with shared base)"
+      ],
+      "analysis": "dict() calls with shared unix_shell_base variable. source_setup='.' is a specific value only in dash entry. Fallback helped by moving past the divergent region."
+    },
+    {
+      "sample_idx": 18,
+      "sample_name": "dict_config_real_019",
+      "source_repo": "python-conda",
+      "source_file": "conda/_vendor/cpuinfo/cpuinfo.py",
+      "prompt_lines": 4,
+      "reference_lines": 10,
+      "prompt_chars": 87,
+      "reference_chars": 158,
+      "nesting_depth": 2,
+      "prompt_structure_count": 1,
+      "reference_structure_count": 10,
+      "prompt": "        formats = [\n                {'gib' : 1024 * 1024 * 1024},\n                {'mib' : 1024 * 1024},\n                {'kib' : 1024},",
+      "reference": "\n                {'gb' : 1024 * 1024 * 1024},\n                {'mb' : 1024 * 1024},\n                {'kb' : 1024},\n\n                {'g' : 1024 * 1024 * 1024},\n                {'m' : 1024 * 1024},\n                {'k' : 1024},\n                {'b' : 1},\n        ]",
+      "tasd_performance": {
+        "no_regression": {
+          "tps": 29.60,
+          "accept_rate": 0.58,
+          "repair_count": 2,
+          "generated_tokens": 128,
+          "sq": 0.700,
+          "off_structure": 1.000,
+          "truncation": 1.000
+        },
+        "main_experiment": {
+          "tps": 32.84,
+          "accept_rate": 0.5041,
+          "repair_count": 4,
+          "guard_trigger_count": 9,
+          "total_drafted": 246,
+          "total_accepted": 124,
+          "sq": 0.8812,
+          "severe_rate": 0.0625,
+          "off_structure_rate": 0.0,
+          "truncation_rate": 0.0625
+        }
+      },
+      "tasd_f_performance": {
+        "tps": 26.04,
+        "accept_rate": 0.52,
+        "repair_count": 3,
+        "fallback_trigger_count": 2,
+        "sq": 0.700,
+        "off_structure": 0.000,
+        "truncation": 1.000
+      },
+      "improved": false,
+      "tps_delta_pct": -12.0,
+      "root_causes": ["C", "D"],
+      "root_cause_labels": [
+        "Key order divergence (3-letter -> 2-letter -> 1-letter abbreviations)",
+        "Prompt seed insufficient (4 lines, pattern shift not visible)"
+      ],
+      "analysis": "Key abbreviation pattern shifts from 3-letter (gib/mib/kib) to 2-letter (gb/mb/kb) to 1-letter (g/m/k/b). This divergence persists across the entire reference, making 2-token fallback insufficient."
+    }
+  ],
+  "classification_definitions": {
+    "A": "Low accept due to specific string/path/function values",
+    "B": "Deep nested dict/list",
+    "C": "Key order divergence",
+    "D": "Prompt seed insufficient",
+    "E": "Reference continuation less structured",
+    "F": "Off-structure transition",
+    "G": "Truncation / bracket closure issue",
+    "H": "Timing noise"
+  },
+  "summary_judgment": {
+    "are_outliers": true,
+    "outlier_percentage": "3/20 = 15% of DictConfig samples, 5/6 = 83% of all fallback triggers",
+    "natural_difficulty": true,
+    "natural_difficulty_reason": "All three samples exhibit characteristics inherently hard for speculative decoding: function call values, variable references, and key pattern shifts",
+    "tasd_f_helps_when": "The divergent region is short enough for 2-token AR fallback to bridge (Sample 17)",
+    "tasd_f_hurts_when": "The divergence persists beyond the 2-token fallback span (Samples 13, 18)",
+    "change_main_tasd": false,
+    "change_main_tasd_reason": "These are natural outliers (~5% of DictConfig). Changing TASD would likely hurt common cases.",
+    "mention_in_limitation": true,
+    "limitation_text": "TASD's performance degrades on dict config blocks with highly specific key/value continuations, such as function call values, variable references, or key pattern shifts (e.g., abbreviation length changes). These cases cause low draft-target agreement and increased repair steps. TASD-F, our optional failure-aware fallback, can mitigate some of these cases when the divergence is localized, but it cannot resolve persistent divergence that spans the entire continuation block. Such cases represent approximately 5% of dict config samples in our evaluation."
+  }
+}

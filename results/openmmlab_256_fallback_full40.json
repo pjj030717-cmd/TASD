@@ -1,0 +1,6245 @@
+{
+  "summary": {
+    "n_samples": 40,
+    "tasd_mean_speedup": 1.6429,
+    "tasd_median_speedup": 1.887,
+    "fb_mean_speedup": 1.5475,
+    "fb_median_speedup": 1.7349,
+    "tasd_mean_accept": 0.8572,
+    "fb_mean_accept": 0.8639,
+    "tasd_mean_repair": 1.82,
+    "fb_mean_repair": 3.6,
+    "tasd_mean_sq": 0.9071,
+    "fb_mean_sq": 0.9072,
+    "tasd_mean_offstr": 0.0039,
+    "fb_mean_offstr": 0.015,
+    "fb_wins": 10,
+    "tasd_wins": 30,
+    "ties": 0,
+    "total_fallback_triggers": 462
+  },
+  "per_sample": [
+    {
+      "sample_idx": 0,
+      "ar": {
+        "tps": 29.01,
+        "wall_time": 8.824,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.896,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.04,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 29.58,
+        "wall_time": 8.6559,
+        "generated_tokens": 256,
+        "accept_rate": 0.4874,
+        "repair_count": 5,
+        "guard_trigger_count": 9,
+        "structural_quality_score": 0.8917,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0833,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.0196
+      },
+      "tasd_fallback": {
+        "tps": 25.01,
+        "wall_time": 10.2361,
+        "generated_tokens": 256,
+        "accept_rate": 0.4188,
+        "repair_count": 14,
+        "guard_trigger_count": 18,
+        "structural_quality_score": 0.8917,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0833,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 21,
+          "fallback_tokens": 44,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 0.8621
+      }
+    },
+    {
+      "sample_idx": 1,
+      "ar": {
+        "tps": 32.94,
+        "wall_time": 7.7716,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8938,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0625,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 63.35,
+        "wall_time": 4.0413,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9232
+      },
+      "tasd_fallback": {
+        "tps": 55.15,
+        "wall_time": 4.6421,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 13,
+          "fallback_tokens": 52,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.6743
+      }
+    },
+    {
+      "sample_idx": 2,
+      "ar": {
+        "tps": 32.92,
+        "wall_time": 7.7764,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.896,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.04,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 31.95,
+        "wall_time": 8.0133,
+        "generated_tokens": 256,
+        "accept_rate": 0.4874,
+        "repair_count": 5,
+        "guard_trigger_count": 9,
+        "structural_quality_score": 0.8917,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0833,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 0.9705
+      },
+      "tasd_fallback": {
+        "tps": 25.29,
+        "wall_time": 10.1216,
+        "generated_tokens": 256,
+        "accept_rate": 0.4188,
+        "repair_count": 14,
+        "guard_trigger_count": 18,
+        "structural_quality_score": 0.8917,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0833,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 21,
+          "fallback_tokens": 44,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 0.7682
+      }
+    },
+    {
+      "sample_idx": 3,
+      "ar": {
+        "tps": 33.41,
+        "wall_time": 7.6628,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8971,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0286,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 64.61,
+        "wall_time": 3.9625,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8471,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0286,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "speedup": 1.9339
+      },
+      "tasd_fallback": {
+        "tps": 62.17,
+        "wall_time": 4.1179,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8471,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0286,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "fallback_summary": {
+          "trigger_count": 3,
+          "fallback_tokens": 12,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.8608
+      }
+    },
+    {
+      "sample_idx": 4,
+      "ar": {
+        "tps": 32.69,
+        "wall_time": 7.8319,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9756,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0488,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1463,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 63.55,
+        "wall_time": 4.0285,
+        "generated_tokens": 256,
+        "accept_rate": 0.9961,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9692,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": true,
+        "repetition_rate": 0.1538,
+        "truncation_flag": false,
+        "truncation_rate": 0.0769,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.944
+      },
+      "tasd_fallback": {
+        "tps": 63.46,
+        "wall_time": 4.0342,
+        "generated_tokens": 256,
+        "accept_rate": 0.9961,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9692,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": true,
+        "repetition_rate": 0.1538,
+        "truncation_flag": false,
+        "truncation_rate": 0.0769,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 0,
+          "fallback_tokens": 0,
+          "fallback_reasons": [],
+          "fallback_regions": [],
+          "avg_accept_before": 0,
+          "avg_accept_after": 0
+        },
+        "speedup": 1.9413
+      }
+    },
+    {
+      "sample_idx": 5,
+      "ar": {
+        "tps": 32.65,
+        "wall_time": 7.8419,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8944,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0556,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.75,
+        "wall_time": 4.08,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9219
+      },
+      "tasd_fallback": {
+        "tps": 57.46,
+        "wall_time": 4.4551,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 13,
+          "fallback_tokens": 52,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.7599
+      }
+    },
+    {
+      "sample_idx": 6,
+      "ar": {
+        "tps": 32.81,
+        "wall_time": 7.8032,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9972,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0278,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 61.45,
+        "wall_time": 4.1661,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8857,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1429,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.8729
+      },
+      "tasd_fallback": {
+        "tps": 60.02,
+        "wall_time": 4.265,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8857,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1429,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 4,
+          "fallback_tokens": 16,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.8293
+      }
+    },
+    {
+      "sample_idx": 7,
+      "ar": {
+        "tps": 32.39,
+        "wall_time": 7.9042,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8833,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0333,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 16.57,
+        "wall_time": 15.4517,
+        "generated_tokens": 256,
+        "accept_rate": 0.2523,
+        "repair_count": 13,
+        "guard_trigger_count": 27,
+        "structural_quality_score": 0.8396,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": true,
+        "off_structure_rate": 0.0417,
+        "repetition_flag": true,
+        "repetition_rate": 0.2917,
+        "truncation_flag": false,
+        "truncation_rate": 0.0417,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 0.5116
+      },
+      "tasd_fallback": {
+        "tps": 23.76,
+        "wall_time": 10.7737,
+        "generated_tokens": 256,
+        "accept_rate": 0.393,
+        "repair_count": 8,
+        "guard_trigger_count": 17,
+        "structural_quality_score": 0.8091,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": true,
+        "off_structure_rate": 0.1818,
+        "repetition_flag": true,
+        "repetition_rate": 0.1818,
+        "truncation_flag": false,
+        "truncation_rate": 0.0909,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 10,
+          "fallback_tokens": 36,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 0.7336
+      }
+    },
+    {
+      "sample_idx": 8,
+      "ar": {
+        "tps": 31.97,
+        "wall_time": 8.0082,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9329,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1714,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 63.13,
+        "wall_time": 4.0552,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9457,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0435,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9747
+      },
+      "tasd_fallback": {
+        "tps": 61.94,
+        "wall_time": 4.1329,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9457,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0435,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 1,
+          "fallback_tokens": 4,
+          "fallback_reasons": [
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.9374
+      }
+    },
+    {
+      "sample_idx": 9,
+      "ar": {
+        "tps": 32.82,
+        "wall_time": 7.7995,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8957,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0435,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 49.54,
+        "wall_time": 5.1674,
+        "generated_tokens": 256,
+        "accept_rate": 0.8247,
+        "repair_count": 2,
+        "guard_trigger_count": 4,
+        "structural_quality_score": 0.8643,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.1071,
+        "off_structure": true,
+        "off_structure_rate": 0.0357,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0357,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.5094
+      },
+      "tasd_fallback": {
+        "tps": 57.51,
+        "wall_time": 4.4514,
+        "generated_tokens": 256,
+        "accept_rate": 0.9551,
+        "repair_count": 1,
+        "guard_trigger_count": 1,
+        "structural_quality_score": 0.8519,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.1111,
+        "off_structure": true,
+        "off_structure_rate": 0.0741,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.037,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 20,
+          "fallback_reasons": [
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.7523
+      }
+    },
+    {
+      "sample_idx": 10,
+      "ar": {
+        "tps": 33.62,
+        "wall_time": 7.6142,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9829,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0732,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0244,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 63.68,
+        "wall_time": 4.02,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8857,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1429,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.8941
+      },
+      "tasd_fallback": {
+        "tps": 59.4,
+        "wall_time": 4.3095,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8857,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1429,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 20,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.7668
+      }
+    },
+    {
+      "sample_idx": 11,
+      "ar": {
+        "tps": 33.33,
+        "wall_time": 7.6814,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9943,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0286,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 16.93,
+        "wall_time": 15.1186,
+        "generated_tokens": 256,
+        "accept_rate": 0.2523,
+        "repair_count": 13,
+        "guard_trigger_count": 27,
+        "structural_quality_score": 0.8396,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": true,
+        "off_structure_rate": 0.0417,
+        "repetition_flag": true,
+        "repetition_rate": 0.2917,
+        "truncation_flag": false,
+        "truncation_rate": 0.0417,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 0.508
+      },
+      "tasd_fallback": {
+        "tps": 24.06,
+        "wall_time": 10.6403,
+        "generated_tokens": 256,
+        "accept_rate": 0.393,
+        "repair_count": 8,
+        "guard_trigger_count": 17,
+        "structural_quality_score": 0.8091,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": true,
+        "off_structure_rate": 0.1818,
+        "repetition_flag": true,
+        "repetition_rate": 0.1818,
+        "truncation_flag": false,
+        "truncation_rate": 0.0909,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 10,
+          "fallback_tokens": 36,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 0.7219
+      }
+    },
+    {
+      "sample_idx": 12,
+      "ar": {
+        "tps": 32.56,
+        "wall_time": 7.8635,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9329,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1714,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.57,
+        "wall_time": 4.0917,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9457,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0435,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9217
+      },
+      "tasd_fallback": {
+        "tps": 63.88,
+        "wall_time": 4.0073,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9457,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0435,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 1,
+          "fallback_tokens": 4,
+          "fallback_reasons": [
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.9619
+      }
+    },
+    {
+      "sample_idx": 13,
+      "ar": {
+        "tps": 33.27,
+        "wall_time": 7.6941,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8957,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0435,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 50.57,
+        "wall_time": 5.0626,
+        "generated_tokens": 256,
+        "accept_rate": 0.8247,
+        "repair_count": 2,
+        "guard_trigger_count": 4,
+        "structural_quality_score": 0.8643,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.1071,
+        "off_structure": true,
+        "off_structure_rate": 0.0357,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0357,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.52
+      },
+      "tasd_fallback": {
+        "tps": 55.53,
+        "wall_time": 4.61,
+        "generated_tokens": 256,
+        "accept_rate": 0.9551,
+        "repair_count": 1,
+        "guard_trigger_count": 1,
+        "structural_quality_score": 0.8519,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.1111,
+        "off_structure": true,
+        "off_structure_rate": 0.0741,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.037,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 20,
+          "fallback_reasons": [
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.6691
+      }
+    },
+    {
+      "sample_idx": 14,
+      "ar": {
+        "tps": 32.27,
+        "wall_time": 6.1358,
+        "generated_tokens": 198,
+        "structural_quality_score": 0.7362,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0345,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.069,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": true
+      },
+      "tasd": {
+        "tps": 60.92,
+        "wall_time": 4.2022,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9972,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0278,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.8878
+      },
+      "tasd_fallback": {
+        "tps": 62.73,
+        "wall_time": 4.0811,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9972,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0278,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 0,
+          "fallback_tokens": 0,
+          "fallback_reasons": [],
+          "fallback_regions": [],
+          "avg_accept_before": 0,
+          "avg_accept_after": 0
+        },
+        "speedup": 1.9439
+      }
+    },
+    {
+      "sample_idx": 15,
+      "ar": {
+        "tps": 32.15,
+        "wall_time": 7.9619,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8938,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0625,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 60.96,
+        "wall_time": 4.1998,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.8961
+      },
+      "tasd_fallback": {
+        "tps": 55.22,
+        "wall_time": 4.6358,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 13,
+          "fallback_tokens": 52,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.7176
+      }
+    },
+    {
+      "sample_idx": 16,
+      "ar": {
+        "tps": 31.66,
+        "wall_time": 8.0867,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9352,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.037,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0741,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 25.93,
+        "wall_time": 9.8732,
+        "generated_tokens": 256,
+        "accept_rate": 0.4062,
+        "repair_count": 7,
+        "guard_trigger_count": 13,
+        "structural_quality_score": 0.86,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": true,
+        "repetition_rate": 0.2,
+        "truncation_flag": false,
+        "truncation_rate": 0.1,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 0.819
+      },
+      "tasd_fallback": {
+        "tps": 19.14,
+        "wall_time": 13.3776,
+        "generated_tokens": 256,
+        "accept_rate": 0.322,
+        "repair_count": 38,
+        "guard_trigger_count": 44,
+        "structural_quality_score": 0.8522,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": true,
+        "off_structure_rate": 0.0435,
+        "repetition_flag": true,
+        "repetition_rate": 0.1739,
+        "truncation_flag": false,
+        "truncation_rate": 0.087,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 50,
+          "fallback_tokens": 70,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 2,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 0.6045
+      }
+    },
+    {
+      "sample_idx": 17,
+      "ar": {
+        "tps": 33.2,
+        "wall_time": 7.7114,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0286,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0286,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 55.55,
+        "wall_time": 4.6081,
+        "generated_tokens": 256,
+        "accept_rate": 0.8644,
+        "repair_count": 1,
+        "guard_trigger_count": 2,
+        "structural_quality_score": 0.8893,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0357,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0357,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.6732
+      },
+      "tasd_fallback": {
+        "tps": 52.86,
+        "wall_time": 4.8434,
+        "generated_tokens": 256,
+        "accept_rate": 0.8523,
+        "repair_count": 2,
+        "guard_trigger_count": 3,
+        "structural_quality_score": 0.9926,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.037,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 3,
+          "fallback_tokens": 8,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.5922
+      }
+    },
+    {
+      "sample_idx": 18,
+      "ar": {
+        "tps": 32.69,
+        "wall_time": 7.8302,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.73,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0857,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0286,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": true
+      },
+      "tasd": {
+        "tps": 64.74,
+        "wall_time": 3.9545,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.9804
+      },
+      "tasd_fallback": {
+        "tps": 61.58,
+        "wall_time": 4.1569,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 20,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.8838
+      }
+    },
+    {
+      "sample_idx": 19,
+      "ar": {
+        "tps": 32.93,
+        "wall_time": 7.773,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8938,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0625,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.42,
+        "wall_time": 4.1014,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.8955
+      },
+      "tasd_fallback": {
+        "tps": 54.9,
+        "wall_time": 4.6632,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 13,
+          "fallback_tokens": 52,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.6672
+      }
+    },
+    {
+      "sample_idx": 20,
+      "ar": {
+        "tps": 33.33,
+        "wall_time": 7.6808,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8389,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.037,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.037,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": true,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 26.47,
+        "wall_time": 9.6714,
+        "generated_tokens": 256,
+        "accept_rate": 0.4062,
+        "repair_count": 7,
+        "guard_trigger_count": 13,
+        "structural_quality_score": 0.86,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": true,
+        "repetition_rate": 0.2,
+        "truncation_flag": false,
+        "truncation_rate": 0.1,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 0.7942
+      },
+      "tasd_fallback": {
+        "tps": 19.05,
+        "wall_time": 13.436,
+        "generated_tokens": 256,
+        "accept_rate": 0.322,
+        "repair_count": 38,
+        "guard_trigger_count": 44,
+        "structural_quality_score": 0.8522,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": true,
+        "off_structure_rate": 0.0435,
+        "repetition_flag": true,
+        "repetition_rate": 0.1739,
+        "truncation_flag": false,
+        "truncation_rate": 0.087,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 50,
+          "fallback_tokens": 70,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 2,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 0.5716
+      }
+    },
+    {
+      "sample_idx": 21,
+      "ar": {
+        "tps": 31.71,
+        "wall_time": 8.0736,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8803,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0303,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0303,
+        "truncation_flag": true,
+        "truncation_rate": 0.0909,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 33.59,
+        "wall_time": 7.6219,
+        "generated_tokens": 256,
+        "accept_rate": 0.5396,
+        "repair_count": 4,
+        "guard_trigger_count": 8,
+        "structural_quality_score": 0.8923,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0769,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.0593
+      },
+      "tasd_fallback": {
+        "tps": 33.26,
+        "wall_time": 7.697,
+        "generated_tokens": 256,
+        "accept_rate": 0.5396,
+        "repair_count": 4,
+        "guard_trigger_count": 8,
+        "structural_quality_score": 0.8923,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0769,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 19,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 3,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.0489
+      }
+    },
+    {
+      "sample_idx": 22,
+      "ar": {
+        "tps": 32.15,
+        "wall_time": 7.9621,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.73,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0857,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0286,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": true
+      },
+      "tasd": {
+        "tps": 60.33,
+        "wall_time": 4.2437,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.8765
+      },
+      "tasd_fallback": {
+        "tps": 60.1,
+        "wall_time": 4.2595,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 20,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.8694
+      }
+    },
+    {
+      "sample_idx": 23,
+      "ar": {
+        "tps": 31.97,
+        "wall_time": 8.0085,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8938,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0625,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.9,
+        "wall_time": 4.0702,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9675
+      },
+      "tasd_fallback": {
+        "tps": 57.15,
+        "wall_time": 4.4798,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 13,
+          "fallback_tokens": 52,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.7876
+      }
+    },
+    {
+      "sample_idx": 24,
+      "ar": {
+        "tps": 33.13,
+        "wall_time": 7.7262,
+        "generated_tokens": 256,
+        "structural_quality_score": 1.0,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 63.09,
+        "wall_time": 4.0579,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.85,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "speedup": 1.9043
+      },
+      "tasd_fallback": {
+        "tps": 42.34,
+        "wall_time": 6.0459,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.85,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "fallback_summary": {
+          "trigger_count": 43,
+          "fallback_tokens": 172,
+          "fallback_reasons": [
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.278
+      }
+    },
+    {
+      "sample_idx": 25,
+      "ar": {
+        "tps": 33.58,
+        "wall_time": 7.6232,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8967,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0333,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.18,
+        "wall_time": 4.1168,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.75,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": true,
+        "repetition_rate": 0.5455,
+        "truncation_flag": false,
+        "truncation_rate": 0.1818,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "speedup": 1.8517
+      },
+      "tasd_fallback": {
+        "tps": 63.29,
+        "wall_time": 4.0451,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.75,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": true,
+        "repetition_rate": 0.5455,
+        "truncation_flag": false,
+        "truncation_rate": 0.1818,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "fallback_summary": {
+          "trigger_count": 0,
+          "fallback_tokens": 0,
+          "fallback_reasons": [],
+          "fallback_regions": [],
+          "avg_accept_before": 0,
+          "avg_accept_after": 0
+        },
+        "speedup": 1.8848
+      }
+    },
+    {
+      "sample_idx": 26,
+      "ar": {
+        "tps": 33.4,
+        "wall_time": 7.6645,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9824,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1765,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.51,
+        "wall_time": 4.0954,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9825,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.075,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.025,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.8716
+      },
+      "tasd_fallback": {
+        "tps": 62.72,
+        "wall_time": 4.0818,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9825,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.075,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.025,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 0,
+          "fallback_tokens": 0,
+          "fallback_reasons": [],
+          "fallback_regions": [],
+          "avg_accept_before": 0,
+          "avg_accept_after": 0
+        },
+        "speedup": 1.8778
+      }
+    },
+    {
+      "sample_idx": 27,
+      "ar": {
+        "tps": 32.69,
+        "wall_time": 7.8314,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8938,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0625,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 64.69,
+        "wall_time": 3.9571,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9789
+      },
+      "tasd_fallback": {
+        "tps": 57.43,
+        "wall_time": 4.4574,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 13,
+          "fallback_tokens": 52,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.7568
+      }
+    },
+    {
+      "sample_idx": 28,
+      "ar": {
+        "tps": 32.92,
+        "wall_time": 7.7775,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9912,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0882,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.09,
+        "wall_time": 4.1232,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.85,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "speedup": 1.8861
+      },
+      "tasd_fallback": {
+        "tps": 44.79,
+        "wall_time": 5.7159,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.85,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "fallback_summary": {
+          "trigger_count": 43,
+          "fallback_tokens": 172,
+          "fallback_reasons": [
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.3606
+      }
+    },
+    {
+      "sample_idx": 29,
+      "ar": {
+        "tps": 33.27,
+        "wall_time": 7.6941,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9375,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0312,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0625,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 49.38,
+        "wall_time": 5.1841,
+        "generated_tokens": 256,
+        "accept_rate": 0.8241,
+        "repair_count": 3,
+        "guard_trigger_count": 6,
+        "structural_quality_score": 0.8742,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0968,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0645,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.4842
+      },
+      "tasd_fallback": {
+        "tps": 49.52,
+        "wall_time": 5.1701,
+        "generated_tokens": 256,
+        "accept_rate": 0.8241,
+        "repair_count": 3,
+        "guard_trigger_count": 6,
+        "structural_quality_score": 0.8742,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0968,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0645,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 0,
+          "fallback_tokens": 0,
+          "fallback_reasons": [],
+          "fallback_regions": [],
+          "avg_accept_before": 0,
+          "avg_accept_after": 0
+        },
+        "speedup": 1.4884
+      }
+    },
+    {
+      "sample_idx": 30,
+      "ar": {
+        "tps": 30.91,
+        "wall_time": 8.283,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9586,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.1379,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.069,
+        "truncation_flag": false,
+        "truncation_rate": 0.0345,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 60.33,
+        "wall_time": 4.2432,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9455,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0455,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9518
+      },
+      "tasd_fallback": {
+        "tps": 60.75,
+        "wall_time": 4.2137,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9455,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0455,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 1,
+          "fallback_tokens": 4,
+          "fallback_reasons": [
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.9654
+      }
+    },
+    {
+      "sample_idx": 31,
+      "ar": {
+        "tps": 31.66,
+        "wall_time": 8.086,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8938,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0625,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 60.4,
+        "wall_time": 4.2384,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "speedup": 1.9078
+      },
+      "tasd_fallback": {
+        "tps": 53.71,
+        "wall_time": 4.7664,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9414,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.0857,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 13,
+          "fallback_tokens": 52,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.6965
+      }
+    },
+    {
+      "sample_idx": 32,
+      "ar": {
+        "tps": 32.38,
+        "wall_time": 7.9062,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8833,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0714,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0238,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 64.68,
+        "wall_time": 3.9577,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": true,
+        "speedup": 1.9975
+      },
+      "tasd_fallback": {
+        "tps": 62.09,
+        "wall_time": 4.1229,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.8,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": true,
+        "structure_not_preserved": true,
+        "fallback_summary": {
+          "trigger_count": 4,
+          "fallback_tokens": 16,
+          "fallback_reasons": [
+            "comment_line",
+            "comment_line",
+            "comment_line",
+            "comment_line"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "comment_line",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.9175
+      }
+    },
+    {
+      "sample_idx": 33,
+      "ar": {
+        "tps": 32.71,
+        "wall_time": 7.8271,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8167,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.3333,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true
+      },
+      "tasd": {
+        "tps": 63.29,
+        "wall_time": 4.0446,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.9349
+      },
+      "tasd_fallback": {
+        "tps": 61.21,
+        "wall_time": 4.1826,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 20,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.8713
+      }
+    },
+    {
+      "sample_idx": 34,
+      "ar": {
+        "tps": 32.77,
+        "wall_time": 7.8117,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9968,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0323,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 47.11,
+        "wall_time": 5.4344,
+        "generated_tokens": 256,
+        "accept_rate": 0.8032,
+        "repair_count": 3,
+        "guard_trigger_count": 6,
+        "structural_quality_score": 0.8955,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0455,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.4376
+      },
+      "tasd_fallback": {
+        "tps": 46.59,
+        "wall_time": 5.4945,
+        "generated_tokens": 256,
+        "accept_rate": 0.8135,
+        "repair_count": 3,
+        "guard_trigger_count": 6,
+        "structural_quality_score": 0.8955,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0455,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 7,
+          "fallback_tokens": 28,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.4217
+      }
+    },
+    {
+      "sample_idx": 35,
+      "ar": {
+        "tps": 32.95,
+        "wall_time": 7.7695,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8167,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.3333,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true
+      },
+      "tasd": {
+        "tps": 58.98,
+        "wall_time": 4.3406,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.79
+      },
+      "tasd_fallback": {
+        "tps": 58.32,
+        "wall_time": 4.3894,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.992,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 5,
+          "fallback_tokens": 20,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.77
+      }
+    },
+    {
+      "sample_idx": 36,
+      "ar": {
+        "tps": 32.13,
+        "wall_time": 7.9669,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.9971,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0286,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 49.34,
+        "wall_time": 5.1889,
+        "generated_tokens": 256,
+        "accept_rate": 0.8032,
+        "repair_count": 3,
+        "guard_trigger_count": 6,
+        "structural_quality_score": 0.8955,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0455,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.5356
+      },
+      "tasd_fallback": {
+        "tps": 46.26,
+        "wall_time": 5.5341,
+        "generated_tokens": 256,
+        "accept_rate": 0.8135,
+        "repair_count": 3,
+        "guard_trigger_count": 6,
+        "structural_quality_score": 0.8955,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0455,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 7,
+          "fallback_tokens": 28,
+          "fallback_reasons": [
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string",
+            "long_path_string"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "long_path_string",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.4398
+      }
+    },
+    {
+      "sample_idx": 37,
+      "ar": {
+        "tps": 33.03,
+        "wall_time": 7.7495,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.8348,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0606,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0303,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": true,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 33.92,
+        "wall_time": 7.5476,
+        "generated_tokens": 256,
+        "accept_rate": 0.5175,
+        "repair_count": 5,
+        "guard_trigger_count": 8,
+        "structural_quality_score": 0.8857,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.1429,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.0269
+      },
+      "tasd_fallback": {
+        "tps": 31.22,
+        "wall_time": 8.1999,
+        "generated_tokens": 256,
+        "accept_rate": 0.5378,
+        "repair_count": 7,
+        "guard_trigger_count": 10,
+        "structural_quality_score": 0.8857,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.1429,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 12,
+          "fallback_tokens": 35,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 0,
+              "accept_before": 0.0,
+              "accept_after": 0.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 3,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 0.9452
+      }
+    },
+    {
+      "sample_idx": 38,
+      "ar": {
+        "tps": 31.67,
+        "wall_time": 8.0828,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.87,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0667,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.1667,
+        "duplicate_option": false,
+        "unbalanced_delimiter": true,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 62.39,
+        "wall_time": 4.103,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9792,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0417,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.125,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "speedup": 1.97
+      },
+      "tasd_fallback": {
+        "tps": 61.79,
+        "wall_time": 4.1431,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.9792,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0417,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.125,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false,
+        "fallback_summary": {
+          "trigger_count": 0,
+          "fallback_tokens": 0,
+          "fallback_reasons": [],
+          "fallback_regions": [],
+          "avg_accept_before": 0,
+          "avg_accept_after": 0
+        },
+        "speedup": 1.9511
+      }
+    },
+    {
+      "sample_idx": 39,
+      "ar": {
+        "tps": 31.93,
+        "wall_time": 8.0187,
+        "generated_tokens": 256,
+        "structural_quality_score": 0.98,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.04,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": true,
+        "truncation_rate": 0.12,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": false
+      },
+      "tasd": {
+        "tps": 61.07,
+        "wall_time": 4.1922,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.85,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "speedup": 1.9126
+      },
+      "tasd_fallback": {
+        "tps": 43.07,
+        "wall_time": 5.9436,
+        "generated_tokens": 256,
+        "accept_rate": 1.0,
+        "repair_count": 0,
+        "guard_trigger_count": 0,
+        "structural_quality_score": 0.85,
+        "severe_degradation_proxy": false,
+        "severe_rate": 0.0,
+        "off_structure": false,
+        "off_structure_rate": 0.0,
+        "repetition_flag": false,
+        "repetition_rate": 0.0,
+        "truncation_flag": false,
+        "truncation_rate": 0.0,
+        "duplicate_option": false,
+        "unbalanced_delimiter": false,
+        "bad_tail": false,
+        "structure_not_preserved": true,
+        "fallback_summary": {
+          "trigger_count": 40,
+          "fallback_tokens": 160,
+          "fallback_reasons": [
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text",
+            "pure_nl_text"
+          ],
+          "fallback_regions": [
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            },
+            {
+              "reason": "pure_nl_text",
+              "tokens": 4,
+              "accept_before": 1.0,
+              "accept_after": 1.0
+            }
+          ],
+          "avg_accept_before": 1.0,
+          "avg_accept_after": 1.0
+        },
+        "speedup": 1.3489
+      }
+    }
+  ]
+}
