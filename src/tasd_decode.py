@@ -34,6 +34,7 @@ import re
 import torch
 from transformers import DynamicCache
 from .structural_guard import StructuralGuard
+from .guard_v2 import GuardV2  # noqa: F401 - optional, used via parameter
 
 
 def _forward_with_cache(model, input_ids, past_key_values):
@@ -153,9 +154,9 @@ class FailureAwareFallback:
         fallback_tokens=2
         fallback_guarded=False
     """
-    def __init__(self):
+    def __init__(self, guarded=False, accept_threshold=0.5, repair_threshold=2):
         self.fallback_tokens = 2
-        self.guarded = False
+        self.guarded = guarded
         self.guarded_trim_count = 0
         self.fallback_count = 0
         self.cooldown_rounds = 0
@@ -165,6 +166,8 @@ class FailureAwareFallback:
         self.recent_repairs = []
         self.trigger_count = 0
         self.total_fallback_tokens = 0
+        self.accept_threshold = accept_threshold
+        self.repair_threshold = repair_threshold
 
     def record_round(self, drafted: int, accepted: int, repair: int):
         accept_rate = accepted / max(drafted, 1)
@@ -187,7 +190,7 @@ class FailureAwareFallback:
             return False, ""
         rolling = sum(self.rolling_accept_rate) / max(len(self.rolling_accept_rate), 1)
         repairs = sum(self.recent_repairs[-3:])
-        if rolling < 0.5 or self.consecutive_zero_accept_rounds >= 2 or repairs >= 2:
+        if rolling < self.accept_threshold or self.consecutive_zero_accept_rounds >= 2 or repairs >= self.repair_threshold:
             return True, f"low_accept_{rolling:.2f}"
         return False, ""
 
@@ -536,6 +539,128 @@ def _is_early_stop_condition(token, tokenizer, structure_type, generated_text_so
     return False, ""
 
 
+class ProfitAwareSwitch:
+    """
+    TASD-FG-P: Profit-aware AR switch for TASD speculative decoding.
+
+    Monitors early-stage (first N tokens) speculative performance. If the
+    speculative strategy is clearly losing (below-1.0x bound), switches to
+    target AR generation for the remaining tokens to avoid below-AR outcomes.
+
+    Trigger conditions (any one, within the switch window):
+    1. estimated_speedup < 1.05  (wall-clock projection)
+    2. fallback_count >= 2        (too many failure-aware fallbacks)
+    3. guard_trim_count >= 3      (too many structural guard trims)
+    4. rolling_accept_rate < 0.4  (poor draft alignment)
+    5. consecutive_zero_accept >= 2 (draft model stalled)
+
+    Switch action: use target_model.generate() for remaining tokens.
+    """
+    def __init__(self, window_tokens=48, ar_tps_estimate=None):
+        self.window_tokens = window_tokens
+        self.ar_tps_estimate = ar_tps_estimate
+
+        # Rolling stats
+        self.rolling_accept_rates = []
+        self.consecutive_zero_accept = 0
+        self.cumulative_fallback_count = 0
+        self.cumulative_guard_trim_count = 0
+
+        # Switch state
+        self.switched = False
+        self.switch_reason = None
+        self.switch_at_token = 0
+        self.generated_before_switch = 0
+        self.elapsed_before_switch = 0.0
+        self.switch_trigger_values = {}
+
+    def record_round(self, drafted: int, accepted: int, fallback_count: int, guard_trim_count: int):
+        """Record stats after each TASD round."""
+        if drafted > 0:
+            rate = accepted / drafted
+            self.rolling_accept_rates.append(rate)
+            if len(self.rolling_accept_rates) > 5:
+                self.rolling_accept_rates.pop(0)
+
+        if accepted == 0:
+            self.consecutive_zero_accept += 1
+        else:
+            self.consecutive_zero_accept = 0
+
+        self.cumulative_fallback_count += fallback_count
+        self.cumulative_guard_trim_count += guard_trim_count
+
+    def should_switch(self, generated_count: int, elapsed_time: float, remaining: int) -> tuple:
+        """
+        Check if we should switch to AR.
+        Returns (should_switch: bool, reason: str).
+        Only evaluates within the window (first window_tokens generated).
+        """
+        if self.switched:
+            return False, ""
+
+        # Only evaluate within the window
+        if generated_count > self.window_tokens:
+            return False, ""
+
+        # Need at least a few rounds to gather stats
+        if len(self.rolling_accept_rates) < 2:
+            return False, ""
+
+        # 1. Estimated speedup from wall-clock
+        if self.ar_tps_estimate is not None and self.ar_tps_estimate > 0 and elapsed_time > 0:
+            tps_so_far = generated_count / elapsed_time if elapsed_time > 0 else 0
+            estimated_speedup = tps_so_far / self.ar_tps_estimate
+            if estimated_speedup < 1.05:
+                return True, f"est_speedup={estimated_speedup:.3f}_below_1.05"
+
+        # 2. Too many failure-aware fallbacks
+        if self.cumulative_fallback_count >= 2:
+            return True, f"fallback_count={self.cumulative_fallback_count}"
+
+        # 3. Too many guard trims
+        if self.cumulative_guard_trim_count >= 3:
+            return True, f"guard_trim={self.cumulative_guard_trim_count}"
+
+        # 4. Poor rolling accept rate
+        if self.rolling_accept_rates:
+            rolling = sum(self.rolling_accept_rates) / len(self.rolling_accept_rates)
+            if rolling < 0.4:
+                return True, f"rolling_accept={rolling:.3f}"
+
+        # 5. Consecutive zero accept (draft model stalled)
+        if self.consecutive_zero_accept >= 2:
+            return True, "consecutive_zero_accept"
+
+        return False, ""
+
+    def trigger_switch(self, reason: str, generated_count: int, elapsed_time: float):
+        """Record the AR switch trigger."""
+        self.switched = True
+        self.switch_reason = reason
+        self.switch_at_token = generated_count
+        self.generated_before_switch = generated_count
+        self.elapsed_before_switch = elapsed_time
+        # Record trigger values for diagnostics
+        if self.rolling_accept_rates:
+            self.switch_trigger_values["rolling_accept"] = \
+                round(sum(self.rolling_accept_rates) / len(self.rolling_accept_rates), 4)
+        self.switch_trigger_values["fallback_count"] = self.cumulative_fallback_count
+        self.switch_trigger_values["guard_trim"] = self.cumulative_guard_trim_count
+        self.switch_trigger_values["consecutive_zero"] = self.consecutive_zero_accept
+
+    def get_summary(self) -> dict:
+        return {
+            "switched_to_ar": self.switched,
+            "switch_reason": self.switch_reason,
+            "switch_at_token": self.switch_at_token,
+            "generated_before_switch": self.generated_before_switch,
+            "elapsed_before_switch": round(self.elapsed_before_switch, 4),
+            "window_tokens": self.window_tokens,
+            "trigger_values": self.switch_trigger_values,
+        }
+
+
 def tasd_decode(
     target_model,
     draft_model,
@@ -552,10 +677,15 @@ def tasd_decode(
     draft_tokenizer=None,
     draft_blocks=2,
     enable_guard=True,
+    guard_v2=False,  # Use GuardV2 instead of StructuralGuard (comment/string aware)
+    guard_calibrated=True,  # Guard-v1.5: downgrade repetition/brackets/import to warnings (default ON)
     enable_relaxed_accept=True,
     adaptive_policy=None,
     enable_comment_string_fallback=False,
     enable_failure_aware_fallback=False,  # TASD-F v2: optional 2-token runtime fallback
+    fallback_guarded=False,              # Apply structural guard during fallback
+    fallback_accept_threshold=0.5,       # Rolling accept rate threshold for triggering
+    fallback_repair_threshold=2,         # Repair count threshold for triggering
     enable_profit_guard=False,
     profit_guard_ar_tps_estimate=None,
     profit_guard_min_rounds=2,
@@ -564,6 +694,9 @@ def tasd_decode(
     profit_guard_repair_threshold=2,
     profit_guard_speed_margin=0.95,
     profit_guard_mode="fallback_to_ar",
+    enable_profit_aware_switch=False,     # TASD-FG-P: early-stage profit-aware AR switch
+    profit_switch_window=48,              # Evaluate only in first N tokens
+    profit_switch_ar_tps_estimate=None,   # AR TPS for speedup estimation
 ):
     """
     TASD speculative decoding with structural guard, proper KV cache,
@@ -580,6 +713,9 @@ def tasd_decode(
         profit_guard_repair_threshold: Repair count threshold for trigger
         profit_guard_speed_margin: Speed margin for wall-clock loss trigger
         profit_guard_mode: Fallback mode (only "fallback_to_ar" supported)
+        enable_profit_aware_switch: If True, enable ProfitAwareSwitch (TASD-FG-P)
+        profit_switch_window: Max tokens to evaluate before closing the switch window
+        profit_switch_ar_tps_estimate: AR TPS estimate for speedup projection
 
     Note on reference: reference is NOT used in decoding. It is only
     passed to the evaluator for structural quality assessment.
@@ -602,7 +738,10 @@ def tasd_decode(
     device = target_model.device
     draft_device = next(draft_model.parameters()).device
 
-    guard = StructuralGuard(structure_type=structure_type)
+    if guard_v2:
+        guard = GuardV2(structure_type=structure_type)
+    else:
+        guard = StructuralGuard(structure_type=structure_type, calibrated=guard_calibrated)
 
     # Comment/string fallback detector
     fallback_detector = None
@@ -612,7 +751,11 @@ def tasd_decode(
     # Failure-aware fallback detector (TASD-F v2)
     failure_fallback = None
     if enable_failure_aware_fallback:
-        failure_fallback = FailureAwareFallback()
+        failure_fallback = FailureAwareFallback(
+            guarded=fallback_guarded,
+            accept_threshold=fallback_accept_threshold,
+            repair_threshold=fallback_repair_threshold,
+        )
 
     # Profit guard
     profit_guard = None
@@ -626,6 +769,14 @@ def tasd_decode(
             ar_tps_estimate=profit_guard_ar_tps_estimate,
             mode=profit_guard_mode,
             structure_type=structure_type,
+        )
+
+    # Profit-aware switch (TASD-FG-P)
+    profit_switch = None
+    if enable_profit_aware_switch:
+        profit_switch = ProfitAwareSwitch(
+            window_tokens=profit_switch_window,
+            ar_tps_estimate=profit_switch_ar_tps_estimate,
         )
 
     # Default TASD params (can be overridden by fallback)
@@ -750,6 +901,24 @@ def tasd_decode(
                         )
                     new_tokens = ar_output[0][current_ids.shape[1]:].tolist()
                     generated_ids.extend(new_tokens)
+
+                    # If guarded, apply structural guard to fallback tokens
+                    if failure_fallback.guarded and guard is not None:
+                        full_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+                        if isinstance(guard, GuardV2):
+                            is_safe, safe_token_count, risk_type, _rl = guard.check(
+                                full_text, generated_ids, tokenizer
+                            )
+                        else:
+                            is_safe, safe_token_count, risk_type = guard.check(
+                                full_text, generated_ids, tokenizer
+                            )
+                        if not is_safe and safe_token_count < len(generated_ids):
+                            trimmed_count = len(generated_ids) - max(safe_token_count, 0)
+                            generated_ids = generated_ids[:max(safe_token_count, 1)]
+                            failure_fallback.guarded_trim_count += trimmed_count
+                            guard.trigger_count += 1
+                            guard.trim_count += 1
 
                     # Re-prefill KV caches with full sequence after AR
                     _cuda_sync()
@@ -1039,9 +1208,17 @@ def tasd_decode(
             # --- Guard check ---
             if enable_guard:
                 accepted_text = tokenizer.decode(accepted_tokens, skip_special_tokens=True)
-                safe, guard_keep_count, risk_type = guard.check(
-                    accepted_text, tokens=accepted_tokens, tokenizer=tokenizer
-                )
+                if guard_v2:
+                    safe, guard_keep_count, risk_type, _risk_level = guard.check(
+                        accepted_text, tokens=accepted_tokens, tokenizer=tokenizer
+                    )
+                    # Adaptive tightening: high risk → strict verification next round
+                    if _risk_level == "high":
+                        top_k_accept = 1
+                else:
+                    safe, guard_keep_count, risk_type = guard.check(
+                        accepted_text, tokens=accepted_tokens, tokenizer=tokenizer
+                    )
 
                 if not safe:
                     guard.trim_count += 1
@@ -1149,6 +1326,17 @@ def tasd_decode(
                     repair=1 if accepted_count == 0 else 0,
                 )
 
+            # --- Record round stats for profit-aware switch ---
+            if profit_switch is not None and not profit_switch.switched:
+                _fb_count = failure_fallback.fallback_count if failure_fallback is not None else 0
+                _guard_trim = guard.trim_count if enable_guard else 0
+                profit_switch.record_round(
+                    drafted=len(draft_tokens),
+                    accepted=accepted_count,
+                    fallback_count=_fb_count,
+                    guard_trim_count=_guard_trim,
+                )
+
             # --- Profit guard: check if we should fallback to AR ---
             if profit_guard is not None and not profit_guard.triggered:
                 current_elapsed = time.time() - wall_start
@@ -1178,6 +1366,36 @@ def tasd_decode(
                     new_tokens = ar_output[0][current_ids.shape[1]:].tolist()
                     generated_ids.extend(new_tokens)
                     stop_reason = "profit_guard_fallback_to_ar"
+                    break
+
+            # --- Profit-aware switch: check if we should switch to AR ---
+            if profit_switch is not None and not profit_switch.switched:
+                current_elapsed = time.time() - wall_start
+                should_sw, sw_reason = profit_switch.should_switch(
+                    generated_count=len(generated_ids),
+                    elapsed_time=current_elapsed,
+                    remaining=remaining,
+                )
+                if should_sw:
+                    profit_switch.trigger_switch(
+                        reason=sw_reason,
+                        generated_count=len(generated_ids),
+                        elapsed_time=current_elapsed,
+                    )
+                    # AR generate remaining tokens
+                    current_ids = torch.cat(
+                        [input_ids, torch.tensor([generated_ids], device=device)], dim=1
+                    ) if generated_ids else input_ids
+                    with torch.no_grad():
+                        ar_output = target_model.generate(
+                            current_ids,
+                            max_new_tokens=remaining,
+                            do_sample=False,
+                            pad_token_id=tokenizer.eos_token_id,
+                        )
+                    new_tokens = ar_output[0][current_ids.shape[1]:].tolist()
+                    generated_ids.extend(new_tokens)
+                    stop_reason = "profit_switch_to_ar"
                     break
 
             # Check for EOS in generated
@@ -1238,11 +1456,18 @@ def tasd_decode(
         # Guard
         "guard_trigger_count": guard.trigger_count,
         "trim_count": guard.trim_count,
+        "hard_trim_count": getattr(guard, "hard_trim_count", 0),
+        "repetition_warning_count": getattr(guard, "repetition_warning_count", 0),
+        "bracket_warning_count": getattr(guard, "bracket_warning_count", 0),
+        "import_warning_count": getattr(guard, "import_warning_count", 0),
         "repair_count": repair_count,
         "consecutive_repair_count": consecutive_repair_count,
         "trim_reasons": trim_reasons,
         "repair_reasons": repair_reasons,
         "repair_records": repair_records,
+        # GuardV2
+        "guard_v2_high_risk_count": guard.high_risk_count if guard_v2 else 0,
+        "guard_v2_medium_risk_count": guard.medium_risk_count if guard_v2 else 0,
         # Multi-block draft
         "requested_draft_blocks": requested_draft_blocks,
         "actual_draft_blocks": actual_draft_blocks_list,
@@ -1270,6 +1495,8 @@ def tasd_decode(
         "failure_aware_fallback": failure_fallback.get_summary() if failure_fallback is not None else None,
         # Profit guard
         "profit_guard": profit_guard.get_summary() if profit_guard is not None else None,
+        # Profit-aware switch (TASD-FG-P)
+        "profit_aware_switch": profit_switch.get_summary() if profit_switch is not None else None,
     }
 
     return {
@@ -1278,4 +1505,5 @@ def tasd_decode(
         "generated_tokens": generated_length,
         "elapsed_time": round(wall_time, 4),
         "stats": stats,
+        "guard_v2_enabled": guard_v2,
     }

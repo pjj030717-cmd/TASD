@@ -1,0 +1,802 @@
+[
+  {
+    "name": "complex_nested_config_001",
+    "tps": 56.08,
+    "sp": 1.294,
+    "sq": 0.5323,
+    "mat": 1.41,
+    "ngram_acc": 1.4,
+    "wall": 3.103,
+    "gen_len": 133
+  },
+  {
+    "name": "complex_nested_config_002",
+    "tps": 28.2,
+    "sp": 0.522,
+    "sq": 0.0363,
+    "mat": 2.62,
+    "ngram_acc": 1.3,
+    "wall": 7.482,
+    "gen_len": 133
+  },
+  {
+    "name": "complex_nested_config_003",
+    "tps": 64.94,
+    "sp": 1.499,
+    "sq": 0.825,
+    "mat": 1.46,
+    "ngram_acc": 2.1,
+    "wall": 2.495,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_004",
+    "tps": 42.59,
+    "sp": 0.946,
+    "sq": 0.1723,
+    "mat": 1.78,
+    "ngram_acc": 1.6,
+    "wall": 3.991,
+    "gen_len": 129
+  },
+  {
+    "name": "complex_nested_config_005",
+    "tps": 234.32,
+    "sp": 3.531,
+    "sq": 0.5,
+    "mat": 0.94,
+    "ngram_acc": 3.0,
+    "wall": 1.157,
+    "gen_len": 142
+  },
+  {
+    "name": "complex_nested_config_006",
+    "tps": 19.21,
+    "sp": 0.447,
+    "sq": 1.0,
+    "mat": 2.59,
+    "ngram_acc": 1.1,
+    "wall": 9.316,
+    "gen_len": 142
+  },
+  {
+    "name": "complex_nested_config_007",
+    "tps": 90.7,
+    "sp": 1.3,
+    "sq": 0.7812,
+    "mat": 1.3,
+    "ngram_acc": 1.4,
+    "wall": 2.988,
+    "gen_len": 136
+  },
+  {
+    "name": "complex_nested_config_008",
+    "tps": 46.51,
+    "sp": 0.751,
+    "sq": 0.0973,
+    "mat": 2.22,
+    "ngram_acc": 1.8,
+    "wall": 5.074,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_009",
+    "tps": 81.8,
+    "sp": 1.434,
+    "sq": 0.1627,
+    "mat": 1.3,
+    "ngram_acc": 1.9,
+    "wall": 2.506,
+    "gen_len": 130
+  },
+  {
+    "name": "complex_nested_config_010",
+    "tps": 94.21,
+    "sp": 1.215,
+    "sq": 0.2825,
+    "mat": 1.54,
+    "ngram_acc": 1.7,
+    "wall": 3.121,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_011",
+    "tps": 40.35,
+    "sp": 0.768,
+    "sq": 0.0859,
+    "mat": 1.88,
+    "ngram_acc": 1.2,
+    "wall": 5.13,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_012",
+    "tps": 95.39,
+    "sp": 1.326,
+    "sq": 0.4,
+    "mat": 1.54,
+    "ngram_acc": 1.7,
+    "wall": 3.082,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_013",
+    "tps": 155.48,
+    "sp": 3.099,
+    "sq": 0.6063,
+    "mat": 1.11,
+    "ngram_acc": 3.5,
+    "wall": 1.273,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_014",
+    "tps": 151.13,
+    "sp": 2.608,
+    "sq": 0.0212,
+    "mat": 1.35,
+    "ngram_acc": 3.6,
+    "wall": 1.528,
+    "gen_len": 130
+  },
+  {
+    "name": "complex_nested_config_015",
+    "tps": 51.2,
+    "sp": 1.227,
+    "sq": 1.0,
+    "mat": 1.44,
+    "ngram_acc": 1.4,
+    "wall": 3.399,
+    "gen_len": 140
+  },
+  {
+    "name": "complex_nested_config_016",
+    "tps": 90.39,
+    "sp": 1.76,
+    "sq": 0.083,
+    "mat": 1.38,
+    "ngram_acc": 2.4,
+    "wall": 2.301,
+    "gen_len": 136
+  },
+  {
+    "name": "complex_nested_config_017",
+    "tps": 49.9,
+    "sp": 0.948,
+    "sq": 0.1108,
+    "mat": 2.03,
+    "ngram_acc": 2.0,
+    "wall": 4.448,
+    "gen_len": 141
+  },
+  {
+    "name": "complex_nested_config_018",
+    "tps": 220.7,
+    "sp": 3.558,
+    "sq": 0.2135,
+    "mat": 0.94,
+    "ngram_acc": 2.9,
+    "wall": 1.097,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_019",
+    "tps": 207.16,
+    "sp": 3.078,
+    "sq": 0.4121,
+    "mat": 0.96,
+    "ngram_acc": 2.6,
+    "wall": 1.347,
+    "gen_len": 138
+  },
+  {
+    "name": "complex_nested_config_020",
+    "tps": 193.38,
+    "sp": 3.328,
+    "sq": 0.0914,
+    "mat": 1.24,
+    "ngram_acc": 4.6,
+    "wall": 1.257,
+    "gen_len": 138
+  },
+  {
+    "name": "complex_nested_config_021",
+    "tps": 119.46,
+    "sp": 2.846,
+    "sq": 0.1844,
+    "mat": 1.16,
+    "ngram_acc": 3.1,
+    "wall": 1.473,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_022",
+    "tps": 83.42,
+    "sp": 2.059,
+    "sq": 1.0,
+    "mat": 1.23,
+    "ngram_acc": 2.2,
+    "wall": 2.05,
+    "gen_len": 137
+  },
+  {
+    "name": "complex_nested_config_023",
+    "tps": 156.26,
+    "sp": 2.285,
+    "sq": 0.049,
+    "mat": 1.1,
+    "ngram_acc": 2.2,
+    "wall": 1.715,
+    "gen_len": 133
+  },
+  {
+    "name": "complex_nested_config_024",
+    "tps": 214.79,
+    "sp": 4.158,
+    "sq": 0.0856,
+    "mat": 0.94,
+    "ngram_acc": 4.5,
+    "wall": 0.982,
+    "gen_len": 140
+  },
+  {
+    "name": "complex_nested_config_025",
+    "tps": 28.25,
+    "sp": 0.549,
+    "sq": 0.8108,
+    "mat": 2.31,
+    "ngram_acc": 1.4,
+    "wall": 7.114,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_026",
+    "tps": 29.71,
+    "sp": 0.618,
+    "sq": 0.95,
+    "mat": 2.06,
+    "ngram_acc": 1.2,
+    "wall": 6.159,
+    "gen_len": 133
+  },
+  {
+    "name": "complex_nested_config_027",
+    "tps": 206.79,
+    "sp": 3.234,
+    "sq": 0.2147,
+    "mat": 0.99,
+    "ngram_acc": 3.0,
+    "wall": 1.194,
+    "gen_len": 136
+  },
+  {
+    "name": "complex_nested_config_028",
+    "tps": 20.89,
+    "sp": 0.495,
+    "sq": 1.0,
+    "mat": 2.71,
+    "ngram_acc": 1.2,
+    "wall": 7.898,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_029",
+    "tps": 51.38,
+    "sp": 1.213,
+    "sq": 1.0,
+    "mat": 1.35,
+    "ngram_acc": 1.4,
+    "wall": 3.347,
+    "gen_len": 140
+  },
+  {
+    "name": "complex_nested_config_030",
+    "tps": 72.35,
+    "sp": 1.681,
+    "sq": 1.0,
+    "mat": 1.27,
+    "ngram_acc": 1.8,
+    "wall": 2.267,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_031",
+    "tps": 62.29,
+    "sp": 1.347,
+    "sq": 1.0,
+    "mat": 1.42,
+    "ngram_acc": 1.6,
+    "wall": 2.794,
+    "gen_len": 129
+  },
+  {
+    "name": "complex_nested_config_032",
+    "tps": 189.06,
+    "sp": 3.206,
+    "sq": 0.5441,
+    "mat": 1.14,
+    "ngram_acc": 4.2,
+    "wall": 1.222,
+    "gen_len": 139
+  },
+  {
+    "name": "complex_nested_config_033",
+    "tps": 93.78,
+    "sp": 1.484,
+    "sq": 0.0083,
+    "mat": 1.62,
+    "ngram_acc": 2.4,
+    "wall": 2.559,
+    "gen_len": 130
+  },
+  {
+    "name": "complex_nested_config_034",
+    "tps": 41.92,
+    "sp": 0.898,
+    "sq": 1.0,
+    "mat": 1.93,
+    "ngram_acc": 1.4,
+    "wall": 4.318,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_035",
+    "tps": 46.68,
+    "sp": 0.852,
+    "sq": 0.8163,
+    "mat": 2.08,
+    "ngram_acc": 1.5,
+    "wall": 4.435,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_036",
+    "tps": 225.3,
+    "sp": 3.238,
+    "sq": 0.3758,
+    "mat": 1.13,
+    "ngram_acc": 3.6,
+    "wall": 1.172,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_037",
+    "tps": 93.1,
+    "sp": 1.809,
+    "sq": 1.0,
+    "mat": 1.37,
+    "ngram_acc": 2.2,
+    "wall": 2.105,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_038",
+    "tps": 59.08,
+    "sp": 1.12,
+    "sq": 0.1081,
+    "mat": 1.54,
+    "ngram_acc": 1.6,
+    "wall": 3.47,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_039",
+    "tps": 133.35,
+    "sp": 2.231,
+    "sq": 0.241,
+    "mat": 1.21,
+    "ngram_acc": 2.5,
+    "wall": 1.777,
+    "gen_len": 136
+  },
+  {
+    "name": "complex_nested_config_040",
+    "tps": 29.5,
+    "sp": 0.584,
+    "sq": 0.68,
+    "mat": 2.69,
+    "ngram_acc": 1.5,
+    "wall": 7.085,
+    "gen_len": 137
+  },
+  {
+    "name": "complex_nested_config_041",
+    "tps": 38.02,
+    "sp": 0.814,
+    "sq": 0.8919,
+    "mat": 1.96,
+    "ngram_acc": 1.4,
+    "wall": 4.892,
+    "gen_len": 138
+  },
+  {
+    "name": "complex_nested_config_042",
+    "tps": 31.99,
+    "sp": 0.701,
+    "sq": 0.963,
+    "mat": 2.31,
+    "ngram_acc": 1.4,
+    "wall": 5.501,
+    "gen_len": 133
+  },
+  {
+    "name": "complex_nested_config_043",
+    "tps": 199.63,
+    "sp": 3.786,
+    "sq": 0.8554,
+    "mat": 1.02,
+    "ngram_acc": 4.3,
+    "wall": 1.012,
+    "gen_len": 130
+  },
+  {
+    "name": "complex_nested_config_044",
+    "tps": 32.6,
+    "sp": 0.701,
+    "sq": 1.0,
+    "mat": 1.99,
+    "ngram_acc": 1.4,
+    "wall": 5.429,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_045",
+    "tps": 109.94,
+    "sp": 2.442,
+    "sq": 0.7436,
+    "mat": 1.07,
+    "ngram_acc": 2.1,
+    "wall": 1.637,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_046",
+    "tps": 51.66,
+    "sp": 0.955,
+    "sq": 0.1812,
+    "mat": 1.81,
+    "ngram_acc": 1.8,
+    "wall": 4.123,
+    "gen_len": 133
+  },
+  {
+    "name": "complex_nested_config_047",
+    "tps": 205.68,
+    "sp": 3.265,
+    "sq": 0.2147,
+    "mat": 0.99,
+    "ngram_acc": 3.0,
+    "wall": 1.201,
+    "gen_len": 136
+  },
+  {
+    "name": "complex_nested_config_048",
+    "tps": 108.72,
+    "sp": 1.998,
+    "sq": 0.0396,
+    "mat": 1.22,
+    "ngram_acc": 2.1,
+    "wall": 1.922,
+    "gen_len": 132
+  },
+  {
+    "name": "complex_nested_config_049",
+    "tps": 188.0,
+    "sp": 3.592,
+    "sq": 0.4444,
+    "mat": 0.95,
+    "ngram_acc": 3.3,
+    "wall": 1.106,
+    "gen_len": 141
+  },
+  {
+    "name": "complex_nested_config_050",
+    "tps": 89.5,
+    "sp": 1.217,
+    "sq": 0.6905,
+    "mat": 1.7,
+    "ngram_acc": 1.8,
+    "wall": 3.24,
+    "gen_len": 132
+  },
+  {
+    "name": "complex_nested_config_051",
+    "tps": 197.38,
+    "sp": 3.274,
+    "sq": 0.3282,
+    "mat": 0.96,
+    "ngram_acc": 3.1,
+    "wall": 1.256,
+    "gen_len": 140
+  },
+  {
+    "name": "complex_nested_config_052",
+    "tps": 84.7,
+    "sp": 1.275,
+    "sq": 0.7101,
+    "mat": 1.68,
+    "ngram_acc": 2.0,
+    "wall": 3.081,
+    "gen_len": 132
+  },
+  {
+    "name": "complex_nested_config_053",
+    "tps": 102.09,
+    "sp": 1.35,
+    "sq": 0.3145,
+    "mat": 1.54,
+    "ngram_acc": 1.7,
+    "wall": 2.88,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_054",
+    "tps": 84.47,
+    "sp": 1.849,
+    "sq": 0.0593,
+    "mat": 1.24,
+    "ngram_acc": 1.7,
+    "wall": 2.214,
+    "gen_len": 135
+  },
+  {
+    "name": "complex_nested_config_055",
+    "tps": 40.93,
+    "sp": 0.81,
+    "sq": 1.0,
+    "mat": 1.81,
+    "ngram_acc": 1.3,
+    "wall": 4.861,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_056",
+    "tps": 28.24,
+    "sp": 0.504,
+    "sq": 0.0458,
+    "mat": 2.58,
+    "ngram_acc": 1.2,
+    "wall": 7.684,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_057",
+    "tps": 39.46,
+    "sp": 0.71,
+    "sq": 0.2249,
+    "mat": 2.37,
+    "ngram_acc": 1.6,
+    "wall": 5.904,
+    "gen_len": 137
+  },
+  {
+    "name": "complex_nested_config_058",
+    "tps": 76.98,
+    "sp": 1.578,
+    "sq": 0.2414,
+    "mat": 1.2,
+    "ngram_acc": 1.5,
+    "wall": 2.52,
+    "gen_len": 131
+  },
+  {
+    "name": "complex_nested_config_059",
+    "tps": 170.69,
+    "sp": 2.772,
+    "sq": 0.057,
+    "mat": 1.05,
+    "ngram_acc": 3.0,
+    "wall": 1.459,
+    "gen_len": 139
+  },
+  {
+    "name": "complex_nested_config_060",
+    "tps": 86.25,
+    "sp": 1.165,
+    "sq": 0.6905,
+    "mat": 1.7,
+    "ngram_acc": 1.8,
+    "wall": 3.362,
+    "gen_len": 132
+  },
+  {
+    "name": "complex_nested_config_061",
+    "tps": 91.12,
+    "sp": 1.412,
+    "sq": 0.3577,
+    "mat": 1.88,
+    "ngram_acc": 2.8,
+    "wall": 2.853,
+    "gen_len": 135
+  },
+  {
+    "name": "complex_nested_config_062",
+    "tps": 90.52,
+    "sp": 1.796,
+    "sq": 0.0063,
+    "mat": 1.48,
+    "ngram_acc": 2.5,
+    "wall": 2.342,
+    "gen_len": 143
+  },
+  {
+    "name": "complex_nested_config_063",
+    "tps": 47.38,
+    "sp": 0.8,
+    "sq": 0.0638,
+    "mat": 1.9,
+    "ngram_acc": 1.3,
+    "wall": 4.981,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_064",
+    "tps": 43.03,
+    "sp": 0.896,
+    "sq": 1.0,
+    "mat": 1.65,
+    "ngram_acc": 1.4,
+    "wall": 4.438,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_065",
+    "tps": 46.63,
+    "sp": 0.91,
+    "sq": 0.5238,
+    "mat": 1.93,
+    "ngram_acc": 1.8,
+    "wall": 4.311,
+    "gen_len": 138
+  },
+  {
+    "name": "complex_nested_config_066",
+    "tps": 109.88,
+    "sp": 2.271,
+    "sq": 0.8776,
+    "mat": 1.07,
+    "ngram_acc": 2.1,
+    "wall": 1.711,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_067",
+    "tps": 155.24,
+    "sp": 2.86,
+    "sq": 0.9315,
+    "mat": 1.11,
+    "ngram_acc": 3.7,
+    "wall": 1.314,
+    "gen_len": 129
+  },
+  {
+    "name": "complex_nested_config_068",
+    "tps": 56.91,
+    "sp": 1.408,
+    "sq": 1.0,
+    "mat": 1.77,
+    "ngram_acc": 2.5,
+    "wall": 2.846,
+    "gen_len": 137
+  },
+  {
+    "name": "complex_nested_config_069",
+    "tps": 35.95,
+    "sp": 0.777,
+    "sq": 0.925,
+    "mat": 1.78,
+    "ngram_acc": 1.3,
+    "wall": 5.174,
+    "gen_len": 138
+  },
+  {
+    "name": "complex_nested_config_070",
+    "tps": 69.04,
+    "sp": 0.92,
+    "sq": 0.7193,
+    "mat": 1.79,
+    "ngram_acc": 1.9,
+    "wall": 3.621,
+    "gen_len": 135
+  },
+  {
+    "name": "complex_nested_config_071",
+    "tps": 70.04,
+    "sp": 1.625,
+    "sq": 1.0,
+    "mat": 1.1,
+    "ngram_acc": 1.6,
+    "wall": 2.37,
+    "gen_len": 132
+  },
+  {
+    "name": "complex_nested_config_072",
+    "tps": 93.34,
+    "sp": 1.331,
+    "sq": 0.8788,
+    "mat": 1.3,
+    "ngram_acc": 1.4,
+    "wall": 2.903,
+    "gen_len": 136
+  },
+  {
+    "name": "complex_nested_config_073",
+    "tps": 65.08,
+    "sp": 1.35,
+    "sq": 0.7222,
+    "mat": 1.71,
+    "ngram_acc": 2.0,
+    "wall": 2.95,
+    "gen_len": 139
+  },
+  {
+    "name": "complex_nested_config_074",
+    "tps": 135.15,
+    "sp": 2.429,
+    "sq": 0.0799,
+    "mat": 1.15,
+    "ngram_acc": 2.5,
+    "wall": 1.561,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_075",
+    "tps": 62.5,
+    "sp": 0.997,
+    "sq": 0.0784,
+    "mat": 2.09,
+    "ngram_acc": 1.9,
+    "wall": 4.064,
+    "gen_len": 138
+  },
+  {
+    "name": "complex_nested_config_076",
+    "tps": 37.23,
+    "sp": 0.729,
+    "sq": 1.0,
+    "mat": 1.88,
+    "ngram_acc": 1.3,
+    "wall": 5.48,
+    "gen_len": 139
+  },
+  {
+    "name": "complex_nested_config_077",
+    "tps": 178.67,
+    "sp": 3.182,
+    "sq": 0.5321,
+    "mat": 1.21,
+    "ngram_acc": 4.4,
+    "wall": 1.181,
+    "gen_len": 129
+  },
+  {
+    "name": "complex_nested_config_078",
+    "tps": 81.24,
+    "sp": 1.527,
+    "sq": 0.0807,
+    "mat": 1.66,
+    "ngram_acc": 2.6,
+    "wall": 2.511,
+    "gen_len": 134
+  },
+  {
+    "name": "complex_nested_config_079",
+    "tps": 118.61,
+    "sp": 2.452,
+    "sq": 0.3602,
+    "mat": 1.21,
+    "ngram_acc": 2.8,
+    "wall": 1.56,
+    "gen_len": 128
+  },
+  {
+    "name": "complex_nested_config_080",
+    "tps": 44.35,
+    "sp": 0.663,
+    "sq": 0.0571,
+    "mat": 2.66,
+    "ngram_acc": 1.7,
+    "wall": 5.818,
+    "gen_len": 130
+  }
+]

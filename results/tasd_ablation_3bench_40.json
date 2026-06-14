@@ -1,0 +1,182 @@
+{
+  "dict_config": {
+    "ar": {
+      "label": "AR (baseline)",
+      "mean_tps": 32.13
+    },
+    "tasd_full": {
+      "label": "TASD (full)",
+      "mean_tps": 57.22,
+      "mean_speedup": 1.84,
+      "mean_sq": 0.6475,
+      "mean_off_structure_rate": 0.0,
+      "mean_repair_count": 0.33,
+      "mean_accept_rate": 0.8923
+    },
+    "tasd_no_relaxed": {
+      "label": "TASD w/o relaxed",
+      "mean_tps": 51.04,
+      "mean_speedup": 1.64,
+      "mean_sq": 0.6444,
+      "mean_off_structure_rate": 0.05,
+      "mean_repair_count": 0.4,
+      "mean_accept_rate": 0.8047
+    },
+    "tasd_no_guard": {
+      "label": "TASD w/o guard",
+      "mean_tps": 65.32,
+      "mean_speedup": 2.1,
+      "mean_sq": 0.6515,
+      "mean_off_structure_rate": 0.1,
+      "mean_repair_count": 0.0,
+      "mean_accept_rate": 0.9998
+    },
+    "tasd_single_block": {
+      "label": "TASD single-block",
+      "mean_tps": 52.92,
+      "mean_speedup": 1.7,
+      "mean_sq": 0.6468,
+      "mean_off_structure_rate": 0.0,
+      "mean_repair_count": 0.45,
+      "mean_accept_rate": 0.8925
+    },
+    "tasd_draft_len_8": {
+      "label": "TASD draft_len=8",
+      "mean_tps": 51.97,
+      "mean_speedup": 1.67,
+      "mean_sq": 0.6468,
+      "mean_off_structure_rate": 0.0,
+      "mean_repair_count": 0.45,
+      "mean_accept_rate": 0.8925
+    },
+    "tasd_3b": {
+      "label": "TASD (3B draft)",
+      "mean_tps": 48.73,
+      "mean_speedup": 1.57,
+      "mean_sq": 0.6204,
+      "mean_off_structure_rate": 0.0,
+      "mean_repair_count": 0.35,
+      "mean_accept_rate": 0.9399
+    }
+  },
+  "openmmlab_config": {
+    "ar": {
+      "label": "AR (baseline)",
+      "mean_tps": 32.52
+    },
+    "tasd_full": {
+      "label": "TASD (full)",
+      "mean_tps": 61.73,
+      "mean_speedup": 1.94,
+      "mean_sq": 0.9161,
+      "mean_off_structure_rate": 0.075,
+      "mean_repair_count": 0.28,
+      "mean_accept_rate": 0.9567
+    },
+    "tasd_no_relaxed": {
+      "label": "TASD w/o relaxed",
+      "mean_tps": 52.67,
+      "mean_speedup": 1.66,
+      "mean_sq": 0.9185,
+      "mean_off_structure_rate": 0.05,
+      "mean_repair_count": 0.42,
+      "mean_accept_rate": 0.8192
+    },
+    "tasd_no_guard": {
+      "label": "TASD w/o guard",
+      "mean_tps": 65.37,
+      "mean_speedup": 2.05,
+      "mean_sq": 0.9161,
+      "mean_off_structure_rate": 0.1,
+      "mean_repair_count": 0.0,
+      "mean_accept_rate": 0.9996
+    },
+    "tasd_single_block": {
+      "label": "TASD single-block",
+      "mean_tps": 57.12,
+      "mean_speedup": 1.8,
+      "mean_sq": 0.9161,
+      "mean_off_structure_rate": 0.025,
+      "mean_repair_count": 0.4,
+      "mean_accept_rate": 0.9576
+    },
+    "tasd_draft_len_8": {
+      "label": "TASD draft_len=8",
+      "mean_tps": 57.57,
+      "mean_speedup": 1.81,
+      "mean_sq": 0.9161,
+      "mean_off_structure_rate": 0.025,
+      "mean_repair_count": 0.4,
+      "mean_accept_rate": 0.9576
+    },
+    "tasd_3b": {
+      "label": "TASD (3B draft)",
+      "mean_tps": 50.77,
+      "mean_speedup": 1.6,
+      "mean_sq": 0.9981,
+      "mean_off_structure_rate": 0.05,
+      "mean_repair_count": 0.1,
+      "mean_accept_rate": 0.9858
+    }
+  },
+  "pipeline_stage_config": {
+    "ar": {
+      "label": "AR (baseline)",
+      "mean_tps": 31.74
+    },
+    "tasd_full": {
+      "label": "TASD (full)",
+      "mean_tps": 63.86,
+      "mean_speedup": 2.05,
+      "mean_sq": 0.8975,
+      "mean_off_structure_rate": 0.075,
+      "mean_repair_count": 0.03,
+      "mean_accept_rate": 0.9935
+    },
+    "tasd_no_relaxed": {
+      "label": "TASD w/o relaxed",
+      "mean_tps": 55.79,
+      "mean_speedup": 1.79,
+      "mean_sq": 0.896,
+      "mean_off_structure_rate": 0.05,
+      "mean_repair_count": 0.07,
+      "mean_accept_rate": 0.8808
+    },
+    "tasd_no_guard": {
+      "label": "TASD w/o guard",
+      "mean_tps": 63.83,
+      "mean_speedup": 2.05,
+      "mean_sq": 0.8975,
+      "mean_off_structure_rate": 0.075,
+      "mean_repair_count": 0.03,
+      "mean_accept_rate": 0.9935
+    },
+    "tasd_single_block": {
+      "label": "TASD single-block",
+      "mean_tps": 58.46,
+      "mean_speedup": 1.88,
+      "mean_sq": 0.8975,
+      "mean_off_structure_rate": 0.075,
+      "mean_repair_count": 0.03,
+      "mean_accept_rate": 0.9954
+    },
+    "tasd_draft_len_8": {
+      "label": "TASD draft_len=8",
+      "mean_tps": 59.79,
+      "mean_speedup": 1.92,
+      "mean_sq": 0.8975,
+      "mean_off_structure_rate": 0.075,
+      "mean_repair_count": 0.03,
+      "mean_accept_rate": 0.9954
+    },
+    "tasd_3b": {
+      "label": "TASD (3B draft)",
+      "mean_tps": 52.79,
+      "mean_speedup": 1.69,
+      "mean_sq": 0.8879,
+      "mean_off_structure_rate": 0.0,
+      "mean_repair_count": 0.0,
+      "mean_accept_rate": 1.0
+    }
+  }
+}

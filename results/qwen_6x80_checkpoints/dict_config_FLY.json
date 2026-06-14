@@ -1,0 +1,802 @@
+[
+  {
+    "name": "dict_config_real_001",
+    "tps": 100.25,
+    "sp": 2.271,
+    "sq": 1.0,
+    "mat": 1.14,
+    "ngram_acc": 2.1,
+    "wall": 1.736,
+    "gen_len": 135
+  },
+  {
+    "name": "dict_config_real_002",
+    "tps": 84.73,
+    "sp": 1.648,
+    "sq": 0.2412,
+    "mat": 1.38,
+    "ngram_acc": 2.3,
+    "wall": 2.349,
+    "gen_len": 133
+  },
+  {
+    "name": "dict_config_real_003",
+    "tps": 64.76,
+    "sp": 1.526,
+    "sq": 1.0,
+    "mat": 1.4,
+    "ngram_acc": 2.1,
+    "wall": 2.455,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_004",
+    "tps": 127.59,
+    "sp": 3.161,
+    "sq": 1.0,
+    "mat": 1.17,
+    "ngram_acc": 3.9,
+    "wall": 1.23,
+    "gen_len": 133
+  },
+  {
+    "name": "dict_config_real_005",
+    "tps": 160.01,
+    "sp": 3.465,
+    "sq": 0.7043,
+    "mat": 1.04,
+    "ngram_acc": 3.6,
+    "wall": 1.212,
+    "gen_len": 142
+  },
+  {
+    "name": "dict_config_real_006",
+    "tps": 70.87,
+    "sp": 0.997,
+    "sq": 0.1832,
+    "mat": 1.9,
+    "ngram_acc": 1.4,
+    "wall": 4.007,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_007",
+    "tps": 54.89,
+    "sp": 0.893,
+    "sq": 0.4366,
+    "mat": 2.02,
+    "ngram_acc": 1.5,
+    "wall": 4.19,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_008",
+    "tps": 56.76,
+    "sp": 1.268,
+    "sq": 1.0,
+    "mat": 1.33,
+    "ngram_acc": 1.3,
+    "wall": 2.96,
+    "gen_len": 130
+  },
+  {
+    "name": "dict_config_real_009",
+    "tps": 78.6,
+    "sp": 1.62,
+    "sq": 0.223,
+    "mat": 1.5,
+    "ngram_acc": 1.9,
+    "wall": 2.354,
+    "gen_len": 132
+  },
+  {
+    "name": "dict_config_real_010",
+    "tps": 84.43,
+    "sp": 1.849,
+    "sq": 0.3214,
+    "mat": 1.3,
+    "ngram_acc": 1.9,
+    "wall": 2.239,
+    "gen_len": 141
+  },
+  {
+    "name": "dict_config_real_011",
+    "tps": 104.8,
+    "sp": 2.335,
+    "sq": 0.0702,
+    "mat": 1.06,
+    "ngram_acc": 2.0,
+    "wall": 1.67,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_012",
+    "tps": 93.8,
+    "sp": 1.615,
+    "sq": 0.2706,
+    "mat": 1.32,
+    "ngram_acc": 1.6,
+    "wall": 2.356,
+    "gen_len": 130
+  },
+  {
+    "name": "dict_config_real_013",
+    "tps": 34.01,
+    "sp": 0.778,
+    "sq": 0.9167,
+    "mat": 1.9,
+    "ngram_acc": 1.6,
+    "wall": 5.174,
+    "gen_len": 141
+  },
+  {
+    "name": "dict_config_real_014",
+    "tps": 76.3,
+    "sp": 1.851,
+    "sq": 1.0,
+    "mat": 1.09,
+    "ngram_acc": 1.6,
+    "wall": 2.045,
+    "gen_len": 131
+  },
+  {
+    "name": "dict_config_real_015",
+    "tps": 53.74,
+    "sp": 1.291,
+    "sq": 0.7778,
+    "mat": 1.42,
+    "ngram_acc": 1.6,
+    "wall": 3.015,
+    "gen_len": 131
+  },
+  {
+    "name": "dict_config_real_016",
+    "tps": 53.94,
+    "sp": 1.486,
+    "sq": 1.0,
+    "mat": 1.2,
+    "ngram_acc": 1.2,
+    "wall": 2.67,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_017",
+    "tps": 46.47,
+    "sp": 1.004,
+    "sq": 0.2512,
+    "mat": 1.8,
+    "ngram_acc": 1.6,
+    "wall": 3.917,
+    "gen_len": 130
+  },
+  {
+    "name": "dict_config_real_018",
+    "tps": 66.43,
+    "sp": 1.655,
+    "sq": 1.0,
+    "mat": 1.33,
+    "ngram_acc": 1.7,
+    "wall": 2.409,
+    "gen_len": 132
+  },
+  {
+    "name": "dict_config_real_019",
+    "tps": 56.12,
+    "sp": 1.185,
+    "sq": 0.8158,
+    "mat": 1.52,
+    "ngram_acc": 1.4,
+    "wall": 3.635,
+    "gen_len": 143
+  },
+  {
+    "name": "dict_config_real_020",
+    "tps": 75.48,
+    "sp": 1.936,
+    "sq": 1.0,
+    "mat": 1.21,
+    "ngram_acc": 2.0,
+    "wall": 2.226,
+    "gen_len": 142
+  },
+  {
+    "name": "dict_config_real_021",
+    "tps": 111.33,
+    "sp": 2.07,
+    "sq": 0.1296,
+    "mat": 1.37,
+    "ngram_acc": 2.4,
+    "wall": 1.994,
+    "gen_len": 135
+  },
+  {
+    "name": "dict_config_real_022",
+    "tps": 105.0,
+    "sp": 1.883,
+    "sq": 0.1211,
+    "mat": 1.47,
+    "ngram_acc": 2.4,
+    "wall": 2.257,
+    "gen_len": 141
+  },
+  {
+    "name": "dict_config_real_023",
+    "tps": 107.96,
+    "sp": 2.04,
+    "sq": 0.138,
+    "mat": 1.35,
+    "ngram_acc": 2.3,
+    "wall": 2.131,
+    "gen_len": 141
+  },
+  {
+    "name": "dict_config_real_024",
+    "tps": 61.63,
+    "sp": 1.301,
+    "sq": 0.6833,
+    "mat": 1.66,
+    "ngram_acc": 1.9,
+    "wall": 3.213,
+    "gen_len": 136
+  },
+  {
+    "name": "dict_config_real_025",
+    "tps": 66.66,
+    "sp": 1.751,
+    "sq": 1.0,
+    "mat": 1.3,
+    "ngram_acc": 1.9,
+    "wall": 2.43,
+    "gen_len": 139
+  },
+  {
+    "name": "dict_config_real_026",
+    "tps": 165.06,
+    "sp": 3.328,
+    "sq": 0.1227,
+    "mat": 0.98,
+    "ngram_acc": 2.8,
+    "wall": 1.224,
+    "gen_len": 130
+  },
+  {
+    "name": "dict_config_real_027",
+    "tps": 77.19,
+    "sp": 1.688,
+    "sq": 1.0,
+    "mat": 1.36,
+    "ngram_acc": 2.0,
+    "wall": 2.436,
+    "gen_len": 137
+  },
+  {
+    "name": "dict_config_real_028",
+    "tps": 76.34,
+    "sp": 1.672,
+    "sq": 1.0,
+    "mat": 1.36,
+    "ngram_acc": 2.0,
+    "wall": 2.463,
+    "gen_len": 137
+  },
+  {
+    "name": "dict_config_real_029",
+    "tps": 76.51,
+    "sp": 1.653,
+    "sq": 1.0,
+    "mat": 1.36,
+    "ngram_acc": 2.0,
+    "wall": 2.457,
+    "gen_len": 137
+  },
+  {
+    "name": "dict_config_real_030",
+    "tps": 102.76,
+    "sp": 2.098,
+    "sq": 1.0,
+    "mat": 1.23,
+    "ngram_acc": 2.5,
+    "wall": 1.791,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_031",
+    "tps": 46.56,
+    "sp": 0.755,
+    "sq": 0.2639,
+    "mat": 2.59,
+    "ngram_acc": 1.8,
+    "wall": 5.047,
+    "gen_len": 131
+  },
+  {
+    "name": "dict_config_real_032",
+    "tps": 76.68,
+    "sp": 1.88,
+    "sq": 1.0,
+    "mat": 1.21,
+    "ngram_acc": 2.0,
+    "wall": 2.191,
+    "gen_len": 142
+  },
+  {
+    "name": "dict_config_real_033",
+    "tps": 69.26,
+    "sp": 1.794,
+    "sq": 0.8919,
+    "mat": 1.4,
+    "ngram_acc": 1.9,
+    "wall": 2.368,
+    "gen_len": 138
+  },
+  {
+    "name": "dict_config_real_034",
+    "tps": 97.0,
+    "sp": 2.391,
+    "sq": 1.0,
+    "mat": 1.23,
+    "ngram_acc": 2.6,
+    "wall": 1.577,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_035",
+    "tps": 93.57,
+    "sp": 1.905,
+    "sq": 1.0,
+    "mat": 1.35,
+    "ngram_acc": 2.4,
+    "wall": 2.063,
+    "gen_len": 138
+  },
+  {
+    "name": "dict_config_real_036",
+    "tps": 120.42,
+    "sp": 2.945,
+    "sq": 1.0,
+    "mat": 0.94,
+    "ngram_acc": 2.3,
+    "wall": 1.254,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_037",
+    "tps": 74.05,
+    "sp": 1.856,
+    "sq": 1.0,
+    "mat": 1.22,
+    "ngram_acc": 1.8,
+    "wall": 1.999,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_038",
+    "tps": 83.63,
+    "sp": 2.069,
+    "sq": 1.0,
+    "mat": 1.12,
+    "ngram_acc": 1.9,
+    "wall": 1.937,
+    "gen_len": 138
+  },
+  {
+    "name": "dict_config_real_039",
+    "tps": 45.16,
+    "sp": 0.979,
+    "sq": 0.9815,
+    "mat": 1.67,
+    "ngram_acc": 1.3,
+    "wall": 4.03,
+    "gen_len": 136
+  },
+  {
+    "name": "dict_config_real_040",
+    "tps": 89.64,
+    "sp": 1.823,
+    "sq": 0.5111,
+    "mat": 1.2,
+    "ngram_acc": 1.8,
+    "wall": 2.075,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_041",
+    "tps": 55.26,
+    "sp": 1.359,
+    "sq": 1.0,
+    "mat": 1.22,
+    "ngram_acc": 1.3,
+    "wall": 2.896,
+    "gen_len": 134
+  },
+  {
+    "name": "dict_config_real_042",
+    "tps": 64.69,
+    "sp": 1.599,
+    "sq": 1.0,
+    "mat": 1.35,
+    "ngram_acc": 1.8,
+    "wall": 2.52,
+    "gen_len": 142
+  },
+  {
+    "name": "dict_config_real_043",
+    "tps": 41.38,
+    "sp": 1.046,
+    "sq": 1.0,
+    "mat": 1.59,
+    "ngram_acc": 1.4,
+    "wall": 3.794,
+    "gen_len": 139
+  },
+  {
+    "name": "dict_config_real_044",
+    "tps": 102.37,
+    "sp": 1.745,
+    "sq": 0.1806,
+    "mat": 1.36,
+    "ngram_acc": 2.1,
+    "wall": 2.296,
+    "gen_len": 143
+  },
+  {
+    "name": "dict_config_real_045",
+    "tps": 151.84,
+    "sp": 1.361,
+    "sq": 0.0682,
+    "mat": 1.65,
+    "ngram_acc": 2.7,
+    "wall": 2.839,
+    "gen_len": 139
+  },
+  {
+    "name": "dict_config_real_046",
+    "tps": 69.47,
+    "sp": 1.767,
+    "sq": 1.0,
+    "mat": 1.22,
+    "ngram_acc": 1.7,
+    "wall": 2.26,
+    "gen_len": 140
+  },
+  {
+    "name": "dict_config_real_047",
+    "tps": 66.38,
+    "sp": 1.528,
+    "sq": 1.0,
+    "mat": 1.37,
+    "ngram_acc": 1.8,
+    "wall": 2.561,
+    "gen_len": 139
+  },
+  {
+    "name": "dict_config_real_048",
+    "tps": 99.74,
+    "sp": 1.781,
+    "sq": 0.3143,
+    "mat": 1.21,
+    "ngram_acc": 2.0,
+    "wall": 2.156,
+    "gen_len": 136
+  },
+  {
+    "name": "dict_config_real_049",
+    "tps": 148.25,
+    "sp": 2.744,
+    "sq": 0.0773,
+    "mat": 1.2,
+    "ngram_acc": 3.0,
+    "wall": 1.356,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_050",
+    "tps": 174.1,
+    "sp": 3.271,
+    "sq": 0.0045,
+    "mat": 1.11,
+    "ngram_acc": 3.9,
+    "wall": 1.206,
+    "gen_len": 141
+  },
+  {
+    "name": "dict_config_real_051",
+    "tps": 120.49,
+    "sp": 2.662,
+    "sq": 1.0,
+    "mat": 1.16,
+    "ngram_acc": 3.2,
+    "wall": 1.386,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_052",
+    "tps": 51.7,
+    "sp": 1.276,
+    "sq": 1.0,
+    "mat": 1.44,
+    "ngram_acc": 1.4,
+    "wall": 2.94,
+    "gen_len": 131
+  },
+  {
+    "name": "dict_config_real_053",
+    "tps": 88.61,
+    "sp": 1.841,
+    "sq": 1.0,
+    "mat": 1.37,
+    "ngram_acc": 2.2,
+    "wall": 2.156,
+    "gen_len": 142
+  },
+  {
+    "name": "dict_config_real_054",
+    "tps": 66.18,
+    "sp": 1.401,
+    "sq": 0.561,
+    "mat": 1.28,
+    "ngram_acc": 1.5,
+    "wall": 2.825,
+    "gen_len": 139
+  },
+  {
+    "name": "dict_config_real_055",
+    "tps": 90.16,
+    "sp": 2.288,
+    "sq": 1.0,
+    "mat": 1.03,
+    "ngram_acc": 1.7,
+    "wall": 1.819,
+    "gen_len": 143
+  },
+  {
+    "name": "dict_config_real_056",
+    "tps": 31.38,
+    "sp": 0.69,
+    "sq": 0.2717,
+    "mat": 2.34,
+    "ngram_acc": 1.8,
+    "wall": 5.482,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_057",
+    "tps": 51.85,
+    "sp": 1.319,
+    "sq": 1.0,
+    "mat": 1.3,
+    "ngram_acc": 1.3,
+    "wall": 2.874,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_058",
+    "tps": 51.04,
+    "sp": 1.066,
+    "sq": 1.0,
+    "mat": 1.52,
+    "ngram_acc": 1.2,
+    "wall": 3.703,
+    "gen_len": 134
+  },
+  {
+    "name": "dict_config_real_059",
+    "tps": 79.57,
+    "sp": 1.477,
+    "sq": 1.0,
+    "mat": 1.41,
+    "ngram_acc": 1.8,
+    "wall": 2.702,
+    "gen_len": 140
+  },
+  {
+    "name": "dict_config_real_060",
+    "tps": 68.67,
+    "sp": 1.622,
+    "sq": 1.0,
+    "mat": 1.4,
+    "ngram_acc": 2.1,
+    "wall": 2.315,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_061",
+    "tps": 54.98,
+    "sp": 1.087,
+    "sq": 0.9818,
+    "mat": 1.59,
+    "ngram_acc": 1.3,
+    "wall": 3.565,
+    "gen_len": 137
+  },
+  {
+    "name": "dict_config_real_062",
+    "tps": 62.9,
+    "sp": 1.431,
+    "sq": 1.0,
+    "mat": 1.59,
+    "ngram_acc": 1.9,
+    "wall": 2.798,
+    "gen_len": 139
+  },
+  {
+    "name": "dict_config_real_063",
+    "tps": 79.17,
+    "sp": 1.792,
+    "sq": 0.0455,
+    "mat": 1.2,
+    "ngram_acc": 2.0,
+    "wall": 2.236,
+    "gen_len": 138
+  },
+  {
+    "name": "dict_config_real_064",
+    "tps": 62.36,
+    "sp": 1.32,
+    "sq": 1.0,
+    "mat": 1.39,
+    "ngram_acc": 1.5,
+    "wall": 2.935,
+    "gen_len": 136
+  },
+  {
+    "name": "dict_config_real_065",
+    "tps": 87.96,
+    "sp": 1.888,
+    "sq": 1.0,
+    "mat": 1.15,
+    "ngram_acc": 1.7,
+    "wall": 2.024,
+    "gen_len": 131
+  },
+  {
+    "name": "dict_config_real_066",
+    "tps": 87.86,
+    "sp": 2.092,
+    "sq": 1.0,
+    "mat": 1.4,
+    "ngram_acc": 2.5,
+    "wall": 1.867,
+    "gen_len": 130
+  },
+  {
+    "name": "dict_config_real_067",
+    "tps": 28.37,
+    "sp": 0.722,
+    "sq": 1.0,
+    "mat": 2.21,
+    "ngram_acc": 1.4,
+    "wall": 5.253,
+    "gen_len": 131
+  },
+  {
+    "name": "dict_config_real_068",
+    "tps": 148.86,
+    "sp": 2.76,
+    "sq": 0.0781,
+    "mat": 1.19,
+    "ngram_acc": 3.0,
+    "wall": 1.35,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_069",
+    "tps": 173.96,
+    "sp": 3.279,
+    "sq": 0.0045,
+    "mat": 1.11,
+    "ngram_acc": 3.9,
+    "wall": 1.207,
+    "gen_len": 141
+  },
+  {
+    "name": "dict_config_real_070",
+    "tps": 69.56,
+    "sp": 1.691,
+    "sq": 1.0,
+    "mat": 1.15,
+    "ngram_acc": 1.5,
+    "wall": 2.314,
+    "gen_len": 137
+  },
+  {
+    "name": "dict_config_real_071",
+    "tps": 93.82,
+    "sp": 2.197,
+    "sq": 1.0,
+    "mat": 1.08,
+    "ngram_acc": 2.1,
+    "wall": 1.684,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_072",
+    "tps": 69.79,
+    "sp": 1.664,
+    "sq": 1.0,
+    "mat": 1.53,
+    "ngram_acc": 2.3,
+    "wall": 2.278,
+    "gen_len": 130
+  },
+  {
+    "name": "dict_config_real_073",
+    "tps": 92.0,
+    "sp": 1.869,
+    "sq": 0.6842,
+    "mat": 1.39,
+    "ngram_acc": 2.2,
+    "wall": 2.196,
+    "gen_len": 139
+  },
+  {
+    "name": "dict_config_real_074",
+    "tps": 48.2,
+    "sp": 1.199,
+    "sq": 1.0,
+    "mat": 1.6,
+    "ngram_acc": 1.6,
+    "wall": 3.195,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_075",
+    "tps": 286.34,
+    "sp": 2.461,
+    "sq": 0.1527,
+    "mat": 1.26,
+    "ngram_acc": 3.2,
+    "wall": 1.544,
+    "gen_len": 131
+  },
+  {
+    "name": "dict_config_real_076",
+    "tps": 64.24,
+    "sp": 1.478,
+    "sq": 1.0,
+    "mat": 1.47,
+    "ngram_acc": 1.7,
+    "wall": 2.662,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_077",
+    "tps": 178.74,
+    "sp": 1.877,
+    "sq": 0.0026,
+    "mat": 1.33,
+    "ngram_acc": 2.2,
+    "wall": 2.048,
+    "gen_len": 129
+  },
+  {
+    "name": "dict_config_real_078",
+    "tps": 102.19,
+    "sp": 1.845,
+    "sq": 0.1162,
+    "mat": 1.62,
+    "ngram_acc": 3.2,
+    "wall": 2.075,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_079",
+    "tps": 101.11,
+    "sp": 1.782,
+    "sq": 0.0631,
+    "mat": 1.62,
+    "ngram_acc": 3.2,
+    "wall": 2.097,
+    "gen_len": 128
+  },
+  {
+    "name": "dict_config_real_080",
+    "tps": 110.12,
+    "sp": 1.963,
+    "sq": 0.6765,
+    "mat": 1.49,
+    "ngram_acc": 3.3,
+    "wall": 1.98,
+    "gen_len": 138
+  }
+]

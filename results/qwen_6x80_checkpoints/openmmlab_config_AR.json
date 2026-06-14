@@ -1,0 +1,562 @@
+[
+  {
+    "name": "openmmlab_config_real_001",
+    "ar_tps": 43.12,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.896
+  },
+  {
+    "name": "openmmlab_config_real_002",
+    "ar_tps": 38.7,
+    "sq": 0.8421,
+    "trunc": 0.0,
+    "wall": 3.902
+  },
+  {
+    "name": "openmmlab_config_real_003",
+    "ar_tps": 43.15,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.893
+  },
+  {
+    "name": "openmmlab_config_real_004",
+    "ar_tps": 39.77,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.797
+  },
+  {
+    "name": "openmmlab_config_real_005",
+    "ar_tps": 44.78,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.819
+  },
+  {
+    "name": "openmmlab_config_real_006",
+    "ar_tps": 39.68,
+    "sq": 0.9697,
+    "trunc": 0.0,
+    "wall": 3.805
+  },
+  {
+    "name": "openmmlab_config_real_007",
+    "ar_tps": 40.51,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.876
+  },
+  {
+    "name": "openmmlab_config_real_008",
+    "ar_tps": 43.9,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.849
+  },
+  {
+    "name": "openmmlab_config_real_009",
+    "ar_tps": 41.64,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.891
+  },
+  {
+    "name": "openmmlab_config_real_010",
+    "ar_tps": 41.47,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.762
+  },
+  {
+    "name": "openmmlab_config_real_011",
+    "ar_tps": 43.49,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.702
+  },
+  {
+    "name": "openmmlab_config_real_012",
+    "ar_tps": 45.34,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.727
+  },
+  {
+    "name": "openmmlab_config_real_013",
+    "ar_tps": 42.84,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.781
+  },
+  {
+    "name": "openmmlab_config_real_014",
+    "ar_tps": 41.77,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.734
+  },
+  {
+    "name": "openmmlab_config_real_015",
+    "ar_tps": 40.23,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.729
+  },
+  {
+    "name": "openmmlab_config_real_016",
+    "ar_tps": 40.54,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.724
+  },
+  {
+    "name": "openmmlab_config_real_017",
+    "ar_tps": 41.43,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.741
+  },
+  {
+    "name": "openmmlab_config_real_018",
+    "ar_tps": 42.18,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.84
+  },
+  {
+    "name": "openmmlab_config_real_019",
+    "ar_tps": 38.36,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.806
+  },
+  {
+    "name": "openmmlab_config_real_020",
+    "ar_tps": 40.11,
+    "sq": 0.9,
+    "trunc": 1.0,
+    "wall": 3.764
+  },
+  {
+    "name": "openmmlab_config_real_021",
+    "ar_tps": 40.76,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.803
+  },
+  {
+    "name": "openmmlab_config_real_022",
+    "ar_tps": 43.23,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.748
+  },
+  {
+    "name": "openmmlab_config_real_023",
+    "ar_tps": 38.03,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.839
+  },
+  {
+    "name": "openmmlab_config_real_024",
+    "ar_tps": 38.7,
+    "sq": 0.9667,
+    "trunc": 1.0,
+    "wall": 3.902
+  },
+  {
+    "name": "openmmlab_config_real_025",
+    "ar_tps": 39.34,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.813
+  },
+  {
+    "name": "openmmlab_config_real_026",
+    "ar_tps": 41.74,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.906
+  },
+  {
+    "name": "openmmlab_config_real_027",
+    "ar_tps": 40.2,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.756
+  },
+  {
+    "name": "openmmlab_config_real_028",
+    "ar_tps": 40.59,
+    "sq": 0.9667,
+    "trunc": 1.0,
+    "wall": 3.721
+  },
+  {
+    "name": "openmmlab_config_real_029",
+    "ar_tps": 39.6,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.788
+  },
+  {
+    "name": "openmmlab_config_real_030",
+    "ar_tps": 39.77,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.872
+  },
+  {
+    "name": "openmmlab_config_real_031",
+    "ar_tps": 43.56,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.742
+  },
+  {
+    "name": "openmmlab_config_real_032",
+    "ar_tps": 40.54,
+    "sq": 0.9,
+    "trunc": 1.0,
+    "wall": 3.724
+  },
+  {
+    "name": "openmmlab_config_real_033",
+    "ar_tps": 47.14,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.733
+  },
+  {
+    "name": "openmmlab_config_real_034",
+    "ar_tps": 36.82,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.993
+  },
+  {
+    "name": "openmmlab_config_real_035",
+    "ar_tps": 36.82,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.992
+  },
+  {
+    "name": "openmmlab_config_real_036",
+    "ar_tps": 36.29,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 4.051
+  },
+  {
+    "name": "openmmlab_config_real_037",
+    "ar_tps": 36.91,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.982
+  },
+  {
+    "name": "openmmlab_config_real_038",
+    "ar_tps": 40.63,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.888
+  },
+  {
+    "name": "openmmlab_config_real_039",
+    "ar_tps": 35.7,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 4.006
+  },
+  {
+    "name": "openmmlab_config_real_040",
+    "ar_tps": 39.06,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.866
+  },
+  {
+    "name": "openmmlab_config_real_041",
+    "ar_tps": 39.07,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.865
+  },
+  {
+    "name": "openmmlab_config_real_042",
+    "ar_tps": 39.58,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.815
+  },
+  {
+    "name": "openmmlab_config_real_043",
+    "ar_tps": 40.73,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.928
+  },
+  {
+    "name": "openmmlab_config_real_044",
+    "ar_tps": 41.85,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.799
+  },
+  {
+    "name": "openmmlab_config_real_045",
+    "ar_tps": 38.99,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.873
+  },
+  {
+    "name": "openmmlab_config_real_046",
+    "ar_tps": 43.94,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.915
+  },
+  {
+    "name": "openmmlab_config_real_047",
+    "ar_tps": 38.24,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.87
+  },
+  {
+    "name": "openmmlab_config_real_048",
+    "ar_tps": 40.3,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.772
+  },
+  {
+    "name": "openmmlab_config_real_049",
+    "ar_tps": 44.37,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.719
+  },
+  {
+    "name": "openmmlab_config_real_050",
+    "ar_tps": 42.28,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.713
+  },
+  {
+    "name": "openmmlab_config_real_051",
+    "ar_tps": 54.48,
+    "sq": 0.3179,
+    "trunc": 1.0,
+    "wall": 3.8
+  },
+  {
+    "name": "openmmlab_config_real_052",
+    "ar_tps": 46.51,
+    "sq": 0.5667,
+    "trunc": 1.0,
+    "wall": 3.805
+  },
+  {
+    "name": "openmmlab_config_real_053",
+    "ar_tps": 40.54,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.774
+  },
+  {
+    "name": "openmmlab_config_real_054",
+    "ar_tps": 42.46,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.721
+  },
+  {
+    "name": "openmmlab_config_real_055",
+    "ar_tps": 42.14,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.75
+  },
+  {
+    "name": "openmmlab_config_real_056",
+    "ar_tps": 40.41,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.762
+  },
+  {
+    "name": "openmmlab_config_real_057",
+    "ar_tps": 44.81,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.772
+  },
+  {
+    "name": "openmmlab_config_real_058",
+    "ar_tps": 55.62,
+    "sq": 0.257,
+    "trunc": 1.0,
+    "wall": 3.721
+  },
+  {
+    "name": "openmmlab_config_real_059",
+    "ar_tps": 40.27,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.7
+  },
+  {
+    "name": "openmmlab_config_real_060",
+    "ar_tps": 41.13,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.696
+  },
+  {
+    "name": "openmmlab_config_real_061",
+    "ar_tps": 42.09,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.73
+  },
+  {
+    "name": "openmmlab_config_real_062",
+    "ar_tps": 43.75,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.863
+  },
+  {
+    "name": "openmmlab_config_real_063",
+    "ar_tps": 55.17,
+    "sq": 0.257,
+    "trunc": 1.0,
+    "wall": 3.752
+  },
+  {
+    "name": "openmmlab_config_real_064",
+    "ar_tps": 40.08,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.717
+  },
+  {
+    "name": "openmmlab_config_real_065",
+    "ar_tps": 47.87,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.718
+  },
+  {
+    "name": "openmmlab_config_real_066",
+    "ar_tps": 43.35,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.691
+  },
+  {
+    "name": "openmmlab_config_real_067",
+    "ar_tps": 43.46,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.727
+  },
+  {
+    "name": "openmmlab_config_real_068",
+    "ar_tps": 38.92,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.725
+  },
+  {
+    "name": "openmmlab_config_real_069",
+    "ar_tps": 38.51,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.713
+  },
+  {
+    "name": "openmmlab_config_real_070",
+    "ar_tps": 47.43,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.732
+  },
+  {
+    "name": "openmmlab_config_real_071",
+    "ar_tps": 41.01,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.706
+  },
+  {
+    "name": "openmmlab_config_real_072",
+    "ar_tps": 44.23,
+    "sq": 0.5347,
+    "trunc": 1.0,
+    "wall": 3.708
+  },
+  {
+    "name": "openmmlab_config_real_073",
+    "ar_tps": 44.14,
+    "sq": 0.6064,
+    "trunc": 1.0,
+    "wall": 3.783
+  },
+  {
+    "name": "openmmlab_config_real_074",
+    "ar_tps": 45.66,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.767
+  },
+  {
+    "name": "openmmlab_config_real_075",
+    "ar_tps": 43.63,
+    "sq": 0.4454,
+    "trunc": 1.0,
+    "wall": 3.759
+  },
+  {
+    "name": "openmmlab_config_real_076",
+    "ar_tps": 43.89,
+    "sq": 0.5745,
+    "trunc": 1.0,
+    "wall": 3.805
+  },
+  {
+    "name": "openmmlab_config_real_077",
+    "ar_tps": 46.22,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.743
+  },
+  {
+    "name": "openmmlab_config_real_078",
+    "ar_tps": 43.97,
+    "sq": 0.5758,
+    "trunc": 1.0,
+    "wall": 3.798
+  },
+  {
+    "name": "openmmlab_config_real_079",
+    "ar_tps": 43.56,
+    "sq": 0.5644,
+    "trunc": 1.0,
+    "wall": 3.834
+  },
+  {
+    "name": "openmmlab_config_real_080",
+    "ar_tps": 44.39,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.875
+  }
+]

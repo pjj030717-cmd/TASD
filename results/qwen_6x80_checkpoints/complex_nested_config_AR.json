@@ -1,0 +1,562 @@
+[
+  {
+    "name": "complex_nested_config_001",
+    "ar_tps": 43.32,
+    "sq": 0.5806,
+    "trunc": 1.0,
+    "wall": 3.901
+  },
+  {
+    "name": "complex_nested_config_002",
+    "ar_tps": 54.01,
+    "sq": 0.0375,
+    "trunc": 1.0,
+    "wall": 3.814
+  },
+  {
+    "name": "complex_nested_config_003",
+    "ar_tps": 43.32,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.74
+  },
+  {
+    "name": "complex_nested_config_004",
+    "ar_tps": 45.01,
+    "sq": 0.1544,
+    "trunc": 0.0,
+    "wall": 3.754
+  },
+  {
+    "name": "complex_nested_config_005",
+    "ar_tps": 66.36,
+    "sq": 0.3333,
+    "trunc": 1.0,
+    "wall": 3.873
+  },
+  {
+    "name": "complex_nested_config_006",
+    "ar_tps": 42.98,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.839
+  },
+  {
+    "name": "complex_nested_config_007",
+    "ar_tps": 69.77,
+    "sq": 0.9844,
+    "trunc": 1.0,
+    "wall": 3.77
+  },
+  {
+    "name": "complex_nested_config_008",
+    "ar_tps": 61.92,
+    "sq": 0.0757,
+    "trunc": 1.0,
+    "wall": 3.763
+  },
+  {
+    "name": "complex_nested_config_009",
+    "ar_tps": 57.05,
+    "sq": 0.1816,
+    "trunc": 0.0,
+    "wall": 3.26
+  },
+  {
+    "name": "complex_nested_config_010",
+    "ar_tps": 77.53,
+    "sq": 0.2994,
+    "trunc": 1.0,
+    "wall": 3.754
+  },
+  {
+    "name": "complex_nested_config_011",
+    "ar_tps": 52.52,
+    "sq": 0.1717,
+    "trunc": 1.0,
+    "wall": 3.942
+  },
+  {
+    "name": "complex_nested_config_012",
+    "ar_tps": 71.91,
+    "sq": 0.424,
+    "trunc": 1.0,
+    "wall": 4.047
+  },
+  {
+    "name": "complex_nested_config_013",
+    "ar_tps": 50.17,
+    "sq": 0.6378,
+    "trunc": 0.0,
+    "wall": 3.946
+  },
+  {
+    "name": "complex_nested_config_014",
+    "ar_tps": 57.95,
+    "sq": 0.0175,
+    "trunc": 1.0,
+    "wall": 3.952
+  },
+  {
+    "name": "complex_nested_config_015",
+    "ar_tps": 41.74,
+    "sq": 0.8409,
+    "trunc": 1.0,
+    "wall": 3.881
+  },
+  {
+    "name": "complex_nested_config_016",
+    "ar_tps": 51.35,
+    "sq": 0.0896,
+    "trunc": 0.0,
+    "wall": 3.895
+  },
+  {
+    "name": "complex_nested_config_017",
+    "ar_tps": 52.63,
+    "sq": 0.1058,
+    "trunc": 1.0,
+    "wall": 3.971
+  },
+  {
+    "name": "complex_nested_config_018",
+    "ar_tps": 62.02,
+    "sq": 0.2105,
+    "trunc": 1.0,
+    "wall": 3.902
+  },
+  {
+    "name": "complex_nested_config_019",
+    "ar_tps": 67.31,
+    "sq": 0.3736,
+    "trunc": 0.0,
+    "wall": 3.996
+  },
+  {
+    "name": "complex_nested_config_020",
+    "ar_tps": 58.11,
+    "sq": 0.0891,
+    "trunc": 1.0,
+    "wall": 4.01
+  },
+  {
+    "name": "complex_nested_config_021",
+    "ar_tps": 41.97,
+    "sq": 0.1348,
+    "trunc": 0.0,
+    "wall": 4.05
+  },
+  {
+    "name": "complex_nested_config_022",
+    "ar_tps": 40.51,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.999
+  },
+  {
+    "name": "complex_nested_config_023",
+    "ar_tps": 68.38,
+    "sq": 0.0477,
+    "trunc": 1.0,
+    "wall": 3.846
+  },
+  {
+    "name": "complex_nested_config_024",
+    "ar_tps": 51.66,
+    "sq": 0.0781,
+    "trunc": 1.0,
+    "wall": 3.852
+  },
+  {
+    "name": "complex_nested_config_025",
+    "ar_tps": 51.51,
+    "sq": 0.973,
+    "trunc": 1.0,
+    "wall": 3.785
+  },
+  {
+    "name": "complex_nested_config_026",
+    "ar_tps": 48.08,
+    "sq": 0.75,
+    "trunc": 0.0,
+    "wall": 3.702
+  },
+  {
+    "name": "complex_nested_config_027",
+    "ar_tps": 63.95,
+    "sq": 0.1984,
+    "trunc": 0.0,
+    "wall": 3.737
+  },
+  {
+    "name": "complex_nested_config_028",
+    "ar_tps": 42.24,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.764
+  },
+  {
+    "name": "complex_nested_config_029",
+    "ar_tps": 42.36,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.777
+  },
+  {
+    "name": "complex_nested_config_030",
+    "ar_tps": 43.04,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.741
+  },
+  {
+    "name": "complex_nested_config_031",
+    "ar_tps": 46.23,
+    "sq": 0.7586,
+    "trunc": 1.0,
+    "wall": 3.742
+  },
+  {
+    "name": "complex_nested_config_032",
+    "ar_tps": 58.97,
+    "sq": 0.4265,
+    "trunc": 1.0,
+    "wall": 3.731
+  },
+  {
+    "name": "complex_nested_config_033",
+    "ar_tps": 63.21,
+    "sq": 0.0092,
+    "trunc": 1.0,
+    "wall": 3.765
+  },
+  {
+    "name": "complex_nested_config_034",
+    "ar_tps": 46.67,
+    "sq": 0.8378,
+    "trunc": 1.0,
+    "wall": 3.814
+  },
+  {
+    "name": "complex_nested_config_035",
+    "ar_tps": 54.77,
+    "sq": 0.9796,
+    "trunc": 1.0,
+    "wall": 3.779
+  },
+  {
+    "name": "complex_nested_config_036",
+    "ar_tps": 69.58,
+    "sq": 0.3248,
+    "trunc": 0.0,
+    "wall": 3.794
+  },
+  {
+    "name": "complex_nested_config_037",
+    "ar_tps": 51.46,
+    "sq": 0.2135,
+    "trunc": 0.0,
+    "wall": 3.75
+  },
+  {
+    "name": "complex_nested_config_038",
+    "ar_tps": 52.73,
+    "sq": 0.1141,
+    "trunc": 0.0,
+    "wall": 3.774
+  },
+  {
+    "name": "complex_nested_config_039",
+    "ar_tps": 59.77,
+    "sq": 0.2338,
+    "trunc": 0.0,
+    "wall": 3.831
+  },
+  {
+    "name": "complex_nested_config_040",
+    "ar_tps": 50.48,
+    "sq": 0.06,
+    "trunc": 1.0,
+    "wall": 3.962
+  },
+  {
+    "name": "complex_nested_config_041",
+    "ar_tps": 46.69,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.769
+  },
+  {
+    "name": "complex_nested_config_042",
+    "ar_tps": 45.65,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.746
+  },
+  {
+    "name": "complex_nested_config_043",
+    "ar_tps": 52.73,
+    "sq": 0.7831,
+    "trunc": 1.0,
+    "wall": 3.793
+  },
+  {
+    "name": "complex_nested_config_044",
+    "ar_tps": 46.51,
+    "sq": 0.8649,
+    "trunc": 1.0,
+    "wall": 3.806
+  },
+  {
+    "name": "complex_nested_config_045",
+    "ar_tps": 45.03,
+    "sq": 0.7821,
+    "trunc": 0.0,
+    "wall": 3.931
+  },
+  {
+    "name": "complex_nested_config_046",
+    "ar_tps": 54.07,
+    "sq": 0.223,
+    "trunc": 1.0,
+    "wall": 3.847
+  },
+  {
+    "name": "complex_nested_config_047",
+    "ar_tps": 62.99,
+    "sq": 0.1984,
+    "trunc": 0.0,
+    "wall": 3.794
+  },
+  {
+    "name": "complex_nested_config_048",
+    "ar_tps": 54.41,
+    "sq": 0.0548,
+    "trunc": 1.0,
+    "wall": 3.768
+  },
+  {
+    "name": "complex_nested_config_049",
+    "ar_tps": 52.34,
+    "sq": 0.6869,
+    "trunc": 0.0,
+    "wall": 3.726
+  },
+  {
+    "name": "complex_nested_config_050",
+    "ar_tps": 73.54,
+    "sq": 0.7024,
+    "trunc": 1.0,
+    "wall": 3.889
+  },
+  {
+    "name": "complex_nested_config_051",
+    "ar_tps": 60.28,
+    "sq": 0.2786,
+    "trunc": 0.0,
+    "wall": 3.915
+  },
+  {
+    "name": "complex_nested_config_052",
+    "ar_tps": 66.46,
+    "sq": 0.7246,
+    "trunc": 1.0,
+    "wall": 3.867
+  },
+  {
+    "name": "complex_nested_config_053",
+    "ar_tps": 75.64,
+    "sq": 0.3333,
+    "trunc": 1.0,
+    "wall": 3.847
+  },
+  {
+    "name": "complex_nested_config_054",
+    "ar_tps": 45.69,
+    "sq": 0.0473,
+    "trunc": 1.0,
+    "wall": 3.939
+  },
+  {
+    "name": "complex_nested_config_055",
+    "ar_tps": 50.55,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.818
+  },
+  {
+    "name": "complex_nested_config_056",
+    "ar_tps": 56.03,
+    "sq": 0.0657,
+    "trunc": 1.0,
+    "wall": 3.873
+  },
+  {
+    "name": "complex_nested_config_057",
+    "ar_tps": 55.6,
+    "sq": 0.1923,
+    "trunc": 1.0,
+    "wall": 4.029
+  },
+  {
+    "name": "complex_nested_config_058",
+    "ar_tps": 48.78,
+    "sq": 0.2414,
+    "trunc": 1.0,
+    "wall": 3.916
+  },
+  {
+    "name": "complex_nested_config_059",
+    "ar_tps": 61.57,
+    "sq": 0.049,
+    "trunc": 1.0,
+    "wall": 3.866
+  },
+  {
+    "name": "complex_nested_config_060",
+    "ar_tps": 74.01,
+    "sq": 0.7024,
+    "trunc": 1.0,
+    "wall": 3.865
+  },
+  {
+    "name": "complex_nested_config_061",
+    "ar_tps": 64.52,
+    "sq": 0.3415,
+    "trunc": 0.0,
+    "wall": 3.921
+  },
+  {
+    "name": "complex_nested_config_062",
+    "ar_tps": 50.41,
+    "sq": 0.0061,
+    "trunc": 1.0,
+    "wall": 3.908
+  },
+  {
+    "name": "complex_nested_config_063",
+    "ar_tps": 59.22,
+    "sq": 0.0594,
+    "trunc": 1.0,
+    "wall": 3.884
+  },
+  {
+    "name": "complex_nested_config_064",
+    "ar_tps": 48.01,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.853
+  },
+  {
+    "name": "complex_nested_config_065",
+    "ar_tps": 51.22,
+    "sq": 0.381,
+    "trunc": 1.0,
+    "wall": 3.729
+  },
+  {
+    "name": "complex_nested_config_066",
+    "ar_tps": 48.39,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.761
+  },
+  {
+    "name": "complex_nested_config_067",
+    "ar_tps": 54.28,
+    "sq": 0.7397,
+    "trunc": 1.0,
+    "wall": 3.74
+  },
+  {
+    "name": "complex_nested_config_068",
+    "ar_tps": 40.42,
+    "sq": 0.9016,
+    "trunc": 1.0,
+    "wall": 3.785
+  },
+  {
+    "name": "complex_nested_config_069",
+    "ar_tps": 46.29,
+    "sq": 1.0,
+    "trunc": 0.0,
+    "wall": 3.802
+  },
+  {
+    "name": "complex_nested_config_070",
+    "ar_tps": 75.04,
+    "sq": 0.8947,
+    "trunc": 0.0,
+    "wall": 2.785
+  },
+  {
+    "name": "complex_nested_config_071",
+    "ar_tps": 43.1,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.759
+  },
+  {
+    "name": "complex_nested_config_072",
+    "ar_tps": 70.11,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.751
+  },
+  {
+    "name": "complex_nested_config_073",
+    "ar_tps": 48.2,
+    "sq": 0.7917,
+    "trunc": 1.0,
+    "wall": 3.755
+  },
+  {
+    "name": "complex_nested_config_074",
+    "ar_tps": 55.65,
+    "sq": 0.0404,
+    "trunc": 1.0,
+    "wall": 3.791
+  },
+  {
+    "name": "complex_nested_config_075",
+    "ar_tps": 62.71,
+    "sq": 0.0966,
+    "trunc": 1.0,
+    "wall": 3.891
+  },
+  {
+    "name": "complex_nested_config_076",
+    "ar_tps": 51.09,
+    "sq": 1.0,
+    "trunc": 1.0,
+    "wall": 3.777
+  },
+  {
+    "name": "complex_nested_config_077",
+    "ar_tps": 56.15,
+    "sq": 0.4404,
+    "trunc": 1.0,
+    "wall": 3.74
+  },
+  {
+    "name": "complex_nested_config_078",
+    "ar_tps": 53.2,
+    "sq": 0.0757,
+    "trunc": 1.0,
+    "wall": 3.722
+  },
+  {
+    "name": "complex_nested_config_079",
+    "ar_tps": 48.38,
+    "sq": 0.3602,
+    "trunc": 1.0,
+    "wall": 3.824
+  },
+  {
+    "name": "complex_nested_config_080",
+    "ar_tps": 66.93,
+    "sq": 0.05,
+    "trunc": 1.0,
+    "wall": 3.825
+  }
+]

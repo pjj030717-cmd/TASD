@@ -1,0 +1,722 @@
+[
+  {
+    "name": "openmmlab_config_real_001",
+    "tps": 29.12,
+    "sp": 0.675,
+    "sq": 1.0,
+    "accept": 0.4267,
+    "draft_avg": 2.3,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_002",
+    "tps": 32.64,
+    "sp": 0.843,
+    "sq": 0.2632,
+    "accept": 0.6497,
+    "draft_avg": 1.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_003",
+    "tps": 29.6,
+    "sp": 0.686,
+    "sq": 1.0,
+    "accept": 0.4267,
+    "draft_avg": 2.3,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_004",
+    "tps": 39.62,
+    "sp": 0.996,
+    "sq": 0.175,
+    "accept": 0.7337,
+    "draft_avg": 1.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_005",
+    "tps": 32.0,
+    "sp": 0.715,
+    "sq": 1.0,
+    "accept": 0.6465,
+    "draft_avg": 1.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_006",
+    "tps": 32.51,
+    "sp": 0.819,
+    "sq": 0.303,
+    "accept": 0.6497,
+    "draft_avg": 1.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_007",
+    "tps": 65.51,
+    "sp": 1.617,
+    "sq": 0.4242,
+    "accept": 0.7973,
+    "draft_avg": 3.4,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_008",
+    "tps": 30.34,
+    "sp": 0.691,
+    "sq": 1.0,
+    "accept": 0.4539,
+    "draft_avg": 2.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_009",
+    "tps": 30.3,
+    "sp": 0.728,
+    "sq": 0.5833,
+    "accept": 0.3377,
+    "draft_avg": 3.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_010",
+    "tps": 42.89,
+    "sp": 1.034,
+    "sq": 1.0,
+    "accept": 0.5427,
+    "draft_avg": 2.9,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_011",
+    "tps": 30.11,
+    "sp": 0.692,
+    "sq": 1.0,
+    "accept": 0.3469,
+    "draft_avg": 3.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_012",
+    "tps": 30.37,
+    "sp": 0.67,
+    "sq": 1.0,
+    "accept": 0.4539,
+    "draft_avg": 2.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_013",
+    "tps": 30.43,
+    "sp": 0.71,
+    "sq": 0.5833,
+    "accept": 0.3377,
+    "draft_avg": 3.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_014",
+    "tps": 42.19,
+    "sp": 1.01,
+    "sq": 1.0,
+    "accept": 0.5427,
+    "draft_avg": 2.9,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_015",
+    "tps": 73.5,
+    "sp": 1.827,
+    "sq": 0.1562,
+    "accept": 0.9058,
+    "draft_avg": 3.9,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_016",
+    "tps": 45.06,
+    "sp": 1.111,
+    "sq": 0.25,
+    "accept": 0.8052,
+    "draft_avg": 1.9,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_017",
+    "tps": 27.87,
+    "sp": 0.673,
+    "sq": 1.0,
+    "accept": 0.2672,
+    "draft_avg": 3.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_018",
+    "tps": 31.2,
+    "sp": 0.74,
+    "sq": 1.0,
+    "accept": 0.4771,
+    "draft_avg": 2.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_019",
+    "tps": 29.99,
+    "sp": 0.782,
+    "sq": 1.0,
+    "accept": 0.4211,
+    "draft_avg": 2.4,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_020",
+    "tps": 32.53,
+    "sp": 0.811,
+    "sq": 0.2,
+    "accept": 0.5899,
+    "draft_avg": 1.7,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_021",
+    "tps": 27.82,
+    "sp": 0.683,
+    "sq": 1.0,
+    "accept": 0.2672,
+    "draft_avg": 3.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_022",
+    "tps": 31.69,
+    "sp": 0.733,
+    "sq": 1.0,
+    "accept": 0.6598,
+    "draft_avg": 1.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_023",
+    "tps": 30.17,
+    "sp": 0.793,
+    "sq": 1.0,
+    "accept": 0.4211,
+    "draft_avg": 2.4,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_024",
+    "tps": 32.24,
+    "sp": 0.833,
+    "sq": 0.2,
+    "accept": 0.5899,
+    "draft_avg": 1.7,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_025",
+    "tps": 29.06,
+    "sp": 0.739,
+    "sq": 1.0,
+    "accept": 0.4,
+    "draft_avg": 2.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_026",
+    "tps": 30.52,
+    "sp": 0.731,
+    "sq": 1.0,
+    "accept": 0.6184,
+    "draft_avg": 1.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_027",
+    "tps": 29.21,
+    "sp": 0.727,
+    "sq": 1.0,
+    "accept": 0.3274,
+    "draft_avg": 3.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_028",
+    "tps": 31.52,
+    "sp": 0.777,
+    "sq": 0.2,
+    "accept": 0.5899,
+    "draft_avg": 1.7,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_029",
+    "tps": 29.02,
+    "sp": 0.733,
+    "sq": 1.0,
+    "accept": 0.4,
+    "draft_avg": 2.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_030",
+    "tps": 29.62,
+    "sp": 0.745,
+    "sq": 1.0,
+    "accept": 0.6154,
+    "draft_avg": 1.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_031",
+    "tps": 29.15,
+    "sp": 0.669,
+    "sq": 1.0,
+    "accept": 0.3844,
+    "draft_avg": 2.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_032",
+    "tps": 31.44,
+    "sp": 0.776,
+    "sq": 0.2,
+    "accept": 0.5899,
+    "draft_avg": 1.7,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_033",
+    "tps": 34.25,
+    "sp": 0.727,
+    "sq": 0.5789,
+    "accept": 0.6443,
+    "draft_avg": 1.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_034",
+    "tps": 31.07,
+    "sp": 0.844,
+    "sq": 1.0,
+    "accept": 0.5664,
+    "draft_avg": 1.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_035",
+    "tps": 31.17,
+    "sp": 0.847,
+    "sq": 1.0,
+    "accept": 0.4169,
+    "draft_avg": 2.4,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_036",
+    "tps": 31.58,
+    "sp": 0.87,
+    "sq": 1.0,
+    "accept": 0.5664,
+    "draft_avg": 1.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_037",
+    "tps": 31.47,
+    "sp": 0.853,
+    "sq": 1.0,
+    "accept": 0.4169,
+    "draft_avg": 2.4,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_038",
+    "tps": 59.42,
+    "sp": 1.462,
+    "sq": 0.4286,
+    "accept": 0.6184,
+    "draft_avg": 4.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_039",
+    "tps": 33.51,
+    "sp": 0.939,
+    "sq": 1.0,
+    "accept": 0.8101,
+    "draft_avg": 1.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_040",
+    "tps": 59.87,
+    "sp": 1.533,
+    "sq": 0.8929,
+    "accept": 0.8024,
+    "draft_avg": 2.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_041",
+    "tps": 32.92,
+    "sp": 0.843,
+    "sq": 1.0,
+    "accept": 0.6772,
+    "draft_avg": 1.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_042",
+    "tps": 30.7,
+    "sp": 0.776,
+    "sq": 1.0,
+    "accept": 0.3715,
+    "draft_avg": 3.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_043",
+    "tps": 41.52,
+    "sp": 1.019,
+    "sq": 0.4286,
+    "accept": 0.4669,
+    "draft_avg": 3.4,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_044",
+    "tps": 31.55,
+    "sp": 0.754,
+    "sq": 1.0,
+    "accept": 0.4476,
+    "draft_avg": 2.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_045",
+    "tps": 33.01,
+    "sp": 0.847,
+    "sq": 1.0,
+    "accept": 0.6772,
+    "draft_avg": 1.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_046",
+    "tps": 28.67,
+    "sp": 0.652,
+    "sq": 0.9434,
+    "accept": 0.3137,
+    "draft_avg": 3.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_047",
+    "tps": 71.76,
+    "sp": 1.877,
+    "sq": 0.2821,
+    "accept": 0.8125,
+    "draft_avg": 4.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_048",
+    "tps": 58.26,
+    "sp": 1.446,
+    "sq": 0.8929,
+    "accept": 0.8024,
+    "draft_avg": 2.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_049",
+    "tps": 72.42,
+    "sp": 1.632,
+    "sq": 0.05,
+    "accept": 0.8125,
+    "draft_avg": 4.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_050",
+    "tps": 31.08,
+    "sp": 0.735,
+    "sq": 1.0,
+    "accept": 0.4295,
+    "draft_avg": 2.3,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_051",
+    "tps": 30.31,
+    "sp": 0.556,
+    "sq": 0.3179,
+    "accept": 0.4038,
+    "draft_avg": 2.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_052",
+    "tps": 36.65,
+    "sp": 0.788,
+    "sq": 1.0,
+    "accept": 0.4692,
+    "draft_avg": 2.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_053",
+    "tps": 74.99,
+    "sp": 1.85,
+    "sq": 1.0,
+    "accept": 0.6685,
+    "draft_avg": 5.8,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_054",
+    "tps": 56.92,
+    "sp": 1.341,
+    "sq": 0.4103,
+    "accept": 0.5212,
+    "draft_avg": 5.0,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_055",
+    "tps": 53.3,
+    "sp": 1.265,
+    "sq": 0.1026,
+    "accept": 0.8936,
+    "draft_avg": 2.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_056",
+    "tps": 52.8,
+    "sp": 1.307,
+    "sq": 0.8182,
+    "accept": 0.9462,
+    "draft_avg": 2.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_057",
+    "tps": 30.76,
+    "sp": 0.686,
+    "sq": 1.0,
+    "accept": 0.4103,
+    "draft_avg": 2.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_058",
+    "tps": 29.96,
+    "sp": 0.539,
+    "sq": 0.2346,
+    "accept": 0.4038,
+    "draft_avg": 2.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_059",
+    "tps": 48.66,
+    "sp": 1.208,
+    "sq": 1.0,
+    "accept": 0.4886,
+    "draft_avg": 3.9,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_060",
+    "tps": 28.0,
+    "sp": 0.681,
+    "sq": 1.0,
+    "accept": 0.3216,
+    "draft_avg": 3.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_061",
+    "tps": 27.25,
+    "sp": 0.647,
+    "sq": 1.0,
+    "accept": 0.3184,
+    "draft_avg": 3.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_062",
+    "tps": 27.94,
+    "sp": 0.639,
+    "sq": 1.0,
+    "accept": 0.4103,
+    "draft_avg": 2.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_063",
+    "tps": 27.03,
+    "sp": 0.49,
+    "sq": 0.1899,
+    "accept": 0.3181,
+    "draft_avg": 3.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_064",
+    "tps": 43.91,
+    "sp": 1.096,
+    "sq": 1.0,
+    "accept": 0.4886,
+    "draft_avg": 3.9,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_065",
+    "tps": 75.46,
+    "sp": 1.576,
+    "sq": 0.2,
+    "accept": 0.8105,
+    "draft_avg": 4.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_066",
+    "tps": 38.51,
+    "sp": 0.888,
+    "sq": 0.6,
+    "accept": 0.4819,
+    "draft_avg": 3.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_067",
+    "tps": 30.38,
+    "sp": 0.699,
+    "sq": 0.6667,
+    "accept": 0.4507,
+    "draft_avg": 2.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_068",
+    "tps": 29.37,
+    "sp": 0.755,
+    "sq": 1.0,
+    "accept": 0.4776,
+    "draft_avg": 2.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_069",
+    "tps": 30.18,
+    "sp": 0.784,
+    "sq": 1.0,
+    "accept": 0.4555,
+    "draft_avg": 2.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_070",
+    "tps": 29.12,
+    "sp": 0.614,
+    "sq": 1.0,
+    "accept": 0.371,
+    "draft_avg": 2.7,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_071",
+    "tps": 29.46,
+    "sp": 0.718,
+    "sq": 1.0,
+    "accept": 0.4604,
+    "draft_avg": 2.2,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_072",
+    "tps": 50.98,
+    "sp": 1.153,
+    "sq": 0.2772,
+    "accept": 0.8951,
+    "draft_avg": 2.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_073",
+    "tps": 28.15,
+    "sp": 0.638,
+    "sq": 0.5745,
+    "accept": 0.3787,
+    "draft_avg": 2.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_074",
+    "tps": 33.16,
+    "sp": 0.726,
+    "sq": 1.0,
+    "accept": 0.6702,
+    "draft_avg": 1.5,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_075",
+    "tps": 53.78,
+    "sp": 1.233,
+    "sq": 0.2353,
+    "accept": 0.8951,
+    "draft_avg": 2.1,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_076",
+    "tps": 37.39,
+    "sp": 0.852,
+    "sq": 0.3617,
+    "accept": 0.4885,
+    "draft_avg": 2.7,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_077",
+    "tps": 32.81,
+    "sp": 0.71,
+    "sq": 1.0,
+    "accept": 0.7111,
+    "draft_avg": 1.4,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_078",
+    "tps": 28.63,
+    "sp": 0.651,
+    "sq": 0.5455,
+    "accept": 0.3787,
+    "draft_avg": 2.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_079",
+    "tps": 28.84,
+    "sp": 0.662,
+    "sq": 0.5347,
+    "accept": 0.3787,
+    "draft_avg": 2.6,
+    "wall": 0
+  },
+  {
+    "name": "openmmlab_config_real_080",
+    "tps": 33.07,
+    "sp": 0.745,
+    "sq": 1.0,
+    "accept": 0.6702,
+    "draft_avg": 1.5,
+    "wall": 0
+  }
+]
