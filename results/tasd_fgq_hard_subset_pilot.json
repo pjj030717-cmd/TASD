@@ -1,0 +1,1142 @@
+[
+  {
+    "name": "argparse_real_001",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 41.95,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 50.63,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 2,
+        "quality_guard_total_trimmed_tokens": 21,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_004",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.98,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 62.49,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_006",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.77,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 63.01,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_010",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.14,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 62.22,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_012",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.17,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 61.35,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_018",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.31,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 62.79,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_019",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 52.7,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 53.65,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 2,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_029",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.09,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 62.75,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_030",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.47,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 63.38,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_031",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 11.17,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 11.21,
+      "generated_length": 130,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 25,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  },
+  {
+    "name": "argparse_real_036",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.9,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 57.07,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_060",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 60.02,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 60.23,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_061",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.66,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 59.48,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_070",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 30.22,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 26.84,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 1,
+        "quality_guard_total_trimmed_tokens": 15,
+        "quality_guard_strict_rounds": 4,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  },
+  {
+    "name": "argparse_real_071",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 58.71,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 59.6,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "argparse_real_079",
+    "benchmark": "argparse",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.14,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 58.2,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_002",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.83,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 37.71,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 4,
+        "quality_guard_total_trimmed_tokens": 54,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_005",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.9,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 63.24,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_008",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 46.02,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 45.17,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 3,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_011",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 61.88,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 44.47,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 5,
+        "quality_guard_total_trimmed_tokens": 52,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_015",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.65,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 23.61,
+      "generated_length": 130,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 11,
+        "quality_guard_total_trimmed_tokens": 133,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_016",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.82,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 44.72,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 5,
+        "quality_guard_total_trimmed_tokens": 42,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_022",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 60.96,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 60.81,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_041",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 52.27,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 46.58,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 1,
+        "quality_guard_total_trimmed_tokens": 15,
+        "quality_guard_strict_rounds": 2,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_045",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.31,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 62.29,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_049",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.45,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 45.44,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 3,
+        "quality_guard_total_trimmed_tokens": 38,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_050",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.38,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 26.45,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 8,
+        "quality_guard_total_trimmed_tokens": 104,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 2
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_063",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 64.1,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 45.24,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 3,
+        "quality_guard_total_trimmed_tokens": 37,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_068",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.43,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 45.12,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 3,
+        "quality_guard_total_trimmed_tokens": 38,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_069",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.15,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 25.98,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 8,
+        "quality_guard_total_trimmed_tokens": 104,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 2
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_077",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.14,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 30.08,
+      "generated_length": 130,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 7,
+        "quality_guard_total_trimmed_tokens": 86,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 2
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_078",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 61.5,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 60.06,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "dict_config_real_079",
+    "benchmark": "dict_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.75,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 61.14,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_001",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 37.78,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 14.93,
+      "generated_length": 130,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 14,
+        "quality_guard_total_trimmed_tokens": 205,
+        "quality_guard_strict_rounds": 4,
+        "quality_guard_low_progress_repairs": 7
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_003",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 38.08,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 15.32,
+      "generated_length": 130,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 14,
+        "quality_guard_total_trimmed_tokens": 205,
+        "quality_guard_strict_rounds": 4,
+        "quality_guard_low_progress_repairs": 7
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_008",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.26,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 58.99,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_012",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 58.66,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 57.96,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_017",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.56,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 59.26,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 1,
+        "quality_guard_total_trimmed_tokens": 9,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_018",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.43,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 53.73,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 2,
+        "quality_guard_total_trimmed_tokens": 23,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_021",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.82,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 57.31,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 1,
+        "quality_guard_total_trimmed_tokens": 9,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_025",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.4,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 44.67,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 3,
+        "quality_guard_total_trimmed_tokens": 38,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_029",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.54,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 46.05,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 3,
+        "quality_guard_total_trimmed_tokens": 38,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_041",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 54.06,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 60.7,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_043",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.91,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 45.01,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 3,
+        "quality_guard_total_trimmed_tokens": 36,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_045",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 60.33,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 59.23,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_046",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 58.92,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 61.84,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_049",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 40.4,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 35.0,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 1,
+        "quality_guard_total_trimmed_tokens": 15,
+        "quality_guard_strict_rounds": 4,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_054",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 60.99,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 61.82,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_057",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.82,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 63.74,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_062",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 63.98,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 64.31,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_071",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 40.58,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 29.38,
+      "generated_length": 130,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 1,
+        "quality_guard_total_trimmed_tokens": 15,
+        "quality_guard_strict_rounds": 6,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_074",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.27,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 63.21,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_075",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.44,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 63.34,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_076",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 62.92,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 46.03,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 3,
+        "quality_guard_total_trimmed_tokens": 39,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_077",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.24,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 60.88,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "openmmlab_config_real_080",
+    "benchmark": "openmmlab_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 60.63,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 62.85,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "pipeline_stage_config_007",
+    "benchmark": "pipeline_stage_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.58,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 59.32,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "pipeline_stage_config_008",
+    "benchmark": "pipeline_stage_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 59.14,
+      "generated_length": 128
+    },
+    "fgq": {
+      "tokens_per_second": 56.44,
+      "generated_length": 128,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 0,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "pipeline_stage_config_010",
+    "benchmark": "pipeline_stage_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 40.69,
+      "generated_length": 130
+    },
+    "fgq": {
+      "tokens_per_second": 41.57,
+      "generated_length": 130,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 0,
+        "quality_guard_total_trimmed_tokens": 0,
+        "quality_guard_strict_rounds": 3,
+        "quality_guard_low_progress_repairs": 0
+      }
+    }
+  },
+  {
+    "name": "pipeline_stage_config_019",
+    "benchmark": "pipeline_stage_config",
+    "original_score": 0,
+    "fg": {
+      "tokens_per_second": 39.75,
+      "generated_length": 129
+    },
+    "fgq": {
+      "tokens_per_second": 35.78,
+      "generated_length": 132,
+      "quality_guard": {
+        "quality_guard_rep_trim_count": 1,
+        "quality_guard_total_trimmed_tokens": 15,
+        "quality_guard_strict_rounds": 2,
+        "quality_guard_low_progress_repairs": 1
+      }
+    }
+  }
+]

@@ -42,22 +42,35 @@ draft_model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained(TARGET_PATH, local_files_only=True, trust_remote_code=True)
 
-# Load prompts and references
+# Load prompts and references from JSONL files
+DATA_FILES = {
+    'argparse': 'data/codesearchnet_argparse_blocks_80.jsonl',
+    'dict_config': 'data/codesearchnet_dict_config_blocks_80.jsonl',
+    'openmmlab_config': 'data/ml_config_blocks_openmmlab_80.jsonl',
+    'pipeline_stage_config': 'data/pipeline_stage_config_80.jsonl',
+    'complex_nested_config': 'data/complex_nested_config_80.jsonl',
+    'rich_cli_option_groups': 'data/rich_cli_option_groups_80.jsonl',
+}
+
 prompts = {}
 references = {}
-for bm in ['argparse', 'dict_config', 'openmmlab_config', 'pipeline_stage_config', 'complex_nested_config', 'rich_cli_option_groups']:
-    with open(f'data/{bm}_prompts.json') as f:
-        prompts[bm] = json.load(f)
-    with open(f'data/{bm}_references.json') as f:
-        references[bm] = json.load(f)
+for bm, filepath in DATA_FILES.items():
+    prompts[bm] = {}
+    references[bm] = {}
+    with open(filepath) as f:
+        for line in f:
+            sample = json.loads(line)
+            name = sample['name']
+            prompts[bm][name] = sample['prompt']
+            references[bm][name] = sample['reference']
 
 # Run pilot
 results = []
 for i, sample in enumerate(selected):
     print(f"\n[{i+1}/{len(selected)}] {sample['name']} (benchmark={sample['benchmark']}, score={sample['score']})")
 
-    prompt = prompts[sample['benchmark']][sample['name']]['prompt']
-    ref = references[sample['benchmark']][sample['name']]['reference']
+    prompt = prompts[sample['benchmark']][sample['name']]
+    ref = references[sample['benchmark']][sample['name']]
 
     # Run TASD-FG (baseline)
     print("  Running TASD-FG...")

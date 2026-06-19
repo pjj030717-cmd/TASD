@@ -30,17 +30,29 @@ draft_model = AutoModelForCausalLM.from_pretrained(
 tokenizer = AutoTokenizer.from_pretrained(TARGET_PATH, local_files_only=True, trust_remote_code=True)
 
 # Load prompts
+DATA_FILES = {
+    'argparse': 'data/codesearchnet_argparse_blocks_80.jsonl',
+    'dict_config': 'data/codesearchnet_dict_config_blocks_80.jsonl',
+    'openmmlab_config': 'data/ml_config_blocks_openmmlab_80.jsonl',
+    'pipeline_stage_config': 'data/pipeline_stage_config_80.jsonl',
+    'complex_nested_config': 'data/complex_nested_config_80.jsonl',
+    'rich_cli_option_groups': 'data/rich_cli_option_groups_80.jsonl',
+}
+
 prompts = {}
-for bm in ['argparse', 'dict_config', 'openmmlab_config', 'pipeline_stage_config', 'complex_nested_config', 'rich_cli_option_groups']:
-    with open(f'data/{bm}_prompts.json') as f:
-        prompts[bm] = json.load(f)
+for bm, filepath in DATA_FILES.items():
+    prompts[bm] = {}
+    with open(filepath) as f:
+        for line in f:
+            sample = json.loads(line)
+            prompts[bm][sample['name']] = sample['prompt']
 
 # Run pilot
 results = []
 for i, sample in enumerate(hard_samples[:60]):  # Max 60 samples
     print(f"\n[{i+1}/{min(60, len(hard_samples))}] {sample['name']} (score={sample['score']})")
 
-    prompt = prompts[sample['benchmark']][sample['name']]['prompt']
+    prompt = prompts[sample['benchmark']][sample['name']]
 
     # Run TASD-FG (baseline)
     print("  Running TASD-FG...")
@@ -87,18 +99,18 @@ for i, sample in enumerate(hard_samples[:60]):  # Max 60 samples
         'benchmark': sample['benchmark'],
         'original_score': sample['score'],
         'fg': {
-            'speedup': result_fg['stats']['speedup'],
-            'generated_length': result_fg['stats']['generated_length'],
+            'tokens_per_second': result_fg['tokens_per_second'],
+            'generated_length': result_fg['generated_tokens'],
         },
         'fgq': {
-            'speedup': result_fgq['stats']['speedup'],
-            'generated_length': result_fgq['stats']['generated_length'],
-            'quality_guard': result_fgq['stats']['quality_guard'],
+            'tokens_per_second': result_fgq['tokens_per_second'],
+            'generated_length': result_fgq['generated_tokens'],
+            'quality_guard': result_fgq['stats'].get('quality_guard', {}),
         },
     })
 
-    print(f"  FG: speedup={result_fg['stats']['speedup']:.3f}")
-    print(f"  FGQ: speedup={result_fgq['stats']['speedup']:.3f}, rep_trim={result_fgq['stats']['quality_guard']['rep_trim_count']}")
+    print(f"  FG: tps={result_fg['tokens_per_second']:.1f}")
+    print(f"  FGQ: tps={result_fgq['tokens_per_second']:.1f}, rep_trim={result_fgq['stats'].get('quality_guard', {}).get('rep_trim_count', 0)}")
 
 # Save results
 with open('results/tasd_fgq_hard_subset_pilot.json', 'w') as f:
@@ -107,12 +119,12 @@ with open('results/tasd_fgq_hard_subset_pilot.json', 'w') as f:
 print(f"\n\nPilot complete. Results saved to results/tasd_fgq_hard_subset_pilot.json")
 
 # Summary
-avg_speedup_fg = sum(r['fg']['speedup'] for r in results) / len(results)
-avg_speedup_fgq = sum(r['fgq']['speedup'] for r in results) / len(results)
-total_rep_trim = sum(r['fgq']['quality_guard']['rep_trim_count'] for r in results)
+avg_tps_fg = sum(r['fg']['tokens_per_second'] for r in results) / len(results)
+avg_tps_fgq = sum(r['fgq']['tokens_per_second'] for r in results) / len(results)
+total_rep_trim = sum(r['fgq']['quality_guard'].get('rep_trim_count', 0) for r in results)
 
 print(f"\nSummary:")
-print(f"  TASD-FG avg speedup: {avg_speedup_fg:.3f}")
-print(f"  TASD-FGQ avg speedup: {avg_speedup_fgq:.3f}")
-print(f"  Speedup loss: {(avg_speedup_fg - avg_speedup_fgq) / avg_speedup_fg * 100:.1f}%")
+print(f"  TASD-FG avg TPS: {avg_tps_fg:.1f}")
+print(f"  TASD-FGQ avg TPS: {avg_tps_fgq:.1f}")
+print(f"  TPS loss: {(avg_tps_fg - avg_tps_fgq) / avg_tps_fg * 100:.1f}%")
 print(f"  Total rep_trim triggers: {total_rep_trim}")
