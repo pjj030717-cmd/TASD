@@ -661,6 +661,129 @@ class ProfitAwareSwitch:
         }
 
 
+class QualityGuard:
+    """
+    TASD-FGQ: Lightweight quality improvement layer on top of TASD-FG.
+
+    Three mechanisms:
+    1. Repetition-aware trim: detect n-gram repetition in accepted prefix, trim to pre-repetition point
+    2. Off-structure strict mode: temporarily tighten acceptance when guard triggers frequently
+    3. Low-progress repair: short 2-token AR repair when consecutive rounds accept very few tokens
+
+    All mechanisms are opt-in via enable_quality_guard=True.
+    When disabled, behavior is identical to TASD-FG.
+    """
+    def __init__(
+        self,
+        ngram=4,
+        window=64,
+        strict_trigger=2,
+        strict_window=3,
+        strict_rounds=2,
+        low_accept_threshold=1,
+        low_accept_patience=2,
+        repair_tokens=2,
+    ):
+        self.ngram = ngram
+        self.window = window
+        self.strict_trigger = strict_trigger
+        self.strict_window = strict_window
+        self.strict_rounds = strict_rounds
+        self.low_accept_threshold = low_accept_threshold
+        self.low_accept_patience = low_accept_patience
+        self.repair_tokens = repair_tokens
+
+        # State
+        self.recent_guard_triggers = []  # 1 if guard triggered this round, 0 otherwise
+        self.strict_mode_remaining = 0   # rounds remaining in strict mode
+        self.consecutive_low_accept = 0  # consecutive rounds with accepted <= threshold
+
+        # Stats
+        self.rep_trim_count = 0
+        self.total_trimmed_tokens = 0
+        self.strict_rounds_used = 0
+        self.low_progress_repairs = 0
+
+    def check_repetition(self, tokens, tokenizer):
+        """
+        Check if the token sequence contains n-gram repetition.
+        Returns the index where repetition starts (trim to this point).
+        If no repetition, returns len(tokens) (keep all).
+        """
+        if len(tokens) < self.ngram * 2:
+            return len(tokens)
+
+        # Look at the last `window` tokens
+        recent = tokens[-self.window:] if len(tokens) > self.window else tokens
+
+        # Check for repeated n-grams
+        for i in range(len(recent) - self.ngram):
+            ngram_seq = recent[i:i + self.ngram]
+            # Count occurrences of this n-gram in the recent window
+            count = 0
+            for j in range(len(recent) - self.ngram + 1):
+                if recent[j:j + self.ngram] == ngram_seq:
+                    count += 1
+            # If this n-gram appears >= 2 times and we're at the second occurrence
+            if count >= 2:
+                # Find where the repetition pattern starts
+                # Return the position in the original tokens list
+                trim_pos = len(tokens) - len(recent) + i
+                if trim_pos > 0:
+                    self.rep_trim_count += 1
+                    self.total_trimmed_tokens += len(tokens) - trim_pos
+                    return trim_pos
+
+        return len(tokens)
+
+    def record_round(self, drafted, accepted, guard_triggered):
+        """Record round stats for quality guard monitoring."""
+        # Track guard triggers for strict mode
+        self.recent_guard_triggers.append(1 if guard_triggered else 0)
+        if len(self.recent_guard_triggers) > self.strict_window:
+            self.recent_guard_triggers.pop(0)
+
+        # Track low acceptance for repair
+        if accepted <= self.low_accept_threshold:
+            self.consecutive_low_accept += 1
+        else:
+            self.consecutive_low_accept = 0
+
+        # Decrement strict mode counter
+        if self.strict_mode_remaining > 0:
+            self.strict_mode_remaining -= 1
+            self.strict_rounds_used += 1
+
+    def should_enter_strict_mode(self):
+        """Check if we should enter strict mode based on recent guard triggers."""
+        if self.strict_mode_remaining > 0:
+            return True  # Already in strict mode
+
+        if len(self.recent_guard_triggers) >= self.strict_window:
+            recent = self.recent_guard_triggers[-self.strict_window:]
+            if sum(recent) >= self.strict_trigger:
+                self.strict_mode_remaining = self.strict_rounds
+                return True
+        return False
+
+    def should_trigger_low_progress_repair(self):
+        """Check if we should trigger low-progress repair."""
+        return self.consecutive_low_accept >= self.low_accept_patience
+
+    def reset_low_progress_counter(self):
+        """Reset after repair is done."""
+        self.consecutive_low_accept = 0
+        self.low_progress_repairs += 1
+
+    def get_summary(self):
+        return {
+            "quality_guard_rep_trim_count": self.rep_trim_count,
+            "quality_guard_total_trimmed_tokens": self.total_trimmed_tokens,
+            "quality_guard_strict_rounds": self.strict_rounds_used,
+            "quality_guard_low_progress_repairs": self.low_progress_repairs,
+        }
+
+
 def tasd_decode(
     target_model,
     draft_model,
@@ -697,6 +820,15 @@ def tasd_decode(
     enable_profit_aware_switch=False,     # TASD-FG-P: early-stage profit-aware AR switch
     profit_switch_window=48,              # Evaluate only in first N tokens
     profit_switch_ar_tps_estimate=None,   # AR TPS for speedup estimation
+    enable_quality_guard=False,           # TASD-FGQ: quality improvement layer
+    quality_guard_ngram=4,                # N-gram size for repetition detection
+    quality_guard_window=64,              # Window size for repetition check
+    quality_guard_strict_trigger=2,       # Guard triggers needed to enter strict mode
+    quality_guard_strict_window=3,        # Recent rounds to check for strict mode
+    quality_guard_strict_rounds=2,        # Rounds to stay in strict mode
+    quality_guard_low_accept_threshold=1, # Accepted tokens threshold for low-progress
+    quality_guard_low_accept_patience=2,  # Consecutive low-accept rounds before repair
+    quality_guard_repair_tokens=2,        # Tokens to generate in low-progress repair
 ):
     """
     TASD speculative decoding with structural guard, proper KV cache,
@@ -777,6 +909,20 @@ def tasd_decode(
         profit_switch = ProfitAwareSwitch(
             window_tokens=profit_switch_window,
             ar_tps_estimate=profit_switch_ar_tps_estimate,
+        )
+
+    # Quality guard (TASD-FGQ)
+    quality_guard = None
+    if enable_quality_guard:
+        quality_guard = QualityGuard(
+            ngram=quality_guard_ngram,
+            window=quality_guard_window,
+            strict_trigger=quality_guard_strict_trigger,
+            strict_window=quality_guard_strict_window,
+            strict_rounds=quality_guard_strict_rounds,
+            low_accept_threshold=quality_guard_low_accept_threshold,
+            low_accept_patience=quality_guard_low_accept_patience,
+            repair_tokens=quality_guard_repair_tokens,
         )
 
     # Default TASD params (can be overridden by fallback)
@@ -964,6 +1110,53 @@ def tasd_decode(
             # --- Failure-aware fallback: tick cooldown ---
             if failure_fallback is not None:
                 failure_fallback.tick_cooldown()
+
+            # --- Quality Guard: Strict mode check ---
+            if quality_guard is not None and quality_guard.should_enter_strict_mode():
+                # Temporarily tighten acceptance parameters
+                original_top_k = top_k_accept
+                original_prefix_budget = prefix_budget
+                top_k_accept = 1
+                prefix_budget = 0.0
+
+            # --- Quality Guard: Low-progress repair ---
+            if quality_guard is not None and quality_guard.should_trigger_low_progress_repair():
+                # Generate repair_tokens using target model
+                repair_start = time.time()
+                _cuda_sync()
+                current_ids = torch.cat(
+                    [input_ids, torch.tensor([generated_ids], device=device)], dim=1
+                ) if generated_ids else input_ids
+                with torch.no_grad():
+                    repair_output = target_model.generate(
+                        current_ids,
+                        max_new_tokens=quality_guard.repair_tokens,
+                        do_sample=False,
+                        pad_token_id=tokenizer.eos_token_id,
+                    )
+                repair_tokens = repair_output[0][current_ids.shape[1]:].tolist()
+                _cuda_sync()
+                target_time_total += time.time() - repair_start
+                target_model_forwards += 1
+
+                # Apply repair tokens
+                generated_ids.extend(repair_tokens)
+                quality_guard.reset_low_progress_counter()
+
+                # Re-prefill KV cache
+                new_cache_len = prompt_len + len(generated_ids)
+                target_past = _trim_past_key_values(target_past, new_cache_len)
+                draft_past = _trim_past_key_values(draft_past, new_cache_len)
+
+                # Check termination
+                if len(generated_ids) >= max_new_tokens:
+                    stop_reason = "max_tokens"
+                    break
+                if tokenizer.eos_token_id in repair_tokens:
+                    eos_pos = generated_ids.index(tokenizer.eos_token_id)
+                    generated_ids = generated_ids[:eos_pos]
+                    stop_reason = "eos"
+                    break
 
             # If too many consecutive repairs, degrade to AR
             if consecutive_repair_count >= 5:
@@ -1225,6 +1418,12 @@ def tasd_decode(
                     trim_reasons.append(risk_type)
                     accepted_tokens = accepted_tokens[:guard_keep_count]
 
+            # --- Quality Guard: Repetition-aware trim ---
+            if quality_guard is not None and accepted_tokens:
+                trim_pos = quality_guard.check_repetition(accepted_tokens, tokenizer)
+                if trim_pos < len(accepted_tokens):
+                    accepted_tokens = accepted_tokens[:trim_pos]
+
             accepted_count = len(accepted_tokens)
 
             # --- Record fallback stats ---
@@ -1336,6 +1535,22 @@ def tasd_decode(
                     fallback_count=_fb_count,
                     guard_trim_count=_guard_trim,
                 )
+
+            # --- Record round stats for quality guard ---
+            if quality_guard is not None:
+                guard_triggered_this_round = 1 if (enable_guard and not safe) else 0
+                quality_guard.record_round(
+                    drafted=len(draft_tokens),
+                    accepted=accepted_count,
+                    guard_triggered=guard_triggered_this_round,
+                )
+
+            # --- Restore strict mode parameters after round ---
+            if quality_guard is not None and 'original_top_k' in locals():
+                top_k_accept = original_top_k
+                prefix_budget = original_prefix_budget
+                del original_top_k
+                del original_prefix_budget
 
             # --- Profit guard: check if we should fallback to AR ---
             if profit_guard is not None and not profit_guard.triggered:
@@ -1497,6 +1712,9 @@ def tasd_decode(
         "profit_guard": profit_guard.get_summary() if profit_guard is not None else None,
         # Profit-aware switch (TASD-FG-P)
         "profit_aware_switch": profit_switch.get_summary() if profit_switch is not None else None,
+        # Quality guard (TASD-FGQ)
+        "quality_guard": quality_guard.get_summary() if quality_guard is not None else None,
+        "quality_guard_enabled": enable_quality_guard,
     }
 
     return {

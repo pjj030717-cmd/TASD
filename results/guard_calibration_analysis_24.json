@@ -1,0 +1,1563 @@
+{
+  "summary": {
+    "n_cases": 24,
+    "total_guard_triggers": {
+      "tasd": 262,
+      "tfg": 139,
+      "gv2": 75
+    },
+    "total_trims": {
+      "tasd": 262,
+      "tfg": 126,
+      "gv2": 68
+    },
+    "trim_reduction_gv2_vs_tasd": 194,
+    "trim_reduction_gv2_vs_tfg": 58,
+    "improved_cases": 8,
+    "worsened_cases": 2,
+    "neutral_cases": 11
+  },
+  "rule_analysis": [
+    {
+      "category": "repetition",
+      "tasd_trim_count": 67,
+      "tfg_trim_count": 18,
+      "gv2_trim_count": 0,
+      "trim_reduction": 67,
+      "n_cases": 3,
+      "avg_speedup_delta": 1.244,
+      "avg_sq_delta": 0.0168,
+      "avg_off_delta": 0.0,
+      "verdict": "over_trimming"
+    },
+    {
+      "category": "unbalanced_brackets",
+      "tasd_trim_count": 29,
+      "tfg_trim_count": 29,
+      "gv2_trim_count": 0,
+      "trim_reduction": 29,
+      "n_cases": 7,
+      "avg_speedup_delta": 0.472,
+      "avg_sq_delta": 0.0336,
+      "avg_off_delta": 0.0,
+      "verdict": "over_trimming"
+    },
+    {
+      "category": "off_structure:import",
+      "tasd_trim_count": 144,
+      "tfg_trim_count": 44,
+      "gv2_trim_count": 37,
+      "trim_reduction": 107,
+      "n_cases": 13,
+      "avg_speedup_delta": 0.07,
+      "avg_sq_delta": 0.0,
+      "avg_off_delta": 0.0338,
+      "verdict": "likely_over_trimming"
+    },
+    {
+      "category": "off_structure:other",
+      "tasd_trim_count": 0,
+      "tfg_trim_count": 0,
+      "gv2_trim_count": 18,
+      "trim_reduction": -18,
+      "n_cases": 3,
+      "avg_speedup_delta": 0.029,
+      "avg_sq_delta": 0.0351,
+      "avg_off_delta": 0.0,
+      "verdict": "neutral"
+    },
+    {
+      "category": "off_structure:def",
+      "tasd_trim_count": 22,
+      "tfg_trim_count": 22,
+      "gv2_trim_count": 6,
+      "trim_reduction": 16,
+      "n_cases": 6,
+      "avg_speedup_delta": 0.011,
+      "avg_sq_delta": 0.0175,
+      "avg_off_delta": 0.0,
+      "verdict": "neutral"
+    }
+  ],
+  "per_sample": [
+    {
+      "benchmark": "Real-Python-Argparse",
+      "sample_idx": 22,
+      "sample_name": "argparse_real_023",
+      "tasd_speedup": 0.24,
+      "tfg_speedup": 1.251,
+      "gv2_speedup": 1.28,
+      "gv2_vs_tfg_delta": 0.029,
+      "gv2_vs_tasd_delta": 1.04,
+      "tasd_sq": 0.7234,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.1143,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 26,
+      "tasd_trim_count": 26,
+      "tfg_guard_trig": 3,
+      "tfg_trim_count": 2,
+      "gv2_guard_trig": 3,
+      "gv2_trim_count": 2,
+      "gv2_high_risk": 2,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 26
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 1
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 1
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import os",
+        "off_structure:import os",
+        "off_structure:import NullCountAction",
+        "off_structure:import os",
+        "off_structure:import sysimport os os.path",
+        "off_structure:import sys",
+        "off_structure:import conda_build.conda_build",
+        "off_structure:import pytest",
+        "off_structure:import conda",
+        "off_structure:import pytest",
+        "off_structure:import conda",
+        "off_structure:import pytest",
+        "off_structure:import importlibimport importl",
+        "off_structure:import importlib",
+        "off_structure:import importlibimport importl",
+        "off_structure:import importlibimport importl",
+        "off_structure:import importlibimport importl",
+        "off_structure:import importlibimport importl",
+        "off_structure:import importlib",
+        "off_structure:import importlibimport importl",
+        "off_structure:import importlibimportimport i",
+        "off_structure:import importlibimportimport i",
+        "off_structure:import importlibimportimport i",
+        "off_structure:import importlibimportimport i",
+        "off_structure:import importlibimportimport i",
+        "off_structure:import importlibimportimport i"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import os"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import os"
+      ],
+      "tasd_repair": 14,
+      "tfg_repair": 1,
+      "gv2_repair": 1
+    },
+    {
+      "benchmark": "Real-Python-Argparse",
+      "sample_idx": 73,
+      "sample_name": "argparse_real_074",
+      "tasd_speedup": 0.281,
+      "tfg_speedup": 1.308,
+      "gv2_speedup": 1.312,
+      "gv2_vs_tfg_delta": 0.004,
+      "gv2_vs_tasd_delta": 1.031,
+      "tasd_sq": 0.5172,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 30,
+      "tasd_trim_count": 30,
+      "tfg_guard_trig": 5,
+      "tfg_trim_count": 4,
+      "gv2_guard_trig": 4,
+      "gv2_trim_count": 3,
+      "gv2_high_risk": 3,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 30
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 1,
+        "off_structure:def": 2
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 2
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import boto3",
+        "off_structure:import boto3",
+        "off_structure:from sagemaker.session import ",
+        "off_structure:from sagemaker import get_exec",
+        "off_structure:from sagemaker import get_exec",
+        "off_structure:from sagemaker.session import ",
+        "off_structure:from sagemaker import get_sess",
+        "off_structure:from sagemaker import get_sess",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import ",
+        "off_structure:from sagemaker_session import "
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import boto3",
+        "off_structure:def parse_args():",
+        "off_structure:def parse_args():"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import boto3",
+        "off_structure:import __ __"
+      ],
+      "tasd_repair": 15,
+      "tfg_repair": 1,
+      "gv2_repair": 1
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 59,
+      "sample_name": "dict_config_real_060",
+      "tasd_speedup": 0.354,
+      "tfg_speedup": 0.898,
+      "gv2_speedup": 2.166,
+      "gv2_vs_tfg_delta": 1.268,
+      "gv2_vs_tasd_delta": 1.812,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 25,
+      "tasd_trim_count": 25,
+      "tfg_guard_trig": 8,
+      "tfg_trim_count": 7,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 1,
+      "tasd_trim_cats": {
+        "repetition": 25
+      },
+      "tfg_trim_cats": {
+        "repetition": 6
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',"
+      ],
+      "tfg_trim_reasons": [
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',"
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 0,
+      "tfg_repair": 0,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 2,
+      "sample_name": "dict_config_real_003",
+      "tasd_speedup": 0.356,
+      "tfg_speedup": 0.903,
+      "gv2_speedup": 2.086,
+      "gv2_vs_tfg_delta": 1.183,
+      "gv2_vs_tasd_delta": 1.73,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 25,
+      "tasd_trim_count": 25,
+      "tfg_guard_trig": 8,
+      "tfg_trim_count": 7,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 1,
+      "tasd_trim_cats": {
+        "repetition": 25
+      },
+      "tfg_trim_cats": {
+        "repetition": 6
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',"
+      ],
+      "tfg_trim_reasons": [
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',",
+        "repeated_word:'AsyncGenerator',"
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 0,
+      "tfg_repair": 0,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 1,
+      "sample_name": "dict_config_real_002",
+      "tasd_speedup": 0.504,
+      "tfg_speedup": 0.87,
+      "gv2_speedup": 2.152,
+      "gv2_vs_tfg_delta": 1.281,
+      "gv2_vs_tasd_delta": 1.648,
+      "tasd_sq": 0.2312,
+      "tfg_sq": 0.1809,
+      "gv2_sq": 0.2312,
+      "gv2_sq_delta": 0.0503,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 17,
+      "tasd_trim_count": 17,
+      "tfg_guard_trig": 8,
+      "tfg_trim_count": 7,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 1,
+      "tasd_trim_cats": {
+        "repetition": 17
+      },
+      "tfg_trim_cats": {
+        "repetition": 6
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\","
+      ],
+      "tfg_trim_reasons": [
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"traceback\",",
+        "repeated_word:\"Generic.Traceback\","
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 0,
+      "tfg_repair": 0,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "OpenMMLab-Config",
+      "sample_idx": 70,
+      "sample_name": "openmmlab_config_real_071",
+      "tasd_speedup": 0.487,
+      "tfg_speedup": 0.684,
+      "gv2_speedup": 0.946,
+      "gv2_vs_tfg_delta": 0.263,
+      "gv2_vs_tasd_delta": 0.459,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.1111,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.1667,
+      "gv2_off_delta": 0.1667,
+      "tasd_guard_trig": 15,
+      "tasd_trim_count": 15,
+      "tfg_guard_trig": 11,
+      "tfg_trim_count": 9,
+      "gv2_guard_trig": 5,
+      "gv2_trim_count": 5,
+      "gv2_high_risk": 5,
+      "gv2_medium_risk": 3,
+      "tasd_trim_cats": {
+        "off_structure:import": 15
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 7
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 5
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import torch",
+        "off_structure:import torch",
+        "off_structure:from torch import optim",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.cuda.amp import Gra",
+        "off_structure:from torchfrom.utils import *",
+        "off_structure:from torchfrom.utils import *",
+        "off_structure:from torchfrom.utils import *",
+        "off_structure:from torchfrom.models import *",
+        "off_structure:from torchfrom.utils import *",
+        "off_structure:from torchfrom.datasets import",
+        "off_structure:from torchfrom.utils import *",
+        "off_structure:from torchfrom.datasets import",
+        "off_structure:from torchfrom.utils import *",
+        "off_structure:from torchfrom.models import *"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import torch",
+        "off_structure:import torch",
+        "off_structure:from torch import optim",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.cuda.amp import Gra",
+        "off_structure:from mmcv.runner import Hook",
+        "off_structure:from mmseg.models import build"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import torch",
+        "off_structure:import torch",
+        "off_structure:from torch import optim",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.cuda.amp import Gra"
+      ],
+      "tasd_repair": 7,
+      "tfg_repair": 2,
+      "gv2_repair": 2
+    },
+    {
+      "benchmark": "OpenMMLab-Config",
+      "sample_idx": 64,
+      "sample_name": "openmmlab_config_real_065",
+      "tasd_speedup": 0.588,
+      "tfg_speedup": 0.914,
+      "gv2_speedup": 0.914,
+      "gv2_vs_tfg_delta": 0.0,
+      "gv2_vs_tasd_delta": 0.326,
+      "tasd_sq": 0.7429,
+      "tfg_sq": 0.6571,
+      "gv2_sq": 0.6571,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 10,
+      "tasd_trim_count": 10,
+      "tfg_guard_trig": 4,
+      "tfg_trim_count": 4,
+      "gv2_guard_trig": 4,
+      "gv2_trim_count": 4,
+      "gv2_high_risk": 4,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 10
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 4
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 4
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import time",
+        "off_structure:import time",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcvuru.utils import get_",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import time",
+        "off_structure:import time",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import time",
+        "off_structure:import time",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di"
+      ],
+      "tasd_repair": 5,
+      "tfg_repair": 2,
+      "gv2_repair": 2
+    },
+    {
+      "benchmark": "Real-Python-Argparse",
+      "sample_idx": 33,
+      "sample_name": "argparse_real_034",
+      "tasd_speedup": 0.572,
+      "tfg_speedup": 1.53,
+      "gv2_speedup": 1.492,
+      "gv2_vs_tfg_delta": -0.038,
+      "gv2_vs_tasd_delta": 0.919,
+      "tasd_sq": 0.3333,
+      "tfg_sq": 0.1667,
+      "gv2_sq": 0.1667,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 10,
+      "tasd_trim_count": 10,
+      "tfg_guard_trig": 3,
+      "tfg_trim_count": 2,
+      "gv2_guard_trig": 3,
+      "gv2_trim_count": 2,
+      "gv2_high_risk": 2,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 10
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 1
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 1
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import sys",
+        "off_structure:import sys",
+        "off_structure:import pkg_resources",
+        "off_structure:import pkg_resources",
+        "off_structure:import pkg_resources(\"vendor.p",
+        "off_structure:import pkg_resources.extern",
+        "off_structure:import pkg_resources.extern",
+        "off_structure:import pkg_resources.extern",
+        "off_structure:import pkg_resources.extern",
+        "off_structure:import pkg_resources.externimp"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import sys"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import sys"
+      ],
+      "tasd_repair": 5,
+      "tfg_repair": 0,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "OpenMMLab-Config",
+      "sample_idx": 48,
+      "sample_name": "openmmlab_config_real_049",
+      "tasd_speedup": 0.735,
+      "tfg_speedup": 0.972,
+      "gv2_speedup": 0.929,
+      "gv2_vs_tfg_delta": -0.042,
+      "gv2_vs_tasd_delta": 0.195,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.1,
+      "tfg_off_str": 0.2174,
+      "gv2_off_str": 0.2174,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 9,
+      "tasd_trim_count": 9,
+      "tfg_guard_trig": 6,
+      "tfg_trim_count": 6,
+      "gv2_guard_trig": 6,
+      "gv2_trim_count": 6,
+      "gv2_high_risk": 6,
+      "gv2_medium_risk": 3,
+      "tasd_trim_cats": {
+        "off_structure:import": 9
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 6
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 6
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import time",
+        "off_structure:import time",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from mmcv import Config",
+        "off_structure:from mmdet.apimodels import bu",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import get_di",
+        "off_structure:from mmcv.runner import _C",
+        "off_structure:from mmcv.runner import get_di"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import time",
+        "off_structure:import time",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from mmcv import Config",
+        "off_structure:from mmdet.apimodels import bu",
+        "off_structure:from mmcv.runner import get_di"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import time",
+        "off_structure:import time",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from mmcv import Config",
+        "off_structure:from mmdet.apimodels import bu",
+        "off_structure:from mmcv.runner import get_di"
+      ],
+      "tasd_repair": 4,
+      "tfg_repair": 2,
+      "gv2_repair": 2
+    },
+    {
+      "benchmark": "Real-Python-Argparse",
+      "sample_idx": 30,
+      "sample_name": "argparse_real_031",
+      "tasd_speedup": 0.746,
+      "tfg_speedup": 1.639,
+      "gv2_speedup": 1.644,
+      "gv2_vs_tfg_delta": 0.005,
+      "gv2_vs_tasd_delta": 0.898,
+      "tasd_sq": 1.0,
+      "tfg_sq": 0.8462,
+      "gv2_sq": 0.8462,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 8,
+      "tasd_trim_count": 8,
+      "tfg_guard_trig": 3,
+      "tfg_trim_count": 2,
+      "gv2_guard_trig": 3,
+      "gv2_trim_count": 2,
+      "gv2_high_risk": 2,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 8
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 1
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 1
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import sys",
+        "off_structure:import sys",
+        "off_structure:from .erased import erased as ",
+        "off_structure:from typing import List, Optio",
+        "off_structure:from click.core import Paramet",
+        "off_structure:from click import echo, style",
+        "off_structure:from click.core import Paramet",
+        "off_structure:from __future__ import annotat"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import sys"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import sys"
+      ],
+      "tasd_repair": 4,
+      "tfg_repair": 0,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-Argparse",
+      "sample_idx": 61,
+      "sample_name": "argparse_real_062",
+      "tasd_speedup": 0.723,
+      "tfg_speedup": 1.554,
+      "gv2_speedup": 1.625,
+      "gv2_vs_tfg_delta": 0.072,
+      "gv2_vs_tasd_delta": 0.903,
+      "tasd_sq": 0.4828,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 8,
+      "tasd_trim_count": 8,
+      "tfg_guard_trig": 3,
+      "tfg_trim_count": 2,
+      "gv2_guard_trig": 3,
+      "gv2_trim_count": 2,
+      "gv2_high_risk": 2,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 8
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 1
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 1
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import os",
+        "off_structure:import os",
+        "off_structure:import torch.distributed as di",
+        "off_structure:import torch.distributed as di",
+        "off_structure:import torch.distributed",
+        "off_structure:import torch.distributed as di",
+        "off_structure:import torch.distributed",
+        "off_structure:import torch.distributedimport"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import os"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import os"
+      ],
+      "tasd_repair": 4,
+      "tfg_repair": 0,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "OpenMMLab-Config",
+      "sample_idx": 0,
+      "sample_name": "openmmlab_config_real_001",
+      "tasd_speedup": 0.895,
+      "tfg_speedup": 0.84,
+      "gv2_speedup": 0.797,
+      "gv2_vs_tfg_delta": -0.043,
+      "gv2_vs_tasd_delta": -0.097,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.1,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 7,
+      "tasd_trim_count": 7,
+      "tfg_guard_trig": 7,
+      "tfg_trim_count": 7,
+      "gv2_guard_trig": 7,
+      "gv2_trim_count": 7,
+      "gv2_high_risk": 7,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 7
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 7
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 7
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import os.path",
+        "off_structure:import os.path as osp",
+        "off_structure:from torchvision import transf",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.datafrom torc",
+        "off_structure:from torchvision.transforms im"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import os.path",
+        "off_structure:import os.path as osp",
+        "off_structure:from torchvision import transf",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.datafrom torc",
+        "off_structure:import torch"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import os.path",
+        "off_structure:import os.path as osp",
+        "off_structure:from torchvision import transf",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.datafrom torc",
+        "off_structure:import torch"
+      ],
+      "tasd_repair": 3,
+      "tfg_repair": 3,
+      "gv2_repair": 3
+    },
+    {
+      "benchmark": "OpenMMLab-Config",
+      "sample_idx": 2,
+      "sample_name": "openmmlab_config_real_003",
+      "tasd_speedup": 0.827,
+      "tfg_speedup": 0.843,
+      "gv2_speedup": 0.819,
+      "gv2_vs_tfg_delta": -0.024,
+      "gv2_vs_tasd_delta": -0.008,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.1,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 7,
+      "tasd_trim_count": 7,
+      "tfg_guard_trig": 7,
+      "tfg_trim_count": 7,
+      "gv2_guard_trig": 7,
+      "gv2_trim_count": 7,
+      "gv2_high_risk": 7,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 7
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 7
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 7
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import os.path",
+        "off_structure:import os.path as osp",
+        "off_structure:from torchvision import transf",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.datafrom torc",
+        "off_structure:from torchvision.transforms im"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import os.path",
+        "off_structure:import os.path as osp",
+        "off_structure:from torchvision import transf",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.datafrom torc",
+        "off_structure:import torch"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import os.path",
+        "off_structure:import os.path as osp",
+        "off_structure:from torchvision import transf",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.data import D",
+        "off_structure:from torch.utils.datafrom torc",
+        "off_structure:import torch"
+      ],
+      "tasd_repair": 3,
+      "tfg_repair": 3,
+      "gv2_repair": 3
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 13,
+      "sample_name": "dict_config_real_014",
+      "tasd_speedup": 0.932,
+      "tfg_speedup": 0.952,
+      "gv2_speedup": 0.969,
+      "gv2_vs_tfg_delta": 0.017,
+      "gv2_vs_tasd_delta": 0.038,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 8,
+      "tasd_trim_count": 8,
+      "tfg_guard_trig": 8,
+      "tfg_trim_count": 8,
+      "gv2_guard_trig": 9,
+      "gv2_trim_count": 9,
+      "gv2_high_risk": 9,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:def": 6,
+        "unbalanced_brackets": 2
+      },
+      "tfg_trim_cats": {
+        "off_structure:def": 6,
+        "unbalanced_brackets": 2
+      },
+      "gv2_trim_cats": {
+        "off_structure:other": 9
+      },
+      "tasd_trim_reasons": [
+        "off_structure:def _get_error_report(self, ex",
+        "off_structure:def _get_error_report(self, ex",
+        "unbalanced_brackets",
+        "off_structure:def _get_error_report(self, ex",
+        "off_structure:def _get_error_report(self, ex",
+        "unbalanced_brackets",
+        "off_structure:def _get_error_report(self, ex",
+        "off_structure:def _get_error_report(self, ex"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:def _get_error_report(self, ex",
+        "off_structure:def _get_error_report(self, ex",
+        "unbalanced_brackets",
+        "off_structure:def _get_error_report(self, ex",
+        "off_structure:def _get_error_report(self, ex",
+        "unbalanced_brackets",
+        "off_structure:def _get_error_report(self, ex",
+        "off_structure:def _get_error_report(self, ex"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:return error_report",
+        "off_structure:return error_report",
+        "off_structure:return error_report",
+        "off_structure:return code\": self._get_return",
+        "off_structure:return error_report",
+        "off_structure:return code\": self._get_return",
+        "off_structure:return error_report",
+        "off_structure:return error_report",
+        "off_structure:return error_report"
+      ],
+      "tasd_repair": 3,
+      "tfg_repair": 3,
+      "gv2_repair": 4
+    },
+    {
+      "benchmark": "Real-Python-Argparse",
+      "sample_idx": 69,
+      "sample_name": "argparse_real_070",
+      "tasd_speedup": 0.915,
+      "tfg_speedup": 1.464,
+      "gv2_speedup": 1.377,
+      "gv2_vs_tfg_delta": -0.087,
+      "gv2_vs_tasd_delta": 0.462,
+      "tasd_sq": 0.2118,
+      "tfg_sq": 0.6118,
+      "gv2_sq": 0.6118,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 6,
+      "tasd_trim_count": 6,
+      "tfg_guard_trig": 3,
+      "tfg_trim_count": 2,
+      "gv2_guard_trig": 3,
+      "gv2_trim_count": 2,
+      "gv2_high_risk": 2,
+      "gv2_medium_risk": 4,
+      "tasd_trim_cats": {
+        "off_structure:import": 6
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 1
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 1
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import sys",
+        "off_structure:import sys",
+        "off_structure:from transformers import AutoM",
+        "off_structure:from transformers import AutoT",
+        "off_structure:from transformers import AutoT",
+        "off_structure:from transformers import AutoM"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import sys"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import sys"
+      ],
+      "tasd_repair": 2,
+      "tfg_repair": 0,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 18,
+      "sample_name": "dict_config_real_019",
+      "tasd_speedup": 1.006,
+      "tfg_speedup": 1.003,
+      "gv2_speedup": 0.761,
+      "gv2_vs_tfg_delta": -0.243,
+      "gv2_vs_tasd_delta": -0.246,
+      "tasd_sq": 0.6842,
+      "tfg_sq": 0.6842,
+      "gv2_sq": 0.7895,
+      "gv2_sq_delta": 0.1053,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 9,
+      "tasd_trim_count": 9,
+      "tfg_guard_trig": 9,
+      "tfg_trim_count": 9,
+      "gv2_guard_trig": 9,
+      "gv2_trim_count": 9,
+      "gv2_high_risk": 9,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "unbalanced_brackets": 1,
+        "off_structure:def": 8
+      },
+      "tfg_trim_cats": {
+        "unbalanced_brackets": 1,
+        "off_structure:def": 8
+      },
+      "gv2_trim_cats": {
+        "off_structure:other": 7,
+        "off_structure:def": 2
+      },
+      "tasd_trim_reasons": [
+        "unbalanced_brackets",
+        "off_structure:def get_size_in_bytes(file_pat",
+        "off_structure:def get_size_in_bytes(file_pat",
+        "off_structure:def get_size_in_m",
+        "off_structure:def get_size_in_gib(file_path)",
+        "off_structure:def get_size_in_m",
+        "off_structure:def get_size_in_gib(file_path)",
+        "off_structure:def get_size",
+        "off_structure:def get_size"
+      ],
+      "tfg_trim_reasons": [
+        "unbalanced_brackets",
+        "off_structure:def get_size_in_bytes(file_pat",
+        "off_structure:def get_size_in_bytes(file_pat",
+        "off_structure:def get_size_in_m",
+        "off_structure:def get_size_in_gib(file_path)",
+        "off_structure:def get_size_in_m",
+        "off_structure:def get_size_in_gib(file_path)",
+        "off_structure:def get_size",
+        "off_structure:def get_size"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:return format['b']",
+        "off_structure:return format['b'] / size",
+        "off_structure:def get_size_in_gib(file_path)",
+        "off_structure:def get_size_in_bytes(file_pat",
+        "off_structure:return 0",
+        "off_structure:return get_size_in_bytes(file_",
+        "off_structure:return get_size_in_bytes(file_",
+        "off_structure:return None",
+        "off_structure:return os.path.getsize(file_pa"
+      ],
+      "tasd_repair": 4,
+      "tfg_repair": 4,
+      "gv2_repair": 4
+    },
+    {
+      "benchmark": "Real-Python-Argparse",
+      "sample_idx": 38,
+      "sample_name": "argparse_real_039",
+      "tasd_speedup": 0.926,
+      "tfg_speedup": 1.09,
+      "gv2_speedup": 1.094,
+      "gv2_vs_tfg_delta": 0.004,
+      "gv2_vs_tasd_delta": 0.167,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 6,
+      "tasd_trim_count": 6,
+      "tfg_guard_trig": 5,
+      "tfg_trim_count": 4,
+      "gv2_guard_trig": 5,
+      "gv2_trim_count": 4,
+      "gv2_high_risk": 4,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "off_structure:import": 2,
+        "off_structure:def": 4
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 1,
+        "off_structure:def": 2
+      },
+      "gv2_trim_cats": {
+        "off_structure:import": 1,
+        "off_structure:def": 2
+      },
+      "tasd_trim_reasons": [
+        "off_structure:import sys",
+        "off_structure:import sys",
+        "off_structure:def __init__(self, log_file, l",
+        "off_structure:def __init__(self, log_file, l",
+        "off_structure:def __init__(self, log_file, l",
+        "off_structure:def __init__(self, log_file, l"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import sys",
+        "off_structure:def run(self, args):",
+        "off_structure:def run(self, args):"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:import sys",
+        "off_structure:def run(self, args):",
+        "off_structure:def run(self, args):"
+      ],
+      "tasd_repair": 3,
+      "tfg_repair": 1,
+      "gv2_repair": 1
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 57,
+      "sample_name": "dict_config_real_058",
+      "tasd_speedup": 1.311,
+      "tfg_speedup": 1.267,
+      "gv2_speedup": 2.116,
+      "gv2_vs_tfg_delta": 0.848,
+      "gv2_vs_tasd_delta": 0.805,
+      "tasd_sq": 0.9375,
+      "tfg_sq": 0.875,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.125,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 6,
+      "tasd_trim_count": 6,
+      "tfg_guard_trig": 8,
+      "tfg_trim_count": 7,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 4,
+      "tasd_trim_cats": {
+        "unbalanced_brackets": 6
+      },
+      "tfg_trim_cats": {
+        "unbalanced_brackets": 6
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "tfg_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 3,
+      "tfg_repair": 2,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 40,
+      "sample_name": "dict_config_real_041",
+      "tasd_speedup": 1.283,
+      "tfg_speedup": 1.31,
+      "gv2_speedup": 1.624,
+      "gv2_vs_tfg_delta": 0.314,
+      "gv2_vs_tasd_delta": 0.341,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 5,
+      "tasd_trim_count": 5,
+      "tfg_guard_trig": 5,
+      "tfg_trim_count": 5,
+      "gv2_guard_trig": 2,
+      "gv2_trim_count": 2,
+      "gv2_high_risk": 2,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "unbalanced_brackets": 3,
+        "off_structure:def": 2
+      },
+      "tfg_trim_cats": {
+        "unbalanced_brackets": 3,
+        "off_structure:def": 2
+      },
+      "gv2_trim_cats": {
+        "off_structure:other": 2
+      },
+      "tasd_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "off_structure:def _get_response_from_cache(c",
+        "off_structure:def _get_response_from_cache(c",
+        "unbalanced_brackets"
+      ],
+      "tfg_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "off_structure:def _get_response_from_cache(c",
+        "off_structure:def _get_response_from_cache(c",
+        "unbalanced_brackets"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:return new_state",
+        "off_structure:return new_state"
+      ],
+      "tasd_repair": 1,
+      "tfg_repair": 1,
+      "gv2_repair": 1
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 52,
+      "sample_name": "dict_config_real_053",
+      "tasd_speedup": 1.461,
+      "tfg_speedup": 1.456,
+      "gv2_speedup": 2.138,
+      "gv2_vs_tfg_delta": 0.682,
+      "gv2_vs_tasd_delta": 0.677,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 5,
+      "tasd_trim_count": 5,
+      "tfg_guard_trig": 5,
+      "tfg_trim_count": 5,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 0,
+      "tasd_trim_cats": {
+        "unbalanced_brackets": 5
+      },
+      "tfg_trim_cats": {
+        "unbalanced_brackets": 5
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "tfg_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 1,
+      "tfg_repair": 1,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 77,
+      "sample_name": "dict_config_real_078",
+      "tasd_speedup": 1.303,
+      "tfg_speedup": 1.303,
+      "gv2_speedup": 2.156,
+      "gv2_vs_tfg_delta": 0.853,
+      "gv2_vs_tasd_delta": 0.854,
+      "tasd_sq": 0.1212,
+      "tfg_sq": 0.1246,
+      "gv2_sq": 0.1279,
+      "gv2_sq_delta": 0.0034,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 6,
+      "tasd_trim_count": 6,
+      "tfg_guard_trig": 6,
+      "tfg_trim_count": 6,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 4,
+      "tasd_trim_cats": {
+        "unbalanced_brackets": 6
+      },
+      "tfg_trim_cats": {
+        "unbalanced_brackets": 6
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "tfg_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 3,
+      "tfg_repair": 3,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "OpenMMLab-Config",
+      "sample_idx": 29,
+      "sample_name": "openmmlab_config_real_030",
+      "tasd_speedup": 1.381,
+      "tfg_speedup": 1.384,
+      "gv2_speedup": 2.15,
+      "gv2_vs_tfg_delta": 0.766,
+      "gv2_vs_tasd_delta": 0.769,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.2727,
+      "gv2_off_delta": 0.2727,
+      "tasd_guard_trig": 6,
+      "tasd_trim_count": 6,
+      "tfg_guard_trig": 6,
+      "tfg_trim_count": 6,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 6,
+      "tasd_trim_cats": {
+        "off_structure:import": 6
+      },
+      "tfg_trim_cats": {
+        "off_structure:import": 6
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "off_structure:import os.path as osp",
+        "off_structure:import os.path as osp",
+        "off_structure:import torch",
+        "off_structure:import os.path",
+        "off_structure:import numpy as",
+        "off_structure:import numpy as"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:import os.path as osp",
+        "off_structure:import os.path as osp",
+        "off_structure:import torch",
+        "off_structure:import os.path",
+        "off_structure:import numpy as",
+        "off_structure:import numpy as"
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 4,
+      "tfg_repair": 3,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 78,
+      "sample_name": "dict_config_real_079",
+      "tasd_speedup": 1.292,
+      "tfg_speedup": 1.32,
+      "gv2_speedup": 2.154,
+      "gv2_vs_tfg_delta": 0.835,
+      "gv2_vs_tasd_delta": 0.862,
+      "tasd_sq": 0.0658,
+      "tfg_sq": 0.0676,
+      "gv2_sq": 0.0695,
+      "gv2_sq_delta": 0.0018,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 6,
+      "tasd_trim_count": 6,
+      "tfg_guard_trig": 6,
+      "tfg_trim_count": 6,
+      "gv2_guard_trig": 0,
+      "gv2_trim_count": 0,
+      "gv2_high_risk": 0,
+      "gv2_medium_risk": 4,
+      "tasd_trim_cats": {
+        "unbalanced_brackets": 6
+      },
+      "tfg_trim_cats": {
+        "unbalanced_brackets": 6
+      },
+      "gv2_trim_cats": {},
+      "tasd_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "tfg_trim_reasons": [
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets",
+        "unbalanced_brackets"
+      ],
+      "gv2_trim_reasons": [],
+      "tasd_repair": 3,
+      "tfg_repair": 3,
+      "gv2_repair": 0
+    },
+    {
+      "benchmark": "Real-Python-DictConfig",
+      "sample_idx": 7,
+      "sample_name": "dict_config_real_008",
+      "tasd_speedup": 1.462,
+      "tfg_speedup": 1.472,
+      "gv2_speedup": 1.438,
+      "gv2_vs_tfg_delta": -0.033,
+      "gv2_vs_tasd_delta": -0.024,
+      "tasd_sq": 1.0,
+      "tfg_sq": 1.0,
+      "gv2_sq": 1.0,
+      "gv2_sq_delta": 0.0,
+      "tasd_off_str": 0.0,
+      "tfg_off_str": 0.0,
+      "gv2_off_str": 0.0,
+      "gv2_off_delta": 0.0,
+      "tasd_guard_trig": 2,
+      "tasd_trim_count": 2,
+      "tfg_guard_trig": 2,
+      "tfg_trim_count": 2,
+      "gv2_guard_trig": 2,
+      "gv2_trim_count": 2,
+      "gv2_high_risk": 2,
+      "gv2_medium_risk": 3,
+      "tasd_trim_cats": {
+        "off_structure:def": 2
+      },
+      "tfg_trim_cats": {
+        "off_structure:def": 2
+      },
+      "gv2_trim_cats": {
+        "off_structure:def": 2
+      },
+      "tasd_trim_reasons": [
+        "off_structure:def __init__(self, name, type,",
+        "off_structure:def __init__(self, name, type,"
+      ],
+      "tfg_trim_reasons": [
+        "off_structure:def __init__(self, name, type,",
+        "off_structure:def __init__(self, name, type,"
+      ],
+      "gv2_trim_reasons": [
+        "off_structure:def __init__(self, name, type,",
+        "off_structure:def __init__(self, name, type,"
+      ],
+      "tasd_repair": 1,
+      "tfg_repair": 1,
+      "gv2_repair": 1
+    }
+  ]
+}
