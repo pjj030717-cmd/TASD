@@ -2,6 +2,35 @@
 
 **Samples**: 480 total
 
+## Table 0. Benchmark Structure Coverage (Experimental Setup)
+
+| Structure Type | Source Files | Repos | Valid Candidates | Avg Ref Len | Suitability |
+|----------------|:------------:|:-----:|:----------------:|:-----------:|-------------|
+| Argparse Option Blocks | 159 | 42 | 227 | 18 | High |
+| Rich CLI Option Groups | 88 | 32 | 115 | 53 | High |
+| Dict Config Blocks | 1596 | 103 | 2713 | 88 | Medium-High |
+| Complex Nested Configs | 661 | 64 | 1017 | 163 | High |
+| OpenMMLab Configs | 2186 | 18 | 5222 | 28 | High |
+| Pipeline & Stage Configs | 929 | 6 | 1105 | 11 | High |
+
+> Coverage scan: 20,764 source files from PyPI + OpenMMLab. Types selected based on structural repetition, Guard-detectable pattern, and prevalence. Full scan including boundary types in Appendix A1.
+
+## Appendix A1. Full Structure Coverage Scan
+
+| Structure Type | Category | Source Files | Repos | Valid Candidates | Avg Ref Len | Avg Nesting | Suitability |
+|----------------|----------|:------------:|:-----:|:----------------:|:-----------:|:-----------:|-------------|
+| Argparse Option Blocks | validated | 159 | 42 | 227 | 18 | 0.00 | High — repeated skeleton, rich fields, Guard detectable |
+| Rich CLI Option Groups | validated | 88 | 32 | 115 | 53 | 0.00 | High — complex multi-option groups, Guard benefits |
+| Dict Config Blocks | validated | 1596 | 103 | 2713 | 88 | 2.75 | Medium-High — key/value repetition, nested structures |
+| Complex Nested Configs | validated | 661 | 64 | 1017 | 163 | 4.13 | High — deep nesting, TASD Guard has clear advantage |
+| OpenMMLab Configs | validated | 2186 | 18 | 5222 | 28 | 0.00 | High — repeated config blocks, dense structure |
+| Pipeline & Stage Configs | validated | 929 | 6 | 1105 | 11 | 0.00 | High — repeated stage skeletons with type/name/params |
+| Schema/Model Fields (SQLAlchemy/DRF) | boundary | 70 | 8 | 126 | 3 | 0.00 | Low — fields are short, single-line, baseline already good |
+| Model Fields (Pydantic/Dataclass) | boundary | 0 | 0 | 0 | 0 | 0.00 | Low ??? fields are short, single-line, baseline already good; 0 found in source pool |
+| Pytest Parametrize Decorators | boundary | 217 | 16 | 1118 | 11 | 0.00 | Low — nested strings/test values vary widely, Guard error-prone |
+
+> **Category**: `validated` = selected for benchmark; `boundary` = scanned but excluded (low structural repetition, short fields, or Guard-unfriendly).
+
 ## Table 1. Main Results: Speed, Robustness, Quality
 
 | Method | Speedup | Eff. TPS | Below-AR | Score2 | Score1 | Score0 | Recoverable | Rerun |
@@ -51,7 +80,7 @@
 
 > **Note**: Speedup in Table 4 is TPS-based (output generation only, excluding verifier overhead). All policies share the same verifier, so relative comparison is valid. TASD-FG-V wall-time speedup including verifier is 1.31x (see Table 1).
 
-## Table 5. Failed Quality Repair Attempts (Supplementary)
+## Appendix A2. Failed Quality Repair Attempts
 
 | Attempt | Goal | Result | Decision |
 |---------|------|--------|----------|
@@ -62,9 +91,9 @@
 | OffStruct constraint | reduce off-structure | low score gain | reject |
 | Partial repair (VR) | reduce rerun cost | repair cost too high (0.91) | reject |
 
-## Table 6. Length / Generalization Results (Supplementary)
+## Appendix A3. 256-Token Scaling (Qwen 2.5 14B)
 
-### 6.1 Qwen 256-token (3x40)
+**Samples**: 3x40
 
 | Method | Speedup | SQ-R | SQ-S | Below-AR | Trunc |
 |--------|:------:|:----:|:----:|:--------:|:-----:|
@@ -74,7 +103,7 @@
 | FLY | 1.54x | 0.674 | 0.776 | 19 | 0.82 |
 | TASD-FG | 2.00x | 0.643 | 0.677 | 0 | 0.89 |
 
-### 6.2 LLaMA-3.1-8B 128-token (6x40)
+## Appendix A4. LLaMA-3.1-8B Generalization (6x40)
 
 | Method | Speedup | SQ-R | SQ-S | Below-AR | Trunc |
 |--------|:------:|:----:|:----:|:--------:|:-----:|
@@ -114,6 +143,42 @@ the generated output has non-truncated bracket imbalance
 detector including bracket imbalance, repetition, off-structure
 drift, and duplicate options.
 ```
+
+## Appendix A5. Error Tag Breakdown (TASD-FG Score 0)
+
+**Total Score 0 samples**: 132 / 480
+
+### A5.1 Error Tags (may overlap)
+
+| Error Tag | Count | Description |
+|-----------|:-----:|-------------|
+| BRACKET | 65 | Bracket imbalance (bracket_balance < 1.0) |
+| TRUNC | 60 | Output truncated before max_new_tokens |
+| LOW_F1 | 52 | Low structural F1 vs reference |
+| REPEAT | 24 | Token/line repetition detected |
+| OFF_STRUCT | 27 | Off-structure keyword drift |
+
+### A5.2 Error Tag Combinations
+
+| Combination | Count |
+|-------------|:-----:|
+| BRACKET | 50 |
+| LOW_F1+TRUNC | 26 |
+| OFF_STRUCT+TRUNC | 14 |
+| BRACKET+LOW_F1 | 12 |
+| REPEAT+TRUNC | 6 |
+| OFF_STRUCT+REPEAT+TRUNC | 5 |
+| LOW_F1+REPEAT+TRUNC | 4 |
+| LOW_F1+OFF_STRUCT+REPEAT+TRUNC | 3 |
+| LOW_F1+REPEAT | 2 |
+| REPEAT | 2 |
+| LOW_F1 | 2 |
+| BRACKET+OFF_STRUCT | 2 |
+| LOW_F1+OFF_STRUCT+TRUNC | 2 |
+| BRACKET+REPEAT | 1 |
+| LOW_F1+OFF_STRUCT+REPEAT | 1 |
+
+> BRACKET is the most common single error tag (65), motivating TASD-FG-BR. BRACKET+TRUNC+LOW_F1 combos motivate TASD-FG-V's multi-signal verifier.
 
 ## Conclusion
 

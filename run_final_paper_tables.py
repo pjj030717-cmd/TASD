@@ -81,7 +81,127 @@ def load_all_data():
     except FileNotFoundError:
         data['llama_full'] = None
 
+    # Structure coverage scan
+    with open('results/final_structure_coverage_scan.json') as f:
+        data['coverage'] = json.load(f)
+
+    # Error tag breakdown
+    try:
+        with open('results/tasd_fg_quality_error_analysis.json') as f:
+            data['error_analysis'] = json.load(f)
+    except FileNotFoundError:
+        data['error_analysis'] = None
+
     return data
+
+
+# ============================================================
+# Table 0: Structure Coverage (Experimental Setup)
+# ============================================================
+
+def generate_structure_coverage_tables(data):
+    """Generate Table 0 (simplified) and Appendix A1 (full) from coverage scan."""
+    cov = data['coverage']
+    coverage = cov['coverage']
+
+    lines = []
+
+    # ---- Table 0: Simplified (validated types only) ----
+    lines.append("## Table 0. Benchmark Structure Coverage (Experimental Setup)\n")
+    lines.append("| Structure Type | Source Files | Repos | Valid Candidates | Avg Ref Len | Suitability |")
+    lines.append("|----------------|:------------:|:-----:|:----------------:|:-----------:|-------------|")
+
+    validated_order = ['argparse', 'rich_cli_option_groups', 'dict_config',
+                       'complex_nested_config', 'openmmlab_config', 'pipeline_stage_config']
+
+    for key in validated_order:
+        c = coverage[key]
+        name = c['display']
+        files = c['source_file_count']
+        repos = c['repo_or_package_count']
+        candidates = c['valid_candidate_count']
+        avg_len = f"{c['avg_reference_lines']:.0f}"
+        suitability = c['suitability'].split(' — ')[0] if ' — ' in c['suitability'] else c['suitability']
+        lines.append(f"| {name} | {files} | {repos} | {candidates} | {avg_len} | {suitability} |")
+
+    lines.append("")
+    lines.append("> Coverage scan: 20,764 source files from PyPI + OpenMMLab. "
+                 "Types selected based on structural repetition, Guard-detectable pattern, and prevalence. "
+                 "Full scan including boundary types in Appendix A1.")
+    lines.append("")
+
+    # ---- Appendix A1: Full Coverage Scan ----
+    lines.append("## Appendix A1. Full Structure Coverage Scan\n")
+    lines.append("| Structure Type | Category | Source Files | Repos | Valid Candidates | Avg Ref Len | Avg Nesting | Suitability |")
+    lines.append("|----------------|----------|:------------:|:-----:|:----------------:|:-----------:|:-----------:|-------------|")
+
+    all_order = list(coverage.keys())
+    for key in all_order:
+        c = coverage[key]
+        name = c['display']
+        cat = c.get('category', '—')
+        files = c.get('source_file_count', 0)
+        repos = c.get('repo_or_package_count', 0)
+        candidates = c.get('valid_candidate_count', 0)
+        avg_len = f"{c.get('avg_reference_lines', 0):.0f}"
+        avg_nest = f"{c.get('avg_nesting_depth', 0):.2f}"
+        suit = c.get('suitability', '—')
+        lines.append(f"| {name} | {cat} | {files} | {repos} | {candidates} | {avg_len} | {avg_nest} | {suit} |")
+
+    lines.append("")
+    lines.append("> **Category**: `validated` = selected for benchmark; `boundary` = scanned but excluded "
+                 "(low structural repetition, short fields, or Guard-unfriendly).")
+    lines.append("")
+
+    return '\n'.join(lines)
+
+
+# ============================================================
+# Appendix A5: Error Tag Breakdown
+# ============================================================
+
+def generate_error_tag_breakdown(data):
+    """Generate Appendix A5: Error Tag Breakdown for TASD-FG Score 0 samples."""
+    if not data.get('error_analysis'):
+        return ""
+
+    ea = data['error_analysis']
+    lines = []
+
+    lines.append("## Appendix A5. Error Tag Breakdown (TASD-FG Score 0)\n")
+    lines.append(f"**Total Score 0 samples**: {ea['score_distribution']['0']} / {ea['total']}\n")
+
+    lines.append("### A5.1 Error Tags (may overlap)\n")
+    lines.append("| Error Tag | Count | Description |")
+    lines.append("|-----------|:-----:|-------------|")
+    tags = ea.get('error_tags_score0', {})
+    tag_desc = {
+        'BRACKET': 'Bracket imbalance (bracket_balance < 1.0)',
+        'TRUNC': 'Output truncated before max_new_tokens',
+        'LOW_F1': 'Low structural F1 vs reference',
+        'REPEAT': 'Token/line repetition detected',
+        'OFF_STRUCT': 'Off-structure keyword drift',
+    }
+    for tag in ['BRACKET', 'TRUNC', 'LOW_F1', 'REPEAT', 'OFF_STRUCT']:
+        count = tags.get(tag, 0)
+        desc = tag_desc.get(tag, '')
+        lines.append(f"| {tag} | {count} | {desc} |")
+    lines.append("")
+
+    # Error combos
+    lines.append("### A5.2 Error Tag Combinations\n")
+    lines.append("| Combination | Count |")
+    lines.append("|-------------|:-----:|")
+    combos = ea.get('error_combos_score0', {})
+    for combo, count in sorted(combos.items(), key=lambda x: -x[1]):
+        lines.append(f"| {combo} | {count} |")
+    lines.append("")
+
+    lines.append("> BRACKET is the most common single error tag (65), motivating TASD-FG-BR. "
+                 "BRACKET+TRUNC+LOW_F1 combos motivate TASD-FG-V's multi-signal verifier.")
+    lines.append("")
+
+    return '\n'.join(lines)
 
 
 # ============================================================
@@ -389,6 +509,10 @@ def generate_master_report(data, br_data):
     lines.append("# TASD: Final Paper Results\n")
     lines.append(f"**Samples**: {n_total} total\n")
 
+    # ========== Table 0: Structure Coverage ==========
+    coverage_section = generate_structure_coverage_tables(data)
+    lines.append(coverage_section)
+
     # ========== Table 1: Main Results ==========
     lines.append("## Table 1. Main Results: Speed, Robustness, Quality\n")
     lines.append("| Method | Speedup | Eff. TPS | Below-AR | Score2 | Score1 | Score0 | Recoverable | Rerun |")
@@ -489,8 +613,8 @@ def generate_master_report(data, br_data):
                  "TASD-FG-V wall-time speedup including verifier is 1.31x (see Table 1).")
     lines.append("")
 
-    # ========== Table 5: Failed Attempts ==========
-    lines.append("## Table 5. Failed Quality Repair Attempts (Supplementary)\n")
+    # ========== Appendix A2: Failed Attempts ==========
+    lines.append("## Appendix A2. Failed Quality Repair Attempts\n")
     lines.append("| Attempt | Goal | Result | Decision |")
     lines.append("|---------|------|--------|----------|")
     lines.append("| FGQ | in-loop quality guard | no quality gain, speed loss | reject |")
@@ -501,13 +625,13 @@ def generate_master_report(data, br_data):
     lines.append("| Partial repair (VR) | reduce rerun cost | repair cost too high (0.91) | reject |")
     lines.append("")
 
-    # ========== Table 6: Generalization ==========
-    lines.append("## Table 6. Length / Generalization Results (Supplementary)\n")
+    # ========== Appendix A3: 256-token Scaling ==========
+    lines.append("## Appendix A3. 256-Token Scaling (Qwen 2.5 14B)\n")
 
     # 256-token extended (use extended 3x40 if available, else pilot 3x20)
     p256_src = data.get('p256_ext') if data.get('p256_ext') else data['p256']
     p256_n = "3x40" if data.get('p256_ext') else "3x20"
-    lines.append(f"### 6.1 Qwen 256-token ({p256_n})\n")
+    lines.append(f"**Samples**: {p256_n}\n")
     if 'overall' in p256_src:
         ov = p256_src['overall']
         lines.append("| Method | Speedup | SQ-R | SQ-S | Below-AR | Trunc |")
@@ -526,7 +650,7 @@ def generate_master_report(data, br_data):
     # LLaMA full (use full 6x40 if available, else pilot 3x20)
     llama_src = data.get('llama_full') if data.get('llama_full') else data['llama']
     llama_n = "6x40" if data.get('llama_full') else "3x20"
-    lines.append(f"### 6.2 LLaMA-3.1-8B 128-token ({llama_n})\n")
+    lines.append(f"## Appendix A4. LLaMA-3.1-8B Generalization ({llama_n})\n")
 
     # Compute overall from per_benchmark if no overall key
     if 'overall' in llama_src:
@@ -611,6 +735,10 @@ def generate_master_report(data, br_data):
     lines.append("drift, and duplicate options.")
     lines.append("```")
     lines.append("")
+
+    # ========== Appendix A5: Error Tag Breakdown ==========
+    error_tag_section = generate_error_tag_breakdown(data)
+    lines.append(error_tag_section)
 
     # ========== Conclusion ==========
     lines.append("## Conclusion\n")
