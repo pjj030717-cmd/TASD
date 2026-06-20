@@ -93,6 +93,71 @@ def _check_tokenizer_consistency(target_tokenizer, draft_tokenizer):
     return same_vocab, same_encoding
 
 
+def _contains_offstruct_pattern(text):
+    """
+    Check if text contains any off-structure pattern at line start.
+    Patterns: def, class, import, from X import
+    """
+    import re
+    lines = text.split('\n')
+    for line in lines:
+        stripped = line.strip()
+        # Skip empty lines and comments
+        if not stripped or stripped.startswith('#'):
+            continue
+        if (re.match(r'^\s*def\s+', line) or
+            re.match(r'^\s*class\s+', line) or
+            re.match(r'^\s*import\s+', line) or
+            re.match(r'^\s*from\s+\w+\s+import', line)):
+            return True
+    return False
+
+
+def _find_offstruct_trim_position(tokens, text, tokenizer):
+    """
+    Find the token position to trim to, just before the first off-struct line.
+    Returns the number of tokens to keep.
+    """
+    import re
+    lines = text.split('\n')
+    first_offstruct_line_idx = None
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if not stripped or stripped.startswith('#'):
+            continue
+        if (re.match(r'^\s*def\s+', line) or
+            re.match(r'^\s*class\s+', line) or
+            re.match(r'^\s*import\s+', line) or
+            re.match(r'^\s*from\s+\w+\s+import', line)):
+            first_offstruct_line_idx = i
+            break
+
+    if first_offstruct_line_idx is None:
+        return len(tokens)
+
+    # Find the token that corresponds to the first off-struct character
+    if first_offstruct_line_idx == 0:
+        prefix = ""
+    else:
+        prefix = '\n'.join(lines[:first_offstruct_line_idx]) + '\n'
+
+    if not prefix.strip():
+        return 0
+
+    # Encode the safe prefix to find the token boundary
+    safe_ids = tokenizer.encode(prefix, add_special_tokens=False)
+    # Find the smallest position where safe_ids matches a prefix of tokens
+    # Use binary search on token prefix
+    for trim_pos in range(len(safe_ids), len(tokens) + 1):
+        # Check if tokens[:trim_pos] decoded starts with prefix
+        candidate_text = tokenizer.decode(tokens[:trim_pos], skip_special_tokens=True)
+        if candidate_text.replace('\n', '\n').startswith(prefix.replace('\n', '\n')) or candidate_text == prefix:
+            return trim_pos
+
+    # Fallback: keep all tokens
+    return len(tokens)
+
+
 def _check_prompt_seed(prompt, structure_type):
     """
     Check if prompt contains enough structural seed for the given structure_type.
@@ -517,12 +582,102 @@ class CommentStringFallback:
         }
 
 
-def _is_early_stop_condition(token, tokenizer, structure_type, generated_text_so_far):
+def _check_structure_complete(generated_text, structure_type, prompt_text="", min_chars=20):
+    """
+    Check if the target structure appears complete for early stopping.
+    Returns True if the structure is complete and we should stop.
+
+    Args:
+        generated_text: Decoded text generated so far (prompt not included)
+        structure_type: One of argparse, dict_config, openmmlab_config,
+                       pipeline_stage_config, rich_cli_option_groups, complex_nested_config
+        prompt_text: The original prompt text (needed for bracket balance check)
+        min_chars: Minimum characters before considering early stop
+    """
+    if len(generated_text) < min_chars:
+        return False
+
+    if structure_type in ("dict_config", "openmmlab_config", "pipeline_stage_config", "complex_nested_config"):
+        # For bracket-based structures, check with prompt text included
+        # because the opening bracket is in the prompt, not the generated text
+        full_text = prompt_text + generated_text
+        return _check_bracket_structure_complete(full_text)
+    elif structure_type in ("argparse", "rich_cli_option_groups"):
+        return _check_argparse_structure_complete(generated_text)
+
+    return False
+
+
+def _check_bracket_structure_complete(text):
+    """
+    Check if bracket-based structure is complete.
+    For dict/config types: outer braces/brackets should be balanced and closed.
+    Uses simple depth counting that ignores string/comment contents for speed.
+    """
+    brace_depth = 0
+    bracket_depth = 0
+    has_seen_open_brace = False
+
+    for ch in text:
+        if ch == '{':
+            brace_depth += 1
+            has_seen_open_brace = True
+        elif ch == '}':
+            brace_depth -= 1
+        elif ch == '[':
+            bracket_depth += 1
+        elif ch == ']':
+            bracket_depth -= 1
+
+    # Structure is complete when:
+    # 1. We've seen at least one opening brace
+    # 2. All brackets are balanced (depth == 0)
+    # 3. The last character is a closing brace/bracket (structure just closed)
+    if has_seen_open_brace and brace_depth == 0 and bracket_depth == 0:
+        last_char = text.strip()[-1] if text.strip() else ''
+        if last_char in ('}', ']'):
+            return True
+    return False
+
+
+def _check_argparse_structure_complete(text):
+    """
+    Check if argparse/rich_cli structure is complete.
+    Stop when we have seen add_argument blocks and a new function/class/import
+    or if __name__ block starts after the argparse setup.
+    """
+    lines = text.strip().split('\n')
+    arg_count = 0
+
+    # Count add_argument calls
+    for line in lines:
+        if '.add_argument(' in line or '.add_mutually_exclusive_group(' in line:
+            arg_count += 1
+
+    # Need at least some argparse setup before considering stop
+    if arg_count < 2:
+        return False
+
+    # Check the last non-empty, non-comment line for off-structure signals
+    for line in reversed(lines):
+        stripped = line.strip()
+        if not stripped or stripped.startswith('#'):
+            continue
+        if stripped.startswith(('def ', 'class ', 'import ', 'from ', 'if __name__')):
+            # New function/class/import after argparse setup means structure is done
+            return True
+        # If last line is something else, keep going
+        break
+
+    return False
+
+
+def _is_early_stop_condition(token, tokenizer, structure_type, generated_text_so_far, prompt_text=""):
     """
     Check if we should stop drafting early based on:
     - EOS token
     - Obvious structure end markers
-    - High-risk content detected by lightweight check
+    - Structure completion (delegates to _check_structure_complete)
     """
     if token == tokenizer.eos_token_id:
         return True, "eos"
@@ -535,6 +690,10 @@ def _is_early_stop_condition(token, tokenizer, structure_type, generated_text_so
     elif structure_type == "dict_config":
         if decoded.strip().startswith(("def ", "class ", "import ", "from ")):
             return True, "off_structure"
+
+    # Check structure completion for bracket-based types
+    if _check_structure_complete(generated_text_so_far, structure_type, prompt_text=prompt_text, min_chars=20):
+        return True, "structure_complete"
 
     return False, ""
 
@@ -784,6 +943,234 @@ class QualityGuard:
         }
 
 
+class RiskAwareARFallback:
+    """
+    TASD-FG-R: Risk-aware AR fallback for TASD speculative decoding.
+
+    Monitors runtime risk signals during speculative decoding. When risk
+    exceeds threshold, falls back to target AR for ALL remaining tokens
+    (sample-level fallback). No switching back — once triggered, the rest
+    of the generation is pure AR.
+
+    Risk signals (any one triggers fallback):
+    1. recent_accept_rate < 0.60       (poor draft-target alignment)
+    2. guard_trigger_count >= 3        (too many structural guard triggers)
+    3. repair_count >= 3               (too many repair rounds)
+    4. off_structure_detected >= 1     (structural drift detected)
+    5. repetition_warning >= 1         (repetition detected)
+    6. consecutive_low_accept_rounds >= 2  (persistent low acceptance)
+    7. bracket_stack abnormal          (bracket imbalance, not truncated)
+
+    Independent signals (for unguarded structure types):
+    8. token_repetition: n-gram repetition in last 48 tokens
+    9. text_off_structure: def/class/import detected in output
+    10. text_bracket_imbalance: brackets unbalanced without truncation
+
+    Design: sample-level, one-shot. No cooldown, no switching back.
+    """
+
+    def __init__(
+        self,
+        accept_threshold=0.60,
+        guard_trigger_threshold=3,
+        repair_threshold=3,
+        low_accept_bar=0.30,
+        low_accept_consecutive=2,
+    ):
+        self.accept_threshold = accept_threshold
+        self.guard_trigger_threshold = guard_trigger_threshold
+        self.repair_threshold = repair_threshold
+        self.low_accept_bar = low_accept_bar
+        self.low_accept_consecutive = low_accept_consecutive
+
+        # Rolling signals
+        self.recent_accept_rates = []  # list of (drafted, accepted) per round
+        self.consecutive_low_accept = 0
+        self._total_drafted = 0
+        self._total_accepted = 0
+
+        # Cumulative signals
+        self.guard_trigger_count = 0
+        self.repair_count = 0
+        self.off_structure_detected = False
+        self.repetition_warning_count = 0
+        self.bracket_warning_count = 0
+        self.round_count = 0
+
+        # Guard delta tracking (to avoid double-counting cumulative values)
+        self._prev_guard_repetition = 0
+        self._prev_guard_bracket = 0
+
+        # State
+        self.triggered = False
+        self.trigger_reason = None
+        self.trigger_step = None  # which round triggered
+        self.fallback_tokens = 0  # tokens generated by AR fallback
+
+    def record_round(
+        self,
+        drafted,
+        accepted,
+        repair=0,
+        guard_triggered=0,
+        off_structure=False,
+        repetition_warning=0,
+        bracket_warning=0,
+    ):
+        """Record one round of speculative decoding."""
+        self.round_count += 1
+        self.recent_accept_rates.append((drafted, accepted))
+        if len(self.recent_accept_rates) > 5:
+            self.recent_accept_rates.pop(0)
+
+        self._total_drafted += drafted
+        self._total_accepted += accepted
+
+        self.repair_count += repair
+        self.guard_trigger_count += guard_triggered
+        if off_structure:
+            self.off_structure_detected = True
+
+        # Compute deltas from guard's cumulative values to avoid double-counting
+        rep_delta = max(0, repetition_warning - self._prev_guard_repetition)
+        brack_delta = max(0, bracket_warning - self._prev_guard_bracket)
+        self._prev_guard_repetition = repetition_warning
+        self._prev_guard_bracket = bracket_warning
+        self.repetition_warning_count += rep_delta
+        self.bracket_warning_count += brack_delta
+
+        # Track consecutive low-accept rounds
+        if drafted > 0:
+            accept_rate = accepted / drafted
+        else:
+            accept_rate = 0.0
+        if accept_rate < self.low_accept_bar:
+            self.consecutive_low_accept += 1
+        else:
+            self.consecutive_low_accept = 0
+
+    def check_independent_signals(self, generated_ids, tokenizer=None):
+        """
+        Check text-based risk signals independent of the structural guard.
+        Handles structure types that have no guard rules (e.g. rich_cli_option_groups,
+        pipeline_stage_config, complex_nested_config).
+
+        Returns (should_fallback, reason) or (False, "").
+        """
+        if self.triggered:
+            return False, ""
+
+        if len(generated_ids) < 16:
+            return False, ""
+
+        recent = list(generated_ids[-64:])
+
+        # 1. Token-level 4-gram repetition (8+ repeats in last 64 tokens)
+        fourgrams = {}
+        for i in range(len(recent) - 3):
+            quad = (recent[i], recent[i + 1], recent[i + 2], recent[i + 3])
+            fourgrams[quad] = fourgrams.get(quad, 0) + 1
+        if fourgrams:
+            max_repeat = max(fourgrams.values())
+            if max_repeat >= 8:
+                return True, f"token_repetition:{max_repeat}"
+
+        # Text-level checks (require tokenizer)
+        if tokenizer is None:
+            return False, ""
+
+        # Decode generated text
+        text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+        lines = text.split('\n')
+
+        # 2. Consecutive exact line repetition (3+ identical substantial lines in a row)
+        consecutive_count = 1
+        for i in range(1, len(lines)):
+            curr = lines[i].strip()
+            prev = lines[i - 1].strip()
+            if curr == prev and len(curr) > 10:
+                consecutive_count += 1
+                if consecutive_count >= 3:
+                    return True, f"consecutive_line_repeat:{consecutive_count}"
+            else:
+                consecutive_count = 1
+
+        # 3. Off-structure detection (def/class keywords in last 8 lines)
+        for line in lines[-8:]:
+            stripped = line.strip()
+            if stripped and (stripped.startswith('def ') or stripped.startswith('class ')):
+                return True, f"off_structure:{stripped[:30]}"
+
+        return False, ""
+
+    def check_should_fallback(self, bracket_stack_abnormal=False):
+        """
+        Check if any risk signal exceeds threshold.
+        Returns (should_fallback, reason).
+        """
+        if self.triggered:
+            return False, ""
+
+        # 1. Recent accept rate (rolling window of last 5 rounds)
+        if self.recent_accept_rates:
+            total_drafted = sum(d for d, a in self.recent_accept_rates)
+            total_accepted = sum(a for d, a in self.recent_accept_rates)
+            if total_drafted > 0:
+                recent_accept = total_accepted / total_drafted
+                if recent_accept < self.accept_threshold:
+                    return True, f"low_accept_rate:{recent_accept:.3f}"
+
+        # 2. Guard trigger count
+        if self.guard_trigger_count >= self.guard_trigger_threshold:
+            return True, f"guard_triggers:{self.guard_trigger_count}"
+
+        # 3. Repair count
+        if self.repair_count >= self.repair_threshold:
+            return True, f"repairs:{self.repair_count}"
+
+        # 4. Off-structure detected
+        if self.off_structure_detected:
+            return True, "off_structure"
+
+        # 5. Repetition warning
+        if self.repetition_warning_count >= 1:
+            return True, f"repetition:{self.repetition_warning_count}"
+
+        # 6. Consecutive low-accept rounds
+        if self.consecutive_low_accept >= self.low_accept_consecutive:
+            return True, f"consecutive_low_accept:{self.consecutive_low_accept}"
+
+        # 7. Bracket stack abnormal (not truncated)
+        if bracket_stack_abnormal:
+            return True, "bracket_abnormal"
+
+        return False, ""
+
+    def trigger(self, reason, step):
+        """Mark fallback as triggered."""
+        self.triggered = True
+        self.trigger_reason = reason
+        self.trigger_step = step
+
+    def record_fallback_tokens(self, n_tokens):
+        """Record how many tokens were generated by AR fallback."""
+        self.fallback_tokens = n_tokens
+
+    def get_summary(self):
+        return {
+            "triggered": self.triggered,
+            "trigger_reason": self.trigger_reason,
+            "trigger_step": self.trigger_step,
+            "fallback_tokens": self.fallback_tokens,
+            "guard_trigger_count_at_fallback": self.guard_trigger_count,
+            "repair_count_at_fallback": self.repair_count,
+            "off_structure_detected": self.off_structure_detected,
+            "repetition_warning_count": self.repetition_warning_count,
+            "bracket_warning_count": self.bracket_warning_count,
+            "rounds_before_fallback": self.round_count,
+        }
+
+
 def tasd_decode(
     target_model,
     draft_model,
@@ -829,6 +1216,10 @@ def tasd_decode(
     quality_guard_low_accept_threshold=1, # Accepted tokens threshold for low-progress
     quality_guard_low_accept_patience=2,  # Consecutive low-accept rounds before repair
     quality_guard_repair_tokens=2,        # Tokens to generate in low-progress repair
+    enable_early_stopping=False,          # TASD-FG-ES: structure-aware early stopping
+    early_stopping_min_chars=20,          # Minimum chars before early stop can trigger
+    enable_risk_aware_fallback=False,      # TASD-FG-R: risk-aware AR fallback
+    enable_offstruct_constraint=False,     # TASD-FG-OS: block def/class/import/from in accepted tokens
 ):
     """
     TASD speculative decoding with structural guard, proper KV cache,
@@ -867,6 +1258,7 @@ def tasd_decode(
 
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(target_model.device)
     prompt_len = input_ids.shape[1]
+    prompt_text = prompt  # Store for early stopping bracket balance check
     device = target_model.device
     draft_device = next(draft_model.parameters()).device
 
@@ -924,6 +1316,16 @@ def tasd_decode(
             low_accept_patience=quality_guard_low_accept_patience,
             repair_tokens=quality_guard_repair_tokens,
         )
+
+    # Risk-aware AR fallback (TASD-FG-R)
+    risk_aware_fallback = None
+    if enable_risk_aware_fallback:
+        risk_aware_fallback = RiskAwareARFallback()
+
+    # OffStruct constraint stats (TASD-FG-OS)
+    offstruct_constraint_triggers = 0
+    offstruct_trimmed_tokens = 0
+    offstruct_ar_repairs = 0
 
     # Default TASD params (can be overridden by fallback)
     _default_draft_len = draft_len
@@ -1106,6 +1508,12 @@ def tasd_decode(
                         generated_ids = generated_ids[:eos_pos]
                         stop_reason = "eos"
                         break
+                    # Structure-aware early stopping after fallback
+                    if enable_early_stopping:
+                        full_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+                        if _check_structure_complete(full_text, structure_type, prompt_text=prompt_text, min_chars=early_stopping_min_chars):
+                            stop_reason = "structure_complete"
+                            break
 
             # --- Failure-aware fallback: tick cooldown ---
             if failure_fallback is not None:
@@ -1157,6 +1565,12 @@ def tasd_decode(
                     generated_ids = generated_ids[:eos_pos]
                     stop_reason = "eos"
                     break
+                # Structure-aware early stopping after quality guard repair
+                if enable_early_stopping:
+                    full_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+                    if _check_structure_complete(full_text, structure_type, prompt_text=prompt_text, min_chars=early_stopping_min_chars):
+                        stop_reason = "structure_complete"
+                        break
 
             # If too many consecutive repairs, degrade to AR
             if consecutive_repair_count >= 5:
@@ -1213,7 +1627,8 @@ def tasd_decode(
                         # Check early stop conditions
                         should_stop, stop_reason_str = _is_early_stop_condition(
                             next_token, tokenizer, structure_type,
-                            tokenizer.decode(generated_ids + all_draft_tokens, skip_special_tokens=True)
+                            tokenizer.decode(generated_ids + all_draft_tokens, skip_special_tokens=True),
+                            prompt_text=prompt_text
                         )
                         if should_stop:
                             block_early_stop = True
@@ -1424,6 +1839,38 @@ def tasd_decode(
                 if trim_pos < len(accepted_tokens):
                     accepted_tokens = accepted_tokens[:trim_pos]
 
+            # --- OffStruct Constraint: block def/class/import/from ---
+            if enable_offstruct_constraint and accepted_tokens:
+                accepted_text = tokenizer.decode(accepted_tokens, skip_special_tokens=True)
+                if _contains_offstruct_pattern(accepted_text):
+                    # Find the first off-struct line and trim before it
+                    trim_pos = _find_offstruct_trim_position(accepted_tokens, accepted_text, tokenizer)
+                    if trim_pos < len(accepted_tokens):
+                        trimmed = len(accepted_tokens) - trim_pos
+                        offstruct_constraint_triggers += 1
+                        offstruct_trimmed_tokens += trimmed
+                        accepted_tokens = accepted_tokens[:trim_pos]
+
+                        # If nothing left, fallback to target AR 1 token
+                        if len(accepted_tokens) == 0:
+                            offstruct_ar_repairs += 1
+                            _cuda_sync()
+                            with torch.no_grad():
+                                repair_logits, target_past = _forward_with_cache(
+                                    target_model,
+                                    torch.tensor([[last_target_logit.argmax().item()]], device=device),
+                                    target_past,
+                                )
+                                next_token = _greedy_sample(repair_logits)
+                            _cuda_sync()
+                            target_model_forwards += 1
+                            target_time_total += time.time() - (time.time() - 0.001)  # negligible
+                            generated_ids.append(next_token)
+                            last_target_logit = repair_logits[0, -1, :]
+                            last_draft_logit = repair_logits[0, -1, :]
+                            total_accepted += 1  # count the AR token
+                            continue  # skip to next iteration
+
             accepted_count = len(accepted_tokens)
 
             # --- Record fallback stats ---
@@ -1445,6 +1892,12 @@ def tasd_decode(
                 if tokenizer.eos_token_id in accepted_tokens:
                     eos_accepted = True
                     stop_reason = "eos"
+
+                # Structure-aware early stopping after accepting tokens
+                if enable_early_stopping and not eos_accepted:
+                    full_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+                    if _check_structure_complete(full_text, structure_type, prompt_text=prompt_text, min_chars=early_stopping_min_chars):
+                        stop_reason = "structure_complete"
 
                 new_cache_len = prompt_len + len(generated_ids)
                 target_past = _trim_past_key_values(target_past, new_cache_len)
@@ -1488,6 +1941,13 @@ def tasd_decode(
                 repair_reasons.append("all_draft_rejected")
 
             total_accepted += accepted_count
+
+            # --- Structure-aware early stopping ---
+            if enable_early_stopping and generated_ids:
+                full_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+                if _check_structure_complete(full_text, structure_type, prompt_text=prompt_text, min_chars=early_stopping_min_chars):
+                    stop_reason = "structure_complete"
+                    break
 
             # --- Record round stats for adaptive policy ---
             if adaptive_policy is not None:
@@ -1543,6 +2003,23 @@ def tasd_decode(
                     drafted=len(draft_tokens),
                     accepted=accepted_count,
                     guard_triggered=guard_triggered_this_round,
+                )
+
+            # --- Record round stats for risk-aware fallback ---
+            if risk_aware_fallback is not None and not risk_aware_fallback.triggered:
+                has_off_str = any(
+                    "off_structure" in r for r in trim_reasons[-1:] if trim_reasons
+                )
+                rep_warn = guard.repetition_warning_count if enable_guard else 0
+                brack_warn = guard.bracket_warning_count if enable_guard else 0
+                risk_aware_fallback.record_round(
+                    drafted=len(draft_tokens),
+                    accepted=accepted_count,
+                    repair=1 if accepted_count == 0 else 0,
+                    guard_triggered=1 if (enable_guard and not safe) else 0,
+                    off_structure=has_off_str,
+                    repetition_warning=rep_warn,
+                    bracket_warning=brack_warn,
                 )
 
             # --- Restore strict mode parameters after round ---
@@ -1611,6 +2088,53 @@ def tasd_decode(
                     new_tokens = ar_output[0][current_ids.shape[1]:].tolist()
                     generated_ids.extend(new_tokens)
                     stop_reason = "profit_switch_to_ar"
+                    break
+
+            # --- Risk-aware fallback: check if we should fallback to AR ---
+            if risk_aware_fallback is not None and not risk_aware_fallback.triggered:
+                # Check bracket stack status
+                bracket_abnormal = False
+                if enable_guard:
+                    if guard_v2:
+                        # GuardV2 doesn't expose bracket_balance directly; use warning count
+                        bracket_abnormal = guard.bracket_warning_count > 0
+                    else:
+                        # StructuralGuard: check bracket_balance
+                        bracket_abnormal = (
+                            getattr(guard, '_bracket_depth', 0) > 0
+                            and getattr(guard, '_consecutive_unbalanced_rounds', 0) >= 2
+                        )
+
+                should_rf, rf_reason = risk_aware_fallback.check_should_fallback(
+                    bracket_stack_abnormal=bracket_abnormal
+                )
+
+                # Also check independent (token-level) signals for unguarded structure types
+                if not should_rf:
+                    should_rf, rf_reason = risk_aware_fallback.check_independent_signals(
+                        generated_ids, tokenizer=tokenizer
+                    )
+
+                if should_rf:
+                    risk_aware_fallback.trigger(
+                        reason=rf_reason,
+                        step=len(generated_ids),
+                    )
+                    # Fallback to AR for ALL remaining tokens
+                    current_ids = torch.cat(
+                        [input_ids, torch.tensor([generated_ids], device=device)], dim=1
+                    ) if generated_ids else input_ids
+                    with torch.no_grad():
+                        ar_output = target_model.generate(
+                            current_ids,
+                            max_new_tokens=remaining,
+                            do_sample=False,
+                            pad_token_id=tokenizer.eos_token_id,
+                        )
+                    new_tokens = ar_output[0][current_ids.shape[1]:].tolist()
+                    generated_ids.extend(new_tokens)
+                    risk_aware_fallback.record_fallback_tokens(len(new_tokens))
+                    stop_reason = "risk_aware_fallback_to_ar"
                     break
 
             # Check for EOS in generated
@@ -1715,6 +2239,14 @@ def tasd_decode(
         # Quality guard (TASD-FGQ)
         "quality_guard": quality_guard.get_summary() if quality_guard is not None else None,
         "quality_guard_enabled": enable_quality_guard,
+        # Risk-aware AR fallback (TASD-FG-R)
+        "risk_aware_fallback": risk_aware_fallback.get_summary() if risk_aware_fallback is not None else None,
+        "risk_aware_fallback_enabled": enable_risk_aware_fallback,
+        # OffStruct constraint (TASD-FG-OS)
+        "offstruct_constraint_triggers": offstruct_constraint_triggers,
+        "offstruct_trimmed_tokens": offstruct_trimmed_tokens,
+        "offstruct_ar_repairs": offstruct_ar_repairs,
+        "offstruct_constraint_enabled": enable_offstruct_constraint,
     }
 
     return {

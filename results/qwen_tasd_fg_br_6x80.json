@@ -1,0 +1,161 @@
+{
+  "n_total": 480,
+  "n_rerun": 65,
+  "rerun_ratio": 0.13541666666666666,
+  "speedup": 1.8677462777891087,
+  "avg_tps": 62.0043125,
+  "score_distribution": {
+    "2": 227,
+    "1": 178,
+    "0": 75
+  },
+  "recoverable": 405,
+  "recoverable_rate": 0.84375,
+  "below_ar": 130,
+  "per_benchmark": {
+    "argparse": {
+      "n": 80,
+      "rerun": 15,
+      "rerun_ratio": 0.1875,
+      "score_2": 53,
+      "score_1": 25,
+      "score_0": 2,
+      "recoverable": 78,
+      "recoverable_rate": 0.975,
+      "avg_tps": 59.131375000000006,
+      "speedup": 1.7828846451009879
+    },
+    "dict_config": {
+      "n": 80,
+      "rerun": 7,
+      "rerun_ratio": 0.0875,
+      "score_2": 36,
+      "score_1": 32,
+      "score_0": 12,
+      "recoverable": 68,
+      "recoverable_rate": 0.85,
+      "avg_tps": 62.80499999999999,
+      "speedup": 1.8864467489168062
+    },
+    "openmmlab_config": {
+      "n": 80,
+      "rerun": 14,
+      "rerun_ratio": 0.175,
+      "score_2": 50,
+      "score_1": 19,
+      "score_0": 11,
+      "recoverable": 69,
+      "recoverable_rate": 0.8625,
+      "avg_tps": 61.541250000000005,
+      "speedup": 1.8546786060055829
+    },
+    "pipeline_stage_config": {
+      "n": 80,
+      "rerun": 5,
+      "rerun_ratio": 0.0625,
+      "score_2": 53,
+      "score_1": 16,
+      "score_0": 11,
+      "recoverable": 69,
+      "recoverable_rate": 0.8625,
+      "avg_tps": 64.74925,
+      "speedup": 1.9386075546689925
+    },
+    "complex_nested_config": {
+      "n": 80,
+      "rerun": 12,
+      "rerun_ratio": 0.15,
+      "score_2": 15,
+      "score_1": 39,
+      "score_0": 26,
+      "recoverable": 54,
+      "recoverable_rate": 0.675,
+      "avg_tps": 61.970375000000004,
+      "speedup": 1.8628252578578544
+    },
+    "rich_cli_option_groups": {
+      "n": 80,
+      "rerun": 12,
+      "rerun_ratio": 0.15,
+      "score_2": 20,
+      "score_1": 47,
+      "score_0": 13,
+      "recoverable": 67,
+      "recoverable_rate": 0.8375,
+      "avg_tps": 61.828625,
+      "speedup": 1.8805970716721734
+    }
+  },
+  "comparison": {
+    "AR": {
+      "speedup": 1.0,
+      "tps": 33.19739583333333,
+      "recoverable": 406,
+      "recoverable_rate": 0.8458333333333333,
+      "score_2": 251,
+      "score_1": 155,
+      "score_0": 74,
+      "below_ar": 0
+    },
+    "GSD": {
+      "speedup": 0.663338929070114,
+      "tps": 22.021124999999998,
+      "recoverable": 379,
+      "recoverable_rate": 0.7895833333333333,
+      "score_2": 238,
+      "score_1": 141,
+      "score_0": 101,
+      "below_ar": 95
+    },
+    "N-gram SD": {
+      "speedup": 1.4121112662577073,
+      "tps": 46.878416666666666,
+      "recoverable": 365,
+      "recoverable_rate": 0.7604166666666666,
+      "score_2": 156,
+      "score_1": 209,
+      "score_0": 115,
+      "below_ar": 198
+    },
+    "FLY": {
+      "speedup": 1.6412428181693959,
+      "tps": 54.484987493384956,
+      "recoverable": 388,
+      "recoverable_rate": 0.8083333333333333,
+      "score_2": 286,
+      "score_1": 102,
+      "score_0": 92,
+      "below_ar": 72
+    },
+    "TASD-FG": {
+      "speedup": 2.000252906383847,
+      "tps": 66.4031875,
+      "recoverable": 348,
+      "recoverable_rate": 0.725,
+      "score_2": 192,
+      "score_1": 156,
+      "score_0": 132,
+      "below_ar": 187
+    },
+    "TASD-FG-BR": {
+      "speedup": 1.8677462777891087,
+      "tps": 62.0043125,
+      "recoverable": 405,
+      "recoverable_rate": 0.84375,
+      "score_2": 227,
+      "score_1": 178,
+      "score_0": 75,
+      "below_ar": 130
+    },
+    "TASD-FG-V": {
+      "speedup": 1.751704294074272,
+      "tps": 58.15202083333334,
+      "recoverable": 437,
+      "recoverable_rate": 0.9104166666666667,
+      "score_2": 259,
+      "score_1": 178,
+      "score_0": 43,
+      "below_ar": 88
+    }
+  }
+}
