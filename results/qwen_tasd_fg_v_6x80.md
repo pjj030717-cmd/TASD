@@ -6,10 +6,12 @@
 
 | Method | TPS | Speedup | Below-AR | Score 2 | Score 1 | Score 0 | Recoverable | Rerun Ratio |
 |--------|:---:|:------:|:--------:|:------:|:------:|:------:|:----------:|:-----------:|
-| AR | 33.2 | 1.00x | 221 | 251 | 155 | 74 | 406/480 (84.6%) | — |
-| FLY | 54.5 | 1.64x | 103 | 286 | 102 | 92 | 388/480 (80.8%) | — |
+| AR | 33.2 | 1.00x | 0 | 251 | 155 | 74 | 406/480 (84.6%) | — |
+| FLY | 54.5 | 1.64x | 99 | 286 | 102 | 92 | 388/480 (80.8%) | — |
 | TASD-FG | 66.4 | 2.00x | 3 | 192 | 156 | 132 | 348/480 (72.5%) | — |
-| TASD-FG-V | 58.2 | 1.31x | 66 | 259 | 178 | 43 | 437/480 (91.0%) | 25.4% |
+| TASD-FG-V | 43.6 | 1.31x | 2 | 259 | 178 | 43 | 437/480 (91.0%) | 25.4% |
+
+> **Note**: TASD-FG-V speedup is wall-time (includes AR rerun overhead). TPS is effective TPS = AR_TPS × wall-time speedup. Below-AR = per-sample TPS < AR TPS (paired comparison). All other methods use output-generation TPS (verifier overhead negligible).
 
 ## 2. TASD-FG-V vs TASD-FG
 
@@ -87,11 +89,11 @@
 
 **ALL CRITERIA PASSED.** TASD-FG-V meets quality and speed requirements.
 
-
 ## 7. Conclusions
 
 - **TASD-FG-V recoverable**: 437/480 (91.0%), vs TASD-FG 348/480 (72.5%) (+89)
 - **TASD-FG-V speedup**: 1.31x (vs TASD-FG 2.00x)
+- **Effective TPS**: 43.6 (AR_TPS × wall-time speedup, includes AR rerun overhead)
 - **Rerun ratio**: 25.4% (122 samples)
 - **Primary risk signal**: bracket_balance (65 triggers)
 

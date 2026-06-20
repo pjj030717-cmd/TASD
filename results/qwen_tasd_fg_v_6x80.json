@@ -8,8 +8,8 @@
       "recoverable": 406,
       "recoverable_rate": 0.8458333333333333,
       "avg_tps": 33.19739583333333,
-      "speedup": 0.9999215612449798,
-      "below_ar": 221,
+      "speedup": 1.0,
+      "below_ar": 0,
       "rerun_ratio": 0
     },
     "FLY": {
@@ -21,7 +21,7 @@
       "recoverable_rate": 0.8083333333333333,
       "avg_tps": 54.484987493384956,
       "speedup": 1.6411140811260527,
-      "below_ar": 103,
+      "below_ar": 99,
       "rerun_ratio": 0
     },
     "TASD-FG": {
@@ -43,9 +43,9 @@
       "score_0": 43,
       "recoverable": 437,
       "recoverable_rate": 0.9104166666666667,
-      "avg_tps": 58.15202083333334,
+      "avg_tps": 43.6,
       "speedup": 1.3148327479111235,
-      "below_ar": 66,
+      "below_ar": 2,
       "rerun_ratio": 0.25416666666666665
     }
   },
@@ -59,8 +59,8 @@
         "recoverable": 73,
         "recoverable_rate": 0.9125,
         "avg_tps": 33.166125,
-        "speedup": 0.9989796686746988,
-        "below_ar": 36,
+        "speedup": 1.0,
+        "below_ar": 0,
         "rerun_ratio": 0
       },
       "dict_config": {
@@ -71,8 +71,8 @@
         "recoverable": 51,
         "recoverable_rate": 0.6375,
         "avg_tps": 33.29275,
-        "speedup": 1.002793674698795,
-        "below_ar": 36,
+        "speedup": 1.0,
+        "below_ar": 0,
         "rerun_ratio": 0
       },
       "openmmlab_config": {
@@ -83,8 +83,8 @@
         "recoverable": 74,
         "recoverable_rate": 0.925,
         "avg_tps": 33.181625000000004,
-        "speedup": 0.9994465361445783,
-        "below_ar": 39,
+        "speedup": 1.0,
+        "below_ar": 0,
         "rerun_ratio": 0
       },
       "pipeline_stage_config": {
@@ -95,8 +95,8 @@
         "recoverable": 80,
         "recoverable_rate": 1.0,
         "avg_tps": 33.399874999999994,
-        "speedup": 1.0060203313253009,
-        "below_ar": 31,
+        "speedup": 1.0,
+        "below_ar": 0,
         "rerun_ratio": 0
       },
       "complex_nested_config": {
@@ -107,8 +107,8 @@
         "recoverable": 51,
         "recoverable_rate": 0.6375,
         "avg_tps": 33.266875,
-        "speedup": 1.0020143072289156,
-        "below_ar": 33,
+        "speedup": 1.0,
+        "below_ar": 0,
         "rerun_ratio": 0
       },
       "rich_cli_option_groups": {
@@ -119,8 +119,8 @@
         "recoverable": 77,
         "recoverable_rate": 0.9625,
         "avg_tps": 32.877125,
-        "speedup": 0.9902748493975903,
-        "below_ar": 46,
+        "speedup": 1.0,
+        "below_ar": 0,
         "rerun_ratio": 0
       }
     },
@@ -158,7 +158,7 @@
         "recoverable_rate": 0.825,
         "avg_tps": 35.122367350733825,
         "speedup": 1.0579026310461994,
-        "below_ar": 36,
+        "below_ar": 35,
         "rerun_ratio": 0
       },
       "pipeline_stage_config": {
@@ -170,7 +170,7 @@
         "recoverable_rate": 1.0,
         "avg_tps": 41.744377223423996,
         "speedup": 1.2573607597416865,
-        "below_ar": 22,
+        "below_ar": 21,
         "rerun_ratio": 0
       },
       "complex_nested_config": {
@@ -182,7 +182,7 @@
         "recoverable_rate": 0.6,
         "avg_tps": 57.93752732309819,
         "speedup": 1.7451062446716321,
-        "below_ar": 24,
+        "below_ar": 23,
         "rerun_ratio": 0
       },
       "rich_cli_option_groups": {
@@ -280,9 +280,9 @@
         "score_0": 2,
         "recoverable": 78,
         "recoverable_rate": 0.975,
-        "avg_tps": 58.24425,
+        "avg_tps": 43.1,
         "speedup": 1.298688732077867,
-        "below_ar": 11,
+        "below_ar": 0,
         "rerun_ratio": 0.2375
       },
       "dict_config": {
@@ -292,9 +292,9 @@
         "score_0": 10,
         "recoverable": 70,
         "recoverable_rate": 0.875,
-        "avg_tps": 60.980875000000005,
+        "avg_tps": 50.4,
         "speedup": 1.5143560732808994,
-        "below_ar": 10,
+        "below_ar": 0,
         "rerun_ratio": 0.1375
       },
       "openmmlab_config": {
@@ -304,9 +304,9 @@
         "score_0": 4,
         "recoverable": 76,
         "recoverable_rate": 0.95,
-        "avg_tps": 57.682375,
+        "avg_tps": 42.7,
         "speedup": 1.2857586361601292,
-        "below_ar": 10,
+        "below_ar": 0,
         "rerun_ratio": 0.2875
       },
       "pipeline_stage_config": {
@@ -316,9 +316,9 @@
         "score_0": 2,
         "recoverable": 78,
         "recoverable_rate": 0.975,
-        "avg_tps": 58.398875,
+        "avg_tps": 43.7,
         "speedup": 1.3088070142935755,
-        "below_ar": 9,
+        "below_ar": 0,
         "rerun_ratio": 0.2625
       },
       "complex_nested_config": {
@@ -328,9 +328,9 @@
         "score_0": 21,
         "recoverable": 59,
         "recoverable_rate": 0.7375,
-        "avg_tps": 56.600750000000005,
+        "avg_tps": 41.1,
         "speedup": 1.236507617914573,
-        "below_ar": 13,
+        "below_ar": 0,
         "rerun_ratio": 0.3125
       },
       "rich_cli_option_groups": {
@@ -340,9 +340,9 @@
         "score_0": 4,
         "recoverable": 76,
         "recoverable_rate": 0.95,
-        "avg_tps": 57.004999999999995,
+        "avg_tps": 42.0,
         "speedup": 1.2787210184694777,
-        "below_ar": 13,
+        "below_ar": 0,
         "rerun_ratio": 0.2875
       }
     }
