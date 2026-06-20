@@ -129,8 +129,8 @@ def generate_br_report(data):
     ar_avg_tps = sum(s['tps'] for s in ar) / n_total
     speedup = avg_tps / ar_avg_tps
 
-    # Below-AR: samples where BR score < AR score
-    below_ar = sum(1 for i in range(n_total) if br_scores[i] < ar[i]['score'])
+    # Below-AR: per-sample speedup < 1.0 (method TPS < AR TPS, paired)
+    below_ar = sum(1 for i in range(n_total) if br_tps[i] < ar[i]['tps'])
 
     # Per-benchmark
     per_bm = {}
@@ -160,9 +160,12 @@ def generate_br_report(data):
     v1_scores = [s['score'] for s in v_samples]
     v1_tps = [s['tps'] for s in v_samples]
     v1_recov = sum(1 for s in v1_scores if s >= 1)
-    v1_avg_tps = sum(v1_tps) / n_total
-    v1_speedup = v1_avg_tps / ar_avg_tps
+    v1_avg_tps_cached = sum(v1_tps) / n_total
     v1_rerun = sum(1 for s in v_samples if s['rerun_triggered'])
+
+    # V wall-time speedup (from V file, includes verifier overhead)
+    v1_wall_speedup = data['v']['methods']['TASD-FG-V']['speedup']  # 1.31x
+    v1_wall_tps = ar_avg_tps * v1_wall_speedup
 
     # AR stats
     ar_scores = [s['score'] for s in ar]
@@ -199,16 +202,23 @@ def generate_br_report(data):
     ng_speedup = ng_avg_tps / ar_avg_tps
     ng_score_dist = Counter(ng_scores)
 
-    # Below-AR for all methods
-    def count_below(method_scores):
-        return sum(1 for i in range(n_total) if method_scores[i] < ar_scores[i])
+    # Below-AR for all methods: per-sample speedup < 1.0 (method TPS < AR TPS, paired)
+    def count_below_speed(method_tps_list):
+        return sum(1 for i in range(n_total) if method_tps_list[i] < ar_tps_list[i])
 
-    br_below = count_below(br_scores)
-    fg_below = count_below(fg_scores)
-    v1_below = count_below(v1_scores)
-    fly_below = count_below(fly_scores)
-    gsd_below = count_below(gsd_scores)
-    ng_below = count_below(ng_scores)
+    ar_tps_list = [s['tps'] for s in ar]
+    fg_tps_list = [s['tps'] for s in tasdfg]
+    fly_tps_list = [s['tps'] for s in fly]
+    gsd_tps_list = [s['tps'] for s in gsd]
+    ng_tps_list = [s['tps'] for s in ng]
+    v1_tps_list = [s['tps'] for s in v_samples]
+
+    br_below = count_below_speed(br_tps)
+    fg_below = count_below_speed(fg_tps_list)
+    v1_below = count_below_speed(v1_tps_list)
+    fly_below = count_below_speed(fly_tps_list)
+    gsd_below = count_below_speed(gsd_tps_list)
+    ng_below = count_below_speed(ng_tps_list)
 
     # Build report
     lines = []
@@ -228,7 +238,7 @@ def generate_br_report(data):
         ("FLY", fly_speedup, fly_avg_tps, fly_below, fly_score_dist[2], fly_score_dist[1], fly_score_dist[0], fly_recov, 0),
         ("TASD-FG", fg_speedup, fg_avg_tps, fg_below, fg_score_dist[2], fg_score_dist[1], fg_score_dist[0], fg_recov, 0),
         ("**TASD-FG-BR**", speedup, avg_tps, br_below, score_dist[2], score_dist[1], score_dist[0], recov, f"{n_rerun} ({100*n_rerun/n_total:.1f}%)"),
-        ("TASD-FG-V", v1_speedup, v1_avg_tps, v1_below, v1_scores.count(2), v1_scores.count(1), v1_scores.count(0), v1_recov, f"{v1_rerun} ({100*v1_rerun/n_total:.1f}%)"),
+        ("TASD-FG-V", v1_wall_speedup, v1_wall_tps, v1_below, v1_scores.count(2), v1_scores.count(1), v1_scores.count(0), v1_recov, f"{v1_rerun} ({100*v1_rerun/n_total:.1f}%)"),
     ]
 
     for name, sp, tps, below, s2, s1, s0, rec, rerun in methods:
@@ -300,7 +310,7 @@ def generate_br_report(data):
                         'score_2': fg_score_dist[2], 'score_1': fg_score_dist[1], 'score_0': fg_score_dist[0], 'below_ar': fg_below},
             'TASD-FG-BR': {'speedup': speedup, 'tps': avg_tps, 'recoverable': recov, 'recoverable_rate': recov / n_total,
                            'score_2': score_dist[2], 'score_1': score_dist[1], 'score_0': score_dist[0], 'below_ar': br_below},
-            'TASD-FG-V': {'speedup': v1_speedup, 'tps': v1_avg_tps, 'recoverable': v1_recov, 'recoverable_rate': v1_recov / n_total,
+            'TASD-FG-V': {'speedup': v1_wall_speedup, 'tps': v1_wall_tps, 'recoverable': v1_recov, 'recoverable_rate': v1_recov / n_total,
                           'score_2': v1_scores.count(2), 'score_1': v1_scores.count(1), 'score_0': v1_scores.count(0), 'below_ar': v1_below},
         },
     }
@@ -345,7 +355,8 @@ def generate_master_report(data, br_data):
         recov = dist.get(1, 0) + dist.get(2, 0)
         avg_tps = sum(tps) / n if tps else 0
         speedup = avg_tps / ar_avg_tps if ar_avg_tps > 0 else 0
-        below = sum(1 for i in range(n) if scores[i] < ar[i]['score'])
+        # Below-AR: per-sample speedup < 1.0 (method TPS < AR TPS, paired)
+        below = sum(1 for i in range(n) if tps[i] < ar[i]['tps'])
         worst10 = compute_worst10(sq_r_values, ar_sq_r) if sq_r_values else None
         return {
             'label': label, 'n': n, 'speedup': speedup, 'tps': avg_tps,
@@ -380,16 +391,27 @@ def generate_master_report(data, br_data):
 
     # ========== Table 1: Main Results ==========
     lines.append("## Table 1. Main Results: Speed, Robustness, Quality\n")
-    lines.append("| Method | Speedup | Eff. TPS | Below-AR | Worst-10 | Score 2 | Score 1 | Score 0 | Recoverable |")
-    lines.append("|--------|:------:|:--------:|:--------:|:--------:|:------:|:------:|:------:|:----------:|")
+    lines.append("| Method | Speedup | Eff. TPS | Below-AR | Score2 | Score1 | Score0 | Recoverable | Rerun |")
+    lines.append("|--------|:------:|:--------:|:--------:|:------:|:------:|:------:|:----------:|:-----:|")
 
     order = ['AR', 'GSD', 'N-gram SD', 'FLY', 'TASD-FG', 'TASD-FG-BR', 'TASD-FG-V']
     for name in order:
         m = all_methods[name]
-        w10 = f"{m['worst10']:.2f}" if m.get('worst10') is not None else "—"
-        lines.append(f"| {name} | {m['speedup']:.2f}x | {m['tps']:.1f} | {m['below_ar']} | {w10} | "
+        # Rerun ratio
+        if name == 'TASD-FG-BR':
+            rerun_str = f"{br_data['n_rerun']} ({100*br_data['rerun_ratio']:.1f}%)"
+        elif name == 'TASD-FG-V':
+            v1_rerun = sum(1 for s in v_samples if s['rerun_triggered'])
+            rerun_str = f"{v1_rerun} ({100*v1_rerun/n_total:.1f}%)"
+        else:
+            rerun_str = "—"
+        lines.append(f"| {name} | {m['speedup']:.2f}x | {m['tps']:.1f} | {m['below_ar']} | "
                      f"{m['score_2']} | {m['score_1']} | {m['score_0']} | "
-                     f"{m['recoverable']}/{n_total} ({100*m['recoverable_rate']:.1f}%) |")
+                     f"{m['recoverable']}/{n_total} ({100*m['recoverable_rate']:.1f}%) | {rerun_str} |")
+    lines.append("")
+    lines.append("> **Note**: Below-AR = number of samples where per-sample TPS < AR TPS (paired). "
+                 "TASD-FG-V speedup is wall-time (includes verifier overhead); all other methods use "
+                 "output-generation TPS (verifier overhead negligible).")
     lines.append("")
 
     # ========== Table 2: Per-Benchmark ==========
@@ -461,6 +483,10 @@ def generate_master_report(data, br_data):
     if pareto.get('oracle_best_k'):
         ok = pareto['oracle_best_k']
         lines.append(f"| Oracle top-K | {100*ok['rerun_ratio']:.1f}% | {ok['speedup']:.2f}x | {100*ok['recoverable_rate']:.1f}% | {ok['score_0']} | theoretical upper bound |")
+    lines.append("")
+    lines.append("> **Note**: Speedup in Table 4 is TPS-based (output generation only, excluding verifier overhead). "
+                 "All policies share the same verifier, so relative comparison is valid. "
+                 "TASD-FG-V wall-time speedup including verifier is 1.31x (see Table 1).")
     lines.append("")
 
     # ========== Table 5: Failed Attempts ==========
@@ -609,8 +635,8 @@ def generate_figure3():
 
     # Data from BR and V analysis
     categories = ['Rerun\nRatio (%)', 'Score 0\nCount', 'Speedup\n(x100)']
-    br_values = [13.5, 75, 187]  # BR: 13.5% rerun, 75 score0, 1.87x speedup
-    v_values = [25.4, 43, 175]   # V: 25.4% rerun, 43 score0, 1.75x speedup
+    br_values = [13.5, 75, 187]    # BR: 13.5% rerun, 75 score0, 1.87x speedup
+    v_values = [25.4, 43, 131]     # V: 25.4% rerun, 43 score0, 1.31x wall-time speedup
 
     x = np.arange(len(categories))
     width = 0.35

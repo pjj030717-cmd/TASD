@@ -1,0 +1,1154 @@
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+Skipping import of cpp extensions due to incompatible torch version. Please upgrade to torch >= 2.11.0 (found 2.8.0+cu128).
+============================================================
+TASD-FG-Safe Parameter Ablation
+============================================================
+
+[1/4] Loading samples...
+总 TASD-FG 样本: 480
+score=0: 132, score=2: 192
+  hard argparse: 10 selected (out of 16)
+  hard complex_nested_config: 10 selected (out of 35)
+  hard dict_config: 10 selected (out of 17)
+  hard openmmlab_config: 10 selected (out of 23)
+  hard pipeline_stage_config: 10 selected (out of 16)
+  hard rich_cli_option_groups: 10 selected (out of 25)
+  clean argparse: 10 selected (out of 43)
+  clean complex_nested_config: 10 selected (out of 13)
+  clean dict_config: 10 selected (out of 35)
+  clean openmmlab_config: 10 selected (out of 42)
+  clean pipeline_stage_config: 10 selected (out of 48)
+  clean rich_cli_option_groups: 10 selected (out of 11)
+Hard subset: 60, Clean subset: 60
+加载了 480 条 prompt/reference 数据
+
+[2/4] Loading models...
+
+WARN  Python GIL is enabled: Multi-gpu quant acceleration for MoE models is sub-optimal and multi-core accelerated cpu packing is also disabled. We recommend Python >= 3.13.3t with Pytorch > 2.8 for mult-gpu quantization and multi-cpu packing with env `PYTHON_GIL=0`.
+INFO  ENV: Auto setting PYTORCH_ALLOC_CONF='expandable_segments:True,max_split_size_mb:256,garbage_collection_threshold:0.7' for memory saving.
+INFO  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+INFO  
+
+┌─────────────┐    ┌────────────────────────┐    ┌────────────┐    ┌─────────┐
+│ GPT-QModel  │ -> │ ▓▓▓▓▓▓▓▓▓▓▓▓ 16bit     │ -> │ ▒▒▒▒ 8bit  │ -> │ ░░ 4bit │
+└─────────────┘    └────────────────────────┘    └────────────┘    └─────────┘
+GPT-QModel   : 7.0.0+4341d11
+Transformers : 5.9.0
+Torch        : 2.8.0+cu128
+Triton       : 3.4.0
+INFO  Kernel: Auto-selection: adding candidate `AwqMarlinLinear`               
+INFO  Kernel: selected -> `AwqMarlinLinear`.                                   
+Loading weights:   0%|          | 0/1251 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1251 [00:00<03:33,  5.85it/s]Loading weights:   0%|          | 2/1251 [00:00<04:58,  4.19it/s]Loading weights:   5%|▍         | 61/1251 [00:00<00:07, 154.26it/s]Loading weights:  10%|▉         | 122/1251 [00:00<00:04, 275.31it/s]Loading weights:  14%|█▍        | 178/1251 [00:00<00:03, 353.38it/s]Loading weights:  18%|█▊        | 229/1251 [00:00<00:02, 393.05it/s]Loading weights:  23%|██▎       | 290/1251 [00:00<00:02, 445.20it/s]Loading weights:  28%|██▊       | 345/1251 [00:01<00:01, 460.93it/s]Loading weights:  32%|███▏      | 397/1251 [00:01<00:01, 476.75it/s]Loading weights:  36%|███▌      | 449/1251 [00:01<00:01, 486.35it/s]Loading weights:  40%|████      | 501/1251 [00:01<00:01, 490.54it/s]Loading weights:  44%|████▍     | 556/1251 [00:01<00:01, 495.57it/s]Loading weights:  49%|████▉     | 610/1251 [00:01<00:01, 507.88it/s]Loading weights:  53%|█████▎    | 668/1251 [00:01<00:01, 527.33it/s]Loading weights:  58%|█████▊    | 724/1251 [00:01<00:00, 533.06it/s]Loading weights:  63%|██████▎   | 784/1251 [00:01<00:00, 536.83it/s]Loading weights:  67%|██████▋   | 838/1251 [00:02<00:00, 520.59it/s]Loading weights:  71%|███████▏  | 894/1251 [00:02<00:00, 523.03it/s]Loading weights:  76%|███████▋  | 954/1251 [00:02<00:00, 542.84it/s]Loading weights:  81%|████████  | 1010/1251 [00:02<00:00, 546.33it/s]Loading weights:  85%|████████▌ | 1069/1251 [00:02<00:00, 545.11it/s]Loading weights:  90%|████████▉ | 1125/1251 [00:02<00:00, 539.05it/s]Loading weights:  94%|█████████▍| 1180/1251 [00:02<00:00, 529.50it/s]Loading weights:  99%|█████████▉| 1241/1251 [00:02<00:00, 552.22it/s]Loading weights: 100%|██████████| 1251/1251 [00:02<00:00, 451.87it/s]
+W0619 16:04:28.280000 117127 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W0619 16:04:28.280000 117127 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+INFO  gc.collect() reclaimed 399 objects in 0.203s                             
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   1%|▏         | 5/338 [00:00<00:06, 49.25it/s]Loading weights:  15%|█▌        | 51/338 [00:00<00:01, 274.44it/s]Loading weights:  26%|██▌       | 88/338 [00:00<00:00, 308.78it/s]Loading weights:  37%|███▋      | 124/338 [00:00<00:00, 322.52it/s]Loading weights:  51%|█████     | 172/338 [00:00<00:00, 372.43it/s]Loading weights:  64%|██████▎   | 215/338 [00:00<00:00, 390.55it/s]Loading weights:  76%|███████▌  | 256/338 [00:00<00:00, 384.14it/s]Loading weights:  90%|████████▉ | 304/338 [00:00<00:00, 405.05it/s]Loading weights: 100%|██████████| 338/338 [00:00<00:00, 364.83it/s]
+Models loaded.
+
+[3/4] Running Hard Subset (60 samples)...
+
+============================================================
+[hard] TASD-FG
+  top_k=3, prefix_budget=0.2, window_len=2, relaxed=True
+============================================================
+  [1/60] argparse/argparse_real_001 ... score: 0->0, tps=45.0
+  [2/60] argparse/argparse_real_004 ... score: 0->0, tps=62.2
+  [3/60] argparse/argparse_real_006 ... score: 0->2, tps=61.4
+  [4/60] argparse/argparse_real_010 ... score: 0->2, tps=61.3
+  [5/60] argparse/argparse_real_012 ... score: 0->0, tps=60.9
+  [6/60] argparse/argparse_real_018 ... score: 0->1, tps=61.6
+  [7/60] argparse/argparse_real_019 ... score: 0->0, tps=47.1
+  [8/60] argparse/argparse_real_029 ... score: 0->2, tps=60.3
+  [9/60] argparse/argparse_real_030 ... score: 0->0, tps=62.8
+  [10/60] argparse/argparse_real_031 ... score: 0->2, tps=22.9
+  [11/60] complex_nested_config/complex_nested_config_002 ... score: 0->0, tps=61.9
+  [12/60] complex_nested_config/complex_nested_config_004 ... score: 0->0, tps=60.0
+  [13/60] complex_nested_config/complex_nested_config_007 ... score: 0->0, tps=60.6
+  [14/60] complex_nested_config/complex_nested_config_008 ... score: 0->0, tps=58.3
+  [15/60] complex_nested_config/complex_nested_config_014 ... score: 0->0, tps=61.1
+  [16/60] complex_nested_config/complex_nested_config_016 ... score: 0->0, tps=61.5
+  [17/60] complex_nested_config/complex_nested_config_017 ... score: 0->0, tps=62.4
+  [18/60] complex_nested_config/complex_nested_config_018 ... score: 0->0, tps=61.5
+  [19/60] complex_nested_config/complex_nested_config_020 ... score: 0->0, tps=62.3
+  [20/60] complex_nested_config/complex_nested_config_021 ... score: 0->0, tps=62.2
+  [21/60] dict_config/dict_config_real_002 ... score: 0->0, tps=60.0
+  [22/60] dict_config/dict_config_real_005 ... score: 0->0, tps=60.6
+  [23/60] dict_config/dict_config_real_008 ... score: 0->0, tps=41.9
+  [24/60] dict_config/dict_config_real_011 ... score: 0->0, tps=58.9
+  [25/60] dict_config/dict_config_real_015 ... score: 0->2, tps=61.3
+  [26/60] dict_config/dict_config_real_016 ... score: 0->1, tps=60.0
+  [27/60] dict_config/dict_config_real_022 ... score: 0->0, tps=60.0
+  [28/60] dict_config/dict_config_real_041 ... score: 0->2, tps=47.2
+  [29/60] dict_config/dict_config_real_045 ... score: 0->0, tps=60.5
+  [30/60] dict_config/dict_config_real_049 ... score: 0->0, tps=59.9
+  [31/60] openmmlab_config/openmmlab_config_real_001 ... score: 0->0, tps=61.1
+  [32/60] openmmlab_config/openmmlab_config_real_003 ... score: 0->0, tps=60.8
+  [33/60] openmmlab_config/openmmlab_config_real_008 ... score: 0->2, tps=59.0
+  [34/60] openmmlab_config/openmmlab_config_real_012 ... score: 0->2, tps=58.5
+  [35/60] openmmlab_config/openmmlab_config_real_017 ... score: 0->2, tps=60.3
+  [36/60] openmmlab_config/openmmlab_config_real_018 ... score: 0->0, tps=60.8
+  [37/60] openmmlab_config/openmmlab_config_real_021 ... score: 0->2, tps=58.6
+  [38/60] openmmlab_config/openmmlab_config_real_025 ... score: 0->0, tps=60.3
+  [39/60] openmmlab_config/openmmlab_config_real_029 ... score: 0->0, tps=62.1
+  [40/60] openmmlab_config/openmmlab_config_real_041 ... score: 0->2, tps=59.0
+  [41/60] pipeline_stage_config/pipeline_stage_config_007 ... score: 0->0, tps=62.7
+  [42/60] pipeline_stage_config/pipeline_stage_config_008 ... score: 0->0, tps=61.9
+  [43/60] pipeline_stage_config/pipeline_stage_config_010 ... score: 0->0, tps=62.8
+  [44/60] pipeline_stage_config/pipeline_stage_config_019 ... score: 0->0, tps=44.3
+  [45/60] pipeline_stage_config/pipeline_stage_config_022 ... score: 0->0, tps=60.8
+  [46/60] pipeline_stage_config/pipeline_stage_config_025 ... score: 0->2, tps=61.0
+  [47/60] pipeline_stage_config/pipeline_stage_config_034 ... score: 0->2, tps=59.6
+  [48/60] pipeline_stage_config/pipeline_stage_config_037 ... score: 0->0, tps=60.5
+  [49/60] pipeline_stage_config/pipeline_stage_config_041 ... score: 0->0, tps=61.1
+  [50/60] pipeline_stage_config/pipeline_stage_config_043 ... score: 0->0, tps=62.6
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_007 ... score: 0->0, tps=61.4
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_013 ... score: 0->0, tps=61.3
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_016 ... score: 0->1, tps=62.3
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_017 ... score: 0->0, tps=61.7
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_022 ... score: 0->0, tps=61.9
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_025 ... score: 0->0, tps=59.3
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_027 ... score: 0->0, tps=60.9
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_029 ... score: 0->0, tps=61.2
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_031 ... score: 0->1, tps=61.9
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_032 ... score: 0->0, tps=61.4
+  Saved to results/tasd_fg_safe_ablation_hard_TASD-FG.json
+
+============================================================
+[hard] TASD-FG-Safe-k2
+  top_k=2, prefix_budget=0.1, window_len=1, relaxed=True
+============================================================
+  [1/60] argparse/argparse_real_001 ... score: 0->0, tps=61.3
+  [2/60] argparse/argparse_real_004 ... score: 0->1, tps=40.5
+  [3/60] argparse/argparse_real_006 ... score: 0->2, tps=62.1
+  [4/60] argparse/argparse_real_010 ... score: 0->2, tps=63.2
+  [5/60] argparse/argparse_real_012 ... score: 0->0, tps=61.6
+  [6/60] argparse/argparse_real_018 ... score: 0->0, tps=49.0
+  [7/60] argparse/argparse_real_019 ... score: 0->2, tps=41.0
+  [8/60] argparse/argparse_real_029 ... score: 0->2, tps=62.2
+  [9/60] argparse/argparse_real_030 ... score: 0->0, tps=62.3
+  [10/60] argparse/argparse_real_031 ... score: 0->0, tps=12.8
+  [11/60] complex_nested_config/complex_nested_config_002 ... score: 0->0, tps=59.0
+  [12/60] complex_nested_config/complex_nested_config_004 ... score: 0->0, tps=59.3
+  [13/60] complex_nested_config/complex_nested_config_007 ... score: 0->0, tps=61.4
+  [14/60] complex_nested_config/complex_nested_config_008 ... score: 0->0, tps=61.2
+  [15/60] complex_nested_config/complex_nested_config_014 ... score: 0->0, tps=61.9
+  [16/60] complex_nested_config/complex_nested_config_016 ... score: 0->0, tps=61.6
+  [17/60] complex_nested_config/complex_nested_config_017 ... score: 0->0, tps=62.1
+  [18/60] complex_nested_config/complex_nested_config_018 ... score: 0->0, tps=61.0
+  [19/60] complex_nested_config/complex_nested_config_020 ... score: 0->0, tps=59.8
+  [20/60] complex_nested_config/complex_nested_config_021 ... score: 0->1, tps=42.6
+  [21/60] dict_config/dict_config_real_002 ... score: 0->0, tps=34.7
+  [22/60] dict_config/dict_config_real_005 ... score: 0->0, tps=60.0
+  [23/60] dict_config/dict_config_real_008 ... score: 0->1, tps=32.0
+  [24/60] dict_config/dict_config_real_011 ... score: 0->0, tps=62.7
+  [25/60] dict_config/dict_config_real_015 ... score: 0->2, tps=63.3
+  [26/60] dict_config/dict_config_real_016 ... score: 0->1, tps=62.5
+  [27/60] dict_config/dict_config_real_022 ... score: 0->0, tps=49.8
+  [28/60] dict_config/dict_config_real_041 ... score: 0->2, tps=29.4
+  [29/60] dict_config/dict_config_real_045 ... score: 0->0, tps=60.9
+  [30/60] dict_config/dict_config_real_049 ... score: 0->0, tps=60.8
+  [31/60] openmmlab_config/openmmlab_config_real_001 ... score: 0->0, tps=60.7
+  [32/60] openmmlab_config/openmmlab_config_real_003 ... score: 0->0, tps=60.5
+  [33/60] openmmlab_config/openmmlab_config_real_008 ... score: 0->2, tps=31.0
+  [34/60] openmmlab_config/openmmlab_config_real_012 ... score: 0->2, tps=31.6
+  [35/60] openmmlab_config/openmmlab_config_real_017 ... score: 0->2, tps=62.2
+  [36/60] openmmlab_config/openmmlab_config_real_018 ... score: 0->0, tps=61.5
+  [37/60] openmmlab_config/openmmlab_config_real_021 ... score: 0->2, tps=61.0
+  [38/60] openmmlab_config/openmmlab_config_real_025 ... score: 0->0, tps=61.7
+  [39/60] openmmlab_config/openmmlab_config_real_029 ... score: 0->0, tps=62.9
+  [40/60] openmmlab_config/openmmlab_config_real_041 ... score: 0->2, tps=62.3
+  [41/60] pipeline_stage_config/pipeline_stage_config_007 ... score: 0->0, tps=62.5
+  [42/60] pipeline_stage_config/pipeline_stage_config_008 ... score: 0->0, tps=61.8
+  [43/60] pipeline_stage_config/pipeline_stage_config_010 ... score: 0->1, tps=45.8
+  [44/60] pipeline_stage_config/pipeline_stage_config_019 ... score: 0->0, tps=32.7
+  [45/60] pipeline_stage_config/pipeline_stage_config_022 ... score: 0->0, tps=61.9
+  [46/60] pipeline_stage_config/pipeline_stage_config_025 ... score: 0->2, tps=38.5
+  [47/60] pipeline_stage_config/pipeline_stage_config_034 ... score: 0->2, tps=61.8
+  [48/60] pipeline_stage_config/pipeline_stage_config_037 ... score: 0->0, tps=61.0
+  [49/60] pipeline_stage_config/pipeline_stage_config_041 ... score: 0->0, tps=61.6
+  [50/60] pipeline_stage_config/pipeline_stage_config_043 ... score: 0->0, tps=63.3
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_007 ... score: 0->0, tps=62.7
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_013 ... score: 0->0, tps=62.8
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_016 ... score: 0->1, tps=62.4
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_017 ... score: 0->0, tps=62.5
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_022 ... score: 0->0, tps=62.0
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_025 ... score: 0->0, tps=62.0
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_027 ... score: 0->0, tps=62.2
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_029 ... score: 0->0, tps=62.8
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_031 ... score: 0->1, tps=62.1
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_032 ... score: 0->0, tps=62.7
+  Saved to results/tasd_fg_safe_ablation_hard_TASD-FG-Safe-k2.json
+
+============================================================
+[hard] TASD-FG-Safe-k1
+  top_k=1, prefix_budget=0.05, window_len=1, relaxed=True
+============================================================
+  [1/60] argparse/argparse_real_001 ... score: 0->0, tps=62.4
+  [2/60] argparse/argparse_real_004 ... score: 0->1, tps=37.5
+  [3/60] argparse/argparse_real_006 ... score: 0->2, tps=62.3
+  [4/60] argparse/argparse_real_010 ... score: 0->2, tps=62.5
+  [5/60] argparse/argparse_real_012 ... score: 0->0, tps=61.0
+  [6/60] argparse/argparse_real_018 ... score: 0->0, tps=47.0
+  [7/60] argparse/argparse_real_019 ... score: 0->2, tps=38.5
+  [8/60] argparse/argparse_real_029 ... score: 0->2, tps=61.9
+  [9/60] argparse/argparse_real_030 ... score: 0->0, tps=63.2
+  [10/60] argparse/argparse_real_031 ... score: 0->0, tps=12.7
+  [11/60] complex_nested_config/complex_nested_config_002 ... score: 0->0, tps=60.7
+  [12/60] complex_nested_config/complex_nested_config_004 ... score: 0->0, tps=60.3
+  [13/60] complex_nested_config/complex_nested_config_007 ... score: 0->0, tps=59.8
+  [14/60] complex_nested_config/complex_nested_config_008 ... score: 0->0, tps=60.7
+  [15/60] complex_nested_config/complex_nested_config_014 ... score: 0->0, tps=60.4
+  [16/60] complex_nested_config/complex_nested_config_016 ... score: 0->0, tps=60.8
+  [17/60] complex_nested_config/complex_nested_config_017 ... score: 0->0, tps=61.8
+  [18/60] complex_nested_config/complex_nested_config_018 ... score: 0->0, tps=59.9
+  [19/60] complex_nested_config/complex_nested_config_020 ... score: 0->0, tps=60.0
+  [20/60] complex_nested_config/complex_nested_config_021 ... score: 0->1, tps=42.6
+  [21/60] dict_config/dict_config_real_002 ... score: 0->0, tps=34.2
+  [22/60] dict_config/dict_config_real_005 ... score: 0->0, tps=59.4
+  [23/60] dict_config/dict_config_real_008 ... score: 0->1, tps=33.2
+  [24/60] dict_config/dict_config_real_011 ... score: 0->0, tps=62.2
+  [25/60] dict_config/dict_config_real_015 ... score: 0->2, tps=61.6
+  [26/60] dict_config/dict_config_real_016 ... score: 0->1, tps=62.4
+  [27/60] dict_config/dict_config_real_022 ... score: 0->0, tps=50.2
+  [28/60] dict_config/dict_config_real_041 ... score: 0->2, tps=29.2
+  [29/60] dict_config/dict_config_real_045 ... score: 0->0, tps=60.5
+  [30/60] dict_config/dict_config_real_049 ... score: 0->0, tps=61.5
+  [31/60] openmmlab_config/openmmlab_config_real_001 ... score: 0->0, tps=60.9
+  [32/60] openmmlab_config/openmmlab_config_real_003 ... score: 0->0, tps=62.7
+  [33/60] openmmlab_config/openmmlab_config_real_008 ... score: 0->2, tps=31.0
+  [34/60] openmmlab_config/openmmlab_config_real_012 ... score: 0->2, tps=30.8
+  [35/60] openmmlab_config/openmmlab_config_real_017 ... score: 0->2, tps=62.0
+  [36/60] openmmlab_config/openmmlab_config_real_018 ... score: 0->0, tps=62.8
+  [37/60] openmmlab_config/openmmlab_config_real_021 ... score: 0->2, tps=62.3
+  [38/60] openmmlab_config/openmmlab_config_real_025 ... score: 0->0, tps=63.2
+  [39/60] openmmlab_config/openmmlab_config_real_029 ... score: 0->0, tps=62.7
+  [40/60] openmmlab_config/openmmlab_config_real_041 ... score: 0->2, tps=62.4
+  [41/60] pipeline_stage_config/pipeline_stage_config_007 ... score: 0->0, tps=60.7
+  [42/60] pipeline_stage_config/pipeline_stage_config_008 ... score: 0->0, tps=61.4
+  [43/60] pipeline_stage_config/pipeline_stage_config_010 ... score: 0->1, tps=44.3
+  [44/60] pipeline_stage_config/pipeline_stage_config_019 ... score: 0->0, tps=32.9
+  [45/60] pipeline_stage_config/pipeline_stage_config_022 ... score: 0->0, tps=61.3
+  [46/60] pipeline_stage_config/pipeline_stage_config_025 ... score: 0->2, tps=38.3
+  [47/60] pipeline_stage_config/pipeline_stage_config_034 ... score: 0->2, tps=62.4
+  [48/60] pipeline_stage_config/pipeline_stage_config_037 ... score: 0->0, tps=62.7
+  [49/60] pipeline_stage_config/pipeline_stage_config_041 ... score: 0->0, tps=62.3
+  [50/60] pipeline_stage_config/pipeline_stage_config_043 ... score: 0->0, tps=62.4
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_007 ... score: 0->0, tps=60.8
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_013 ... score: 0->0, tps=60.8
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_016 ... score: 0->1, tps=62.4
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_017 ... score: 0->0, tps=62.1
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_022 ... score: 0->0, tps=61.6
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_025 ... score: 0->0, tps=61.5
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_027 ... score: 0->0, tps=60.2
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_029 ... score: 0->0, tps=60.1
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_031 ... score: 0->1, tps=60.4
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_032 ... score: 0->0, tps=61.9
+  Saved to results/tasd_fg_safe_ablation_hard_TASD-FG-Safe-k1.json
+
+============================================================
+[hard] TASD-FG-strict
+  top_k=1, prefix_budget=0.0, window_len=1, relaxed=False
+============================================================
+  [1/60] argparse/argparse_real_001 ... score: 0->1, tps=55.4
+  [2/60] argparse/argparse_real_004 ... score: 0->0, tps=49.0
+  [3/60] argparse/argparse_real_006 ... score: 0->2, tps=54.1
+  [4/60] argparse/argparse_real_010 ... score: 0->2, tps=53.2
+  [5/60] argparse/argparse_real_012 ... score: 0->0, tps=58.6
+  [6/60] argparse/argparse_real_018 ... score: 0->1, tps=49.2
+  [7/60] argparse/argparse_real_019 ... score: 0->0, tps=43.4
+  [8/60] argparse/argparse_real_029 ... score: 0->2, tps=52.0
+  [9/60] argparse/argparse_real_030 ... score: 0->0, tps=56.0
+  [10/60] argparse/argparse_real_031 ... score: 0->2, tps=22.4
+  [11/60] complex_nested_config/complex_nested_config_002 ... score: 0->0, tps=36.8
+  [12/60] complex_nested_config/complex_nested_config_004 ... score: 0->0, tps=56.6
+  [13/60] complex_nested_config/complex_nested_config_007 ... score: 0->0, tps=51.7
+  [14/60] complex_nested_config/complex_nested_config_008 ... score: 0->0, tps=56.2
+  [15/60] complex_nested_config/complex_nested_config_014 ... score: 0->0, tps=54.8
+  [16/60] complex_nested_config/complex_nested_config_016 ... score: 0->0, tps=52.7
+  [17/60] complex_nested_config/complex_nested_config_017 ... score: 0->0, tps=53.0
+  [18/60] complex_nested_config/complex_nested_config_018 ... score: 0->0, tps=58.7
+  [19/60] complex_nested_config/complex_nested_config_020 ... score: 0->0, tps=57.9
+  [20/60] complex_nested_config/complex_nested_config_021 ... score: 0->0, tps=53.7
+  [21/60] dict_config/dict_config_real_002 ... score: 0->0, tps=56.0
+  [22/60] dict_config/dict_config_real_005 ... score: 0->0, tps=60.4
+  [23/60] dict_config/dict_config_real_008 ... score: 0->2, tps=36.1
+  [24/60] dict_config/dict_config_real_011 ... score: 0->0, tps=58.3
+  [25/60] dict_config/dict_config_real_015 ... score: 0->2, tps=58.0
+  [26/60] dict_config/dict_config_real_016 ... score: 0->1, tps=56.3
+  [27/60] dict_config/dict_config_real_022 ... score: 0->0, tps=55.3
+  [28/60] dict_config/dict_config_real_041 ... score: 0->0, tps=38.2
+  [29/60] dict_config/dict_config_real_045 ... score: 0->0, tps=59.2
+  [30/60] dict_config/dict_config_real_049 ... score: 0->0, tps=58.2
+  [31/60] openmmlab_config/openmmlab_config_real_001 ... score: 0->0, tps=49.7
+  [32/60] openmmlab_config/openmmlab_config_real_003 ... score: 0->0, tps=49.5
+  [33/60] openmmlab_config/openmmlab_config_real_008 ... score: 0->2, tps=53.5
+  [34/60] openmmlab_config/openmmlab_config_real_012 ... score: 0->2, tps=53.4
+  [35/60] openmmlab_config/openmmlab_config_real_017 ... score: 0->2, tps=43.1
+  [36/60] openmmlab_config/openmmlab_config_real_018 ... score: 0->0, tps=53.1
+  [37/60] openmmlab_config/openmmlab_config_real_021 ... score: 0->2, tps=47.0
+  [38/60] openmmlab_config/openmmlab_config_real_025 ... score: 0->0, tps=59.3
+  [39/60] openmmlab_config/openmmlab_config_real_029 ... score: 0->0, tps=59.6
+  [40/60] openmmlab_config/openmmlab_config_real_041 ... score: 0->2, tps=54.3
+  [41/60] pipeline_stage_config/pipeline_stage_config_007 ... score: 0->0, tps=53.7
+  [42/60] pipeline_stage_config/pipeline_stage_config_008 ... score: 0->0, tps=53.7
+  [43/60] pipeline_stage_config/pipeline_stage_config_010 ... score: 0->0, tps=53.5
+  [44/60] pipeline_stage_config/pipeline_stage_config_019 ... score: 0->2, tps=47.3
+  [45/60] pipeline_stage_config/pipeline_stage_config_022 ... score: 0->0, tps=58.9
+  [46/60] pipeline_stage_config/pipeline_stage_config_025 ... score: 0->2, tps=50.4
+  [47/60] pipeline_stage_config/pipeline_stage_config_034 ... score: 0->2, tps=51.7
+  [48/60] pipeline_stage_config/pipeline_stage_config_037 ... score: 0->0, tps=57.3
+  [49/60] pipeline_stage_config/pipeline_stage_config_041 ... score: 0->0, tps=57.2
+  [50/60] pipeline_stage_config/pipeline_stage_config_043 ... score: 0->0, tps=58.0
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_007 ... score: 0->0, tps=52.3
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_013 ... score: 0->0, tps=52.7
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_016 ... score: 0->1, tps=55.3
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_017 ... score: 0->0, tps=56.8
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_022 ... score: 0->0, tps=53.0
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_025 ... score: 0->0, tps=52.8
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_027 ... score: 0->0, tps=51.7
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_029 ... score: 0->0, tps=54.8
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_031 ... score: 0->1, tps=56.9
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_032 ... score: 0->0, tps=50.3
+  Saved to results/tasd_fg_safe_ablation_hard_TASD-FG-strict.json
+
+[4/4] Running Clean Subset (60 samples)...
+
+============================================================
+[clean] TASD-FG
+  top_k=3, prefix_budget=0.2, window_len=2, relaxed=True
+============================================================
+  [1/60] argparse/argparse_real_002 ... score: 2->2, tps=57.7
+  [2/60] argparse/argparse_real_003 ... score: 2->2, tps=60.7
+  [3/60] argparse/argparse_real_007 ... score: 2->2, tps=62.3
+  [4/60] argparse/argparse_real_008 ... score: 2->0, tps=61.9
+  [5/60] argparse/argparse_real_009 ... score: 2->2, tps=60.2
+  [6/60] argparse/argparse_real_013 ... score: 2->2, tps=59.1
+  [7/60] argparse/argparse_real_014 ... score: 2->2, tps=58.7
+  [8/60] argparse/argparse_real_015 ... score: 2->0, tps=58.8
+  [9/60] argparse/argparse_real_016 ... score: 2->2, tps=59.9
+  [10/60] argparse/argparse_real_017 ... score: 2->2, tps=60.3
+  [11/60] complex_nested_config/complex_nested_config_006 ... score: 2->2, tps=59.3
+  [12/60] complex_nested_config/complex_nested_config_022 ... score: 2->2, tps=59.7
+  [13/60] complex_nested_config/complex_nested_config_026 ... score: 2->1, tps=59.8
+  [14/60] complex_nested_config/complex_nested_config_030 ... score: 2->2, tps=61.7
+  [15/60] complex_nested_config/complex_nested_config_035 ... score: 2->1, tps=61.0
+  [16/60] complex_nested_config/complex_nested_config_042 ... score: 2->1, tps=62.1
+  [17/60] complex_nested_config/complex_nested_config_043 ... score: 2->2, tps=59.4
+  [18/60] complex_nested_config/complex_nested_config_055 ... score: 2->2, tps=59.6
+  [19/60] complex_nested_config/complex_nested_config_064 ... score: 2->1, tps=61.4
+  [20/60] complex_nested_config/complex_nested_config_068 ... score: 2->2, tps=60.1
+  [21/60] dict_config/dict_config_real_001 ... score: 2->2, tps=59.7
+  [22/60] dict_config/dict_config_real_013 ... score: 2->2, tps=61.2
+  [23/60] dict_config/dict_config_real_014 ... score: 2->0, tps=47.7
+  [24/60] dict_config/dict_config_real_018 ... score: 2->2, tps=45.3
+  [25/60] dict_config/dict_config_real_020 ... score: 2->2, tps=61.8
+  [26/60] dict_config/dict_config_real_027 ... score: 2->2, tps=61.1
+  [27/60] dict_config/dict_config_real_028 ... score: 2->2, tps=59.6
+  [28/60] dict_config/dict_config_real_029 ... score: 2->2, tps=62.0
+  [29/60] dict_config/dict_config_real_030 ... score: 2->2, tps=61.5
+  [30/60] dict_config/dict_config_real_032 ... score: 2->2, tps=62.7
+  [31/60] openmmlab_config/openmmlab_config_real_002 ... score: 2->2, tps=62.2
+  [32/60] openmmlab_config/openmmlab_config_real_004 ... score: 2->0, tps=61.6
+  [33/60] openmmlab_config/openmmlab_config_real_005 ... score: 2->2, tps=62.3
+  [34/60] openmmlab_config/openmmlab_config_real_006 ... score: 2->2, tps=62.1
+  [35/60] openmmlab_config/openmmlab_config_real_007 ... score: 2->2, tps=62.8
+  [36/60] openmmlab_config/openmmlab_config_real_009 ... score: 2->2, tps=62.0
+  [37/60] openmmlab_config/openmmlab_config_real_011 ... score: 2->2, tps=62.1
+  [38/60] openmmlab_config/openmmlab_config_real_013 ... score: 2->2, tps=62.1
+  [39/60] openmmlab_config/openmmlab_config_real_015 ... score: 2->2, tps=61.8
+  [40/60] openmmlab_config/openmmlab_config_real_016 ... score: 2->2, tps=62.9
+  [41/60] pipeline_stage_config/pipeline_stage_config_001 ... score: 2->2, tps=61.9
+  [42/60] pipeline_stage_config/pipeline_stage_config_002 ... score: 2->2, tps=62.2
+  [43/60] pipeline_stage_config/pipeline_stage_config_003 ... score: 2->2, tps=62.1
+  [44/60] pipeline_stage_config/pipeline_stage_config_004 ... score: 2->2, tps=61.3
+  [45/60] pipeline_stage_config/pipeline_stage_config_005 ... score: 2->2, tps=62.0
+  [46/60] pipeline_stage_config/pipeline_stage_config_006 ... score: 2->2, tps=61.4
+  [47/60] pipeline_stage_config/pipeline_stage_config_009 ... score: 2->2, tps=62.3
+  [48/60] pipeline_stage_config/pipeline_stage_config_011 ... score: 2->2, tps=62.7
+  [49/60] pipeline_stage_config/pipeline_stage_config_012 ... score: 2->2, tps=62.7
+  [50/60] pipeline_stage_config/pipeline_stage_config_014 ... score: 2->2, tps=62.4
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_005 ... score: 2->2, tps=62.3
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_010 ... score: 2->2, tps=61.5
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_012 ... score: 2->2, tps=61.3
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_019 ... score: 2->2, tps=62.8
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_033 ... score: 2->2, tps=57.8
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_035 ... score: 2->1, tps=59.9
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_051 ... score: 2->2, tps=58.5
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_052 ... score: 2->2, tps=61.5
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_059 ... score: 2->2, tps=60.3
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_068 ... score: 2->1, tps=60.8
+  Saved to results/tasd_fg_safe_ablation_clean_TASD-FG.json
+
+============================================================
+[clean] TASD-FG-Safe-k2
+  top_k=2, prefix_budget=0.1, window_len=1, relaxed=True
+============================================================
+  [1/60] argparse/argparse_real_002 ... score: 2->2, tps=60.8
+  [2/60] argparse/argparse_real_003 ... score: 2->2, tps=58.2
+  [3/60] argparse/argparse_real_007 ... score: 2->2, tps=58.7
+  [4/60] argparse/argparse_real_008 ... score: 2->0, tps=60.7
+  [5/60] argparse/argparse_real_009 ... score: 2->2, tps=60.4
+  [6/60] argparse/argparse_real_013 ... score: 2->2, tps=60.6
+  [7/60] argparse/argparse_real_014 ... score: 2->2, tps=60.9
+  [8/60] argparse/argparse_real_015 ... score: 2->0, tps=57.4
+  [9/60] argparse/argparse_real_016 ... score: 2->2, tps=58.0
+  [10/60] argparse/argparse_real_017 ... score: 2->2, tps=58.8
+  [11/60] complex_nested_config/complex_nested_config_006 ... score: 2->2, tps=60.0
+  [12/60] complex_nested_config/complex_nested_config_022 ... score: 2->2, tps=60.6
+  [13/60] complex_nested_config/complex_nested_config_026 ... score: 2->1, tps=43.4
+  [14/60] complex_nested_config/complex_nested_config_030 ... score: 2->2, tps=61.3
+  [15/60] complex_nested_config/complex_nested_config_035 ... score: 2->1, tps=61.8
+  [16/60] complex_nested_config/complex_nested_config_042 ... score: 2->1, tps=61.0
+  [17/60] complex_nested_config/complex_nested_config_043 ... score: 2->2, tps=61.4
+  [18/60] complex_nested_config/complex_nested_config_055 ... score: 2->0, tps=19.1
+  [19/60] complex_nested_config/complex_nested_config_064 ... score: 2->1, tps=42.5
+  [20/60] complex_nested_config/complex_nested_config_068 ... score: 2->2, tps=59.3
+  [21/60] dict_config/dict_config_real_001 ... score: 2->2, tps=60.7
+  [22/60] dict_config/dict_config_real_013 ... score: 2->2, tps=62.1
+  [23/60] dict_config/dict_config_real_014 ... score: 2->2, tps=29.7
+  [24/60] dict_config/dict_config_real_018 ... score: 2->2, tps=44.3
+  [25/60] dict_config/dict_config_real_020 ... score: 2->2, tps=59.6
+  [26/60] dict_config/dict_config_real_027 ... score: 2->2, tps=30.4
+  [27/60] dict_config/dict_config_real_028 ... score: 2->2, tps=31.1
+  [28/60] dict_config/dict_config_real_029 ... score: 2->2, tps=31.3
+  [29/60] dict_config/dict_config_real_030 ... score: 2->2, tps=46.1
+  [30/60] dict_config/dict_config_real_032 ... score: 2->2, tps=62.2
+  [31/60] openmmlab_config/openmmlab_config_real_002 ... score: 2->2, tps=59.4
+  [32/60] openmmlab_config/openmmlab_config_real_004 ... score: 2->0, tps=62.2
+  [33/60] openmmlab_config/openmmlab_config_real_005 ... score: 2->2, tps=61.2
+  [34/60] openmmlab_config/openmmlab_config_real_006 ... score: 2->2, tps=62.4
+  [35/60] openmmlab_config/openmmlab_config_real_007 ... score: 2->2, tps=62.8
+  [36/60] openmmlab_config/openmmlab_config_real_009 ... score: 2->2, tps=62.7
+  [37/60] openmmlab_config/openmmlab_config_real_011 ... score: 2->2, tps=62.6
+  [38/60] openmmlab_config/openmmlab_config_real_013 ... score: 2->2, tps=62.2
+  [39/60] openmmlab_config/openmmlab_config_real_015 ... score: 2->2, tps=62.3
+  [40/60] openmmlab_config/openmmlab_config_real_016 ... score: 2->2, tps=61.1
+  [41/60] pipeline_stage_config/pipeline_stage_config_001 ... score: 2->0, tps=34.3
+  [42/60] pipeline_stage_config/pipeline_stage_config_002 ... score: 2->2, tps=61.9
+  [43/60] pipeline_stage_config/pipeline_stage_config_003 ... score: 2->2, tps=61.5
+  [44/60] pipeline_stage_config/pipeline_stage_config_004 ... score: 2->2, tps=62.7
+  [45/60] pipeline_stage_config/pipeline_stage_config_005 ... score: 2->2, tps=54.0
+  [46/60] pipeline_stage_config/pipeline_stage_config_006 ... score: 2->2, tps=59.5
+  [47/60] pipeline_stage_config/pipeline_stage_config_009 ... score: 2->2, tps=59.6
+  [48/60] pipeline_stage_config/pipeline_stage_config_011 ... score: 2->2, tps=62.1
+  [49/60] pipeline_stage_config/pipeline_stage_config_012 ... score: 2->2, tps=61.5
+  [50/60] pipeline_stage_config/pipeline_stage_config_014 ... score: 2->2, tps=35.6
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_005 ... score: 2->2, tps=62.0
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_010 ... score: 2->2, tps=61.5
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_012 ... score: 2->2, tps=62.1
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_019 ... score: 2->2, tps=61.7
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_033 ... score: 2->2, tps=61.6
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_035 ... score: 2->1, tps=59.7
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_051 ... score: 2->2, tps=58.7
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_052 ... score: 2->2, tps=35.4
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_059 ... score: 2->2, tps=58.8
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_068 ... score: 2->1, tps=58.2
+  Saved to results/tasd_fg_safe_ablation_clean_TASD-FG-Safe-k2.json
+
+============================================================
+[clean] TASD-FG-Safe-k1
+  top_k=1, prefix_budget=0.05, window_len=1, relaxed=True
+============================================================
+  [1/60] argparse/argparse_real_002 ... score: 2->2, tps=59.9
+  [2/60] argparse/argparse_real_003 ... score: 2->2, tps=60.0
+  [3/60] argparse/argparse_real_007 ... score: 2->2, tps=58.8
+  [4/60] argparse/argparse_real_008 ... score: 2->0, tps=58.3
+  [5/60] argparse/argparse_real_009 ... score: 2->2, tps=58.6
+  [6/60] argparse/argparse_real_013 ... score: 2->2, tps=59.1
+  [7/60] argparse/argparse_real_014 ... score: 2->2, tps=60.1
+  [8/60] argparse/argparse_real_015 ... score: 2->0, tps=60.4
+  [9/60] argparse/argparse_real_016 ... score: 2->2, tps=58.4
+  [10/60] argparse/argparse_real_017 ... score: 2->2, tps=59.7
+  [11/60] complex_nested_config/complex_nested_config_006 ... score: 2->2, tps=60.5
+  [12/60] complex_nested_config/complex_nested_config_022 ... score: 2->2, tps=61.7
+  [13/60] complex_nested_config/complex_nested_config_026 ... score: 2->1, tps=44.2
+  [14/60] complex_nested_config/complex_nested_config_030 ... score: 2->2, tps=59.8
+  [15/60] complex_nested_config/complex_nested_config_035 ... score: 2->1, tps=57.4
+  [16/60] complex_nested_config/complex_nested_config_042 ... score: 2->1, tps=58.5
+  [17/60] complex_nested_config/complex_nested_config_043 ... score: 2->2, tps=62.1
+  [18/60] complex_nested_config/complex_nested_config_055 ... score: 2->0, tps=19.6
+  [19/60] complex_nested_config/complex_nested_config_064 ... score: 2->1, tps=44.3
+  [20/60] complex_nested_config/complex_nested_config_068 ... score: 2->2, tps=61.6
+  [21/60] dict_config/dict_config_real_001 ... score: 2->2, tps=61.8
+  [22/60] dict_config/dict_config_real_013 ... score: 2->2, tps=62.4
+  [23/60] dict_config/dict_config_real_014 ... score: 2->2, tps=30.3
+  [24/60] dict_config/dict_config_real_018 ... score: 2->2, tps=45.2
+  [25/60] dict_config/dict_config_real_020 ... score: 2->2, tps=63.2
+  [26/60] dict_config/dict_config_real_027 ... score: 2->2, tps=31.3
+  [27/60] dict_config/dict_config_real_028 ... score: 2->2, tps=31.0
+  [28/60] dict_config/dict_config_real_029 ... score: 2->2, tps=31.3
+  [29/60] dict_config/dict_config_real_030 ... score: 2->2, tps=47.1
+  [30/60] dict_config/dict_config_real_032 ... score: 2->2, tps=62.8
+  [31/60] openmmlab_config/openmmlab_config_real_002 ... score: 2->2, tps=62.3
+  [32/60] openmmlab_config/openmmlab_config_real_004 ... score: 2->0, tps=62.6
+  [33/60] openmmlab_config/openmmlab_config_real_005 ... score: 2->2, tps=61.5
+  [34/60] openmmlab_config/openmmlab_config_real_006 ... score: 2->2, tps=61.6
+  [35/60] openmmlab_config/openmmlab_config_real_007 ... score: 2->2, tps=61.5
+  [36/60] openmmlab_config/openmmlab_config_real_009 ... score: 2->2, tps=60.9
+  [37/60] openmmlab_config/openmmlab_config_real_011 ... score: 2->2, tps=62.2
+  [38/60] openmmlab_config/openmmlab_config_real_013 ... score: 2->2, tps=61.5
+  [39/60] openmmlab_config/openmmlab_config_real_015 ... score: 2->2, tps=61.7
+  [40/60] openmmlab_config/openmmlab_config_real_016 ... score: 2->2, tps=61.5
+  [41/60] pipeline_stage_config/pipeline_stage_config_001 ... score: 2->0, tps=35.0
+  [42/60] pipeline_stage_config/pipeline_stage_config_002 ... score: 2->2, tps=63.0
+  [43/60] pipeline_stage_config/pipeline_stage_config_003 ... score: 2->2, tps=62.7
+  [44/60] pipeline_stage_config/pipeline_stage_config_004 ... score: 2->2, tps=62.6
+  [45/60] pipeline_stage_config/pipeline_stage_config_005 ... score: 2->2, tps=62.2
+  [46/60] pipeline_stage_config/pipeline_stage_config_006 ... score: 2->2, tps=62.8
+  [47/60] pipeline_stage_config/pipeline_stage_config_009 ... score: 2->2, tps=62.3
+  [48/60] pipeline_stage_config/pipeline_stage_config_011 ... score: 2->2, tps=63.0
+  [49/60] pipeline_stage_config/pipeline_stage_config_012 ... score: 2->2, tps=62.3
+  [50/60] pipeline_stage_config/pipeline_stage_config_014 ... score: 2->2, tps=35.9
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_005 ... score: 2->2, tps=60.6
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_010 ... score: 2->2, tps=60.8
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_012 ... score: 2->2, tps=60.6
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_019 ... score: 2->2, tps=59.9
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_033 ... score: 2->2, tps=61.0
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_035 ... score: 2->1, tps=59.8
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_051 ... score: 2->2, tps=59.4
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_052 ... score: 2->2, tps=36.6
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_059 ... score: 2->2, tps=60.6
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_068 ... score: 2->1, tps=59.7
+  Saved to results/tasd_fg_safe_ablation_clean_TASD-FG-Safe-k1.json
+
+============================================================
+[clean] TASD-FG-strict
+  top_k=1, prefix_budget=0.0, window_len=1, relaxed=False
+============================================================
+  [1/60] argparse/argparse_real_002 ... score: 2->0, tps=52.1
+  [2/60] argparse/argparse_real_003 ... score: 2->2, tps=49.4
+  [3/60] argparse/argparse_real_007 ... score: 2->2, tps=53.2
+  [4/60] argparse/argparse_real_008 ... score: 2->0, tps=51.5
+  [5/60] argparse/argparse_real_009 ... score: 2->2, tps=52.5
+  [6/60] argparse/argparse_real_013 ... score: 2->2, tps=56.6
+  [7/60] argparse/argparse_real_014 ... score: 2->2, tps=54.7
+  [8/60] argparse/argparse_real_015 ... score: 2->0, tps=49.8
+  [9/60] argparse/argparse_real_016 ... score: 2->2, tps=52.4
+  [10/60] argparse/argparse_real_017 ... score: 2->2, tps=59.0
+  [11/60] complex_nested_config/complex_nested_config_006 ... score: 2->2, tps=52.5
+  [12/60] complex_nested_config/complex_nested_config_022 ... score: 2->2, tps=55.5
+  [13/60] complex_nested_config/complex_nested_config_026 ... score: 2->1, tps=43.5
+  [14/60] complex_nested_config/complex_nested_config_030 ... score: 2->2, tps=55.4
+  [15/60] complex_nested_config/complex_nested_config_035 ... score: 2->1, tps=49.3
+  [16/60] complex_nested_config/complex_nested_config_042 ... score: 2->1, tps=54.5
+  [17/60] complex_nested_config/complex_nested_config_043 ... score: 2->2, tps=58.7
+  [18/60] complex_nested_config/complex_nested_config_055 ... score: 2->2, tps=57.4
+  [19/60] complex_nested_config/complex_nested_config_064 ... score: 2->1, tps=53.2
+  [20/60] complex_nested_config/complex_nested_config_068 ... score: 2->2, tps=55.5
+  [21/60] dict_config/dict_config_real_001 ... score: 2->2, tps=56.2
+  [22/60] dict_config/dict_config_real_013 ... score: 2->2, tps=49.4
+  [23/60] dict_config/dict_config_real_014 ... score: 2->2, tps=33.9
+  [24/60] dict_config/dict_config_real_018 ... score: 2->2, tps=43.8
+  [25/60] dict_config/dict_config_real_020 ... score: 2->2, tps=55.3
+  [26/60] dict_config/dict_config_real_027 ... score: 2->2, tps=57.4
+  [27/60] dict_config/dict_config_real_028 ... score: 2->2, tps=58.3
+  [28/60] dict_config/dict_config_real_029 ... score: 2->2, tps=58.0
+  [29/60] dict_config/dict_config_real_030 ... score: 2->2, tps=55.9
+  [30/60] dict_config/dict_config_real_032 ... score: 2->2, tps=53.0
+  [31/60] openmmlab_config/openmmlab_config_real_002 ... score: 2->2, tps=50.5
+  [32/60] openmmlab_config/openmmlab_config_real_004 ... score: 2->0, tps=51.1
+  [33/60] openmmlab_config/openmmlab_config_real_005 ... score: 2->2, tps=52.9
+  [34/60] openmmlab_config/openmmlab_config_real_006 ... score: 2->2, tps=49.3
+  [35/60] openmmlab_config/openmmlab_config_real_007 ... score: 2->2, tps=56.4
+  [36/60] openmmlab_config/openmmlab_config_real_009 ... score: 2->2, tps=56.3
+  [37/60] openmmlab_config/openmmlab_config_real_011 ... score: 2->2, tps=59.3
+  [38/60] openmmlab_config/openmmlab_config_real_013 ... score: 2->2, tps=56.1
+  [39/60] openmmlab_config/openmmlab_config_real_015 ... score: 2->2, tps=51.1
+  [40/60] openmmlab_config/openmmlab_config_real_016 ... score: 2->2, tps=45.0
+  [41/60] pipeline_stage_config/pipeline_stage_config_001 ... score: 2->2, tps=55.5
+  [42/60] pipeline_stage_config/pipeline_stage_config_002 ... score: 2->2, tps=58.6
+  [43/60] pipeline_stage_config/pipeline_stage_config_003 ... score: 2->2, tps=57.7
+  [44/60] pipeline_stage_config/pipeline_stage_config_004 ... score: 2->2, tps=51.9
+  [45/60] pipeline_stage_config/pipeline_stage_config_005 ... score: 2->2, tps=56.3
+  [46/60] pipeline_stage_config/pipeline_stage_config_006 ... score: 2->2, tps=55.9
+  [47/60] pipeline_stage_config/pipeline_stage_config_009 ... score: 2->2, tps=54.6
+  [48/60] pipeline_stage_config/pipeline_stage_config_011 ... score: 2->2, tps=52.2
+  [49/60] pipeline_stage_config/pipeline_stage_config_012 ... score: 2->2, tps=53.1
+  [50/60] pipeline_stage_config/pipeline_stage_config_014 ... score: 2->2, tps=46.8
+  [51/60] rich_cli_option_groups/rich_cli_option_groups_005 ... score: 2->2, tps=50.1
+  [52/60] rich_cli_option_groups/rich_cli_option_groups_010 ... score: 2->2, tps=53.6
+  [53/60] rich_cli_option_groups/rich_cli_option_groups_012 ... score: 2->2, tps=54.6
+  [54/60] rich_cli_option_groups/rich_cli_option_groups_019 ... score: 2->2, tps=57.3
+  [55/60] rich_cli_option_groups/rich_cli_option_groups_033 ... score: 2->2, tps=55.9
+  [56/60] rich_cli_option_groups/rich_cli_option_groups_035 ... score: 2->1, tps=54.3
+  [57/60] rich_cli_option_groups/rich_cli_option_groups_051 ... score: 2->2, tps=57.8
+  [58/60] rich_cli_option_groups/rich_cli_option_groups_052 ... score: 2->2, tps=58.3
+  [59/60] rich_cli_option_groups/rich_cli_option_groups_059 ... score: 2->2, tps=56.2
+  [60/60] rich_cli_option_groups/rich_cli_option_groups_068 ... score: 2->1, tps=47.9
+  Saved to results/tasd_fg_safe_ablation_clean_TASD-FG-strict.json
+
+Generating report...
+
+# TASD-FG-Safe Parameter Ablation Study
+
+## 配置
+
+| Config | top_k | prefix_budget | window_len | relaxed_accept |
+|--------|:-----:|:-------------:|:----------:|:--------------:|
+| TASD-FG | 3 | 0.2 | 2 | True |
+| TASD-FG-Safe-k2 | 2 | 0.1 | 1 | True |
+| TASD-FG-Safe-k1 | 1 | 0.05 | 1 | True |
+| TASD-FG-strict | 1 | 0.0 | 1 | False |
+
+## Hard Subset (score=0 样本)
+
+| 方法 | N | TPS | speedup | score2 | score1 | score0 | recoverable | F1 | BB |
+|------|--:|-----:|-------:|------:|------:|------:|-----------:|---:|---:|
+| TASD-FG | 60 | 59.0 | 0.000x | 13 | 4 | 43 | 17/60 (28.3%) | 0.636 | 0.317 |
+| TASD-FG-Safe-k2 | 60 | 55.9 | 0.000x | 13 | 7 | 40 | 20/60 (33.3%) | 0.635 | 0.283 |
+| TASD-FG-Safe-k1 | 60 | 55.5 | 0.000x | 13 | 7 | 40 | 20/60 (33.3%) | 0.635 | 0.283 |
+| TASD-FG-strict | 60 | 52.7 | 0.000x | 14 | 5 | 41 | 19/60 (31.7%) | 0.635 | 0.317 |
+
+### Speed Loss (vs TASD-FG)
+
+| 方法 | TPS | ΔTPS | Speed Loss |
+|------|----:|-----:|----------:|
+| TASD-FG | 59.0 | +0.0 | +0.0% |
+| TASD-FG-Safe-k2 | 55.9 | -3.1 | +5.3% |
+| TASD-FG-Safe-k1 | 55.5 | -3.5 | +5.9% |
+| TASD-FG-strict | 52.7 | -6.3 | +10.6% |
+
+## Clean Subset (score=2 样本, no-regression)
+
+| 方法 | N | TPS | speedup | score2 | score1 | score0 | score2保持率 | F1 | BB |
+|------|--:|-----:|-------:|------:|------:|------:|-----------:|---:|---:|
+| TASD-FG | 60 | 60.6 | 0.000x | 50 | 6 | 4 | 83.3% | 0.965 | 0.250 |
+| TASD-FG-Safe-k2 | 60 | 55.6 | 0.000x | 49 | 6 | 5 | 81.7% | 0.957 | 0.233 |
+| TASD-FG-Safe-k1 | 60 | 56.0 | 0.000x | 49 | 6 | 5 | 81.7% | 0.957 | 0.233 |
+| TASD-FG-strict | 60 | 53.4 | 0.000x | 50 | 6 | 4 | 83.3% | 0.965 | 0.250 |
+
+## 决策分析
+
+| 方法 | Hard score0↓ | Clean score2保持 | Speed Loss | 判定 |
+|------|:-----------:|:---------------:|:----------:|------|
+| TASD-FG-Safe-k2 | 40 (+7%) | 81.7% | +5.3% | 情况 C: 不扩大 |
+| TASD-FG-Safe-k1 | 40 (+7%) | 81.7% | +5.9% | 情况 C: 不扩大 |
+| TASD-FG-strict | 41 (+5%) | 83.3% | +10.6% | 情况 C: 不扩大 |
+
+**推荐**: 无变体满足条件，保留 TASD-FG 作为唯一版本
+
+## 样本详情
+
+### TASD-FG - Hard Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_001 | 0 | 0 | BRACKET | 45.0 | 0.775 |
+| argparse | argparse_real_004 | 0 | 0 | BRACKET,DUP_OPT | 62.2 | 0.678 |
+| argparse | argparse_real_006 | 0 | 2 | TRUNC | 61.4 | 0.913 |
+| argparse | argparse_real_010 | 0 | 2 | TRUNC | 61.3 | 0.987 |
+| argparse | argparse_real_012 | 0 | 0 | BRACKET | 60.9 | 0.852 |
+| argparse | argparse_real_018 | 0 | 1 | TRUNC | 61.6 | 0.840 |
+| argparse | argparse_real_019 | 0 | 0 | BRACKET | 47.1 | 0.983 |
+| argparse | argparse_real_029 | 0 | 2 | TRUNC | 60.3 | 0.967 |
+| argparse | argparse_real_030 | 0 | 0 | REPEAT,TRUNC | 62.8 | 1.000 |
+| argparse | argparse_real_031 | 0 | 2 | TRUNC | 22.9 | 1.000 |
+| complex_nested_config | complex_nested_config_002 | 0 | 0 | LOW_F1,TRUNC | 61.9 | 0.048 |
+| complex_nested_config | complex_nested_config_004 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT,TRUNC | 60.0 | 0.420 |
+| complex_nested_config | complex_nested_config_007 | 0 | 0 | OFF_STRUCT,BRACKET | 60.6 | 0.720 |
+| complex_nested_config | complex_nested_config_008 | 0 | 0 | LOW_F1,TRUNC | 58.3 | 0.011 |
+| complex_nested_config | complex_nested_config_014 | 0 | 0 | LOW_F1,TRUNC | 61.1 | 0.001 |
+| complex_nested_config | complex_nested_config_016 | 0 | 0 | LOW_F1,TRUNC | 61.5 | 0.147 |
+| complex_nested_config | complex_nested_config_017 | 0 | 0 | LOW_F1,DUP_OPT,TRUNC | 62.4 | 0.118 |
+| complex_nested_config | complex_nested_config_018 | 0 | 0 | LOW_F1,BRACKET | 61.5 | 0.352 |
+| complex_nested_config | complex_nested_config_020 | 0 | 0 | LOW_F1,BRACKET | 62.3 | 0.168 |
+| complex_nested_config | complex_nested_config_021 | 0 | 0 | REPEAT,LOW_F1,BRACKET,DUP_OPT | 62.2 | 0.286 |
+| dict_config | dict_config_real_002 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT | 60.0 | 0.376 |
+| dict_config | dict_config_real_005 | 0 | 0 | BRACKET | 60.6 | 0.789 |
+| dict_config | dict_config_real_008 | 0 | 0 | BRACKET | 41.9 | 0.857 |
+| dict_config | dict_config_real_011 | 0 | 0 | LOW_F1,TRUNC | 58.9 | 0.107 |
+| dict_config | dict_config_real_015 | 0 | 2 | TRUNC | 61.3 | 1.000 |
+| dict_config | dict_config_real_016 | 0 | 1 | DUP_OPT | 60.0 | 1.000 |
+| dict_config | dict_config_real_022 | 0 | 0 | LOW_F1,TRUNC | 60.0 | 0.193 |
+| dict_config | dict_config_real_041 | 0 | 2 | TRUNC | 47.2 | 0.979 |
+| dict_config | dict_config_real_045 | 0 | 0 | LOW_F1,TRUNC | 60.5 | 0.128 |
+| dict_config | dict_config_real_049 | 0 | 0 | LOW_F1,TRUNC | 59.9 | 0.070 |
+| openmmlab_config | openmmlab_config_real_001 | 0 | 0 | OFF_STRUCT,TRUNC | 61.1 | 0.988 |
+| openmmlab_config | openmmlab_config_real_003 | 0 | 0 | OFF_STRUCT,TRUNC | 60.8 | 0.988 |
+| openmmlab_config | openmmlab_config_real_008 | 0 | 2 | TRUNC | 59.0 | 1.000 |
+| openmmlab_config | openmmlab_config_real_012 | 0 | 2 | TRUNC | 58.5 | 1.000 |
+| openmmlab_config | openmmlab_config_real_017 | 0 | 2 | TRUNC | 60.3 | 0.991 |
+| openmmlab_config | openmmlab_config_real_018 | 0 | 0 | BRACKET | 60.8 | 0.992 |
+| openmmlab_config | openmmlab_config_real_021 | 0 | 2 | TRUNC | 58.6 | 0.991 |
+| openmmlab_config | openmmlab_config_real_025 | 0 | 0 | LOW_F1,TRUNC | 60.3 | 0.000 |
+| openmmlab_config | openmmlab_config_real_029 | 0 | 0 | LOW_F1,TRUNC | 62.1 | 0.000 |
+| openmmlab_config | openmmlab_config_real_041 | 0 | 2 | TRUNC | 59.0 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_007 | 0 | 0 | BRACKET | 62.7 | 0.702 |
+| pipeline_stage_config | pipeline_stage_config_008 | 0 | 0 | BRACKET | 61.9 | 0.841 |
+| pipeline_stage_config | pipeline_stage_config_010 | 0 | 0 | OFF_STRUCT,TRUNC | 62.8 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_019 | 0 | 0 | OFF_STRUCT,TRUNC | 44.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_022 | 0 | 0 | BRACKET | 60.8 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_025 | 0 | 2 | TRUNC | 61.0 | 0.984 |
+| pipeline_stage_config | pipeline_stage_config_034 | 0 | 2 | TRUNC | 59.6 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_037 | 0 | 0 | BRACKET | 60.5 | 0.992 |
+| pipeline_stage_config | pipeline_stage_config_041 | 0 | 0 | REPEAT,DUP_OPT,TRUNC | 61.1 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_043 | 0 | 0 | LOW_F1,TRUNC | 62.6 | 0.000 |
+| rich_cli_option_groups | rich_cli_option_groups_007 | 0 | 0 | BRACKET | 61.4 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_013 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1,TRUNC | 61.3 | 0.164 |
+| rich_cli_option_groups | rich_cli_option_groups_016 | 0 | 1 | DUP_OPT,TRUNC | 62.3 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_017 | 0 | 0 | LOW_F1,BRACKET,DUP_OPT | 61.7 | 0.444 |
+| rich_cli_option_groups | rich_cli_option_groups_022 | 0 | 0 | OFF_STRUCT,LOW_F1,TRUNC | 61.9 | 0.325 |
+| rich_cli_option_groups | rich_cli_option_groups_025 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1 | 59.3 | 0.237 |
+| rich_cli_option_groups | rich_cli_option_groups_027 | 0 | 0 | LOW_F1,TRUNC | 60.9 | 0.025 |
+| rich_cli_option_groups | rich_cli_option_groups_029 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 61.2 | 0.684 |
+| rich_cli_option_groups | rich_cli_option_groups_031 | 0 | 1 | LOW_F1,TRUNC | 61.9 | 0.243 |
+| rich_cli_option_groups | rich_cli_option_groups_032 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 61.4 | 0.785 |
+
+### TASD-FG-Safe-k2 - Hard Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_001 | 0 | 0 | BRACKET | 61.3 | 0.775 |
+| argparse | argparse_real_004 | 0 | 1 | TRUNC | 40.5 | 0.678 |
+| argparse | argparse_real_006 | 0 | 2 | TRUNC | 62.1 | 0.913 |
+| argparse | argparse_real_010 | 0 | 2 | TRUNC | 63.2 | 0.987 |
+| argparse | argparse_real_012 | 0 | 0 | BRACKET | 61.6 | 0.852 |
+| argparse | argparse_real_018 | 0 | 0 | BRACKET,DUP_OPT | 49.0 | 0.860 |
+| argparse | argparse_real_019 | 0 | 2 | TRUNC | 41.0 | 0.982 |
+| argparse | argparse_real_029 | 0 | 2 | TRUNC | 62.2 | 0.967 |
+| argparse | argparse_real_030 | 0 | 0 | REPEAT,TRUNC | 62.3 | 1.000 |
+| argparse | argparse_real_031 | 0 | 0 | BRACKET,DUP_OPT | 12.8 | 1.000 |
+| complex_nested_config | complex_nested_config_002 | 0 | 0 | LOW_F1,TRUNC | 59.0 | 0.048 |
+| complex_nested_config | complex_nested_config_004 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT,TRUNC | 59.3 | 0.420 |
+| complex_nested_config | complex_nested_config_007 | 0 | 0 | OFF_STRUCT,BRACKET | 61.4 | 0.720 |
+| complex_nested_config | complex_nested_config_008 | 0 | 0 | LOW_F1,TRUNC | 61.2 | 0.011 |
+| complex_nested_config | complex_nested_config_014 | 0 | 0 | LOW_F1,TRUNC | 61.9 | 0.001 |
+| complex_nested_config | complex_nested_config_016 | 0 | 0 | LOW_F1,TRUNC | 61.6 | 0.147 |
+| complex_nested_config | complex_nested_config_017 | 0 | 0 | LOW_F1,DUP_OPT,TRUNC | 62.1 | 0.118 |
+| complex_nested_config | complex_nested_config_018 | 0 | 0 | LOW_F1,BRACKET | 61.0 | 0.352 |
+| complex_nested_config | complex_nested_config_020 | 0 | 0 | LOW_F1,BRACKET | 59.8 | 0.168 |
+| complex_nested_config | complex_nested_config_021 | 0 | 1 | LOW_F1,TRUNC | 42.6 | 0.286 |
+| dict_config | dict_config_real_002 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT | 34.7 | 0.389 |
+| dict_config | dict_config_real_005 | 0 | 0 | BRACKET | 60.0 | 0.789 |
+| dict_config | dict_config_real_008 | 0 | 1 | TRUNC | 32.0 | 0.819 |
+| dict_config | dict_config_real_011 | 0 | 0 | LOW_F1,TRUNC | 62.7 | 0.107 |
+| dict_config | dict_config_real_015 | 0 | 2 | TRUNC | 63.3 | 1.000 |
+| dict_config | dict_config_real_016 | 0 | 1 | DUP_OPT | 62.5 | 1.000 |
+| dict_config | dict_config_real_022 | 0 | 0 | LOW_F1,TRUNC | 49.8 | 0.188 |
+| dict_config | dict_config_real_041 | 0 | 2 | TRUNC | 29.4 | 0.981 |
+| dict_config | dict_config_real_045 | 0 | 0 | LOW_F1,TRUNC | 60.9 | 0.128 |
+| dict_config | dict_config_real_049 | 0 | 0 | LOW_F1,TRUNC | 60.8 | 0.070 |
+| openmmlab_config | openmmlab_config_real_001 | 0 | 0 | OFF_STRUCT,TRUNC | 60.7 | 0.988 |
+| openmmlab_config | openmmlab_config_real_003 | 0 | 0 | OFF_STRUCT,TRUNC | 60.5 | 0.988 |
+| openmmlab_config | openmmlab_config_real_008 | 0 | 2 | TRUNC | 31.0 | 0.982 |
+| openmmlab_config | openmmlab_config_real_012 | 0 | 2 | TRUNC | 31.6 | 0.982 |
+| openmmlab_config | openmmlab_config_real_017 | 0 | 2 | TRUNC | 62.2 | 0.991 |
+| openmmlab_config | openmmlab_config_real_018 | 0 | 0 | BRACKET | 61.5 | 0.992 |
+| openmmlab_config | openmmlab_config_real_021 | 0 | 2 | TRUNC | 61.0 | 0.991 |
+| openmmlab_config | openmmlab_config_real_025 | 0 | 0 | LOW_F1,TRUNC | 61.7 | 0.000 |
+| openmmlab_config | openmmlab_config_real_029 | 0 | 0 | LOW_F1,TRUNC | 62.9 | 0.000 |
+| openmmlab_config | openmmlab_config_real_041 | 0 | 2 | TRUNC | 62.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_007 | 0 | 0 | BRACKET | 62.5 | 0.702 |
+| pipeline_stage_config | pipeline_stage_config_008 | 0 | 0 | BRACKET | 61.8 | 0.841 |
+| pipeline_stage_config | pipeline_stage_config_010 | 0 | 1 | OFF_STRUCT,TRUNC | 45.8 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_019 | 0 | 0 | OFF_STRUCT,TRUNC | 32.7 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_022 | 0 | 0 | BRACKET | 61.9 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_025 | 0 | 2 | TRUNC | 38.5 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_034 | 0 | 2 | TRUNC | 61.8 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_037 | 0 | 0 | BRACKET | 61.0 | 0.992 |
+| pipeline_stage_config | pipeline_stage_config_041 | 0 | 0 | REPEAT,DUP_OPT,TRUNC | 61.6 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_043 | 0 | 0 | LOW_F1,TRUNC | 63.3 | 0.000 |
+| rich_cli_option_groups | rich_cli_option_groups_007 | 0 | 0 | BRACKET | 62.7 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_013 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1,TRUNC | 62.8 | 0.164 |
+| rich_cli_option_groups | rich_cli_option_groups_016 | 0 | 1 | DUP_OPT,TRUNC | 62.4 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_017 | 0 | 0 | LOW_F1,BRACKET,DUP_OPT | 62.5 | 0.444 |
+| rich_cli_option_groups | rich_cli_option_groups_022 | 0 | 0 | OFF_STRUCT,LOW_F1,TRUNC | 62.0 | 0.325 |
+| rich_cli_option_groups | rich_cli_option_groups_025 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1 | 62.0 | 0.237 |
+| rich_cli_option_groups | rich_cli_option_groups_027 | 0 | 0 | LOW_F1,TRUNC | 62.2 | 0.025 |
+| rich_cli_option_groups | rich_cli_option_groups_029 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 62.8 | 0.684 |
+| rich_cli_option_groups | rich_cli_option_groups_031 | 0 | 1 | LOW_F1,TRUNC | 62.1 | 0.243 |
+| rich_cli_option_groups | rich_cli_option_groups_032 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 62.7 | 0.785 |
+
+### TASD-FG-Safe-k1 - Hard Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_001 | 0 | 0 | BRACKET | 62.4 | 0.775 |
+| argparse | argparse_real_004 | 0 | 1 | TRUNC | 37.5 | 0.678 |
+| argparse | argparse_real_006 | 0 | 2 | TRUNC | 62.3 | 0.913 |
+| argparse | argparse_real_010 | 0 | 2 | TRUNC | 62.5 | 0.987 |
+| argparse | argparse_real_012 | 0 | 0 | BRACKET | 61.0 | 0.852 |
+| argparse | argparse_real_018 | 0 | 0 | BRACKET,DUP_OPT | 47.0 | 0.860 |
+| argparse | argparse_real_019 | 0 | 2 | TRUNC | 38.5 | 0.982 |
+| argparse | argparse_real_029 | 0 | 2 | TRUNC | 61.9 | 0.967 |
+| argparse | argparse_real_030 | 0 | 0 | REPEAT,TRUNC | 63.2 | 1.000 |
+| argparse | argparse_real_031 | 0 | 0 | BRACKET,DUP_OPT | 12.7 | 1.000 |
+| complex_nested_config | complex_nested_config_002 | 0 | 0 | LOW_F1,TRUNC | 60.7 | 0.048 |
+| complex_nested_config | complex_nested_config_004 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT,TRUNC | 60.3 | 0.420 |
+| complex_nested_config | complex_nested_config_007 | 0 | 0 | OFF_STRUCT,BRACKET | 59.8 | 0.720 |
+| complex_nested_config | complex_nested_config_008 | 0 | 0 | LOW_F1,TRUNC | 60.7 | 0.011 |
+| complex_nested_config | complex_nested_config_014 | 0 | 0 | LOW_F1,TRUNC | 60.4 | 0.001 |
+| complex_nested_config | complex_nested_config_016 | 0 | 0 | LOW_F1,TRUNC | 60.8 | 0.147 |
+| complex_nested_config | complex_nested_config_017 | 0 | 0 | LOW_F1,DUP_OPT,TRUNC | 61.8 | 0.118 |
+| complex_nested_config | complex_nested_config_018 | 0 | 0 | LOW_F1,BRACKET | 59.9 | 0.352 |
+| complex_nested_config | complex_nested_config_020 | 0 | 0 | LOW_F1,BRACKET | 60.0 | 0.168 |
+| complex_nested_config | complex_nested_config_021 | 0 | 1 | LOW_F1,TRUNC | 42.6 | 0.286 |
+| dict_config | dict_config_real_002 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT | 34.2 | 0.389 |
+| dict_config | dict_config_real_005 | 0 | 0 | BRACKET | 59.4 | 0.789 |
+| dict_config | dict_config_real_008 | 0 | 1 | TRUNC | 33.2 | 0.819 |
+| dict_config | dict_config_real_011 | 0 | 0 | LOW_F1,TRUNC | 62.2 | 0.107 |
+| dict_config | dict_config_real_015 | 0 | 2 | TRUNC | 61.6 | 1.000 |
+| dict_config | dict_config_real_016 | 0 | 1 | DUP_OPT | 62.4 | 1.000 |
+| dict_config | dict_config_real_022 | 0 | 0 | LOW_F1,TRUNC | 50.2 | 0.188 |
+| dict_config | dict_config_real_041 | 0 | 2 | TRUNC | 29.2 | 0.981 |
+| dict_config | dict_config_real_045 | 0 | 0 | LOW_F1,TRUNC | 60.5 | 0.128 |
+| dict_config | dict_config_real_049 | 0 | 0 | LOW_F1,TRUNC | 61.5 | 0.070 |
+| openmmlab_config | openmmlab_config_real_001 | 0 | 0 | OFF_STRUCT,TRUNC | 60.9 | 0.988 |
+| openmmlab_config | openmmlab_config_real_003 | 0 | 0 | OFF_STRUCT,TRUNC | 62.7 | 0.988 |
+| openmmlab_config | openmmlab_config_real_008 | 0 | 2 | TRUNC | 31.0 | 0.982 |
+| openmmlab_config | openmmlab_config_real_012 | 0 | 2 | TRUNC | 30.8 | 0.982 |
+| openmmlab_config | openmmlab_config_real_017 | 0 | 2 | TRUNC | 62.0 | 0.991 |
+| openmmlab_config | openmmlab_config_real_018 | 0 | 0 | BRACKET | 62.8 | 0.992 |
+| openmmlab_config | openmmlab_config_real_021 | 0 | 2 | TRUNC | 62.3 | 0.991 |
+| openmmlab_config | openmmlab_config_real_025 | 0 | 0 | LOW_F1,TRUNC | 63.2 | 0.000 |
+| openmmlab_config | openmmlab_config_real_029 | 0 | 0 | LOW_F1,TRUNC | 62.7 | 0.000 |
+| openmmlab_config | openmmlab_config_real_041 | 0 | 2 | TRUNC | 62.4 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_007 | 0 | 0 | BRACKET | 60.7 | 0.702 |
+| pipeline_stage_config | pipeline_stage_config_008 | 0 | 0 | BRACKET | 61.4 | 0.841 |
+| pipeline_stage_config | pipeline_stage_config_010 | 0 | 1 | OFF_STRUCT,TRUNC | 44.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_019 | 0 | 0 | OFF_STRUCT,TRUNC | 32.9 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_022 | 0 | 0 | BRACKET | 61.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_025 | 0 | 2 | TRUNC | 38.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_034 | 0 | 2 | TRUNC | 62.4 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_037 | 0 | 0 | BRACKET | 62.7 | 0.992 |
+| pipeline_stage_config | pipeline_stage_config_041 | 0 | 0 | REPEAT,DUP_OPT,TRUNC | 62.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_043 | 0 | 0 | LOW_F1,TRUNC | 62.4 | 0.000 |
+| rich_cli_option_groups | rich_cli_option_groups_007 | 0 | 0 | BRACKET | 60.8 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_013 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1,TRUNC | 60.8 | 0.164 |
+| rich_cli_option_groups | rich_cli_option_groups_016 | 0 | 1 | DUP_OPT,TRUNC | 62.4 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_017 | 0 | 0 | LOW_F1,BRACKET,DUP_OPT | 62.1 | 0.444 |
+| rich_cli_option_groups | rich_cli_option_groups_022 | 0 | 0 | OFF_STRUCT,LOW_F1,TRUNC | 61.6 | 0.325 |
+| rich_cli_option_groups | rich_cli_option_groups_025 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1 | 61.5 | 0.237 |
+| rich_cli_option_groups | rich_cli_option_groups_027 | 0 | 0 | LOW_F1,TRUNC | 60.2 | 0.025 |
+| rich_cli_option_groups | rich_cli_option_groups_029 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 60.1 | 0.684 |
+| rich_cli_option_groups | rich_cli_option_groups_031 | 0 | 1 | LOW_F1,TRUNC | 60.4 | 0.243 |
+| rich_cli_option_groups | rich_cli_option_groups_032 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 61.9 | 0.785 |
+
+### TASD-FG-strict - Hard Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_001 | 0 | 1 | TRUNC | 55.4 | 0.759 |
+| argparse | argparse_real_004 | 0 | 0 | BRACKET,DUP_OPT | 49.0 | 0.678 |
+| argparse | argparse_real_006 | 0 | 2 | TRUNC | 54.1 | 0.913 |
+| argparse | argparse_real_010 | 0 | 2 | TRUNC | 53.2 | 0.987 |
+| argparse | argparse_real_012 | 0 | 0 | BRACKET | 58.6 | 0.852 |
+| argparse | argparse_real_018 | 0 | 1 | TRUNC | 49.2 | 0.840 |
+| argparse | argparse_real_019 | 0 | 0 | BRACKET | 43.4 | 0.983 |
+| argparse | argparse_real_029 | 0 | 2 | TRUNC | 52.0 | 0.967 |
+| argparse | argparse_real_030 | 0 | 0 | REPEAT,TRUNC | 56.0 | 1.000 |
+| argparse | argparse_real_031 | 0 | 2 | TRUNC | 22.4 | 1.000 |
+| complex_nested_config | complex_nested_config_002 | 0 | 0 | LOW_F1,TRUNC | 36.8 | 0.048 |
+| complex_nested_config | complex_nested_config_004 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT,TRUNC | 56.6 | 0.420 |
+| complex_nested_config | complex_nested_config_007 | 0 | 0 | OFF_STRUCT,BRACKET | 51.7 | 0.720 |
+| complex_nested_config | complex_nested_config_008 | 0 | 0 | LOW_F1,TRUNC | 56.2 | 0.011 |
+| complex_nested_config | complex_nested_config_014 | 0 | 0 | LOW_F1,TRUNC | 54.8 | 0.001 |
+| complex_nested_config | complex_nested_config_016 | 0 | 0 | LOW_F1,TRUNC | 52.7 | 0.147 |
+| complex_nested_config | complex_nested_config_017 | 0 | 0 | LOW_F1,DUP_OPT,TRUNC | 53.0 | 0.118 |
+| complex_nested_config | complex_nested_config_018 | 0 | 0 | LOW_F1,BRACKET | 58.7 | 0.352 |
+| complex_nested_config | complex_nested_config_020 | 0 | 0 | LOW_F1,BRACKET | 57.9 | 0.168 |
+| complex_nested_config | complex_nested_config_021 | 0 | 0 | REPEAT,LOW_F1,BRACKET,DUP_OPT | 53.7 | 0.286 |
+| dict_config | dict_config_real_002 | 0 | 0 | REPEAT,LOW_F1,DUP_OPT | 56.0 | 0.376 |
+| dict_config | dict_config_real_005 | 0 | 0 | BRACKET | 60.4 | 0.789 |
+| dict_config | dict_config_real_008 | 0 | 2 | TRUNC | 36.1 | 0.850 |
+| dict_config | dict_config_real_011 | 0 | 0 | LOW_F1,TRUNC | 58.3 | 0.107 |
+| dict_config | dict_config_real_015 | 0 | 2 | TRUNC | 58.0 | 1.000 |
+| dict_config | dict_config_real_016 | 0 | 1 | DUP_OPT | 56.3 | 1.000 |
+| dict_config | dict_config_real_022 | 0 | 0 | LOW_F1,TRUNC | 55.3 | 0.193 |
+| dict_config | dict_config_real_041 | 0 | 0 | BRACKET | 38.2 | 0.963 |
+| dict_config | dict_config_real_045 | 0 | 0 | LOW_F1,TRUNC | 59.2 | 0.128 |
+| dict_config | dict_config_real_049 | 0 | 0 | LOW_F1,TRUNC | 58.2 | 0.070 |
+| openmmlab_config | openmmlab_config_real_001 | 0 | 0 | OFF_STRUCT,TRUNC | 49.7 | 0.988 |
+| openmmlab_config | openmmlab_config_real_003 | 0 | 0 | OFF_STRUCT,TRUNC | 49.5 | 0.988 |
+| openmmlab_config | openmmlab_config_real_008 | 0 | 2 | TRUNC | 53.5 | 1.000 |
+| openmmlab_config | openmmlab_config_real_012 | 0 | 2 | TRUNC | 53.4 | 1.000 |
+| openmmlab_config | openmmlab_config_real_017 | 0 | 2 | TRUNC | 43.1 | 0.991 |
+| openmmlab_config | openmmlab_config_real_018 | 0 | 0 | BRACKET | 53.1 | 0.992 |
+| openmmlab_config | openmmlab_config_real_021 | 0 | 2 | TRUNC | 47.0 | 0.991 |
+| openmmlab_config | openmmlab_config_real_025 | 0 | 0 | LOW_F1,TRUNC | 59.3 | 0.000 |
+| openmmlab_config | openmmlab_config_real_029 | 0 | 0 | LOW_F1,TRUNC | 59.6 | 0.000 |
+| openmmlab_config | openmmlab_config_real_041 | 0 | 2 | TRUNC | 54.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_007 | 0 | 0 | BRACKET | 53.7 | 0.702 |
+| pipeline_stage_config | pipeline_stage_config_008 | 0 | 0 | BRACKET | 53.7 | 0.841 |
+| pipeline_stage_config | pipeline_stage_config_010 | 0 | 0 | OFF_STRUCT,TRUNC | 53.5 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_019 | 0 | 2 | TRUNC | 47.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_022 | 0 | 0 | BRACKET | 58.9 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_025 | 0 | 2 | TRUNC | 50.4 | 0.984 |
+| pipeline_stage_config | pipeline_stage_config_034 | 0 | 2 | TRUNC | 51.7 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_037 | 0 | 0 | BRACKET | 57.3 | 0.992 |
+| pipeline_stage_config | pipeline_stage_config_041 | 0 | 0 | REPEAT,DUP_OPT,TRUNC | 57.2 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_043 | 0 | 0 | LOW_F1,TRUNC | 58.0 | 0.000 |
+| rich_cli_option_groups | rich_cli_option_groups_007 | 0 | 0 | BRACKET | 52.3 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_013 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1,TRUNC | 52.7 | 0.164 |
+| rich_cli_option_groups | rich_cli_option_groups_016 | 0 | 1 | DUP_OPT,TRUNC | 55.3 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_017 | 0 | 0 | LOW_F1,BRACKET,DUP_OPT | 56.8 | 0.444 |
+| rich_cli_option_groups | rich_cli_option_groups_022 | 0 | 0 | OFF_STRUCT,LOW_F1,TRUNC | 53.0 | 0.325 |
+| rich_cli_option_groups | rich_cli_option_groups_025 | 0 | 0 | REPEAT,OFF_STRUCT,LOW_F1 | 52.8 | 0.237 |
+| rich_cli_option_groups | rich_cli_option_groups_027 | 0 | 0 | LOW_F1,TRUNC | 51.7 | 0.025 |
+| rich_cli_option_groups | rich_cli_option_groups_029 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 54.8 | 0.684 |
+| rich_cli_option_groups | rich_cli_option_groups_031 | 0 | 1 | LOW_F1,TRUNC | 56.9 | 0.243 |
+| rich_cli_option_groups | rich_cli_option_groups_032 | 0 | 0 | REPEAT,OFF_STRUCT,TRUNC | 50.3 | 0.785 |
+
+### TASD-FG - Clean Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_002 | 2 | 2 | TRUNC | 57.7 | 1.000 |
+| argparse | argparse_real_003 | 2 | 2 | TRUNC | 60.7 | 0.933 |
+| argparse | argparse_real_007 | 2 | 2 | TRUNC | 62.3 | 1.000 |
+| argparse | argparse_real_008 | 2 | 0 | DUP_OPT,TRUNC | 61.9 | 1.000 |
+| argparse | argparse_real_009 | 2 | 2 | TRUNC | 60.2 | 0.901 |
+| argparse | argparse_real_013 | 2 | 2 | TRUNC | 59.1 | 0.990 |
+| argparse | argparse_real_014 | 2 | 2 | TRUNC | 58.7 | 0.981 |
+| argparse | argparse_real_015 | 2 | 0 | BRACKET | 58.8 | 0.967 |
+| argparse | argparse_real_016 | 2 | 2 | TRUNC | 59.9 | 0.865 |
+| argparse | argparse_real_017 | 2 | 2 | TRUNC | 60.3 | 1.000 |
+| complex_nested_config | complex_nested_config_006 | 2 | 2 | TRUNC | 59.3 | 1.000 |
+| complex_nested_config | complex_nested_config_022 | 2 | 2 | TRUNC | 59.7 | 1.000 |
+| complex_nested_config | complex_nested_config_026 | 2 | 1 | TRUNC | 59.8 | 0.833 |
+| complex_nested_config | complex_nested_config_030 | 2 | 2 | TRUNC | 61.7 | 1.000 |
+| complex_nested_config | complex_nested_config_035 | 2 | 1 | TRUNC | 61.0 | 0.947 |
+| complex_nested_config | complex_nested_config_042 | 2 | 1 | TRUNC | 62.1 | 0.960 |
+| complex_nested_config | complex_nested_config_043 | 2 | 2 | TRUNC | 59.4 | 0.943 |
+| complex_nested_config | complex_nested_config_055 | 2 | 2 | TRUNC | 59.6 | 0.959 |
+| complex_nested_config | complex_nested_config_064 | 2 | 1 | TRUNC | 61.4 | 0.844 |
+| complex_nested_config | complex_nested_config_068 | 2 | 2 | clean | 60.1 | 0.978 |
+| dict_config | dict_config_real_001 | 2 | 2 | TRUNC | 59.7 | 1.000 |
+| dict_config | dict_config_real_013 | 2 | 2 | TRUNC | 61.2 | 0.898 |
+| dict_config | dict_config_real_014 | 2 | 0 | BRACKET | 47.7 | 0.981 |
+| dict_config | dict_config_real_018 | 2 | 2 | TRUNC | 45.3 | 0.993 |
+| dict_config | dict_config_real_020 | 2 | 2 | TRUNC | 61.8 | 1.000 |
+| dict_config | dict_config_real_027 | 2 | 2 | TRUNC | 61.1 | 0.986 |
+| dict_config | dict_config_real_028 | 2 | 2 | TRUNC | 59.6 | 0.986 |
+| dict_config | dict_config_real_029 | 2 | 2 | TRUNC | 62.0 | 0.986 |
+| dict_config | dict_config_real_030 | 2 | 2 | clean | 61.5 | 0.892 |
+| dict_config | dict_config_real_032 | 2 | 2 | TRUNC | 62.7 | 0.983 |
+| openmmlab_config | openmmlab_config_real_002 | 2 | 2 | TRUNC | 62.2 | 0.991 |
+| openmmlab_config | openmmlab_config_real_004 | 2 | 0 | OFF_STRUCT,TRUNC | 61.6 | 0.987 |
+| openmmlab_config | openmmlab_config_real_005 | 2 | 2 | TRUNC | 62.3 | 0.985 |
+| openmmlab_config | openmmlab_config_real_006 | 2 | 2 | TRUNC | 62.1 | 0.991 |
+| openmmlab_config | openmmlab_config_real_007 | 2 | 2 | TRUNC | 62.8 | 1.000 |
+| openmmlab_config | openmmlab_config_real_009 | 2 | 2 | TRUNC | 62.0 | 0.982 |
+| openmmlab_config | openmmlab_config_real_011 | 2 | 2 | TRUNC | 62.1 | 1.000 |
+| openmmlab_config | openmmlab_config_real_013 | 2 | 2 | TRUNC | 62.1 | 0.982 |
+| openmmlab_config | openmmlab_config_real_015 | 2 | 2 | TRUNC | 61.8 | 1.000 |
+| openmmlab_config | openmmlab_config_real_016 | 2 | 2 | TRUNC | 62.9 | 0.991 |
+| pipeline_stage_config | pipeline_stage_config_001 | 2 | 2 | TRUNC | 61.9 | 0.932 |
+| pipeline_stage_config | pipeline_stage_config_002 | 2 | 2 | TRUNC | 62.2 | 0.980 |
+| pipeline_stage_config | pipeline_stage_config_003 | 2 | 2 | TRUNC | 62.1 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_004 | 2 | 2 | TRUNC | 61.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_005 | 2 | 2 | TRUNC | 62.0 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_006 | 2 | 2 | TRUNC | 61.4 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_009 | 2 | 2 | TRUNC | 62.3 | 0.978 |
+| pipeline_stage_config | pipeline_stage_config_011 | 2 | 2 | TRUNC | 62.7 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_012 | 2 | 2 | TRUNC | 62.7 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_014 | 2 | 2 | TRUNC | 62.4 | 0.990 |
+| rich_cli_option_groups | rich_cli_option_groups_005 | 2 | 2 | TRUNC | 62.3 | 0.939 |
+| rich_cli_option_groups | rich_cli_option_groups_010 | 2 | 2 | clean | 61.5 | 0.983 |
+| rich_cli_option_groups | rich_cli_option_groups_012 | 2 | 2 | TRUNC | 61.3 | 0.990 |
+| rich_cli_option_groups | rich_cli_option_groups_019 | 2 | 2 | TRUNC | 62.8 | 0.936 |
+| rich_cli_option_groups | rich_cli_option_groups_033 | 2 | 2 | clean | 57.8 | 0.971 |
+| rich_cli_option_groups | rich_cli_option_groups_035 | 2 | 1 | TRUNC | 59.9 | 0.743 |
+| rich_cli_option_groups | rich_cli_option_groups_051 | 2 | 2 | TRUNC | 58.5 | 0.938 |
+| rich_cli_option_groups | rich_cli_option_groups_052 | 2 | 2 | clean | 61.5 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_059 | 2 | 2 | clean | 60.3 | 0.967 |
+| rich_cli_option_groups | rich_cli_option_groups_068 | 2 | 1 | TRUNC | 60.8 | 0.826 |
+
+### TASD-FG-Safe-k2 - Clean Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_002 | 2 | 2 | TRUNC | 60.8 | 1.000 |
+| argparse | argparse_real_003 | 2 | 2 | TRUNC | 58.2 | 0.933 |
+| argparse | argparse_real_007 | 2 | 2 | TRUNC | 58.7 | 1.000 |
+| argparse | argparse_real_008 | 2 | 0 | DUP_OPT,TRUNC | 60.7 | 1.000 |
+| argparse | argparse_real_009 | 2 | 2 | TRUNC | 60.4 | 0.901 |
+| argparse | argparse_real_013 | 2 | 2 | TRUNC | 60.6 | 0.990 |
+| argparse | argparse_real_014 | 2 | 2 | TRUNC | 60.9 | 0.981 |
+| argparse | argparse_real_015 | 2 | 0 | BRACKET | 57.4 | 0.967 |
+| argparse | argparse_real_016 | 2 | 2 | TRUNC | 58.0 | 0.865 |
+| argparse | argparse_real_017 | 2 | 2 | TRUNC | 58.8 | 1.000 |
+| complex_nested_config | complex_nested_config_006 | 2 | 2 | TRUNC | 60.0 | 1.000 |
+| complex_nested_config | complex_nested_config_022 | 2 | 2 | TRUNC | 60.6 | 1.000 |
+| complex_nested_config | complex_nested_config_026 | 2 | 1 | TRUNC | 43.4 | 0.829 |
+| complex_nested_config | complex_nested_config_030 | 2 | 2 | TRUNC | 61.3 | 1.000 |
+| complex_nested_config | complex_nested_config_035 | 2 | 1 | TRUNC | 61.8 | 0.947 |
+| complex_nested_config | complex_nested_config_042 | 2 | 1 | TRUNC | 61.0 | 0.960 |
+| complex_nested_config | complex_nested_config_043 | 2 | 2 | TRUNC | 61.4 | 0.943 |
+| complex_nested_config | complex_nested_config_055 | 2 | 0 | BRACKET,DUP_OPT | 19.1 | 0.884 |
+| complex_nested_config | complex_nested_config_064 | 2 | 1 | TRUNC | 42.5 | 0.767 |
+| complex_nested_config | complex_nested_config_068 | 2 | 2 | clean | 59.3 | 0.978 |
+| dict_config | dict_config_real_001 | 2 | 2 | TRUNC | 60.7 | 1.000 |
+| dict_config | dict_config_real_013 | 2 | 2 | TRUNC | 62.1 | 0.898 |
+| dict_config | dict_config_real_014 | 2 | 2 | TRUNC | 29.7 | 0.973 |
+| dict_config | dict_config_real_018 | 2 | 2 | TRUNC | 44.3 | 0.993 |
+| dict_config | dict_config_real_020 | 2 | 2 | TRUNC | 59.6 | 1.000 |
+| dict_config | dict_config_real_027 | 2 | 2 | TRUNC | 30.4 | 0.960 |
+| dict_config | dict_config_real_028 | 2 | 2 | TRUNC | 31.1 | 0.960 |
+| dict_config | dict_config_real_029 | 2 | 2 | TRUNC | 31.3 | 0.960 |
+| dict_config | dict_config_real_030 | 2 | 2 | clean | 46.1 | 0.941 |
+| dict_config | dict_config_real_032 | 2 | 2 | TRUNC | 62.2 | 0.983 |
+| openmmlab_config | openmmlab_config_real_002 | 2 | 2 | TRUNC | 59.4 | 0.991 |
+| openmmlab_config | openmmlab_config_real_004 | 2 | 0 | OFF_STRUCT,TRUNC | 62.2 | 0.987 |
+| openmmlab_config | openmmlab_config_real_005 | 2 | 2 | TRUNC | 61.2 | 0.985 |
+| openmmlab_config | openmmlab_config_real_006 | 2 | 2 | TRUNC | 62.4 | 0.991 |
+| openmmlab_config | openmmlab_config_real_007 | 2 | 2 | TRUNC | 62.8 | 1.000 |
+| openmmlab_config | openmmlab_config_real_009 | 2 | 2 | TRUNC | 62.7 | 0.982 |
+| openmmlab_config | openmmlab_config_real_011 | 2 | 2 | TRUNC | 62.6 | 1.000 |
+| openmmlab_config | openmmlab_config_real_013 | 2 | 2 | TRUNC | 62.2 | 0.982 |
+| openmmlab_config | openmmlab_config_real_015 | 2 | 2 | TRUNC | 62.3 | 1.000 |
+| openmmlab_config | openmmlab_config_real_016 | 2 | 2 | TRUNC | 61.1 | 0.991 |
+| pipeline_stage_config | pipeline_stage_config_001 | 2 | 0 | OFF_STRUCT,TRUNC | 34.3 | 0.721 |
+| pipeline_stage_config | pipeline_stage_config_002 | 2 | 2 | TRUNC | 61.9 | 0.980 |
+| pipeline_stage_config | pipeline_stage_config_003 | 2 | 2 | TRUNC | 61.5 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_004 | 2 | 2 | TRUNC | 62.7 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_005 | 2 | 2 | TRUNC | 54.0 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_006 | 2 | 2 | TRUNC | 59.5 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_009 | 2 | 2 | TRUNC | 59.6 | 0.978 |
+| pipeline_stage_config | pipeline_stage_config_011 | 2 | 2 | TRUNC | 62.1 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_012 | 2 | 2 | TRUNC | 61.5 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_014 | 2 | 2 | TRUNC | 35.6 | 0.947 |
+| rich_cli_option_groups | rich_cli_option_groups_005 | 2 | 2 | TRUNC | 62.0 | 0.939 |
+| rich_cli_option_groups | rich_cli_option_groups_010 | 2 | 2 | clean | 61.5 | 0.983 |
+| rich_cli_option_groups | rich_cli_option_groups_012 | 2 | 2 | TRUNC | 62.1 | 0.990 |
+| rich_cli_option_groups | rich_cli_option_groups_019 | 2 | 2 | TRUNC | 61.7 | 0.936 |
+| rich_cli_option_groups | rich_cli_option_groups_033 | 2 | 2 | clean | 61.6 | 0.971 |
+| rich_cli_option_groups | rich_cli_option_groups_035 | 2 | 1 | TRUNC | 59.7 | 0.743 |
+| rich_cli_option_groups | rich_cli_option_groups_051 | 2 | 2 | TRUNC | 58.7 | 0.938 |
+| rich_cli_option_groups | rich_cli_option_groups_052 | 2 | 2 | TRUNC | 35.4 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_059 | 2 | 2 | clean | 58.8 | 0.967 |
+| rich_cli_option_groups | rich_cli_option_groups_068 | 2 | 1 | TRUNC | 58.2 | 0.826 |
+
+### TASD-FG-Safe-k1 - Clean Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_002 | 2 | 2 | TRUNC | 59.9 | 1.000 |
+| argparse | argparse_real_003 | 2 | 2 | TRUNC | 60.0 | 0.933 |
+| argparse | argparse_real_007 | 2 | 2 | TRUNC | 58.8 | 1.000 |
+| argparse | argparse_real_008 | 2 | 0 | DUP_OPT,TRUNC | 58.3 | 1.000 |
+| argparse | argparse_real_009 | 2 | 2 | TRUNC | 58.6 | 0.901 |
+| argparse | argparse_real_013 | 2 | 2 | TRUNC | 59.1 | 0.990 |
+| argparse | argparse_real_014 | 2 | 2 | TRUNC | 60.1 | 0.981 |
+| argparse | argparse_real_015 | 2 | 0 | BRACKET | 60.4 | 0.967 |
+| argparse | argparse_real_016 | 2 | 2 | TRUNC | 58.4 | 0.865 |
+| argparse | argparse_real_017 | 2 | 2 | TRUNC | 59.7 | 1.000 |
+| complex_nested_config | complex_nested_config_006 | 2 | 2 | TRUNC | 60.5 | 1.000 |
+| complex_nested_config | complex_nested_config_022 | 2 | 2 | TRUNC | 61.7 | 1.000 |
+| complex_nested_config | complex_nested_config_026 | 2 | 1 | TRUNC | 44.2 | 0.829 |
+| complex_nested_config | complex_nested_config_030 | 2 | 2 | TRUNC | 59.8 | 1.000 |
+| complex_nested_config | complex_nested_config_035 | 2 | 1 | TRUNC | 57.4 | 0.947 |
+| complex_nested_config | complex_nested_config_042 | 2 | 1 | TRUNC | 58.5 | 0.960 |
+| complex_nested_config | complex_nested_config_043 | 2 | 2 | TRUNC | 62.1 | 0.943 |
+| complex_nested_config | complex_nested_config_055 | 2 | 0 | BRACKET,DUP_OPT | 19.6 | 0.884 |
+| complex_nested_config | complex_nested_config_064 | 2 | 1 | TRUNC | 44.3 | 0.767 |
+| complex_nested_config | complex_nested_config_068 | 2 | 2 | clean | 61.6 | 0.978 |
+| dict_config | dict_config_real_001 | 2 | 2 | TRUNC | 61.8 | 1.000 |
+| dict_config | dict_config_real_013 | 2 | 2 | TRUNC | 62.4 | 0.898 |
+| dict_config | dict_config_real_014 | 2 | 2 | TRUNC | 30.3 | 0.973 |
+| dict_config | dict_config_real_018 | 2 | 2 | TRUNC | 45.2 | 0.993 |
+| dict_config | dict_config_real_020 | 2 | 2 | TRUNC | 63.2 | 1.000 |
+| dict_config | dict_config_real_027 | 2 | 2 | TRUNC | 31.3 | 0.960 |
+| dict_config | dict_config_real_028 | 2 | 2 | TRUNC | 31.0 | 0.960 |
+| dict_config | dict_config_real_029 | 2 | 2 | TRUNC | 31.3 | 0.960 |
+| dict_config | dict_config_real_030 | 2 | 2 | clean | 47.1 | 0.941 |
+| dict_config | dict_config_real_032 | 2 | 2 | TRUNC | 62.8 | 0.983 |
+| openmmlab_config | openmmlab_config_real_002 | 2 | 2 | TRUNC | 62.3 | 0.991 |
+| openmmlab_config | openmmlab_config_real_004 | 2 | 0 | OFF_STRUCT,TRUNC | 62.6 | 0.987 |
+| openmmlab_config | openmmlab_config_real_005 | 2 | 2 | TRUNC | 61.5 | 0.985 |
+| openmmlab_config | openmmlab_config_real_006 | 2 | 2 | TRUNC | 61.6 | 0.991 |
+| openmmlab_config | openmmlab_config_real_007 | 2 | 2 | TRUNC | 61.5 | 1.000 |
+| openmmlab_config | openmmlab_config_real_009 | 2 | 2 | TRUNC | 60.9 | 0.982 |
+| openmmlab_config | openmmlab_config_real_011 | 2 | 2 | TRUNC | 62.2 | 1.000 |
+| openmmlab_config | openmmlab_config_real_013 | 2 | 2 | TRUNC | 61.5 | 0.982 |
+| openmmlab_config | openmmlab_config_real_015 | 2 | 2 | TRUNC | 61.7 | 1.000 |
+| openmmlab_config | openmmlab_config_real_016 | 2 | 2 | TRUNC | 61.5 | 0.991 |
+| pipeline_stage_config | pipeline_stage_config_001 | 2 | 0 | OFF_STRUCT,TRUNC | 35.0 | 0.721 |
+| pipeline_stage_config | pipeline_stage_config_002 | 2 | 2 | TRUNC | 63.0 | 0.980 |
+| pipeline_stage_config | pipeline_stage_config_003 | 2 | 2 | TRUNC | 62.7 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_004 | 2 | 2 | TRUNC | 62.6 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_005 | 2 | 2 | TRUNC | 62.2 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_006 | 2 | 2 | TRUNC | 62.8 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_009 | 2 | 2 | TRUNC | 62.3 | 0.978 |
+| pipeline_stage_config | pipeline_stage_config_011 | 2 | 2 | TRUNC | 63.0 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_012 | 2 | 2 | TRUNC | 62.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_014 | 2 | 2 | TRUNC | 35.9 | 0.947 |
+| rich_cli_option_groups | rich_cli_option_groups_005 | 2 | 2 | TRUNC | 60.6 | 0.939 |
+| rich_cli_option_groups | rich_cli_option_groups_010 | 2 | 2 | clean | 60.8 | 0.983 |
+| rich_cli_option_groups | rich_cli_option_groups_012 | 2 | 2 | TRUNC | 60.6 | 0.990 |
+| rich_cli_option_groups | rich_cli_option_groups_019 | 2 | 2 | TRUNC | 59.9 | 0.936 |
+| rich_cli_option_groups | rich_cli_option_groups_033 | 2 | 2 | clean | 61.0 | 0.971 |
+| rich_cli_option_groups | rich_cli_option_groups_035 | 2 | 1 | TRUNC | 59.8 | 0.743 |
+| rich_cli_option_groups | rich_cli_option_groups_051 | 2 | 2 | TRUNC | 59.4 | 0.938 |
+| rich_cli_option_groups | rich_cli_option_groups_052 | 2 | 2 | TRUNC | 36.6 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_059 | 2 | 2 | clean | 60.6 | 0.967 |
+| rich_cli_option_groups | rich_cli_option_groups_068 | 2 | 1 | TRUNC | 59.7 | 0.826 |
+
+### TASD-FG-strict - Clean Subset
+
+| Benchmark | Name | Original | New | Error Tags | TPS | F1 |
+|-----------|------|:--------:|:---:|------------|----:|---:|
+| argparse | argparse_real_002 | 2 | 0 | BRACKET | 52.1 | 1.000 |
+| argparse | argparse_real_003 | 2 | 2 | TRUNC | 49.4 | 0.933 |
+| argparse | argparse_real_007 | 2 | 2 | TRUNC | 53.2 | 1.000 |
+| argparse | argparse_real_008 | 2 | 0 | DUP_OPT,TRUNC | 51.5 | 1.000 |
+| argparse | argparse_real_009 | 2 | 2 | TRUNC | 52.5 | 0.901 |
+| argparse | argparse_real_013 | 2 | 2 | TRUNC | 56.6 | 0.990 |
+| argparse | argparse_real_014 | 2 | 2 | TRUNC | 54.7 | 0.981 |
+| argparse | argparse_real_015 | 2 | 0 | BRACKET | 49.8 | 0.967 |
+| argparse | argparse_real_016 | 2 | 2 | TRUNC | 52.4 | 0.865 |
+| argparse | argparse_real_017 | 2 | 2 | TRUNC | 59.0 | 1.000 |
+| complex_nested_config | complex_nested_config_006 | 2 | 2 | TRUNC | 52.5 | 1.000 |
+| complex_nested_config | complex_nested_config_022 | 2 | 2 | TRUNC | 55.5 | 1.000 |
+| complex_nested_config | complex_nested_config_026 | 2 | 1 | TRUNC | 43.5 | 0.833 |
+| complex_nested_config | complex_nested_config_030 | 2 | 2 | TRUNC | 55.4 | 1.000 |
+| complex_nested_config | complex_nested_config_035 | 2 | 1 | TRUNC | 49.3 | 0.947 |
+| complex_nested_config | complex_nested_config_042 | 2 | 1 | TRUNC | 54.5 | 0.960 |
+| complex_nested_config | complex_nested_config_043 | 2 | 2 | TRUNC | 58.7 | 0.943 |
+| complex_nested_config | complex_nested_config_055 | 2 | 2 | TRUNC | 57.4 | 0.959 |
+| complex_nested_config | complex_nested_config_064 | 2 | 1 | TRUNC | 53.2 | 0.844 |
+| complex_nested_config | complex_nested_config_068 | 2 | 2 | clean | 55.5 | 0.978 |
+| dict_config | dict_config_real_001 | 2 | 2 | clean | 56.2 | 1.000 |
+| dict_config | dict_config_real_013 | 2 | 2 | TRUNC | 49.4 | 0.898 |
+| dict_config | dict_config_real_014 | 2 | 2 | TRUNC | 33.9 | 1.000 |
+| dict_config | dict_config_real_018 | 2 | 2 | TRUNC | 43.8 | 0.993 |
+| dict_config | dict_config_real_020 | 2 | 2 | TRUNC | 55.3 | 1.000 |
+| dict_config | dict_config_real_027 | 2 | 2 | TRUNC | 57.4 | 0.986 |
+| dict_config | dict_config_real_028 | 2 | 2 | TRUNC | 58.3 | 0.986 |
+| dict_config | dict_config_real_029 | 2 | 2 | TRUNC | 58.0 | 0.986 |
+| dict_config | dict_config_real_030 | 2 | 2 | clean | 55.9 | 0.892 |
+| dict_config | dict_config_real_032 | 2 | 2 | TRUNC | 53.0 | 0.983 |
+| openmmlab_config | openmmlab_config_real_002 | 2 | 2 | TRUNC | 50.5 | 0.991 |
+| openmmlab_config | openmmlab_config_real_004 | 2 | 0 | OFF_STRUCT,TRUNC | 51.1 | 0.987 |
+| openmmlab_config | openmmlab_config_real_005 | 2 | 2 | TRUNC | 52.9 | 0.985 |
+| openmmlab_config | openmmlab_config_real_006 | 2 | 2 | TRUNC | 49.3 | 0.991 |
+| openmmlab_config | openmmlab_config_real_007 | 2 | 2 | TRUNC | 56.4 | 1.000 |
+| openmmlab_config | openmmlab_config_real_009 | 2 | 2 | TRUNC | 56.3 | 0.982 |
+| openmmlab_config | openmmlab_config_real_011 | 2 | 2 | TRUNC | 59.3 | 1.000 |
+| openmmlab_config | openmmlab_config_real_013 | 2 | 2 | TRUNC | 56.1 | 0.982 |
+| openmmlab_config | openmmlab_config_real_015 | 2 | 2 | TRUNC | 51.1 | 1.000 |
+| openmmlab_config | openmmlab_config_real_016 | 2 | 2 | TRUNC | 45.0 | 0.991 |
+| pipeline_stage_config | pipeline_stage_config_001 | 2 | 2 | TRUNC | 55.5 | 0.932 |
+| pipeline_stage_config | pipeline_stage_config_002 | 2 | 2 | TRUNC | 58.6 | 0.980 |
+| pipeline_stage_config | pipeline_stage_config_003 | 2 | 2 | TRUNC | 57.7 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_004 | 2 | 2 | TRUNC | 51.9 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_005 | 2 | 2 | TRUNC | 56.3 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_006 | 2 | 2 | TRUNC | 55.9 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_009 | 2 | 2 | TRUNC | 54.6 | 0.978 |
+| pipeline_stage_config | pipeline_stage_config_011 | 2 | 2 | TRUNC | 52.2 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_012 | 2 | 2 | TRUNC | 53.1 | 1.000 |
+| pipeline_stage_config | pipeline_stage_config_014 | 2 | 2 | TRUNC | 46.8 | 0.990 |
+| rich_cli_option_groups | rich_cli_option_groups_005 | 2 | 2 | TRUNC | 50.1 | 0.939 |
+| rich_cli_option_groups | rich_cli_option_groups_010 | 2 | 2 | clean | 53.6 | 0.983 |
+| rich_cli_option_groups | rich_cli_option_groups_012 | 2 | 2 | TRUNC | 54.6 | 0.990 |
+| rich_cli_option_groups | rich_cli_option_groups_019 | 2 | 2 | TRUNC | 57.3 | 0.936 |
+| rich_cli_option_groups | rich_cli_option_groups_033 | 2 | 2 | clean | 55.9 | 0.971 |
+| rich_cli_option_groups | rich_cli_option_groups_035 | 2 | 1 | TRUNC | 54.3 | 0.743 |
+| rich_cli_option_groups | rich_cli_option_groups_051 | 2 | 2 | TRUNC | 57.8 | 0.938 |
+| rich_cli_option_groups | rich_cli_option_groups_052 | 2 | 2 | clean | 58.3 | 1.000 |
+| rich_cli_option_groups | rich_cli_option_groups_059 | 2 | 2 | clean | 56.2 | 0.967 |
+| rich_cli_option_groups | rich_cli_option_groups_068 | 2 | 1 | TRUNC | 47.9 | 0.826 |
+
+
+Report saved to: results/tasd_fg_safe_ablation_report.md

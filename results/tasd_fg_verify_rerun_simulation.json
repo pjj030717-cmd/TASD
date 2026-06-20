@@ -1,0 +1,398 @@
+{
+  "V1": {
+    "n": 480,
+    "rerun_count": 122,
+    "rerun_ratio": 0.25416666666666665,
+    "score_distribution": {
+      "2": 259,
+      "1": 178,
+      "0": 43
+    },
+    "recoverable": 437,
+    "recoverable_rate": 0.9104166666666667,
+    "estimated_speedup": 1.3148327479111235,
+    "tp": 104,
+    "fp": 18,
+    "tn": 330,
+    "fn": 28,
+    "fp_rate": 0.05172413793103448,
+    "rescued": 90,
+    "not_rescued": 14,
+    "tasdfg_baseline": {
+      "recoverable": 348,
+      "rate": 0.725
+    },
+    "ar_baseline": {
+      "recoverable": 406,
+      "rate": 0.8458333333333333
+    },
+    "per_benchmark": {
+      "argparse": {
+        "n": 80,
+        "rerun_count": 19,
+        "rerun_ratio": 0.2375,
+        "score_distribution": {
+          "2": 55,
+          "1": 23,
+          "0": 2
+        },
+        "recoverable": 78,
+        "recoverable_rate": 0.975,
+        "rescued": 14,
+        "tp": 15,
+        "fp": 4,
+        "fn": 1,
+        "fp_rate": 0.0625
+      },
+      "dict_config": {
+        "n": 80,
+        "rerun_count": 11,
+        "rerun_ratio": 0.1375,
+        "score_distribution": {
+          "2": 38,
+          "1": 32,
+          "0": 10
+        },
+        "recoverable": 70,
+        "recoverable_rate": 0.875,
+        "rescued": 7,
+        "tp": 9,
+        "fp": 2,
+        "fn": 8,
+        "fp_rate": 0.031746031746031744
+      },
+      "openmmlab_config": {
+        "n": 80,
+        "rerun_count": 23,
+        "rerun_ratio": 0.2875,
+        "score_distribution": {
+          "2": 59,
+          "1": 17,
+          "0": 4
+        },
+        "recoverable": 76,
+        "recoverable_rate": 0.95,
+        "rescued": 19,
+        "tp": 21,
+        "fp": 2,
+        "fn": 2,
+        "fp_rate": 0.03508771929824561
+      },
+      "pipeline_stage_config": {
+        "n": 80,
+        "rerun_count": 21,
+        "rerun_ratio": 0.2625,
+        "score_distribution": {
+          "2": 65,
+          "1": 13,
+          "0": 2
+        },
+        "recoverable": 78,
+        "recoverable_rate": 0.975,
+        "rescued": 14,
+        "tp": 14,
+        "fp": 7,
+        "fn": 2,
+        "fp_rate": 0.109375
+      },
+      "complex_nested_config": {
+        "n": 80,
+        "rerun_count": 25,
+        "rerun_ratio": 0.3125,
+        "score_distribution": {
+          "1": 44,
+          "0": 21,
+          "2": 15
+        },
+        "recoverable": 59,
+        "recoverable_rate": 0.7375,
+        "rescued": 15,
+        "tp": 22,
+        "fp": 3,
+        "fn": 13,
+        "fp_rate": 0.06666666666666667
+      },
+      "rich_cli_option_groups": {
+        "n": 80,
+        "rerun_count": 23,
+        "rerun_ratio": 0.2875,
+        "score_distribution": {
+          "1": 49,
+          "2": 27,
+          "0": 4
+        },
+        "recoverable": 76,
+        "recoverable_rate": 0.95,
+        "rescued": 21,
+        "tp": 23,
+        "fp": 0,
+        "fn": 2,
+        "fp_rate": 0.0
+      }
+    }
+  },
+  "V2": {
+    "n": 480,
+    "rerun_count": 34,
+    "rerun_ratio": 0.07083333333333333,
+    "score_distribution": {
+      "0": 109,
+      "2": 205,
+      "1": 166
+    },
+    "recoverable": 371,
+    "recoverable_rate": 0.7729166666666667,
+    "estimated_speedup": 1.7347627365754594,
+    "tp": 32,
+    "fp": 2,
+    "tn": 346,
+    "fn": 100,
+    "fp_rate": 0.005747126436781609,
+    "rescued": 25,
+    "not_rescued": 7,
+    "tasdfg_baseline": {
+      "recoverable": 348,
+      "rate": 0.725
+    },
+    "ar_baseline": {
+      "recoverable": 406,
+      "rate": 0.8458333333333333
+    },
+    "per_benchmark": {
+      "argparse": {
+        "n": 80,
+        "rerun_count": 0,
+        "rerun_ratio": 0.0,
+        "score_distribution": {
+          "0": 16,
+          "2": 43,
+          "1": 21
+        },
+        "recoverable": 64,
+        "recoverable_rate": 0.8,
+        "rescued": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 16,
+        "fp_rate": 0.0
+      },
+      "dict_config": {
+        "n": 80,
+        "rerun_count": 5,
+        "rerun_ratio": 0.0625,
+        "score_distribution": {
+          "2": 36,
+          "1": 30,
+          "0": 14
+        },
+        "recoverable": 66,
+        "recoverable_rate": 0.825,
+        "rescued": 3,
+        "tp": 5,
+        "fp": 0,
+        "fn": 12,
+        "fp_rate": 0.0
+      },
+      "openmmlab_config": {
+        "n": 80,
+        "rerun_count": 0,
+        "rerun_ratio": 0.0,
+        "score_distribution": {
+          "0": 23,
+          "2": 42,
+          "1": 15
+        },
+        "recoverable": 57,
+        "recoverable_rate": 0.7125,
+        "rescued": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 23,
+        "fp_rate": 0.0
+      },
+      "pipeline_stage_config": {
+        "n": 80,
+        "rerun_count": 0,
+        "rerun_ratio": 0.0,
+        "score_distribution": {
+          "2": 48,
+          "0": 16,
+          "1": 16
+        },
+        "recoverable": 64,
+        "recoverable_rate": 0.8,
+        "rescued": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 16,
+        "fp_rate": 0.0
+      },
+      "complex_nested_config": {
+        "n": 80,
+        "rerun_count": 16,
+        "rerun_ratio": 0.2,
+        "score_distribution": {
+          "1": 38,
+          "0": 27,
+          "2": 15
+        },
+        "recoverable": 53,
+        "recoverable_rate": 0.6625,
+        "rescued": 10,
+        "tp": 14,
+        "fp": 2,
+        "fn": 21,
+        "fp_rate": 0.044444444444444446
+      },
+      "rich_cli_option_groups": {
+        "n": 80,
+        "rerun_count": 13,
+        "rerun_ratio": 0.1625,
+        "score_distribution": {
+          "1": 46,
+          "2": 21,
+          "0": 13
+        },
+        "recoverable": 67,
+        "recoverable_rate": 0.8375,
+        "rescued": 12,
+        "tp": 13,
+        "fp": 0,
+        "fn": 12,
+        "fp_rate": 0.0
+      }
+    }
+  },
+  "V3": {
+    "n": 480,
+    "rerun_count": 13,
+    "rerun_ratio": 0.027083333333333334,
+    "score_distribution": {
+      "0": 121,
+      "2": 199,
+      "1": 160
+    },
+    "recoverable": 359,
+    "recoverable_rate": 0.7479166666666667,
+    "estimated_speedup": 1.8782455863976846,
+    "tp": 13,
+    "fp": 0,
+    "tn": 348,
+    "fn": 119,
+    "fp_rate": 0.0,
+    "rescued": 11,
+    "not_rescued": 2,
+    "tasdfg_baseline": {
+      "recoverable": 348,
+      "rate": 0.725
+    },
+    "ar_baseline": {
+      "recoverable": 406,
+      "rate": 0.8458333333333333
+    },
+    "per_benchmark": {
+      "argparse": {
+        "n": 80,
+        "rerun_count": 0,
+        "rerun_ratio": 0.0,
+        "score_distribution": {
+          "0": 16,
+          "2": 43,
+          "1": 21
+        },
+        "recoverable": 64,
+        "recoverable_rate": 0.8,
+        "rescued": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 16,
+        "fp_rate": 0.0
+      },
+      "dict_config": {
+        "n": 80,
+        "rerun_count": 1,
+        "rerun_ratio": 0.0125,
+        "score_distribution": {
+          "2": 35,
+          "0": 16,
+          "1": 29
+        },
+        "recoverable": 64,
+        "recoverable_rate": 0.8,
+        "rescued": 1,
+        "tp": 1,
+        "fp": 0,
+        "fn": 16,
+        "fp_rate": 0.0
+      },
+      "openmmlab_config": {
+        "n": 80,
+        "rerun_count": 0,
+        "rerun_ratio": 0.0,
+        "score_distribution": {
+          "0": 23,
+          "2": 42,
+          "1": 15
+        },
+        "recoverable": 57,
+        "recoverable_rate": 0.7125,
+        "rescued": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 23,
+        "fp_rate": 0.0
+      },
+      "pipeline_stage_config": {
+        "n": 80,
+        "rerun_count": 0,
+        "rerun_ratio": 0.0,
+        "score_distribution": {
+          "2": 48,
+          "0": 16,
+          "1": 16
+        },
+        "recoverable": 64,
+        "recoverable_rate": 0.8,
+        "rescued": 0,
+        "tp": 0,
+        "fp": 0,
+        "fn": 16,
+        "fp_rate": 0.0
+      },
+      "complex_nested_config": {
+        "n": 80,
+        "rerun_count": 3,
+        "rerun_ratio": 0.0375,
+        "score_distribution": {
+          "1": 33,
+          "0": 34,
+          "2": 13
+        },
+        "recoverable": 46,
+        "recoverable_rate": 0.575,
+        "rescued": 1,
+        "tp": 3,
+        "fp": 0,
+        "fn": 32,
+        "fp_rate": 0.0
+      },
+      "rich_cli_option_groups": {
+        "n": 80,
+        "rerun_count": 9,
+        "rerun_ratio": 0.1125,
+        "score_distribution": {
+          "1": 46,
+          "2": 18,
+          "0": 16
+        },
+        "recoverable": 64,
+        "recoverable_rate": 0.8,
+        "rescued": 9,
+        "tp": 9,
+        "fp": 0,
+        "fn": 16,
+        "fp_rate": 0.0
+      }
+    }
+  }
+}

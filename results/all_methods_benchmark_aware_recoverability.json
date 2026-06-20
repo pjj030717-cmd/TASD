@@ -1,0 +1,661 @@
+{
+  "methods": {
+    "AR": {
+      "n": 480,
+      "unified": {
+        "2": 251,
+        "1": 155,
+        "0": 74
+      },
+      "benchmark_aware": {
+        "2": 292,
+        "1": 160,
+        "0": 28
+      },
+      "u_recoverable": 406,
+      "ba_recoverable": 452,
+      "improved": 58,
+      "degraded": 0
+    },
+    "GSD": {
+      "n": 480,
+      "unified": {
+        "2": 238,
+        "1": 141,
+        "0": 101
+      },
+      "benchmark_aware": {
+        "2": 273,
+        "1": 138,
+        "0": 69
+      },
+      "u_recoverable": 379,
+      "ba_recoverable": 411,
+      "improved": 40,
+      "degraded": 0
+    },
+    "N-gram SD": {
+      "n": 480,
+      "unified": {
+        "1": 209,
+        "2": 156,
+        "0": 115
+      },
+      "benchmark_aware": {
+        "1": 214,
+        "2": 226,
+        "0": 40
+      },
+      "u_recoverable": 365,
+      "ba_recoverable": 440,
+      "improved": 89,
+      "degraded": 0
+    },
+    "FLY": {
+      "n": 480,
+      "unified": {
+        "2": 286,
+        "1": 102,
+        "0": 92
+      },
+      "benchmark_aware": {
+        "2": 342,
+        "1": 94,
+        "0": 44
+      },
+      "u_recoverable": 388,
+      "ba_recoverable": 436,
+      "improved": 65,
+      "degraded": 0
+    },
+    "TASD": {
+      "n": 480,
+      "unified": {
+        "2": 256,
+        "0": 191,
+        "1": 33
+      },
+      "benchmark_aware": {
+        "2": 309,
+        "1": 79,
+        "0": 92
+      },
+      "u_recoverable": 289,
+      "ba_recoverable": 388,
+      "improved": 99,
+      "degraded": 0
+    },
+    "TASD-FG": {
+      "n": 480,
+      "unified": {
+        "0": 132,
+        "2": 192,
+        "1": 156
+      },
+      "benchmark_aware": {
+        "1": 157,
+        "2": 233,
+        "0": 90
+      },
+      "u_recoverable": 348,
+      "ba_recoverable": 390,
+      "improved": 52,
+      "degraded": 0
+    }
+  },
+  "per_benchmark": {
+    "argparse": {
+      "AR": {
+        "n": 80,
+        "unified": {
+          "2": 50,
+          "1": 23,
+          "0": 7
+        },
+        "benchmark_aware": {
+          "2": 51,
+          "1": 29
+        },
+        "u_recoverable": 73,
+        "ba_recoverable": 80
+      },
+      "GSD": {
+        "n": 80,
+        "unified": {
+          "2": 64,
+          "1": 11,
+          "0": 5
+        },
+        "benchmark_aware": {
+          "2": 67,
+          "1": 13
+        },
+        "u_recoverable": 75,
+        "ba_recoverable": 80
+      },
+      "N-gram SD": {
+        "n": 80,
+        "unified": {
+          "1": 30,
+          "2": 32,
+          "0": 18
+        },
+        "benchmark_aware": {
+          "1": 39,
+          "2": 38,
+          "0": 3
+        },
+        "u_recoverable": 62,
+        "ba_recoverable": 77
+      },
+      "FLY": {
+        "n": 80,
+        "unified": {
+          "2": 63,
+          "1": 13,
+          "0": 4
+        },
+        "benchmark_aware": {
+          "2": 65,
+          "1": 14,
+          "0": 1
+        },
+        "u_recoverable": 76,
+        "ba_recoverable": 79
+      },
+      "TASD": {
+        "n": 80,
+        "unified": {
+          "2": 64,
+          "0": 14,
+          "1": 2
+        },
+        "benchmark_aware": {
+          "2": 66,
+          "1": 14
+        },
+        "u_recoverable": 66,
+        "ba_recoverable": 80
+      },
+      "TASD-FG": {
+        "n": 80,
+        "unified": {
+          "0": 16,
+          "2": 43,
+          "1": 21
+        },
+        "benchmark_aware": {
+          "1": 27,
+          "2": 52,
+          "0": 1
+        },
+        "u_recoverable": 64,
+        "ba_recoverable": 79
+      }
+    },
+    "dict_config": {
+      "AR": {
+        "n": 80,
+        "unified": {
+          "2": 13,
+          "1": 38,
+          "0": 29
+        },
+        "benchmark_aware": {
+          "2": 13,
+          "1": 39,
+          "0": 28
+        },
+        "u_recoverable": 51,
+        "ba_recoverable": 52
+      },
+      "GSD": {
+        "n": 80,
+        "unified": {
+          "0": 44,
+          "1": 31,
+          "2": 5
+        },
+        "benchmark_aware": {
+          "0": 44,
+          "1": 31,
+          "2": 5
+        },
+        "u_recoverable": 36,
+        "ba_recoverable": 36
+      },
+      "N-gram SD": {
+        "n": 80,
+        "unified": {
+          "2": 16,
+          "1": 33,
+          "0": 31
+        },
+        "benchmark_aware": {
+          "2": 16,
+          "1": 35,
+          "0": 29
+        },
+        "u_recoverable": 49,
+        "ba_recoverable": 51
+      },
+      "FLY": {
+        "n": 80,
+        "unified": {
+          "2": 13,
+          "1": 26,
+          "0": 41
+        },
+        "benchmark_aware": {
+          "2": 13,
+          "1": 27,
+          "0": 40
+        },
+        "u_recoverable": 39,
+        "ba_recoverable": 40
+      },
+      "TASD": {
+        "n": 80,
+        "unified": {
+          "2": 17,
+          "0": 61,
+          "1": 2
+        },
+        "benchmark_aware": {
+          "2": 17,
+          "0": 61,
+          "1": 2
+        },
+        "u_recoverable": 19,
+        "ba_recoverable": 19
+      },
+      "TASD-FG": {
+        "n": 80,
+        "unified": {
+          "2": 35,
+          "0": 17,
+          "1": 28
+        },
+        "benchmark_aware": {
+          "2": 35,
+          "0": 17,
+          "1": 28
+        },
+        "u_recoverable": 63,
+        "ba_recoverable": 63
+      }
+    },
+    "openmmlab_config": {
+      "AR": {
+        "n": 80,
+        "unified": {
+          "2": 51,
+          "1": 23,
+          "0": 6
+        },
+        "benchmark_aware": {
+          "2": 54,
+          "1": 26
+        },
+        "u_recoverable": 74,
+        "ba_recoverable": 80
+      },
+      "GSD": {
+        "n": 80,
+        "unified": {
+          "1": 34,
+          "2": 43,
+          "0": 3
+        },
+        "benchmark_aware": {
+          "1": 35,
+          "2": 45
+        },
+        "u_recoverable": 77,
+        "ba_recoverable": 80
+      },
+      "N-gram SD": {
+        "n": 80,
+        "unified": {
+          "1": 32,
+          "0": 16,
+          "2": 32
+        },
+        "benchmark_aware": {
+          "1": 36,
+          "2": 43,
+          "0": 1
+        },
+        "u_recoverable": 64,
+        "ba_recoverable": 79
+      },
+      "FLY": {
+        "n": 80,
+        "unified": {
+          "1": 18,
+          "2": 48,
+          "0": 14
+        },
+        "benchmark_aware": {
+          "1": 25,
+          "2": 52,
+          "0": 3
+        },
+        "u_recoverable": 66,
+        "ba_recoverable": 77
+      },
+      "TASD": {
+        "n": 80,
+        "unified": {
+          "0": 24,
+          "2": 52,
+          "1": 4
+        },
+        "benchmark_aware": {
+          "0": 10,
+          "2": 53,
+          "1": 17
+        },
+        "u_recoverable": 56,
+        "ba_recoverable": 70
+      },
+      "TASD-FG": {
+        "n": 80,
+        "unified": {
+          "0": 23,
+          "2": 42,
+          "1": 15
+        },
+        "benchmark_aware": {
+          "0": 10,
+          "2": 54,
+          "1": 16
+        },
+        "u_recoverable": 57,
+        "ba_recoverable": 70
+      }
+    },
+    "pipeline_stage_config": {
+      "AR": {
+        "n": 80,
+        "unified": {
+          "2": 68,
+          "1": 12
+        },
+        "benchmark_aware": {
+          "2": 68,
+          "1": 12
+        },
+        "u_recoverable": 80,
+        "ba_recoverable": 80
+      },
+      "GSD": {
+        "n": 80,
+        "unified": {
+          "2": 52,
+          "0": 18,
+          "1": 10
+        },
+        "benchmark_aware": {
+          "2": 54,
+          "0": 15,
+          "1": 11
+        },
+        "u_recoverable": 62,
+        "ba_recoverable": 65
+      },
+      "N-gram SD": {
+        "n": 80,
+        "unified": {
+          "2": 48,
+          "0": 5,
+          "1": 27
+        },
+        "benchmark_aware": {
+          "2": 51,
+          "1": 27,
+          "0": 2
+        },
+        "u_recoverable": 75,
+        "ba_recoverable": 78
+      },
+      "FLY": {
+        "n": 80,
+        "unified": {
+          "2": 79,
+          "1": 1
+        },
+        "benchmark_aware": {
+          "2": 79,
+          "1": 1
+        },
+        "u_recoverable": 80,
+        "ba_recoverable": 80
+      },
+      "TASD": {
+        "n": 80,
+        "unified": {
+          "2": 55,
+          "1": 25
+        },
+        "benchmark_aware": {
+          "2": 55,
+          "1": 25
+        },
+        "u_recoverable": 80,
+        "ba_recoverable": 80
+      },
+      "TASD-FG": {
+        "n": 80,
+        "unified": {
+          "2": 48,
+          "0": 16,
+          "1": 16
+        },
+        "benchmark_aware": {
+          "2": 51,
+          "1": 18,
+          "0": 11
+        },
+        "u_recoverable": 64,
+        "ba_recoverable": 69
+      }
+    },
+    "complex_nested_config": {
+      "AR": {
+        "n": 80,
+        "unified": {
+          "1": 45,
+          "0": 29,
+          "2": 6
+        },
+        "benchmark_aware": {
+          "1": 39,
+          "2": 41
+        },
+        "u_recoverable": 51,
+        "ba_recoverable": 80
+      },
+      "GSD": {
+        "n": 80,
+        "unified": {
+          "0": 24,
+          "1": 47,
+          "2": 9
+        },
+        "benchmark_aware": {
+          "2": 36,
+          "1": 40,
+          "0": 4
+        },
+        "u_recoverable": 56,
+        "ba_recoverable": 76
+      },
+      "N-gram SD": {
+        "n": 80,
+        "unified": {
+          "1": 46,
+          "0": 25,
+          "2": 9
+        },
+        "benchmark_aware": {
+          "1": 37,
+          "2": 43
+        },
+        "u_recoverable": 55,
+        "ba_recoverable": 80
+      },
+      "FLY": {
+        "n": 80,
+        "unified": {
+          "0": 32,
+          "1": 42,
+          "2": 6
+        },
+        "benchmark_aware": {
+          "2": 55,
+          "1": 25
+        },
+        "u_recoverable": 48,
+        "ba_recoverable": 80
+      },
+      "TASD": {
+        "n": 80,
+        "unified": {
+          "0": 73,
+          "2": 7
+        },
+        "benchmark_aware": {
+          "2": 52,
+          "1": 18,
+          "0": 10
+        },
+        "u_recoverable": 7,
+        "ba_recoverable": 70
+      },
+      "TASD-FG": {
+        "n": 80,
+        "unified": {
+          "1": 32,
+          "0": 35,
+          "2": 13
+        },
+        "benchmark_aware": {
+          "1": 29,
+          "0": 30,
+          "2": 21
+        },
+        "u_recoverable": 45,
+        "ba_recoverable": 50
+      }
+    },
+    "rich_cli_option_groups": {
+      "AR": {
+        "n": 80,
+        "unified": {
+          "1": 14,
+          "2": 63,
+          "0": 3
+        },
+        "benchmark_aware": {
+          "1": 15,
+          "2": 65
+        },
+        "u_recoverable": 77,
+        "ba_recoverable": 80
+      },
+      "GSD": {
+        "n": 80,
+        "unified": {
+          "2": 65,
+          "1": 8,
+          "0": 7
+        },
+        "benchmark_aware": {
+          "2": 66,
+          "1": 8,
+          "0": 6
+        },
+        "u_recoverable": 73,
+        "ba_recoverable": 74
+      },
+      "N-gram SD": {
+        "n": 80,
+        "unified": {
+          "0": 20,
+          "2": 19,
+          "1": 41
+        },
+        "benchmark_aware": {
+          "2": 35,
+          "0": 5,
+          "1": 40
+        },
+        "u_recoverable": 60,
+        "ba_recoverable": 75
+      },
+      "FLY": {
+        "n": 80,
+        "unified": {
+          "2": 77,
+          "1": 2,
+          "0": 1
+        },
+        "benchmark_aware": {
+          "2": 78,
+          "1": 2
+        },
+        "u_recoverable": 79,
+        "ba_recoverable": 80
+      },
+      "TASD": {
+        "n": 80,
+        "unified": {
+          "2": 61,
+          "0": 19
+        },
+        "benchmark_aware": {
+          "2": 66,
+          "0": 11,
+          "1": 3
+        },
+        "u_recoverable": 61,
+        "ba_recoverable": 69
+      },
+      "TASD-FG": {
+        "n": 80,
+        "unified": {
+          "1": 44,
+          "2": 11,
+          "0": 25
+        },
+        "benchmark_aware": {
+          "1": 39,
+          "2": 20,
+          "0": 21
+        },
+        "u_recoverable": 55,
+        "ba_recoverable": 59
+      }
+    }
+  },
+  "ranking": {
+    "unified": [
+      "AR",
+      "FLY",
+      "GSD",
+      "N-gram SD",
+      "TASD-FG",
+      "TASD"
+    ],
+    "benchmark_aware": [
+      "AR",
+      "N-gram SD",
+      "FLY",
+      "GSD",
+      "TASD-FG",
+      "TASD"
+    ],
+    "ranking_changed": true
+  }
+}

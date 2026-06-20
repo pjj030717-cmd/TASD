@@ -4,15 +4,17 @@
 
 ## Table 1. Main Results: Speed, Robustness, Quality
 
-| Method | Speedup | Eff. TPS | Below-AR | Worst-10 | Score 2 | Score 1 | Score 0 | Recoverable |
-|--------|:------:|:--------:|:--------:|:--------:|:------:|:------:|:------:|:----------:|
-| AR | 1.00x | 33.2 | 0 | 1.00 | 251 | 155 | 74 | 406/480 (84.6%) |
-| GSD | 0.66x | 22.0 | 95 | 0.66 | 238 | 141 | 101 | 379/480 (79.0%) |
-| N-gram SD | 1.41x | 46.9 | 198 | 0.67 | 156 | 209 | 115 | 365/480 (76.0%) |
-| FLY | 1.64x | 54.5 | 72 | 0.95 | 286 | 102 | 92 | 388/480 (80.8%) |
-| TASD-FG | 2.00x | 66.4 | 187 | 0.56 | 192 | 156 | 132 | 348/480 (72.5%) |
-| TASD-FG-BR | 1.87x | 62.0 | 130 | — | 227 | 178 | 75 | 405/480 (84.4%) |
-| TASD-FG-V | 1.75x | 58.2 | 88 | — | 259 | 178 | 43 | 437/480 (91.0%) |
+| Method | Speedup | Eff. TPS | Below-AR | Score2 | Score1 | Score0 | Recoverable | Rerun |
+|--------|:------:|:--------:|:--------:|:------:|:------:|:------:|:----------:|:-----:|
+| AR | 1.00x | 33.2 | 0 | 251 | 155 | 74 | 406/480 (84.6%) | — |
+| GSD | 0.66x | 22.0 | 424 | 238 | 141 | 101 | 379/480 (79.0%) | — |
+| N-gram SD | 1.41x | 46.9 | 231 | 156 | 209 | 115 | 365/480 (76.0%) | — |
+| FLY | 1.64x | 54.5 | 99 | 286 | 102 | 92 | 388/480 (80.8%) | — |
+| TASD-FG | 2.00x | 66.4 | 3 | 192 | 156 | 132 | 348/480 (72.5%) | — |
+| TASD-FG-BR | 1.87x | 62.0 | 3 | 227 | 178 | 75 | 405/480 (84.4%) | 65 (13.5%) |
+| TASD-FG-V | 1.31x | 43.6 | 2 | 259 | 178 | 43 | 437/480 (91.0%) | 122 (25.4%) |
+
+> **Note**: Below-AR = number of samples where per-sample TPS < AR TPS (paired). TASD-FG-V speedup is wall-time (includes verifier overhead); all other methods use output-generation TPS (verifier overhead negligible).
 
 ## Table 2. Per-Benchmark Results
 
@@ -46,6 +48,8 @@
 | D: bracket + repetition | 20.6% | 1.80x | 88.1% | 57 | not adopted |
 | F: severe only (higher thresholds) (V1) | 25.4% | 1.75x | 91.0% | 43 | quality-first |
 | Oracle top-K | 8.3% | 1.92x | 80.8% | 92 | theoretical upper bound |
+
+> **Note**: Speedup in Table 4 is TPS-based (output generation only, excluding verifier overhead). All policies share the same verifier, so relative comparison is valid. TASD-FG-V wall-time speedup including verifier is 1.31x (see Table 1).
 
 ## Table 5. Failed Quality Repair Attempts (Supplementary)
 

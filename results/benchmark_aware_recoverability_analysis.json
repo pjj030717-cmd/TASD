@@ -1,0 +1,721 @@
+{
+  "summary": {
+    "total_samples": 480,
+    "unified_distribution": {
+      "0": 132,
+      "2": 192,
+      "1": 156
+    },
+    "ba_distribution": {
+      "1": 157,
+      "2": 233,
+      "0": 90
+    },
+    "improved": 52,
+    "degraded": 0,
+    "unchanged": 428
+  },
+  "per_benchmark": {
+    "argparse": {
+      "total": 80,
+      "unified": {
+        "s0": 16,
+        "s1": 21,
+        "s2": 43
+      },
+      "ba": {
+        "s0": 1,
+        "s1": 27,
+        "s2": 52
+      },
+      "improved_0to1": 6,
+      "improved_0to2": 9,
+      "improved_1to2": 0,
+      "degraded_2to1": 0,
+      "degraded_2to0": 0,
+      "degraded_1to0": 0,
+      "unified_s0_by_bracket": 15,
+      "ba_s0_by_bracket": 0
+    },
+    "complex_nested_config": {
+      "total": 80,
+      "unified": {
+        "s0": 35,
+        "s1": 32,
+        "s2": 13
+      },
+      "ba": {
+        "s0": 30,
+        "s1": 29,
+        "s2": 21
+      },
+      "improved_0to1": 2,
+      "improved_0to2": 3,
+      "improved_1to2": 5,
+      "degraded_2to1": 0,
+      "degraded_2to0": 0,
+      "degraded_1to0": 0,
+      "unified_s0_by_bracket": 23,
+      "ba_s0_by_bracket": 18
+    },
+    "dict_config": {
+      "total": 80,
+      "unified": {
+        "s0": 17,
+        "s1": 28,
+        "s2": 35
+      },
+      "ba": {
+        "s0": 17,
+        "s1": 28,
+        "s2": 35
+      },
+      "improved_0to1": 0,
+      "improved_0to2": 0,
+      "improved_1to2": 0,
+      "degraded_2to1": 0,
+      "degraded_2to0": 0,
+      "degraded_1to0": 0,
+      "unified_s0_by_bracket": 11,
+      "ba_s0_by_bracket": 11
+    },
+    "openmmlab_config": {
+      "total": 80,
+      "unified": {
+        "s0": 23,
+        "s1": 15,
+        "s2": 42
+      },
+      "ba": {
+        "s0": 10,
+        "s1": 16,
+        "s2": 54
+      },
+      "improved_0to1": 1,
+      "improved_0to2": 12,
+      "improved_1to2": 0,
+      "degraded_2to1": 0,
+      "degraded_2to0": 0,
+      "degraded_1to0": 0,
+      "unified_s0_by_bracket": 21,
+      "ba_s0_by_bracket": 8
+    },
+    "pipeline_stage_config": {
+      "total": 80,
+      "unified": {
+        "s0": 16,
+        "s1": 16,
+        "s2": 48
+      },
+      "ba": {
+        "s0": 11,
+        "s1": 18,
+        "s2": 51
+      },
+      "improved_0to1": 2,
+      "improved_0to2": 3,
+      "improved_1to2": 0,
+      "degraded_2to1": 0,
+      "degraded_2to0": 0,
+      "degraded_1to0": 0,
+      "unified_s0_by_bracket": 14,
+      "ba_s0_by_bracket": 9
+    },
+    "rich_cli_option_groups": {
+      "total": 80,
+      "unified": {
+        "s0": 25,
+        "s1": 44,
+        "s2": 11
+      },
+      "ba": {
+        "s0": 21,
+        "s1": 39,
+        "s2": 20
+      },
+      "improved_0to1": 0,
+      "improved_0to2": 4,
+      "improved_1to2": 5,
+      "degraded_2to1": 0,
+      "degraded_2to0": 0,
+      "degraded_1to0": 0,
+      "unified_s0_by_bracket": 14,
+      "ba_s0_by_bracket": 10
+    }
+  },
+  "rescued_samples": [
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_001",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.7755,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_004",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.678,
+      "bracket": 0.0,
+      "rep": 0.0714,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_006",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9333,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_010",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9897,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_012",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.8516,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_018",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.878,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_019",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9649,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_029",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9899,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_031",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.8169,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_036",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9895,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_060",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_061",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.803,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_070",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.7591,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_071",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.6222,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_079",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_007",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.72,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.1667,
+      "truncated": 0
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_025",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8308,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_031",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8,
+      "bracket": 1.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_034",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8437,
+      "bracket": 1.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_041",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8254,
+      "bracket": 1.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_044",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9118,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_065",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_070",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9939,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_072",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.8504,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.1667,
+      "truncated": 0
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_073",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8387,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_008",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.992,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_012",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.992,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_018",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9919,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_041",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9922,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_045",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9922,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_046",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_054",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9912,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_057",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_062",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_074",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_076",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.755,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_077",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_080",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_007",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.7023,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_008",
+      "unified_score": 0,
+      "ba_score": 1,
+      "f1": 0.8411,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_022",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_025",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_037",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9922,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_007",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9027,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_008",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8153,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_015",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8369,
+      "bracket": 1.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_016",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 1.0,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_028",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8376,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_043",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8333,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_045",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.8296,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_057",
+      "unified_score": 1,
+      "ba_score": 2,
+      "f1": 0.8281,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 1
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_076",
+      "unified_score": 0,
+      "ba_score": 2,
+      "f1": 0.9381,
+      "bracket": 0.0,
+      "rep": 0.0,
+      "off": 0.0,
+      "truncated": 0
+    }
+  ],
+  "degraded_samples": []
+}

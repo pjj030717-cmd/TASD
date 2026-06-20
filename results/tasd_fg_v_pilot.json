@@ -1,0 +1,2658 @@
+{
+  "n": 120,
+  "hard": 60,
+  "clean": 60,
+  "tasdfg_scores": {
+    "0": 60,
+    "2": 60
+  },
+  "v_scores": {
+    "2": 89,
+    "1": 15,
+    "0": 16
+  },
+  "tasdfg_recoverable": 60,
+  "v_recoverable": 104,
+  "avg_tasdfg_tps": 65.82133333333334,
+  "avg_v_tps": 52.97058333333334,
+  "speedup": 1.092400371813198,
+  "rerun_count": 48,
+  "rerun_ratio": 0.4,
+  "source_distribution": {
+    "AR_RERUN": 48,
+    "TASD_FG": 72
+  },
+  "hard_score0_reduction_pct": 73.33333333333333,
+  "clean_score2_retention_pct": 100.0,
+  "clean_fp_rerun": 0,
+  "clean_fp_rate": 0.0,
+  "rerun_reasons": {
+    "bracket_balance": 30,
+    "repetition": 11,
+    "off_structure": 13
+  },
+  "per_benchmark": {
+    "argparse": {
+      "n": 20,
+      "hard": 10,
+      "clean": 10,
+      "rerun": 9,
+      "rerun_ratio": 0.45,
+      "v_scores": {
+        "2": 15,
+        "1": 3,
+        "0": 2
+      },
+      "recoverable": 18,
+      "recoverable_rate": 0.9,
+      "hard_rescued": 8,
+      "clean_fp": 0
+    },
+    "dict_config": {
+      "n": 20,
+      "hard": 10,
+      "clean": 10,
+      "rerun": 7,
+      "rerun_ratio": 0.35,
+      "v_scores": {
+        "2": 12,
+        "1": 5,
+        "0": 3
+      },
+      "recoverable": 17,
+      "recoverable_rate": 0.85,
+      "hard_rescued": 7,
+      "clean_fp": 0
+    },
+    "openmmlab_config": {
+      "n": 20,
+      "hard": 10,
+      "clean": 10,
+      "rerun": 8,
+      "rerun_ratio": 0.4,
+      "v_scores": {
+        "2": 16,
+        "1": 1,
+        "0": 3
+      },
+      "recoverable": 17,
+      "recoverable_rate": 0.85,
+      "hard_rescued": 7,
+      "clean_fp": 0
+    },
+    "pipeline_stage_config": {
+      "n": 20,
+      "hard": 10,
+      "clean": 10,
+      "rerun": 9,
+      "rerun_ratio": 0.45,
+      "v_scores": {
+        "2": 19,
+        "0": 1
+      },
+      "recoverable": 19,
+      "recoverable_rate": 0.95,
+      "hard_rescued": 9,
+      "clean_fp": 0
+    },
+    "complex_nested_config": {
+      "n": 20,
+      "hard": 10,
+      "clean": 10,
+      "rerun": 7,
+      "rerun_ratio": 0.35,
+      "v_scores": {
+        "0": 5,
+        "1": 4,
+        "2": 11
+      },
+      "recoverable": 15,
+      "recoverable_rate": 0.75,
+      "hard_rescued": 5,
+      "clean_fp": 0
+    },
+    "rich_cli_option_groups": {
+      "n": 20,
+      "hard": 10,
+      "clean": 10,
+      "rerun": 8,
+      "rerun_ratio": 0.4,
+      "v_scores": {
+        "2": 16,
+        "1": 2,
+        "0": 2
+      },
+      "recoverable": 18,
+      "recoverable_rate": 0.9,
+      "hard_rescued": 8,
+      "clean_fp": 0
+    }
+  },
+  "criteria": {
+    "hard_score0_reduction_40pct": {
+      "target": 40.0,
+      "actual": 73.33333333333333,
+      "passed": true
+    },
+    "clean_score2_retention_90pct": {
+      "target": 90.0,
+      "actual": 100.0,
+      "passed": true
+    },
+    "speedup_1.2x": {
+      "target": 1.2,
+      "actual": 1.092400371813198,
+      "passed": false
+    },
+    "fp_rate_15pct": {
+      "target": 15.0,
+      "actual": 0.0,
+      "passed": true
+    }
+  },
+  "passed": false,
+  "per_sample": [
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_001",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 49.85,
+      "ar_tps": 27.8,
+      "final_tps": 27.8,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_004",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 67.8,
+      "ar_tps": 33.8,
+      "final_tps": 33.8,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0714,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_006",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 67.98,
+      "ar_tps": 33.75,
+      "final_tps": 33.75,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_010",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 69.35,
+      "ar_tps": 32.77,
+      "final_tps": 32.77,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_012",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 67.41,
+      "ar_tps": 33.82,
+      "final_tps": 33.82,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_018",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.08,
+      "ar_tps": 33.83,
+      "final_tps": 33.83,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_019",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 51.95,
+      "ar_tps": 31.19,
+      "final_tps": 31.19,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_029",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 61.44,
+      "ar_tps": 31.69,
+      "final_tps": 31.69,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_030",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 51.57,
+      "ar_tps": 32.59,
+      "final_tps": 51.57,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_031",
+      "tasdfg_score": 0,
+      "ar_score": 0,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 40.11,
+      "ar_tps": 32.74,
+      "final_tps": 32.74,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_002",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.71,
+      "ar_tps": 32.58,
+      "final_tps": 68.71,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_003",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.9,
+      "ar_tps": 34.02,
+      "final_tps": 66.9,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_007",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.61,
+      "ar_tps": 34.04,
+      "final_tps": 68.61,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_008",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.66,
+      "ar_tps": 33.81,
+      "final_tps": 68.66,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_009",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.72,
+      "ar_tps": 32.67,
+      "final_tps": 68.72,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_013",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.39,
+      "ar_tps": 34.55,
+      "final_tps": 65.39,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_014",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.51,
+      "ar_tps": 33.39,
+      "final_tps": 68.51,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_015",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.45,
+      "ar_tps": 33.56,
+      "final_tps": 68.45,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_016",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.25,
+      "ar_tps": 33.95,
+      "final_tps": 69.25,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "argparse",
+      "name": "argparse_real_017",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.8,
+      "ar_tps": 34.13,
+      "final_tps": 69.8,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_002",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.84,
+      "ar_tps": 31.67,
+      "final_tps": 31.67,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "repetition_rate=0.809 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.8095,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_005",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.93,
+      "ar_tps": 32.0,
+      "final_tps": 32.0,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_008",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 43.5,
+      "ar_tps": 32.36,
+      "final_tps": 32.36,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_011",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 69.53,
+      "ar_tps": 33.72,
+      "final_tps": 69.53,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_015",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 66.97,
+      "ar_tps": 33.38,
+      "final_tps": 33.38,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "repetition_rate=0.294 >= 0.25",
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.2941,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_016",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 64.98,
+      "ar_tps": 33.23,
+      "final_tps": 33.23,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "repetition_rate=0.611 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.6111,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_022",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 64.02,
+      "ar_tps": 34.41,
+      "final_tps": 34.41,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_041",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 69.76,
+      "ar_tps": 32.21,
+      "final_tps": 32.21,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_045",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 67.14,
+      "ar_tps": 32.03,
+      "final_tps": 67.14,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_049",
+      "tasdfg_score": 0,
+      "ar_score": 0,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 61.64,
+      "ar_tps": 33.97,
+      "final_tps": 61.64,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_001",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.74,
+      "ar_tps": 32.38,
+      "final_tps": 69.74,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_013",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.52,
+      "ar_tps": 34.69,
+      "final_tps": 65.52,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_014",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 30.6,
+      "ar_tps": 34.41,
+      "final_tps": 30.6,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_018",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 44.53,
+      "ar_tps": 34.63,
+      "final_tps": 44.53,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_020",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.44,
+      "ar_tps": 33.65,
+      "final_tps": 65.44,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_027",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.79,
+      "ar_tps": 34.49,
+      "final_tps": 66.79,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_028",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.53,
+      "ar_tps": 34.24,
+      "final_tps": 64.53,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_029",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.94,
+      "ar_tps": 33.93,
+      "final_tps": 68.94,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_030",
+      "tasdfg_score": 2,
+      "ar_score": 0,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.01,
+      "ar_tps": 33.44,
+      "final_tps": 69.01,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "dict_config",
+      "name": "dict_config_real_032",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.67,
+      "ar_tps": 34.55,
+      "final_tps": 68.67,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_001",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.94,
+      "ar_tps": 34.19,
+      "final_tps": 34.19,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.400 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.4,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_003",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 63.5,
+      "ar_tps": 33.43,
+      "final_tps": 33.43,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.400 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.4,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_008",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 63.82,
+      "ar_tps": 32.9,
+      "final_tps": 32.9,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_012",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 62.84,
+      "ar_tps": 34.36,
+      "final_tps": 34.36,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_017",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 67.6,
+      "ar_tps": 33.74,
+      "final_tps": 33.74,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.444 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.4444,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_018",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 67.55,
+      "ar_tps": 32.42,
+      "final_tps": 32.42,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_021",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 70.07,
+      "ar_tps": 32.47,
+      "final_tps": 32.47,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.444 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.4444,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_025",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 68.01,
+      "ar_tps": 32.37,
+      "final_tps": 68.01,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_029",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 70.47,
+      "ar_tps": 32.67,
+      "final_tps": 70.47,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_041",
+      "tasdfg_score": 0,
+      "ar_score": 0,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 69.76,
+      "ar_tps": 33.9,
+      "final_tps": 33.9,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_002",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.23,
+      "ar_tps": 34.5,
+      "final_tps": 64.23,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_004",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.45,
+      "ar_tps": 32.7,
+      "final_tps": 64.45,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_005",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 63.31,
+      "ar_tps": 32.54,
+      "final_tps": 63.31,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_006",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.38,
+      "ar_tps": 33.53,
+      "final_tps": 64.38,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_007",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.55,
+      "ar_tps": 34.14,
+      "final_tps": 64.55,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_009",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.87,
+      "ar_tps": 33.26,
+      "final_tps": 64.87,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_011",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.38,
+      "ar_tps": 34.4,
+      "final_tps": 66.38,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_013",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.94,
+      "ar_tps": 33.24,
+      "final_tps": 64.94,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_015",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.51,
+      "ar_tps": 34.7,
+      "final_tps": 66.51,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "openmmlab_config",
+      "name": "openmmlab_config_real_016",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.2,
+      "ar_tps": 34.29,
+      "final_tps": 66.2,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_007",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.1,
+      "ar_tps": 33.52,
+      "final_tps": 33.52,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_008",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.87,
+      "ar_tps": 34.02,
+      "final_tps": 34.02,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_010",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.21,
+      "ar_tps": 33.38,
+      "final_tps": 33.38,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.250 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.25,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_019",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 51.04,
+      "ar_tps": 33.38,
+      "final_tps": 33.38,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.333 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.3333,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_022",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.43,
+      "ar_tps": 34.27,
+      "final_tps": 34.27,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_025",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.86,
+      "ar_tps": 32.74,
+      "final_tps": 32.74,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_034",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.06,
+      "ar_tps": 32.17,
+      "final_tps": 32.17,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.562 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.5625,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_037",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.91,
+      "ar_tps": 32.91,
+      "final_tps": 32.91,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_041",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 70.48,
+      "ar_tps": 33.48,
+      "final_tps": 33.48,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "repetition_rate=0.625 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.625,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_043",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 69.99,
+      "ar_tps": 34.12,
+      "final_tps": 69.99,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_001",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 67.62,
+      "ar_tps": 33.86,
+      "final_tps": 67.62,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_002",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.58,
+      "ar_tps": 33.73,
+      "final_tps": 66.58,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_003",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.83,
+      "ar_tps": 33.61,
+      "final_tps": 65.83,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_004",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.26,
+      "ar_tps": 34.03,
+      "final_tps": 65.26,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_005",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.08,
+      "ar_tps": 34.01,
+      "final_tps": 66.08,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_006",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.4,
+      "ar_tps": 34.21,
+      "final_tps": 66.4,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_009",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.67,
+      "ar_tps": 33.12,
+      "final_tps": 69.67,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_011",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.73,
+      "ar_tps": 34.2,
+      "final_tps": 69.73,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_012",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.84,
+      "ar_tps": 34.01,
+      "final_tps": 68.84,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "pipeline_stage_config",
+      "name": "pipeline_stage_config_014",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.56,
+      "ar_tps": 33.99,
+      "final_tps": 68.56,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_002",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 67.79,
+      "ar_tps": 33.95,
+      "final_tps": 67.79,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_004",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 67.93,
+      "ar_tps": 34.04,
+      "final_tps": 34.04,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "repetition_rate=0.667 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.6667,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_007",
+      "tasdfg_score": 0,
+      "ar_score": 0,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 65.9,
+      "ar_tps": 31.68,
+      "final_tps": 31.68,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.167 >= 0.10",
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.1667,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_008",
+      "tasdfg_score": 0,
+      "ar_score": 0,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 66.49,
+      "ar_tps": 32.21,
+      "final_tps": 66.49,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_014",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 69.73,
+      "ar_tps": 33.74,
+      "final_tps": 69.73,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_016",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 69.33,
+      "ar_tps": 32.68,
+      "final_tps": 32.68,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_017",
+      "tasdfg_score": 0,
+      "ar_score": 0,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 66.0,
+      "ar_tps": 32.83,
+      "final_tps": 32.83,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "repetition_rate=0.462 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.4615,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_018",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.37,
+      "ar_tps": 32.16,
+      "final_tps": 32.16,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_020",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 67.66,
+      "ar_tps": 33.66,
+      "final_tps": 33.66,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_021",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 69.79,
+      "ar_tps": 34.34,
+      "final_tps": 34.34,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "repetition_rate=0.700 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.7,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_006",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.77,
+      "ar_tps": 32.7,
+      "final_tps": 68.77,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_022",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.29,
+      "ar_tps": 34.75,
+      "final_tps": 69.29,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_026",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.16,
+      "ar_tps": 34.27,
+      "final_tps": 68.16,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_030",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 70.52,
+      "ar_tps": 33.97,
+      "final_tps": 70.52,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_035",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 67.62,
+      "ar_tps": 34.22,
+      "final_tps": 67.62,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_042",
+      "tasdfg_score": 2,
+      "ar_score": 0,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.97,
+      "ar_tps": 32.53,
+      "final_tps": 69.97,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0667,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_043",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.02,
+      "ar_tps": 31.45,
+      "final_tps": 69.02,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_055",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.7,
+      "ar_tps": 32.9,
+      "final_tps": 64.7,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_064",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.22,
+      "ar_tps": 33.32,
+      "final_tps": 65.22,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "complex_nested_config",
+      "name": "complex_nested_config_068",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.31,
+      "ar_tps": 33.08,
+      "final_tps": 65.31,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_007",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.83,
+      "ar_tps": 34.11,
+      "final_tps": 34.11,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_013",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 67.53,
+      "ar_tps": 33.21,
+      "final_tps": 33.21,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=1.000 >= 0.10",
+        "repetition_rate=0.308 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 1.0,
+        "repetition_rate": 0.3077,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_016",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 66.87,
+      "ar_tps": 33.36,
+      "final_tps": 33.36,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_017",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.77,
+      "ar_tps": 32.66,
+      "final_tps": 32.66,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "bracket_balance=0.000 < 0.50 (non-truncated)"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.2381,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_022",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.06,
+      "ar_tps": 32.99,
+      "final_tps": 32.99,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=1.000 >= 0.10"
+      ],
+      "risk_metrics": {
+        "off_structure": 1.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_025",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 67.86,
+      "ar_tps": 31.87,
+      "final_tps": 31.87,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.909 >= 0.10",
+        "repetition_rate=0.250 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.9091,
+        "repetition_rate": 0.25,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_027",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 66.47,
+      "ar_tps": 30.99,
+      "final_tps": 66.47,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_029",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.25,
+      "ar_tps": 32.72,
+      "final_tps": 32.72,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.977 >= 0.10",
+        "repetition_rate=0.769 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.9767,
+        "repetition_rate": 0.7692,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_031",
+      "tasdfg_score": 0,
+      "ar_score": 2,
+      "tasdfg_v_score": 0,
+      "tasdfg_tps": 68.6,
+      "ar_tps": 32.11,
+      "final_tps": 68.6,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_032",
+      "tasdfg_score": 0,
+      "ar_score": 1,
+      "tasdfg_v_score": 1,
+      "tasdfg_tps": 66.29,
+      "ar_tps": 32.12,
+      "final_tps": 32.12,
+      "final_source": "AR_RERUN",
+      "rerun_triggered": true,
+      "rerun_reasons": [
+        "off_structure=0.977 >= 0.10",
+        "repetition_rate=0.700 >= 0.25"
+      ],
+      "risk_metrics": {
+        "off_structure": 0.9767,
+        "repetition_rate": 0.7,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_005",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 66.94,
+      "ar_tps": 34.17,
+      "final_tps": 66.94,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_010",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.75,
+      "ar_tps": 32.15,
+      "final_tps": 69.75,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_012",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 69.44,
+      "ar_tps": 33.83,
+      "final_tps": 69.44,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_019",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.74,
+      "ar_tps": 34.02,
+      "final_tps": 68.74,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_033",
+      "tasdfg_score": 2,
+      "ar_score": 1,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 65.04,
+      "ar_tps": 31.97,
+      "final_tps": 65.04,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_035",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 64.22,
+      "ar_tps": 31.86,
+      "final_tps": 64.22,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_051",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.59,
+      "ar_tps": 33.97,
+      "final_tps": 68.59,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 0.0,
+        "is_truncated": 1
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_052",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.03,
+      "ar_tps": 33.31,
+      "final_tps": 68.03,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_059",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.16,
+      "ar_tps": 31.66,
+      "final_tps": 68.16,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 0
+      }
+    },
+    {
+      "benchmark": "rich_cli_option_groups",
+      "name": "rich_cli_option_groups_068",
+      "tasdfg_score": 2,
+      "ar_score": 2,
+      "tasdfg_v_score": 2,
+      "tasdfg_tps": 68.03,
+      "ar_tps": 31.78,
+      "final_tps": 68.03,
+      "final_source": "TASD_FG",
+      "rerun_triggered": false,
+      "rerun_reasons": [],
+      "risk_metrics": {
+        "off_structure": 0.0,
+        "repetition_rate": 0.0,
+        "duplicate_option_rate": 0.0,
+        "bracket_balance": 1.0,
+        "is_truncated": 1
+      }
+    }
+  ]
+}
