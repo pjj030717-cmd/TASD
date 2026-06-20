@@ -1,3 +1,5 @@
+> **Legacy report** (TASD-FG only, no BR/V). For final paper tables with TASD-FG-BR / TASD-FG-V results, use `results/final_master_tables.md`.
+
 # TASD-FG Final Master Report
 
 **Target**: Qwen2.5-14B-Instruct-AWQ | **Draft**: Qwen2.5-1.5B-Instruct
