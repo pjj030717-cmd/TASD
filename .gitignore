@@ -49,3 +49,10 @@ results/human_blind_review/annotator_A.json
 results/human_blind_review/annotator_B.json
 results/human_blind_review/disagreements_for_adjudication.csv
 results/human_blind_review/human_review_statistics.json
+
+# Score validator review — private materials (DO NOT COMMIT)
+results/score_validator_review/private/
+results/score_validator_review/annotator_A.json
+results/score_validator_review/annotator_B.json
+results/score_validator_review/disagreements_for_adjudication.csv
+results/score_validator_review/statistics.json
