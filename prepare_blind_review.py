@@ -117,7 +117,7 @@ for bname, _ in BENCHMARKS:
 
 # FLY texts (from standalone generation, if available)
 fly_texts = {}
-fly_cache_path = f"{OUT_DIR}/fly_texts_for_blind_review.json"
+fly_cache_path = f"{PRIVATE_DIR}/fly_texts_for_blind_review.json"
 if os.path.exists(fly_cache_path):
     with open(fly_cache_path) as f:
         fly_cache = json.load(f)

@@ -22,8 +22,8 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # ─── Paths ────────────────────────────────────────────────────────────────
-TARGET_PATH = "Qwen/Qwen2.5-14B-Instruct-AWQ"
-DRAFT_PATH = "Qwen/Qwen2.5-1.5B-Instruct"
+TARGET_PATH = "/root/autodl-tmp/models/.modelscope_cache/Qwen/Qwen2___5-14B-Instruct-AWQ"
+DRAFT_PATH = "/root/autodl-tmp/models/.modelscope_cache/Qwen/Qwen2.5-1.5B-Instruct"
 MAX_NEW_TOKENS = 128
 SAMPLING_SEED = 20260624
 SAMPLES_PER_BENCHMARK = 10

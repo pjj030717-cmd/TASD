@@ -41,6 +41,6 @@
       "rerun": 1
     }
   },
-  "fly_status": "60/60 missing",
+  "fly_status": "generated",
   "blind_id_format": "BRV-XXXXXXXX (hex, secrets-based, not reproducible without key)"
 }
