@@ -1,0 +1,23 @@
+{
+  "experiment": "intra_rater_reliability_retest",
+  "description": "30-item stratified retest from original 90-item score validator",
+  "retest_sampling_seed": 20260702,
+  "total_retest_items": 30,
+  "original_round1_items": 90,
+  "retest_score_distribution_from_round1": {
+    "0": 1,
+    "2": 10,
+    "1": 19
+  },
+  "retest_benchmark_distribution": {
+    "dict_config": 6,
+    "pipeline_stage_config": 4,
+    "openmmlab_config": 2,
+    "rich_cli_option_groups": 3,
+    "complex_nested_config": 5,
+    "argparse": 10
+  },
+  "retest_blind_id_format": "RET-XXXXXXXX",
+  "localStorage_key": "svr_retest_A",
+  "date_generated": "2026-06-25T19:02:24.853811"
+}
