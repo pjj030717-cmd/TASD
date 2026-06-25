@@ -700,7 +700,7 @@ function render(idx) {{
         var v = scores[si][0], lbl = scores[si][1];
         var sel = pf === parseInt(v) ? ' sel' : '';
         var chk = pf === parseInt(v) ? 'checked' : '';
-        h += '<label class="' + sel + '" onclick="setPrefix(\'' + item.blind_id + '\',' + v + ');update(' + idx + ')">';
+        h += '<label class="' + sel + '" onclick="setPrefix(\\'' + item.blind_id + '\\',' + v + ');update(' + idx + ')">';
         h += '<input type="radio" name="pf_' + item.blind_id + '" value="' + v + '" ' + chk + '> ' + v + ' — ' + lbl;
         h += '</label>';
     }}
@@ -717,7 +717,7 @@ function render(idx) {{
         var v = statuses[si][0], lbl = statuses[si][1];
         var sel = cs === v ? ' sel' : '';
         var chk = cs === v ? 'checked' : '';
-        h += '<label class="' + sel + '" onclick="setCompletion(\'' + item.blind_id + '\',\'' + v + '\');update(' + idx + ')">';
+        h += '<label class="' + sel + '" onclick="setCompletion(\\'' + item.blind_id + '\\',\\'' + v + '\\');update(' + idx + ')">';
         h += '<input type="radio" name="cs_' + item.blind_id + '" value="' + v + '" ' + chk + '> ' + lbl;
         h += '</label>';
     }}
@@ -736,7 +736,7 @@ function render(idx) {{
         var itags = ann.issue_tags || [];
         var chk = itags.indexOf(t) >= 0 ? 'checked' : '';
         var cls = itags.indexOf(t) >= 0 ? ' tsel' : '';
-        h += '<label class="' + cls + '" onclick="toggleTag(\'' + item.blind_id + '\',\'' + t + '\');update(' + idx + ')">';
+        h += '<label class="' + cls + '" onclick="toggleTag(\\'' + item.blind_id + '\\',\\'' + t + '\\');update(' + idx + ')">';
         h += '<input type="checkbox" ' + chk + '> ' + (tl[t]||t);
         h += '</label>';
     }}
@@ -744,12 +744,12 @@ function render(idx) {{
 
     // ---- Section 4: Notes ----
     h += '<div class="section-title">4. Notes (optional)</div>';
-    h += '<textarea class="notes" id="n_' + item.blind_id + '" onchange="setNotes(\'' + item.blind_id + '\',this.value)">' + (ann.notes||'') + '</textarea>';
+    h += '<textarea class="notes" id="n_' + item.blind_id + '" onchange="setNotes(\\'' + item.blind_id + '\\',this.value)">' + (ann.notes||'') + '</textarea>';
 
     // ---- Section 5: Trim Position ----
     h += '<div class="section-title">5. Trim Position (optional)</div>';
     h += '<div style="font-size:12px;color:#666;margin-bottom:4px;">If tail_cutoff, describe trim point (e.g. "line 5, after comma").</div>';
-    h += '<textarea class="trimpos" id="tp_' + item.blind_id + '" onchange="setTrimPos(\'' + item.blind_id + '\',this.value)">' + (ann.trim_position||'') + '</textarea>';
+    h += '<textarea class="trimpos" id="tp_' + item.blind_id + '" onchange="setTrimPos(\\'' + item.blind_id + '\\',this.value)">' + (ann.trim_position||'') + '</textarea>';
 
     if (pf !== undefined && cs !== undefined) {{
         h += '<div class="completion-indicator done">Fully scored: Prefix ' + pf + ', Completion: ' + cs + '</div>';
