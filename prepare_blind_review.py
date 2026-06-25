@@ -467,9 +467,13 @@ function render(idx) {{
 
     // Tags
     h += '<strong style="font-size:13px;color:#555;">Issue Tags:</strong>';
+    h += '<div style="font-size:11px;color:#888;margin-bottom:6px;">';
+    h += '<b>incomplete content</b> = structure/content is broken; ';
+    h += '<b>cut off at end</b> = text ends mid-structure but preceding content looks structurally sound (likely hit generation length limit). ';
+    h += 'Both can apply if the trunk is broken AND the end is cut off.</div>';
     h += '<div class="tag-group">';
-    const tags = ['bracket_or_delimiter','indentation','incomplete','repetition','off_structure','wrong_content','other','none'];
-    const tl = {{bracket_or_delimiter:'Bracket/Delimiter',indentation:'Indentation',incomplete:'Incomplete',repetition:'Repetition',off_structure:'Off-Structure',wrong_content:'Wrong Content',other:'Other',none:'None'}};
+    const tags = ['bracket_or_delimiter','indentation','incomplete','cut_off','repetition','off_structure','wrong_content','other','none'];
+    const tl = {{bracket_or_delimiter:'Bracket/Delimiter',indentation:'Indentation',incomplete:'Incomplete content',cut_off:'Cut off at end',repetition:'Repetition',off_structure:'Off-Structure',wrong_content:'Wrong Content',other:'Other',none:'None'}};
     tags.forEach(t => {{
         const chk = (ann.tags||[]).includes(t) ? 'checked' : '';
         const cls = (ann.tags||[]).includes(t) ? ' tsel' : '';
@@ -488,7 +492,7 @@ function render(idx) {{
     h += '</div>';
 
     h += '<div class="actions">';
-    h += '<button class="btn-save" onclick="saveState();alert(\'Saved!\')">Save Progress</button>';
+    h += '<button class="btn-save" onclick="saveState();alert(&quot;Saved!&quot;)">Save Progress</button>';
     h += '<button class="btn-export" onclick="exportJSON()">Export JSON</button>';
     h += '</div>';
 

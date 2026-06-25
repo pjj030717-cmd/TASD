@@ -49,12 +49,15 @@ They do NOT affect the score directly — the score is always a holistic judgmen
 |-----|-------------|
 | `bracket_or_delimiter` | Brackets, parentheses, braces, or delimiters are unbalanced |
 | `indentation` | Indentation is inconsistent or broken |
-| `incomplete` | Output is cut off or truncated before completing the structure |
+| `incomplete` | Content/structure is genuinely broken or incomplete (not just cut off) |
+| `cut_off` | Text ends abruptly mid-structure; preceding content looks structurally sound. Likely hit the generation max-length limit, not a model failure. |
 | `repetition` | Tokens, lines, or blocks are repeated excessively |
 | `off_structure` | Content drifts into a different structure type than the prompt |
 | `wrong_content` | Factual errors, wrong variable names, or incorrect parameters |
 | `other` | Another issue not covered above (describe in notes) |
 | `none` | No issues — output is clean |
+
+**Note on `incomplete` vs `cut_off`**: Some methods use a fixed max generation length (e.g., 128 tokens). If a continuation reads as structurally sound up to the final few characters where it simply stops mid-word or mid-line, tag it `cut_off`. If the content is garbled, structurally broken throughout, or clearly lost track of the prompt structure, tag it `incomplete`. Both can apply simultaneously if the end is cut off AND the preceding content is broken.
 
 ---
 
@@ -97,9 +100,10 @@ They do NOT affect the score directly — the score is always a holistic judgmen
 ## FAQ
 
 **Q: The continuation seems cut off. How do I score it?**
-A: Score based on what's there. If it's structurally usable despite truncation,
-it could still be score 1. If the truncation breaks the structure, score 0.
-Tag it `incomplete`.
+A: Distinguish _why_ it's cut off:
+- If the content up to the cut-off point is structurally sound (just ran out of space), score based on the visible portion — it may still be score 1. Tag it `cut_off`.
+- If the continuation is garbled or broken before the cut-off, score accordingly (likely 0) and tag it `incomplete`.
+- If both apply, use both tags.
 
 **Q: There's a small typo or naming issue.**
 A: If it's fixable in one local edit, it's score 1 (not 2). If the name is
