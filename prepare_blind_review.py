@@ -468,9 +468,9 @@ function render(idx) {{
     // Tags
     h += '<strong style="font-size:13px;color:#555;">Issue Tags:</strong>';
     h += '<div style="font-size:11px;color:#888;margin-bottom:6px;">';
-    h += '<b>incomplete content</b> = structure/content is broken; ';
-    h += '<b>cut off at end</b> = text ends mid-structure but preceding content looks structurally sound (likely hit generation length limit). ';
-    h += 'Both can apply if the trunk is broken AND the end is cut off.</div>';
+    h += '<b>incomplete content</b> = structure/content is genuinely broken. ';
+    h += '<b>cut off at end</b> = text stops mid-structure but preceding content is structurally sound (due to generation length limit, NOT a model defect). ';
+    h += 'Score based on what is there: a clean output that happens to be cut off can still be Score 2. Both tags can apply if content is broken AND cut off.</div>';
     h += '<div class="tag-group">';
     const tags = ['bracket_or_delimiter','indentation','incomplete','cut_off','repetition','off_structure','wrong_content','other','none'];
     const tl = {{bracket_or_delimiter:'Bracket/Delimiter',indentation:'Indentation',incomplete:'Incomplete content',cut_off:'Cut off at end',repetition:'Repetition',off_structure:'Off-Structure',wrong_content:'Wrong Content',other:'Other',none:'None'}};
@@ -547,6 +547,320 @@ render(0);
     return html
 
 
+# ═══════════════════════════════════════════════════════════════════════════════
+# V2: Dual-dimension annotation (Prefix Quality + Completion Status)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+def generate_html_v2(items, order, annotator_label, version_key="pilot20"):
+    """Generate V2 dual-dimension offline HTML annotator.
+    V2: Prefix Structural Quality (0/1/2) + Completion Status (complete/tail_cutoff/severe_incomplete).
+    New localStorage key, no method leak, no token info."""
+    ordered = [items[i] for i in order]
+    clean = []
+    for it in ordered:
+        clean.append({"blind_id": it["blind_id"], "benchmark": it["benchmark"],
+                       "prompt": it["prompt"], "text": it["text"]})
+    items_json = json.dumps(clean, ensure_ascii=False)
+    ls_key = f"tasd_blind_review_v2_{annotator_label}"
+
+    html = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TASD Blind Review V2 — {annotator_label} ({version_key})</title>
+<style>
+* {{ box-sizing: border-box; margin: 0; padding: 0; }}
+body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: #f5f5f5; color: #333; line-height: 1.5; }}
+.header {{ background: #1b5e20; color: white; padding: 16px 24px; position: sticky; top: 0; z-index: 100; }}
+.header h1 {{ font-size: 20px; }}
+.header .progress {{ font-size: 14px; margin-top: 4px; opacity: 0.9; }}
+.container {{ max-width: 920px; margin: 0 auto; padding: 20px; }}
+.card {{ background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    margin-bottom: 24px; padding: 24px; }}
+.card h2 {{ font-size: 16px; color: #1b5e20; margin-bottom: 8px; }}
+.card .meta {{ font-size: 12px; color: #888; margin-bottom: 12px; }}
+.prompt-box {{ background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px;
+    padding: 12px; margin-bottom: 12px; max-height: 200px; overflow-y: auto; }}
+.prompt-box pre {{ font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 13px; white-space: pre-wrap; word-break: break-all;
+    background: transparent; padding: 0; line-height: 1.4; }}
+.text-box {{ border: 1px solid #a5d6a7; border-radius: 4px; padding: 12px;
+    margin-bottom: 16px; max-height: 400px; overflow-y: auto; background: #f1f8e9; }}
+.text-box pre {{ font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 13px; white-space: pre-wrap; word-break: break-all;
+    background: transparent; padding: 0; line-height: 1.4; }}
+.missing-warning {{ background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px;
+    padding: 8px 12px; font-size: 13px; color: #856404; margin-bottom: 12px; }}
+.section-title {{ font-size: 14px; font-weight: 600; color: #333; margin: 16px 0 6px 0;
+    border-bottom: 1px solid #e0e0e0; padding-bottom: 4px; }}
+.score-group {{ display: flex; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }}
+.score-group label {{ display: flex; align-items: center; gap: 6px; font-size: 14px;
+    cursor: pointer; padding: 8px 14px; border: 2px solid #ccc; border-radius: 6px; transition: all 0.2s; }}
+.score-group label:hover {{ background: #e8f5e9; }}
+.score-group label.sel {{ background: #c8e6c9; border-color: #2e7d32; font-weight: 600; }}
+.score-group input {{ margin: 0; }}
+.status-group {{ display: flex; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }}
+.status-group label {{ display: flex; align-items: center; gap: 6px; font-size: 14px;
+    cursor: pointer; padding: 8px 14px; border: 2px solid #ccc; border-radius: 6px; transition: all 0.2s; }}
+.status-group label:hover {{ background: #e3f2fd; }}
+.status-group label.sel {{ background: #bbdefb; border-color: #1565c0; font-weight: 600; }}
+.status-group input {{ margin: 0; }}
+.tag-group {{ display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }}
+.tag-group label {{ display: flex; align-items: center; gap: 4px; font-size: 13px;
+    cursor: pointer; padding: 4px 10px; border: 1px solid #ddd; border-radius: 4px; transition: all 0.2s; }}
+.tag-group label:hover {{ background: #f3e5f5; }}
+.tag-group label.tsel {{ background: #e1bee7; border-color: #7b1fa2; }}
+.tag-group input {{ margin: 0; }}
+.notes, .trimpos {{ width: 100%; min-height: 42px; font-family: inherit; font-size: 13px;
+    padding: 8px; border: 1px solid #ccc; border-radius: 4px; resize: vertical; }}
+.completion-indicator {{ margin-top: 12px; padding: 8px 12px; border-radius: 4px; font-size: 13px; }}
+.completion-indicator.done {{ background: #e8f5e9; color: #2e7d32; }}
+.completion-indicator.partial {{ background: #fff8e1; color: #f57f17; }}
+.actions {{ margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap; }}
+.actions button {{ padding: 10px 20px; border: none; border-radius: 4px; font-size: 14px;
+    cursor: pointer; transition: opacity 0.2s; }}
+.btn-save {{ background: #2196F3; color: white; }}
+.btn-export {{ background: #4CAF50; color: white; }}
+.btn-prev {{ background: #9C27B0; color: white; }}
+.btn-next {{ background: #FF5722; color: white; }}
+.btn-jump {{ background: #607D8B; color: white; }}
+.actions button:hover {{ opacity: 0.85; }}
+.actions button:disabled {{ opacity: 0.4; cursor: default; }}
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>TASD Blind Review V2 — {annotator_label} <span style="opacity:0.7;font-size:14px;">({version_key})</span></h1>
+    <div class="progress" id="progress">Initializing...</div>
+</div>
+<div class="container" id="app"></div>
+
+<script>
+const STORAGE_KEY = '{ls_key}';
+const ITEMS = {items_json};
+const TOTAL = ITEMS.length;
+let annotations = {{}};
+let currentIdx = 0;
+const saved = localStorage.getItem(STORAGE_KEY);
+if (saved) {{ try {{ annotations = JSON.parse(saved); }} catch(e) {{}} }}
+
+function saveState() {{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(annotations));
+}}
+
+function updateProgress() {{
+    const done = Object.keys(annotations).filter(function(k) {{
+        var a = annotations[k];
+        return a.prefix_score !== undefined && a.completion_status !== undefined;
+    }}).length;
+    document.getElementById('progress').textContent =
+        'Completed: ' + done + ' / ' + TOTAL + ' (' + Math.round(done/TOTAL*100) + '%)';
+}}
+
+function render(idx) {{
+    currentIdx = idx;
+    var item = ITEMS[idx];
+    var ann = annotations[item.blind_id] || {{}};
+    var pf = ann.prefix_score;
+    var cs = ann.completion_status;
+
+    var h = '';
+    h += '<div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;">';
+    h += '<button class="btn-prev" onclick="nav(-1)"' + (idx===0?' disabled':'') + '>Prev</button>';
+    h += '<span style="font-size:13px;color:#666;">Item ' + (idx+1) + ' / ' + TOTAL + '</span>';
+    h += '<button class="btn-next" onclick="nav(1)"' + (idx===TOTAL-1?' disabled':'') + '>Next</button>';
+    h += '<input type="number" id="jumpIn" min="1" max="' + TOTAL + '" value="' + (idx+1) + '" style="width:60px;padding:4px;">';
+    h += '<button class="btn-jump" onclick="go()">Go</button>';
+    h += '</div>';
+
+    h += '<div class="card">';
+    h += '<h2>' + item.blind_id + '</h2>';
+    h += '<div class="meta">Benchmark: ' + item.benchmark + '</div>';
+
+    h += '<strong style="font-size:13px;color:#555;">Prompt / Context:</strong>';
+    h += '<div class="prompt-box"><pre>' + esc(item.prompt) + '</pre></div>';
+
+    h += '<strong style="font-size:13px;color:#555;">Generated Continuation:</strong>';
+    if (!item.text) {{
+        h += '<div class="missing-warning">Text not available</div>';
+    }} else {{
+        h += '<div class="text-box"><pre>' + esc(item.text) + '</pre></div>';
+    }}
+
+    // ---- Section 1: Prefix Structural Quality ----
+    h += '<div class="section-title">1. Prefix Structural Quality</div>';
+    h += '<div style="font-size:12px;color:#666;margin-bottom:6px;">Ignore the final incomplete tail (if any). Score the preceding content. Do NOT deduct for length limits.</div>';
+    h += '<div class="score-group">';
+    var scores = [['2','Clean Prefix — structurally sound, no edits needed beyond tail removal'],
+                  ['1','Minor Prefix Errors — 1-2 local issues, no major rewrite'],
+                  ['0','Failed Prefix — broken, off-topic, chaotic even before the tail']];
+    for (var si = 0; si < scores.length; si++) {{
+        var v = scores[si][0], lbl = scores[si][1];
+        var sel = pf === parseInt(v) ? ' sel' : '';
+        var chk = pf === parseInt(v) ? 'checked' : '';
+        h += '<label class="' + sel + '" onclick="setPrefix(\'' + item.blind_id + '\',' + v + ');update(' + idx + ')">';
+        h += '<input type="radio" name="pf_' + item.blind_id + '" value="' + v + '" ' + chk + '> ' + v + ' — ' + lbl;
+        h += '</label>';
+    }}
+    h += '</div>';
+
+    // ---- Section 2: Completion Status ----
+    h += '<div class="section-title">2. Completion Status (REQUIRED)</div>';
+    h += '<div style="font-size:12px;color:#666;margin-bottom:6px;">Judge the raw output as-is.</div>';
+    h += '<div class="status-group">';
+    var statuses = [['complete','Complete — ends at natural boundary'],
+                    ['tail_cutoff','Tail Cutoff — ends mid-structure; clear trim point; prefix is meaningful'],
+                    ['severe_incomplete','Severe Incomplete — major structures unfinished; no valid prefix']];
+    for (var si = 0; si < statuses.length; si++) {{
+        var v = statuses[si][0], lbl = statuses[si][1];
+        var sel = cs === v ? ' sel' : '';
+        var chk = cs === v ? 'checked' : '';
+        h += '<label class="' + sel + '" onclick="setCompletion(\'' + item.blind_id + '\',\'' + v + '\');update(' + idx + ')">';
+        h += '<input type="radio" name="cs_' + item.blind_id + '" value="' + v + '" ' + chk + '> ' + lbl;
+        h += '</label>';
+    }}
+    h += '</div>';
+
+    // ---- Section 3: Issue Tags ----
+    h += '<div class="section-title">3. Issue Tags (optional, multi-select)</div>';
+    h += '<div class="tag-group">';
+    var tags = ['repetition','off_structure','wrong_content','indentation',
+                'bracket_or_delimiter','duplicate_field','other','none'];
+    var tl = {{repetition:'Repetition',off_structure:'Off-Structure',wrong_content:'Wrong Content',
+              indentation:'Indentation',bracket_or_delimiter:'Bracket/Delimiter',
+              duplicate_field:'Duplicate Field',other:'Other',none:'None'}};
+    for (var ti = 0; ti < tags.length; ti++) {{
+        var t = tags[ti];
+        var itags = ann.issue_tags || [];
+        var chk = itags.indexOf(t) >= 0 ? 'checked' : '';
+        var cls = itags.indexOf(t) >= 0 ? ' tsel' : '';
+        h += '<label class="' + cls + '" onclick="toggleTag(\'' + item.blind_id + '\',\'' + t + '\');update(' + idx + ')">';
+        h += '<input type="checkbox" ' + chk + '> ' + (tl[t]||t);
+        h += '</label>';
+    }}
+    h += '</div>';
+
+    // ---- Section 4: Notes ----
+    h += '<div class="section-title">4. Notes (optional)</div>';
+    h += '<textarea class="notes" id="n_' + item.blind_id + '" onchange="setNotes(\'' + item.blind_id + '\',this.value)">' + (ann.notes||'') + '</textarea>';
+
+    // ---- Section 5: Trim Position ----
+    h += '<div class="section-title">5. Trim Position (optional)</div>';
+    h += '<div style="font-size:12px;color:#666;margin-bottom:4px;">If tail_cutoff, describe trim point (e.g. "line 5, after comma").</div>';
+    h += '<textarea class="trimpos" id="tp_' + item.blind_id + '" onchange="setTrimPos(\'' + item.blind_id + '\',this.value)">' + (ann.trim_position||'') + '</textarea>';
+
+    if (pf !== undefined && cs !== undefined) {{
+        h += '<div class="completion-indicator done">Fully scored: Prefix ' + pf + ', Completion: ' + cs + '</div>';
+    }} else if (pf !== undefined || cs !== undefined) {{
+        h += '<div class="completion-indicator partial">Partially scored (both dimensions required)</div>';
+    }}
+
+    h += '</div>';
+
+    h += '<div class="actions">';
+    h += '<button class="btn-save" onclick="saveState();alert(&quot;Saved!&quot;)">Save Progress</button>';
+    h += '<button class="btn-export" onclick="exportJSON()">Export JSON</button>';
+    h += '</div>';
+
+    document.getElementById('app').innerHTML = h;
+    updateProgress();
+    window.scrollTo(0, 0);
+}}
+
+function update(idx) {{ render(idx); }}
+function nav(d) {{ var ni = currentIdx + d; if (ni >= 0 && ni < TOTAL) render(ni); }}
+function go() {{ var v = parseInt(document.getElementById('jumpIn').value) - 1; if (v >= 0 && v < TOTAL) render(v); }}
+
+function setPrefix(bid, s) {{
+    if (!annotations[bid]) annotations[bid] = {{}};
+    annotations[bid].prefix_score = s;
+    saveState();
+}}
+function setCompletion(bid, s) {{
+    if (!annotations[bid]) annotations[bid] = {{}};
+    annotations[bid].completion_status = s;
+    saveState();
+}}
+function toggleTag(bid, t) {{
+    if (!annotations[bid]) annotations[bid] = {{}};
+    if (!annotations[bid].issue_tags) annotations[bid].issue_tags = [];
+    var i = annotations[bid].issue_tags.indexOf(t);
+    if (i >= 0) annotations[bid].issue_tags.splice(i, 1);
+    else annotations[bid].issue_tags.push(t);
+    saveState();
+}}
+function setNotes(bid, n) {{
+    if (!annotations[bid]) annotations[bid] = {{}};
+    annotations[bid].notes = n;
+    saveState();
+}}
+function setTrimPos(bid, v) {{
+    if (!annotations[bid]) annotations[bid] = {{}};
+    annotations[bid].trim_position = v;
+    saveState();
+}}
+function exportJSON() {{
+    var r = ITEMS.map(function(it) {{
+        var a = annotations[it.blind_id] || {{}};
+        return {{
+            blind_id: it.blind_id,
+            prefix_score: a.prefix_score,
+            completion_status: a.completion_status,
+            issue_tags: a.issue_tags || [],
+            notes: a.notes || '',
+            trim_position: a.trim_position || ''
+        }};
+    }});
+    var b = new Blob([JSON.stringify(r, null, 2)], {{type: 'application/json'}});
+    var u = URL.createObjectURL(b);
+    var a = document.createElement('a');
+    a.href = u; a.download = 'annotations_{annotator_label}_v2.json'; a.click();
+    URL.revokeObjectURL(u);
+}}
+function esc(s) {{
+    if (!s) return '';
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+}}
+render(0);
+</script>
+</body>
+</html>'''
+    return html
+
+
+def sample_pilot20(review_items):
+    """Sample 20 items from 180, stratified by benchmark and method. Fixed seed."""
+    pilot_rng = random.Random(20260625)
+    groups = defaultdict(lambda: defaultdict(list))
+    for idx, item in enumerate(review_items):
+        groups[item["benchmark"]][item["method"]].append(idx)
+    bench_names = [b[0] for b in BENCHMARKS]
+    bench_quota = {b: 3 for b in bench_names}
+    extra = pilot_rng.sample(bench_names, 2)
+    for b in extra:
+        bench_quota[b] = 4
+    pilot_indices = []
+    for bname in bench_names:
+        quota = bench_quota[bname]
+        method_slots = [m for m in ["AR","FLY","TASD-BR"] if groups[bname].get(m)]
+        chosen_methods = pilot_rng.sample(method_slots, min(quota, len(method_slots)))
+        while len(chosen_methods) < quota:
+            chosen_methods.append(pilot_rng.choice(method_slots))
+        for m in chosen_methods:
+            pool = groups[bname][m]
+            if pool:
+                pick = pilot_rng.choice(pool)
+                pilot_indices.append(pick)
+                pool.remove(pick)
+    assert len(pilot_indices) == 20, f"Expected 20, got {len(pilot_indices)}"
+    return [review_items[i] for i in pilot_indices]
+
+
+# ─── Main V1 generation ─────────────────────────────────────────────────────
 for label, order in [("A", order_a), ("B", order_b)]:
     html = generate_html(review_items, order, label)
     out_path = f"{PRIVATE_DIR}/annotator_{label}.html"
@@ -706,19 +1020,91 @@ all_pass = all("PASS" in c for c in checks)
 print(f"\n{'ALL CHECKS PASSED' if all_pass else 'SOME CHECKS FAILED — review above'}")
 
 # Summary
+public_files = ["blind_review_manifest.json", "annotation_guideline.md"]
 print("\n" + "=" * 60)
 print("Files in private/ (DO NOT COMMIT):")
 for fn in os.listdir(PRIVATE_DIR):
     fpath = os.path.join(PRIVATE_DIR, fn)
     print(f"  {fpath} ({os.path.getsize(fpath):,} bytes)")
 print("\nPublic files:")
-for fn in ["blind_review_manifest.json", "annotation_guideline.md",
-           "fly_texts_for_blind_review.json"]:
+for fn in public_files:
     fpath = os.path.join(OUT_DIR, fn)
     if os.path.exists(fpath):
         print(f"  {fpath} ({os.path.getsize(fpath):,} bytes)")
+    if fn == "fly_texts_for_blind_review.json":
+        fpath = os.path.join(OUT_DIR, fn)
+        if os.path.exists(fpath):
+            print(f"  {fpath} ({os.path.getsize(fpath):,} bytes)")
 
 print(f"\nBR rerun policy: src/br_rerun_policy.py::is_br_rerun()")
 print(f"  Rule: bracket_balance < 0.50 AND is_truncated == 0")
 print(f"  Result: {n_rerun}/60 rerun ({100*n_rerun/60:.1f}%)")
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# V2 Pilot: 20-item dual-dimension blind review
+# ═══════════════════════════════════════════════════════════════════════════════
+print("\n" + "=" * 60)
+print("V2 PILOT: 20-item dual-dimension annotation")
+print("=" * 60)
+
+# Re-use same blind IDs and review_items (blind IDs are already on review_items)
+# Sample 20 items stratified by benchmark and method
+pilot_items = sample_pilot20(review_items)
+
+# Verify pilot composition
+print(f"\n  Pilot items: {len(pilot_items)}")
+pilot_bench = Counter(it["benchmark"] for it in pilot_items)
+pilot_method = Counter(it["method"] for it in pilot_items)
+print(f"  Per benchmark: {dict(pilot_bench)}")
+print(f"  Per method: {dict(pilot_method)}")
+
+# Shuffle independently for A and B (same blind IDs, different order)
+pilot_indices = list(range(len(pilot_items)))
+rng_a2 = random.Random(secret_bytes[:16])
+rng_b2 = random.Random(secret_bytes[16:])
+pilot_order_a = list(pilot_indices)
+pilot_order_b = list(pilot_indices)
+rng_a2.shuffle(pilot_order_a)
+rng_b2.shuffle(pilot_order_b)
+print(f"  A order differs from B: {pilot_order_a != pilot_order_b}")
+print(f"  A[0:3] = {pilot_order_a[:3]}, B[0:3] = {pilot_order_b[:3]}")
+
+# Generate V2 HTMLs
+for label, order in [("A", pilot_order_a), ("B", pilot_order_b)]:
+    html_v2 = generate_html_v2(pilot_items, order, label, version_key="pilot20")
+    out_path = f"{PRIVATE_DIR}/annotator_{label}_v2_pilot20.html"
+    with open(out_path, "w", encoding="utf-8") as f:
+        f.write(html_v2)
+    print(f"  -> {out_path} ({os.path.getsize(out_path):,} bytes)")
+
+# V2-specific integrity checks
+print("\n  V2 Pilot Integrity Checks:")
+pilot_checks = []
+# Check all 20 items have non-empty text
+c_text = all(it["text"] and len(it["text"]) > 0 for it in pilot_items)
+pilot_checks.append(f"  {'PASS' if c_text else 'FAIL'} All 20 texts non-empty")
+# Check no method leak in v2 HTML
+for label in ["A", "B"]:
+    hp2 = f"{PRIVATE_DIR}/annotator_{label}_v2_pilot20.html"
+    with open(hp2) as f:
+        h2 = f.read()
+    s_start = h2.find("<script>")
+    s_end = h2.find("</script>")
+    st = h2[s_start:s_end] if s_start >= 0 else ""
+    has_method_v2 = 'TASD-BR' in st or '"FLY"' in st or '"AR"' in st
+    pilot_checks.append(f"  {'PASS' if not has_method_v2 else 'FAIL'} V2 HTML {label}: no method leak")
+    # Check v2 localStorage key differs from v1
+    has_v1_key = "tasd_blind_v2_" in st and "tasd_blind_review_v2_" not in st
+    pilot_checks.append(f"  {'PASS' if not has_v1_key else 'FAIL'} V2 HTML {label}: no old localStorage key")
+    # Check new fields exist
+    has_pf = "prefix_score" in st
+    has_cs = "completion_status" in st
+    pilot_checks.append(f"  {'PASS' if has_pf and has_cs else 'FAIL'} V2 HTML {label}: prefix_score + completion_status")
+
+for c in pilot_checks:
+    print(c)
+
+pilot_all = all("PASS" in c for c in pilot_checks)
+print(f"\n  V2 Pilot: {'ALL CHECKS PASSED' if pilot_all else 'SOME CHECKS FAILED'}")
+
 print("\nDone.")

@@ -20,6 +20,8 @@ Rules:
 import json
 import os
 import sys
+import csv
+import random
 from collections import Counter, defaultdict
 
 import numpy as np
@@ -45,6 +47,25 @@ def load_annotations(json_path):
             "score": item.get("score"),
             "tags": item.get("tags", []),
             "notes": item.get("notes", ""),
+        }
+    return result
+
+
+def load_annotations_v2(json_path):
+    """Load V2 annotator JSON export with dual-dimension fields."""
+    if not os.path.exists(json_path):
+        print(f"  WARNING: {json_path} not found")
+        return None
+    with open(json_path) as f:
+        data = json.load(f)
+    result = {}
+    for item in data:
+        result[item["blind_id"]] = {
+            "prefix_score": item.get("prefix_score"),
+            "completion_status": item.get("completion_status"),
+            "issue_tags": item.get("issue_tags", []),
+            "notes": item.get("notes", ""),
+            "trim_position": item.get("trim_position", ""),
         }
     return result
 
@@ -615,8 +636,243 @@ def main(annotator_a_path=None, annotator_b_path=None,
 
 
 # ============================================================
-# Dummy test mode
+# V2 Analysis: Dual-dimension (Prefix Quality + Completion Status)
 # ============================================================
+
+def analyze_v2(annotator_a_path, annotator_b_path):
+    """Run V2 dual-dimension analysis with pilot metrics."""
+    print("=" * 60)
+    print("TASD Human Blind Review V2 — Statistical Analysis")
+    print("=" * 60)
+
+    print("\n1. Loading data...")
+    ann_a = load_annotations_v2(annotator_a_path)
+    ann_b = load_annotations_v2(annotator_b_path)
+    mapping = load_private_mapping()
+
+    if ann_a is None or ann_b is None or mapping is None:
+        print("ERROR: Both annotator files and mapping required.")
+        sys.exit(1)
+
+    total = len(mapping)
+    print(f"  Annotator A: {len(ann_a)} items")
+    print(f"  Annotator B: {len(ann_b)} items")
+    print(f"  Mapping: {total} items")
+
+    # Completion rate (both dimensions required)
+    print("\n2. Completion rates (both dimensions)...")
+    done_a = sum(1 for bid in mapping if bid in ann_a
+                 and ann_a[bid]["prefix_score"] is not None
+                 and ann_a[bid]["completion_status"] is not None)
+    done_b = sum(1 for bid in mapping if bid in ann_b
+                 and ann_b[bid]["prefix_score"] is not None
+                 and ann_b[bid]["completion_status"] is not None)
+    print(f"  Annotator A: {done_a}/{total} ({100*done_a/total:.1f}%)")
+    print(f"  Annotator B: {done_b}/{total} ({100*done_b/total:.1f}%)")
+
+    # Collect common
+    common = []
+    for bid in mapping:
+        if bid in ann_a and bid in ann_b:
+            apf = ann_a[bid]["prefix_score"]
+            acs = ann_a[bid]["completion_status"]
+            bpf = ann_b[bid]["prefix_score"]
+            bcs = ann_b[bid]["completion_status"]
+            if all(x is not None for x in [apf, acs, bpf, bcs]):
+                common.append((bid, apf, acs, bpf, bcs))
+    n_common = len(common)
+    print(f"  Fully scored common items: {n_common}")
+    if n_common == 0:
+        print("WARNING: No common scored items.")
+        return
+
+    # Prefix agreement
+    print("\n3. Prefix Structural Quality agreement...")
+    pf_a = [pf for _, pf, _, _, _ in common]
+    pf_b = [pf for _, _, _, pf, _ in common]
+    pf_agree = sum(1 for a, b in zip(pf_a, pf_b) if a == b)
+    pf_kappa = cohen_weighted_kappa(pf_a, pf_b)
+    print(f"  Raw agreement: {pf_agree}/{n_common} ({100*pf_agree/n_common:.1f}%)")
+    print(f"  Cohen's weighted kappa: {pf_kappa:.4f}")
+
+    # Completion Status agreement
+    print("\n4. Completion Status agreement...")
+    cs_a = [cs for _, _, cs, _, _ in common]
+    cs_b = [cs for _, _, _, _, cs in common]
+    cs_agree = sum(1 for a, b in zip(cs_a, cs_b) if a == b)
+
+    # Completion status kappa (nominal)
+    cs_map = {"complete": 0, "tail_cutoff": 1, "severe_incomplete": 2}
+    cs_a_num = [cs_map[c] for c in cs_a]
+    cs_b_num = [cs_map[c] for c in cs_b]
+    cs_kappa = cohen_weighted_kappa(cs_a_num, cs_b_num)
+    print(f"  Raw agreement: {cs_agree}/{n_common} ({100*cs_agree/n_common:.1f}%)")
+    print(f"  Cohen's weighted kappa: {cs_kappa:.4f}")
+
+    # Prefix score distributions (per annotator)
+    print("\n5. Prefix score distributions...")
+    for label, pf_list in [("Annotator A", pf_a), ("Annotator B", pf_b)]:
+        dist = Counter(pf_list)
+        print(f"  {label}: 2={dist[2]} ({100*dist[2]/n_common:.1f}%), "
+              f"1={dist[1]} ({100*dist[1]/n_common:.1f}%), "
+              f"0={dist[0]} ({100*dist[0]/n_common:.1f}%)")
+
+    # Completion status distributions
+    print("\n6. Completion Status distributions...")
+    for label, cs_list in [("Annotator A", cs_a), ("Annotator B", cs_b)]:
+        dist = Counter(cs_list)
+        print(f"  {label}: complete={dist['complete']} ({100*dist['complete']/n_common:.1f}%), "
+              f"tail_cutoff={dist['tail_cutoff']} ({100*dist['tail_cutoff']/n_common:.1f}%), "
+              f"severe_incomplete={dist['severe_incomplete']} ({100*dist['severe_incomplete']/n_common:.1f}%)")
+
+    # Use annotator A scores for per-method analysis
+    # (In production, use adjudicated scores)
+    a_by_bid = {}  # bid -> (prefix_score, completion_status)
+    for bid in mapping:
+        if bid in ann_a and ann_a[bid]["prefix_score"] is not None:
+            a_by_bid[bid] = (ann_a[bid]["prefix_score"], ann_a[bid]["completion_status"])
+
+    # Per-method metrics (using Annotator A)
+    print("\n7. Per-method metrics (Annotator A)...")
+    method_stats = defaultdict(lambda: {
+        "n": 0, "pf2": 0, "pf1": 0, "pf0": 0,
+        "complete": 0, "tail_cutoff": 0, "severe_incomplete": 0,
+        "directly_usable": 0, "trim_recoverable": 0,
+    })
+    for bid, info in mapping.items():
+        if bid not in a_by_bid:
+            continue
+        pf, cs = a_by_bid[bid]
+        m = info["method"]
+        method_stats[m]["n"] += 1
+        method_stats[m]["pf2"] += (pf == 2)
+        method_stats[m]["pf1"] += (pf == 1)
+        method_stats[m]["pf0"] += (pf == 0)
+        method_stats[m]["complete"] += (cs == "complete")
+        method_stats[m]["tail_cutoff"] += (cs == "tail_cutoff")
+        method_stats[m]["severe_incomplete"] += (cs == "severe_incomplete")
+        # Directly usable: prefix=2 AND completion=complete
+        method_stats[m]["directly_usable"] += (pf == 2 and cs == "complete")
+        # Trim-recoverable: prefix>=1 AND (complete OR tail_cutoff)
+        method_stats[m]["trim_recoverable"] += (pf >= 1 and cs in ("complete", "tail_cutoff"))
+
+    print(f"\n  {'Method':<12} {'N':>4} {'Clean Pfx%':>9} {'Recoverable%':>12} "
+          f"{'Complete%':>10} {'TailCut%':>9} {'Severe%':>8} "
+          f"{'Directly%':>9} {'TrimRec%':>9}")
+    print("  " + "-" * 82)
+    for m in ["AR", "FLY", "TASD-BR"]:
+        if m not in method_stats:
+            continue
+        s = method_stats[m]
+        n = s["n"]
+        if n == 0:
+            continue
+        print(f"  {m:<12} {n:>4} {100*s['pf2']/n:>8.1f}% {100*(s['pf1']+s['pf2'])/n:>11.1f}% "
+              f"{100*s['complete']/n:>9.1f}% {100*s['tail_cutoff']/n:>8.1f}% {100*s['severe_incomplete']/n:>7.1f}% "
+              f"{100*s['directly_usable']/n:>8.1f}% {100*s['trim_recoverable']/n:>8.1f}%")
+        method_stats[m]["prefix_clean_rate"] = 100 * s["pf2"] / n
+        method_stats[m]["prefix_recoverable_rate"] = 100 * (s["pf1"] + s["pf2"]) / n
+        method_stats[m]["complete_rate"] = 100 * s["complete"] / n
+        method_stats[m]["tail_cutoff_rate"] = 100 * s["tail_cutoff"] / n
+        method_stats[m]["severe_incomplete_rate"] = 100 * s["severe_incomplete"] / n
+        method_stats[m]["directly_usable_rate"] = 100 * s["directly_usable"] / n
+        method_stats[m]["trim_recoverable_rate"] = 100 * s["trim_recoverable"] / n
+
+    # Per-benchmark
+    print("\n8. Per-benchmark metrics (Annotator A)...")
+    bench_stats = defaultdict(lambda: defaultdict(lambda: {
+        "n": 0, "pf2": 0, "directly_usable": 0, "trim_recoverable": 0}))
+    for bid, info in mapping.items():
+        if bid not in a_by_bid:
+            continue
+        pf, cs = a_by_bid[bid]
+        b = info["benchmark"]
+        m = info["method"]
+        bench_stats[b][m]["n"] += 1
+        bench_stats[b][m]["pf2"] += (pf == 2)
+        bench_stats[b][m]["directly_usable"] += (pf == 2 and cs == "complete")
+        bench_stats[b][m]["trim_recoverable"] += (pf >= 1 and cs in ("complete", "tail_cutoff"))
+
+    print(f"\n  {'Benchmark':<24} {'Method':<10} {'N':>4} {'Clean Pfx%':>9} "
+          f"{'Directly%':>9} {'TrimRec%':>9}")
+    print("  " + "-" * 68)
+    for bname in sorted(bench_stats.keys()):
+        for m in ["AR", "FLY", "TASD-BR"]:
+            s = bench_stats[bname][m]
+            n = s["n"]
+            if n == 0:
+                continue
+            print(f"  {bname:<24} {m:<10} {n:>4} {100*s['pf2']/n:>8.1f}% "
+                  f"{100*s['directly_usable']/n:>8.1f}% {100*s['trim_recoverable']/n:>8.1f}%")
+
+    # Pilot decision criteria
+    print("\n9. Pilot decision criteria...")
+    pf_dist = Counter(pf_a)
+    pf_most = max(pf_dist.values()) / n_common
+    print(f"  Prefix distribution: 2={pf_dist[2]} 1={pf_dist[1]} 0={pf_dist[0]}")
+    print(f"  Most common prefix score covers {100*pf_most:.1f}% samples")
+
+    cs_dist = Counter(cs_a)
+    tail_pct = 100 * cs_dist["tail_cutoff"] / n_common
+
+    decisions = []
+    # Criterion 1: score diversity
+    scores_above_10pct = sum(1 for v in [2, 1, 0] if 100*pf_dist[v]/n_common >= 10)
+    if scores_above_10pct >= 2:
+        decisions.append("PASS: At least 2 prefix scores have >=10% (scale has discrimination)")
+    else:
+        decisions.append("STOP: <2 prefix scores at >=10% — scale lacks discrimination, do not expand to 180")
+
+    # Criterion 2: >90% single score
+    if pf_most > 0.90:
+        decisions.append("STOP: >90% in one prefix score — do not expand to 180")
+
+    # Criterion 3: tail_cutoff > 70%
+    if tail_pct > 70:
+        decisions.append("WARNING: tail_cutoff > 70% — keep 128-token bounded-prefix, consider 256-token auxiliary experiment")
+
+    # Criterion 4: kappa < 0.60
+    if pf_kappa < 0.60:
+        decisions.append("WARNING: Prefix weighted kappa < 0.60 — discuss disagreements, revise guideline, restart pilot")
+
+    print(f"  Tail cutoff rate: {tail_pct:.1f}%")
+    for d in decisions:
+        print(f"  -> {d}")
+
+    # Save results
+    out = {
+        "version": "v2",
+        "n_items": n_common,
+        "prefix_agreement": {"raw_pct": 100*pf_agree/n_common, "weighted_kappa": float(pf_kappa)},
+        "completion_agreement": {"raw_pct": 100*cs_agree/n_common, "weighted_kappa": float(cs_kappa)},
+        "prefix_distribution": dict(pf_dist),
+        "completion_distribution": dict(cs_dist),
+        "per_method": {m: {k: v for k, v in method_stats[m].items()} for m in method_stats},
+        "pilot_decisions": decisions,
+    }
+    with open(f"{OUT_DIR}/human_review_statistics.json", "w") as f:
+        json.dump(out, f, indent=2, ensure_ascii=False, default=int)
+    print(f"\n  -> {OUT_DIR}/human_review_statistics.json")
+
+    # Disagreements
+    disagreements = []
+    for bid, apf, acs, bpf, bcs in common:
+        if apf != bpf or acs != bcs:
+            disagreements.append({
+                "blind_id": bid,
+                "A_prefix": apf, "B_prefix": bpf,
+                "A_completion": acs, "B_completion": bcs,
+                "method": mapping[bid]["method"],
+                "benchmark": mapping[bid]["benchmark"],
+            })
+    disp_path = f"{OUT_DIR}/disagreements_for_adjudication.csv"
+    if disagreements:
+        with open(disp_path, "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=disagreements[0].keys())
+            w.writeheader()
+            w.writerows(disagreements)
+    print(f"  Disagreements: {len(disagreements)} -> {disp_path}")
+    print("\nDone.")
 
 def generate_dummy_annotations():
     """Generate dummy annotation JSON files for testing the analysis pipeline."""
@@ -662,10 +918,70 @@ def generate_dummy_annotations():
     print(f"Dummy annotations generated: {OUT_DIR}/annotator_A.json, {OUT_DIR}/annotator_B.json")
 
 
+def generate_dummy_annotations_v2():
+    """Generate dummy V2 annotation files with prefix_score + completion_status."""
+    mapping_file = f"{OUT_DIR}/blind_mapping_private.json"
+    if not os.path.exists(mapping_file):
+        print("ERROR: blind_mapping_private.json not found. Run prepare_blind_review.py first.")
+        return
+
+    with open(mapping_file) as f:
+        mapping = json.load(f)
+
+    ann_a = []
+    ann_b = []
+    for item in mapping:
+        bid = item["blind_id"]
+        method = item["method"]
+
+        if method == "AR":
+            pfx_scores = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2]
+        elif method == "FLY":
+            pfx_scores = [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2]
+        else:
+            pfx_scores = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2]
+
+        random.seed(hash(bid) % 10000)
+        pa = random.choice(pfx_scores)
+        pb = random.choice(pfx_scores)
+        if random.random() < 0.15:
+            pb = (pb + random.choice([1, 2])) % 3
+
+        # Completion status: AR mostly tail_cutoff, FLY/TASD-BR more complete
+        if method == "AR":
+            cs_choices = ["complete", "tail_cutoff", "tail_cutoff", "tail_cutoff", "severe_incomplete"]
+        elif method == "FLY":
+            cs_choices = ["complete", "complete", "tail_cutoff", "tail_cutoff", "severe_incomplete"]
+        else:
+            cs_choices = ["complete", "complete", "complete", "tail_cutoff", "severe_incomplete"]
+        csa = random.choice(cs_choices)
+        csb = random.choice(cs_choices)
+
+        ann_a.append({"blind_id": bid, "prefix_score": pa, "completion_status": csa,
+                       "issue_tags": [], "notes": "", "trim_position": ""})
+        ann_b.append({"blind_id": bid, "prefix_score": pb, "completion_status": csb,
+                       "issue_tags": [], "notes": "", "trim_position": ""})
+
+    with open(f"{OUT_DIR}/annotator_A_v2.json", "w") as f:
+        json.dump(ann_a, f, indent=2)
+    with open(f"{OUT_DIR}/annotator_B_v2.json", "w") as f:
+        json.dump(ann_b, f, indent=2)
+
+    print(f"Dummy V2 annotations generated: {OUT_DIR}/annotator_A_v2.json, {OUT_DIR}/annotator_B_v2.json")
+
+
 if __name__ == "__main__":
-    if "--dummy" in sys.argv:
+    if "--v2" in sys.argv:
+        # V2 dual-dimension analysis
+        args = [a for a in sys.argv[1:] if a != "--v2"]
+        a_path = args[0] if len(args) > 0 else f"{OUT_DIR}/annotator_A_v2.json"
+        b_path = args[1] if len(args) > 1 else f"{OUT_DIR}/annotator_B_v2.json"
+        analyze_v2(a_path, b_path)
+    elif "--dummy" in sys.argv or "--dummy-v2" in sys.argv:
+        generate_dummy_annotations_v2()
+        analyze_v2(f"{OUT_DIR}/annotator_A_v2.json", f"{OUT_DIR}/annotator_B_v2.json")
+    elif "--dummy-v1" in sys.argv:
         generate_dummy_annotations()
-        # Re-run main with dummy data
         main()
     else:
         main(*sys.argv[1:])
