@@ -1,0 +1,1622 @@
+[
+  {
+    "blind_id": "REV-0081",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_044",
+    "original_sample_idx": 43,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0054",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_052",
+    "original_sample_idx": 51,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0083",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_061",
+    "original_sample_idx": 60
+  },
+  {
+    "blind_id": "REV-0129",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_019",
+    "original_sample_idx": 18,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0106",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_026",
+    "original_sample_idx": 25
+  },
+  {
+    "blind_id": "REV-0120",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_079",
+    "original_sample_idx": 78,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0034",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_021",
+    "original_sample_idx": 20
+  },
+  {
+    "blind_id": "REV-0065",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_006",
+    "original_sample_idx": 5
+  },
+  {
+    "blind_id": "REV-0103",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_021",
+    "original_sample_idx": 20
+  },
+  {
+    "blind_id": "REV-0040",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_027",
+    "original_sample_idx": 26
+  },
+  {
+    "blind_id": "REV-0035",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_021",
+    "original_sample_idx": 20
+  },
+  {
+    "blind_id": "REV-0150",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_054",
+    "original_sample_idx": 53,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0031",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_010",
+    "original_sample_idx": 9
+  },
+  {
+    "blind_id": "REV-0087",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_077",
+    "original_sample_idx": 76,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 0,
+      "high_risk": true,
+      "used_ar_text": true
+    }
+  },
+  {
+    "blind_id": "REV-0100",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_014",
+    "original_sample_idx": 13
+  },
+  {
+    "blind_id": "REV-0033",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_010",
+    "original_sample_idx": 9,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 0,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0099",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_012",
+    "original_sample_idx": 11,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0058",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_080",
+    "original_sample_idx": 79
+  },
+  {
+    "blind_id": "REV-0085",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_077",
+    "original_sample_idx": 76
+  },
+  {
+    "blind_id": "REV-0135",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_032",
+    "original_sample_idx": 31,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 0,
+      "high_risk": true,
+      "used_ar_text": true
+    }
+  },
+  {
+    "blind_id": "REV-0003",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_005",
+    "original_sample_idx": 4,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0119",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_079",
+    "original_sample_idx": 78
+  },
+  {
+    "blind_id": "REV-0161",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_013",
+    "original_sample_idx": 12
+  },
+  {
+    "blind_id": "REV-0093",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_003",
+    "original_sample_idx": 2,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0022",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_049",
+    "original_sample_idx": 48
+  },
+  {
+    "blind_id": "REV-0178",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_066",
+    "original_sample_idx": 65
+  },
+  {
+    "blind_id": "REV-0112",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_066",
+    "original_sample_idx": 65
+  },
+  {
+    "blind_id": "REV-0180",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_066",
+    "original_sample_idx": 65,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0149",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_054",
+    "original_sample_idx": 53
+  },
+  {
+    "blind_id": "REV-0066",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_006",
+    "original_sample_idx": 5,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0168",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_027",
+    "original_sample_idx": 26,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0011",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_018",
+    "original_sample_idx": 17
+  },
+  {
+    "blind_id": "REV-0006",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_009",
+    "original_sample_idx": 8,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0137",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_037",
+    "original_sample_idx": 36
+  },
+  {
+    "blind_id": "REV-0163",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_015",
+    "original_sample_idx": 14
+  },
+  {
+    "blind_id": "REV-0056",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_056",
+    "original_sample_idx": 55
+  },
+  {
+    "blind_id": "REV-0082",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_061",
+    "original_sample_idx": 60
+  },
+  {
+    "blind_id": "REV-0173",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_045",
+    "original_sample_idx": 44
+  },
+  {
+    "blind_id": "REV-0130",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_025",
+    "original_sample_idx": 24
+  },
+  {
+    "blind_id": "REV-0140",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_046",
+    "original_sample_idx": 45
+  },
+  {
+    "blind_id": "REV-0042",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_027",
+    "original_sample_idx": 26,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0169",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_028",
+    "original_sample_idx": 27
+  },
+  {
+    "blind_id": "REV-0010",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_018",
+    "original_sample_idx": 17
+  },
+  {
+    "blind_id": "REV-0053",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_052",
+    "original_sample_idx": 51
+  },
+  {
+    "blind_id": "REV-0089",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_080",
+    "original_sample_idx": 79
+  },
+  {
+    "blind_id": "REV-0136",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_037",
+    "original_sample_idx": 36
+  },
+  {
+    "blind_id": "REV-0151",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_001",
+    "original_sample_idx": 0
+  },
+  {
+    "blind_id": "REV-0102",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_014",
+    "original_sample_idx": 13,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0012",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_018",
+    "original_sample_idx": 17,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 0,
+      "high_risk": true,
+      "used_ar_text": true
+    }
+  },
+  {
+    "blind_id": "REV-0176",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_056",
+    "original_sample_idx": 55
+  },
+  {
+    "blind_id": "REV-0050",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_047",
+    "original_sample_idx": 46
+  },
+  {
+    "blind_id": "REV-0177",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_056",
+    "original_sample_idx": 55,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0167",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_027",
+    "original_sample_idx": 26
+  },
+  {
+    "blind_id": "REV-0036",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_021",
+    "original_sample_idx": 20,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0004",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0060",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_080",
+    "original_sample_idx": 79,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0005",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0002",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_005",
+    "original_sample_idx": 4
+  },
+  {
+    "blind_id": "REV-0086",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_077",
+    "original_sample_idx": 76
+  },
+  {
+    "blind_id": "REV-0159",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_008",
+    "original_sample_idx": 7,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0020",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_046",
+    "original_sample_idx": 45
+  },
+  {
+    "blind_id": "REV-0108",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_026",
+    "original_sample_idx": 25,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0157",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_008",
+    "original_sample_idx": 7
+  },
+  {
+    "blind_id": "REV-0156",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_006",
+    "original_sample_idx": 5,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0114",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_066",
+    "original_sample_idx": 65,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0116",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_068",
+    "original_sample_idx": 67
+  },
+  {
+    "blind_id": "REV-0143",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_047",
+    "original_sample_idx": 46
+  },
+  {
+    "blind_id": "REV-0023",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_049",
+    "original_sample_idx": 48
+  },
+  {
+    "blind_id": "REV-0101",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_014",
+    "original_sample_idx": 13
+  },
+  {
+    "blind_id": "REV-0028",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_069",
+    "original_sample_idx": 68
+  },
+  {
+    "blind_id": "REV-0110",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_047",
+    "original_sample_idx": 46
+  },
+  {
+    "blind_id": "REV-0071",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_011",
+    "original_sample_idx": 10
+  },
+  {
+    "blind_id": "REV-0080",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_044",
+    "original_sample_idx": 43
+  },
+  {
+    "blind_id": "REV-0024",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_049",
+    "original_sample_idx": 48,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0014",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_039",
+    "original_sample_idx": 38
+  },
+  {
+    "blind_id": "REV-0078",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_041",
+    "original_sample_idx": 40,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 0,
+      "high_risk": true,
+      "used_ar_text": true
+    }
+  },
+  {
+    "blind_id": "REV-0105",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_021",
+    "original_sample_idx": 20,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0044",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_033",
+    "original_sample_idx": 32
+  },
+  {
+    "blind_id": "REV-0095",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0121",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_005",
+    "original_sample_idx": 4
+  },
+  {
+    "blind_id": "REV-0145",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_053",
+    "original_sample_idx": 52
+  },
+  {
+    "blind_id": "REV-0038",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_023",
+    "original_sample_idx": 22
+  },
+  {
+    "blind_id": "REV-0049",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_047",
+    "original_sample_idx": 46
+  },
+  {
+    "blind_id": "REV-0164",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_015",
+    "original_sample_idx": 14
+  },
+  {
+    "blind_id": "REV-0007",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_017",
+    "original_sample_idx": 16
+  },
+  {
+    "blind_id": "REV-0077",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_041",
+    "original_sample_idx": 40
+  },
+  {
+    "blind_id": "REV-0027",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_063",
+    "original_sample_idx": 62,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0147",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_053",
+    "original_sample_idx": 52,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0152",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_001",
+    "original_sample_idx": 0
+  },
+  {
+    "blind_id": "REV-0015",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_039",
+    "original_sample_idx": 38,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0160",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_013",
+    "original_sample_idx": 12
+  },
+  {
+    "blind_id": "REV-0123",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_005",
+    "original_sample_idx": 4,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 0,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0094",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0133",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_032",
+    "original_sample_idx": 31
+  },
+  {
+    "blind_id": "REV-0097",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_012",
+    "original_sample_idx": 11
+  },
+  {
+    "blind_id": "REV-0170",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_028",
+    "original_sample_idx": 27
+  },
+  {
+    "blind_id": "REV-0072",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_011",
+    "original_sample_idx": 10,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0048",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_035",
+    "original_sample_idx": 34,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0045",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_033",
+    "original_sample_idx": 32,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0062",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_005",
+    "original_sample_idx": 4
+  },
+  {
+    "blind_id": "REV-0174",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_045",
+    "original_sample_idx": 44,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 0,
+      "high_risk": true,
+      "used_ar_text": true
+    }
+  },
+  {
+    "blind_id": "REV-0098",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_012",
+    "original_sample_idx": 11
+  },
+  {
+    "blind_id": "REV-0019",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_046",
+    "original_sample_idx": 45
+  },
+  {
+    "blind_id": "REV-0132",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_025",
+    "original_sample_idx": 24,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0118",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_079",
+    "original_sample_idx": 78
+  },
+  {
+    "blind_id": "REV-0017",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_043",
+    "original_sample_idx": 42
+  },
+  {
+    "blind_id": "REV-0117",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_068",
+    "original_sample_idx": 67,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0076",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_041",
+    "original_sample_idx": 40
+  },
+  {
+    "blind_id": "REV-0043",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_033",
+    "original_sample_idx": 32
+  },
+  {
+    "blind_id": "REV-0141",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_046",
+    "original_sample_idx": 45,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0013",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_039",
+    "original_sample_idx": 38
+  },
+  {
+    "blind_id": "REV-0079",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_044",
+    "original_sample_idx": 43
+  },
+  {
+    "blind_id": "REV-0155",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_006",
+    "original_sample_idx": 5
+  },
+  {
+    "blind_id": "REV-0039",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_023",
+    "original_sample_idx": 22,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0138",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_037",
+    "original_sample_idx": 36,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0075",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_015",
+    "original_sample_idx": 14,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0144",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_047",
+    "original_sample_idx": 46,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0171",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_028",
+    "original_sample_idx": 27,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0142",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_047",
+    "original_sample_idx": 46
+  },
+  {
+    "blind_id": "REV-0179",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_066",
+    "original_sample_idx": 65
+  },
+  {
+    "blind_id": "REV-0063",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_005",
+    "original_sample_idx": 4,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0109",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_047",
+    "original_sample_idx": 46
+  },
+  {
+    "blind_id": "REV-0166",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_027",
+    "original_sample_idx": 26
+  },
+  {
+    "blind_id": "REV-0030",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_069",
+    "original_sample_idx": 68,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0064",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_006",
+    "original_sample_idx": 5
+  },
+  {
+    "blind_id": "REV-0029",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_069",
+    "original_sample_idx": 68
+  },
+  {
+    "blind_id": "REV-0107",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_026",
+    "original_sample_idx": 25
+  },
+  {
+    "blind_id": "REV-0113",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_066",
+    "original_sample_idx": 65
+  },
+  {
+    "blind_id": "REV-0026",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_063",
+    "original_sample_idx": 62
+  },
+  {
+    "blind_id": "REV-0016",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_043",
+    "original_sample_idx": 42
+  },
+  {
+    "blind_id": "REV-0124",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0090",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_080",
+    "original_sample_idx": 79,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 0,
+      "high_risk": true,
+      "used_ar_text": true
+    }
+  },
+  {
+    "blind_id": "REV-0175",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_056",
+    "original_sample_idx": 55
+  },
+  {
+    "blind_id": "REV-0154",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_006",
+    "original_sample_idx": 5
+  },
+  {
+    "blind_id": "REV-0055",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_056",
+    "original_sample_idx": 55
+  },
+  {
+    "blind_id": "REV-0104",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_021",
+    "original_sample_idx": 20
+  },
+  {
+    "blind_id": "REV-0165",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_015",
+    "original_sample_idx": 14,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 0,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0122",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_005",
+    "original_sample_idx": 4
+  },
+  {
+    "blind_id": "REV-0091",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_003",
+    "original_sample_idx": 2
+  },
+  {
+    "blind_id": "REV-0070",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_011",
+    "original_sample_idx": 10
+  },
+  {
+    "blind_id": "REV-0021",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_046",
+    "original_sample_idx": 45,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0061",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_005",
+    "original_sample_idx": 4
+  },
+  {
+    "blind_id": "REV-0037",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_023",
+    "original_sample_idx": 22
+  },
+  {
+    "blind_id": "REV-0059",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_080",
+    "original_sample_idx": 79
+  },
+  {
+    "blind_id": "REV-0041",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_027",
+    "original_sample_idx": 26
+  },
+  {
+    "blind_id": "REV-0052",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_052",
+    "original_sample_idx": 51
+  },
+  {
+    "blind_id": "REV-0162",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_013",
+    "original_sample_idx": 12,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0125",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0001",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_005",
+    "original_sample_idx": 4
+  },
+  {
+    "blind_id": "REV-0092",
+    "method": "FLY",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_003",
+    "original_sample_idx": 2
+  },
+  {
+    "blind_id": "REV-0139",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_046",
+    "original_sample_idx": 45
+  },
+  {
+    "blind_id": "REV-0009",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_017",
+    "original_sample_idx": 16,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0046",
+    "method": "AR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_035",
+    "original_sample_idx": 34
+  },
+  {
+    "blind_id": "REV-0172",
+    "method": "AR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_045",
+    "original_sample_idx": 44
+  },
+  {
+    "blind_id": "REV-0025",
+    "method": "AR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_063",
+    "original_sample_idx": 62
+  },
+  {
+    "blind_id": "REV-0032",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_010",
+    "original_sample_idx": 9
+  },
+  {
+    "blind_id": "REV-0146",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_053",
+    "original_sample_idx": 52
+  },
+  {
+    "blind_id": "REV-0074",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_015",
+    "original_sample_idx": 14
+  },
+  {
+    "blind_id": "REV-0115",
+    "method": "AR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_068",
+    "original_sample_idx": 67
+  },
+  {
+    "blind_id": "REV-0068",
+    "method": "FLY",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0047",
+    "method": "FLY",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_035",
+    "original_sample_idx": 34
+  },
+  {
+    "blind_id": "REV-0096",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_009",
+    "original_sample_idx": 8,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0008",
+    "method": "FLY",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_017",
+    "original_sample_idx": 16
+  },
+  {
+    "blind_id": "REV-0067",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_009",
+    "original_sample_idx": 8
+  },
+  {
+    "blind_id": "REV-0088",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_080",
+    "original_sample_idx": 79
+  },
+  {
+    "blind_id": "REV-0057",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_056",
+    "original_sample_idx": 55,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0126",
+    "method": "TASD-BR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_009",
+    "original_sample_idx": 8,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0128",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_019",
+    "original_sample_idx": 18
+  },
+  {
+    "blind_id": "REV-0051",
+    "method": "TASD-BR",
+    "benchmark": "dict_config",
+    "original_sample_name": "dict_config_real_047",
+    "original_sample_idx": 46,
+    "br_decision": {
+      "bracket_balance": 1.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0073",
+    "method": "AR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_015",
+    "original_sample_idx": 14
+  },
+  {
+    "blind_id": "REV-0018",
+    "method": "TASD-BR",
+    "benchmark": "argparse",
+    "original_sample_name": "argparse_real_043",
+    "original_sample_idx": 42,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0148",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_054",
+    "original_sample_idx": 53
+  },
+  {
+    "blind_id": "REV-0111",
+    "method": "TASD-BR",
+    "benchmark": "pipeline_stage_config",
+    "original_sample_name": "pipeline_stage_config_047",
+    "original_sample_idx": 46,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0069",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_009",
+    "original_sample_idx": 8,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0153",
+    "method": "TASD-BR",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_001",
+    "original_sample_idx": 0,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0084",
+    "method": "TASD-BR",
+    "benchmark": "openmmlab_config",
+    "original_sample_name": "openmmlab_config_real_061",
+    "original_sample_idx": 60,
+    "br_decision": {
+      "bracket_balance": 0.0,
+      "is_truncated": 1,
+      "high_risk": false,
+      "used_ar_text": false
+    }
+  },
+  {
+    "blind_id": "REV-0158",
+    "method": "FLY",
+    "benchmark": "rich_cli_option_groups",
+    "original_sample_name": "rich_cli_option_groups_008",
+    "original_sample_idx": 7
+  },
+  {
+    "blind_id": "REV-0131",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_025",
+    "original_sample_idx": 24
+  },
+  {
+    "blind_id": "REV-0127",
+    "method": "AR",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_019",
+    "original_sample_idx": 18
+  },
+  {
+    "blind_id": "REV-0134",
+    "method": "FLY",
+    "benchmark": "complex_nested_config",
+    "original_sample_name": "complex_nested_config_032",
+    "original_sample_idx": 31
+  }
+]
