@@ -1,0 +1,22 @@
+{
+  "audit_type": "independent_syntax_audit",
+  "note": "Aggregate counts only. No blind_ids, prompts, continuations, or human scores.",
+  "summary": {
+    "total_items": 90,
+    "ast_applicable": 1,
+    "ast_not_applicable": 89,
+    "full_text_parses_ok": 2,
+    "items_with_anomalies": 7
+  },
+  "tail_trim_results": {
+    "not_applicable": 89,
+    "trim_parse_fail": 1
+  },
+  "anomaly_types": {
+    "ngram_repetition_6": 5,
+    "ngram_repetition_8": 1,
+    "markdown_fence": 1,
+    "role_marker": 1,
+    "low_python_structure": 1
+  }
+}

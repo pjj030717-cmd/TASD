@@ -56,3 +56,7 @@ results/score_validator_review/annotator_A.json
 results/score_validator_review/annotator_B.json
 results/score_validator_review/disagreements_for_adjudication.csv
 results/score_validator_review/statistics.json
+results/score_validator_review/syntax_audit.json
+results/score_validator_review/syntax_audit_report.md
+results/score_validator_review/intra_rater_report.md
+results/score_validator_review/intra_rater_statistics.json
