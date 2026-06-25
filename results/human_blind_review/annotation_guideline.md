@@ -50,7 +50,7 @@ They do NOT affect the score directly — the score is always a holistic judgmen
 | `bracket_or_delimiter` | Brackets, parentheses, braces, or delimiters are unbalanced |
 | `indentation` | Indentation is inconsistent or broken |
 | `incomplete` | Content/structure is genuinely broken or incomplete (not just cut off) |
-| `cut_off` | Text ends abruptly mid-structure; preceding content looks structurally sound. Likely hit the generation max-length limit, not a model failure. |
+| `cut_off` | Text ends abruptly mid-structure; preceding content is structurally sound. Due to generation max-length limit (128 tokens), NOT a model failure. |
 | `repetition` | Tokens, lines, or blocks are repeated excessively |
 | `off_structure` | Content drifts into a different structure type than the prompt |
 | `wrong_content` | Factual errors, wrong variable names, or incorrect parameters |
@@ -100,10 +100,10 @@ They do NOT affect the score directly — the score is always a holistic judgmen
 ## FAQ
 
 **Q: The continuation seems cut off. How do I score it?**
-A: Distinguish _why_ it's cut off:
-- If the content up to the cut-off point is structurally sound (just ran out of space), score based on the visible portion — it may still be score 1. Tag it `cut_off`.
-- If the continuation is garbled or broken before the cut-off, score accordingly (likely 0) and tag it `incomplete`.
-- If both apply, use both tags.
+A: Score what's there, not what's missing:
+- If the visible content is fully usable as-is → Score 2, tag `cut_off` only.
+- If the cut-off created a fixable structural issue (e.g. missing closing bracket) → Score 1, tag `cut_off`.
+- If the content is garbled/broken regardless of the cut-off → Score 0, tag `incomplete`.
 
 **Q: There's a small typo or naming issue.**
 A: If it's fixable in one local edit, it's score 1 (not 2). If the name is
