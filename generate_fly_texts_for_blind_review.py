@@ -2,19 +2,19 @@
 """
 Generate FLY texts for the 60 prompts selected for human blind review.
 
-FLY checkpoint files (results/qwen_6x80_checkpoints/*_FLY.json) only store
-aggregate stats (tps, sp, sq, mat, ngram_acc) without the generated text.
-This script re-runs Official FLY (k=15) on exactly those 60 prompts
-and saves the texts to a standalone file.
+Uses the same stratified sampling (seed=20260624) as prepare_blind_review.py
+to identify exactly which 60 prompts need FLY output.
 
 REQUIRES: GPU with Qwen2.5-14B-Instruct-AWQ + Qwen2.5-1.5B-Instruct loaded.
 Runtime: ~10-15 minutes for 60 prompts.
 
 Output: results/human_blind_review/fly_texts_for_blind_review.json
+  Keyed by (benchmark, sample_name) so prepare_blind_review.py can load them.
 """
 
 import json
 import os
+import random
 import time
 import logging
 import importlib.util
@@ -25,6 +25,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 TARGET_PATH = "Qwen/Qwen2.5-14B-Instruct-AWQ"
 DRAFT_PATH = "Qwen/Qwen2.5-1.5B-Instruct"
 MAX_NEW_TOKENS = 128
+SAMPLING_SEED = 20260624
+SAMPLES_PER_BENCHMARK = 10
 
 FLY_K15 = {
     "k": 15, "total_gen_tok": MAX_NEW_TOKENS,
@@ -33,6 +35,15 @@ FLY_K15 = {
     "verbose": False, "abla_no_window": False, "enable_statistics": True,
 }
 
+BENCHMARKS = [
+    ("argparse", "data/codesearchnet_argparse_blocks_80.jsonl"),
+    ("dict_config", "data/codesearchnet_dict_config_blocks_80.jsonl"),
+    ("openmmlab_config", "data/ml_config_blocks_openmmlab_80.jsonl"),
+    ("pipeline_stage_config", "data/pipeline_stage_config_80.jsonl"),
+    ("complex_nested_config", "data/complex_nested_config_80.jsonl"),
+    ("rich_cli_option_groups", "data/rich_cli_option_groups_80.jsonl"),
+]
+
 # ─── Import FLY ──────────────────────────────────────────────────────────
 fly_path = os.path.join(os.path.dirname(__file__), "FLy", "fly", "models", "FLy.py")
 spec = importlib.util.spec_from_file_location("FLy", fly_path)
@@ -40,16 +51,27 @@ FLy = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(FLy)
 SPDGenerate = FLy.SPDGenerate
 
-# ─── Load missing sample list ────────────────────────────────────────────
-missing_file = "results/human_blind_review_missing_samples.json"
-with open(missing_file) as f:
-    missing = json.load(f)
+# ─── Step 1: Identify 60 selected prompts (same as prepare_blind_review.py) ──
+print("=" * 60)
+print("Step 1: Identify selected prompts (seed=20260624)")
+print("=" * 60)
 
-fly_missing = missing["fly_missing_samples"]
-print(f"FLY texts to generate: {len(fly_missing)}")
+random.seed(SAMPLING_SEED)
+selected_prompts = []  # [(bname, sample_name, full_prompt)]
+
+for bname, data_file in BENCHMARKS:
+    with open(data_file) as f:
+        samples = [json.loads(line.strip()) for line in f.readlines()]
+    n = len(samples)
+    indices = sorted(random.sample(range(n), SAMPLES_PER_BENCHMARK))
+    for i in indices:
+        selected_prompts.append((bname, samples[i]["name"], samples[i]["prompt"]))
+    print(f"  {bname}: {len(indices)}/{n} selected")
+
+print(f"\nTotal prompts to generate: {len(selected_prompts)}")
 
 # ─── Load models ─────────────────────────────────────────────────────────
-print("Loading models...")
+print("\nLoading models...")
 tokenizer = AutoTokenizer.from_pretrained(TARGET_PATH, local_files_only=True,
                                            trust_remote_code=True)
 if tokenizer.pad_token_id is None:
@@ -73,47 +95,10 @@ if not fly_logger.handlers:
     fly_logger.addHandler(h)
 
 # ─── Generate ────────────────────────────────────────────────────────────
-fly_texts = {}  # {blind_id: text}
+print(f"\nGenerating FLY texts ({len(selected_prompts)} prompts)...")
+fly_texts = {}
 
-for i, item in enumerate(fly_missing):
-    bid = item["blind_id"]
-    prompt_text = item["prompt_preview"].rstrip("...")
-
-    # We stored only a 200-char preview; need full prompt from original data
-    # The preview may be truncated, so reconstruct from the sample name
-    bname = item["benchmark"]
-    sample_name = item["original_sample_name"]
-
-    # Load full prompt from benchmark file
-    # Map benchmark to data file
-    bench_files = {
-        "argparse": "data/codesearchnet_argparse_blocks_80.jsonl",
-        "dict_config": "data/codesearchnet_dict_config_blocks_80.jsonl",
-        "openmmlab_config": "data/ml_config_blocks_openmmlab_80.jsonl",
-        "pipeline_stage_config": "data/pipeline_stage_config_80.jsonl",
-        "complex_nested_config": "data/complex_nested_config_80.jsonl",
-        "rich_cli_option_groups": "data/rich_cli_option_groups_80.jsonl",
-    }
-
-    data_file = bench_files.get(bname)
-    if not data_file or not os.path.exists(data_file):
-        print(f"  [{i+1}/{len(fly_missing)}] {bid} SKIP: data file not found for {bname}")
-        continue
-
-    with open(data_file) as f:
-        samples = [json.loads(line.strip()) for line in f.readlines()]
-
-    full_prompt = None
-    for s in samples:
-        if s["name"] == sample_name:
-            full_prompt = s["prompt"]
-            break
-
-    if full_prompt is None:
-        print(f"  [{i+1}/{len(fly_missing)}] {bid} SKIP: sample {sample_name} not found")
-        continue
-
-    # Run FLY
+for i, (bname, sample_name, full_prompt) in enumerate(selected_prompts):
     input_ids = tokenizer(full_prompt, return_tensors="pt").input_ids
     prompt_len = input_ids.shape[1]
     spd_gen = SPDGenerate(draft_model=draft, target_model=target,
@@ -133,8 +118,8 @@ for i, item in enumerate(fly_missing):
     n_emitted = spd_gen.num_emitted_tokens.item() if spd_gen._counter_inited else gen_len
     mat = n_acc / n_emitted if n_emitted > 0 else 0
 
-    fly_texts[bid] = {
-        "blind_id": bid,
+    key = f"{bname}/{sample_name}"
+    fly_texts[key] = {
         "benchmark": bname,
         "sample_name": sample_name,
         "text": text,
@@ -144,21 +129,27 @@ for i, item in enumerate(fly_missing):
         "mat": round(mat, 2),
     }
 
-    print(f"  [{i+1}/{len(fly_missing)}] {bid} ({bname}/{sample_name}): "
-          f"tps={tps:.1f}, len={gen_len}")
+    print(f"  [{i+1}/{len(selected_prompts)}] {key}: tps={tps:.1f}, len={gen_len}")
 
 # ─── Save ────────────────────────────────────────────────────────────────
 out_path = "results/human_blind_review/fly_texts_for_blind_review.json"
 with open(out_path, "w") as f:
     json.dump(fly_texts, f, indent=2, ensure_ascii=False)
 
-print(f"\nGenerated {len(fly_texts)}/{len(fly_missing)} FLY texts.")
+print(f"\nGenerated {len(fly_texts)} FLY texts.")
 print(f"Saved to: {out_path}")
 
-# Instructions for next step
-if len(fly_texts) < len(fly_missing):
-    print(f"\nWARNING: {len(fly_missing) - len(fly_texts)} texts could not be generated.")
-    print("Check the missing sample names and data files.")
+# ─── Verify ──────────────────────────────────────────────────────────────
+per_bm = {}
+for key, entry in fly_texts.items():
+    bm = entry["benchmark"]
+    per_bm[bm] = per_bm.get(bm, 0) + 1
+    if not entry["text"]:
+        print(f"  WARNING: {key} has empty text!")
+    if len(entry["text"]) < 5:
+        print(f"  WARNING: {key} has very short text: {entry['text']!r}")
 
-print("\nNext: Run python prepare_blind_review.py again with FLY texts available")
-print("  to regenerate HTML annotators with complete data.")
+print("\nVerification:")
+for bm, expected in [(b[0], 10) for b in BENCHMARKS]:
+    actual = per_bm.get(bm, 0)
+    print(f"  {bm}: {actual}/10 {'PASS' if actual == expected else 'FAIL'}")

@@ -41,3 +41,10 @@ benchmark_sources/
 # Temporary
 *.tmp
 *.log
+
+# Human blind review — private materials (DO NOT COMMIT)
+results/human_blind_review/private/
+results/human_blind_review/annotator_A.json
+results/human_blind_review/annotator_B.json
+results/human_blind_review/disagreements_for_adjudication.csv
+results/human_blind_review/human_review_statistics.json

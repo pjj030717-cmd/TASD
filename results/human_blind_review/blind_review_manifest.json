@@ -1,0 +1,46 @@
+{
+  "version": "v2-secrets-blinding",
+  "sampling_seed": 20260624,
+  "n_prompts": 60,
+  "n_items": 180,
+  "methods": [
+    "AR",
+    "FLY",
+    "TASD-BR"
+  ],
+  "br_rerun_policy": {
+    "source_file": "src/br_rerun_policy.py",
+    "function": "is_br_rerun()",
+    "rule": "bracket_balance < 0.50 AND is_truncated == 0",
+    "n_rerun_60": 6,
+    "rerun_pct": 10.0
+  },
+  "per_benchmark_rerun": {
+    "argparse": {
+      "total": 10,
+      "rerun": 1
+    },
+    "dict_config": {
+      "total": 10,
+      "rerun": 0
+    },
+    "openmmlab_config": {
+      "total": 10,
+      "rerun": 3
+    },
+    "pipeline_stage_config": {
+      "total": 10,
+      "rerun": 0
+    },
+    "complex_nested_config": {
+      "total": 10,
+      "rerun": 1
+    },
+    "rich_cli_option_groups": {
+      "total": 10,
+      "rerun": 1
+    }
+  },
+  "fly_status": "60/60 missing",
+  "blind_id_format": "BRV-XXXXXXXX (hex, secrets-based, not reproducible without key)"
+}

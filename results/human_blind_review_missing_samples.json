@@ -1,427 +1,364 @@
 {
-  "fly_missing_count": 60,
-  "fly_missing_reason": "FLY checkpoint files (results/qwen_6x80_checkpoints/*_FLY.json) only contain aggregate stats (tps, sp, sq, mat, ngram_acc, wall, gen_len) without the 'text' field. The run_fly() function DOES return text, but the checkpoint saving code omitted it.",
-  "fly_resolution": "Run: python generate_fly_texts_for_blind_review.py  (requires GPU, ~10-15 min for 60 prompts)",
-  "fly_missing_samples": [
+  "fly_missing": [
     {
-      "blind_id": "REV-0002",
+      "blind_id": "BRV-025E4127",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_005",
-      "original_sample_idx": 4,
-      "prompt_preview": "    solver_mode_options.add_argument(\n        \"--strict-channel-priority\",\n        action=\"store_const\",\n        dest=\"channel_priority\",\n        default=NULL,\n        const=\"strict\",\n        help=\"Pa..."
+      "sample_name": "argparse_real_005",
+      "sample_idx": 4
     },
     {
-      "blind_id": "REV-0005",
+      "blind_id": "BRV-0690E70E",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_009",
-      "original_sample_idx": 8,
-      "prompt_preview": "    removal_target_options.add_argument(\n        \"-a\",\n        \"--all\",\n        action=\"store_true\",\n        help=\"Remove index cache, lock files, unused cache packages, tarballs, and logfiles.\",\n    ..."
+      "sample_name": "argparse_real_009",
+      "sample_idx": 8
     },
     {
-      "blind_id": "REV-0008",
+      "blind_id": "BRV-0A2F9E20",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_017",
-      "original_sample_idx": 16,
-      "prompt_preview": "    package_install_options.add_argument(\n        \"-m\",\n        \"--mkdir\",\n        action=\"store_true\",\n        help=\"Create the environment directory, if necessary.\",\n    )\n    package_install_option..."
+      "sample_name": "argparse_real_017",
+      "sample_idx": 16
     },
     {
-      "blind_id": "REV-0011",
+      "blind_id": "BRV-0D4903CB",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_018",
-      "original_sample_idx": 17,
-      "prompt_preview": "    p.add_argument(\n        \"--reverse\",\n        action=\"store_true\",\n        default=False,\n        help=\"List installed packages in reverse order.\",\n    )\n    p.add_argument(\n        \"-c\",\n        \"..."
+      "sample_name": "argparse_real_018",
+      "sample_idx": 17
     },
     {
-      "blind_id": "REV-0014",
+      "blind_id": "BRV-1093C2F8",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_039",
-      "original_sample_idx": 38,
-      "prompt_preview": "        self.cmd_opts.add_option(cmdoptions.no_binary())\n        self.cmd_opts.add_option(cmdoptions.only_binary())\n        self.cmd_opts.add_option(cmdoptions.prefer_binary())..."
+      "sample_name": "argparse_real_039",
+      "sample_idx": 38
     },
     {
-      "blind_id": "REV-0017",
+      "blind_id": "BRV-12C75780",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_043",
-      "original_sample_idx": 42,
-      "prompt_preview": "    parser.add_argument(\n        \"input\",\n        help=\"File whose encoding we would like to determine. (default: stdin)\",\n        type=argparse.FileType(\"rb\"),\n        nargs=\"*\",\n        default=[sys..."
+      "sample_name": "argparse_real_043",
+      "sample_idx": 42
     },
     {
-      "blind_id": "REV-0020",
+      "blind_id": "BRV-18EE3DBB",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_046",
-      "original_sample_idx": 45,
-      "prompt_preview": "    special_modes.add_argument(\n        '-S', metavar='STYLE -f formatter',\n        help='Print style definitions for STYLE for a formatter '\n        'given with -f. The argument given by -a is format..."
+      "sample_name": "argparse_real_046",
+      "sample_idx": 45
     },
     {
-      "blind_id": "REV-0023",
+      "blind_id": "BRV-1AFCD302",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_049",
-      "original_sample_idx": 48,
-      "prompt_preview": "    group.add_argument('-l', '--list', metavar='<tarfile>',\n                       help='Show listing of a tarfile')\n    group.add_argument('-e', '--extract', nargs='+',\n                       metavar..."
+      "sample_name": "argparse_real_049",
+      "sample_idx": 48
     },
     {
-      "blind_id": "REV-0026",
+      "blind_id": "BRV-1E01DE75",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_063",
-      "original_sample_idx": 62,
-      "prompt_preview": "    distributed_args.add_argument(\n        \"--gpu_ids\",\n        default=None,\n        help=\"What GPUs (by id) should be used for training on this machine as a comma-separated list\",\n    )\n    distribu..."
+      "sample_name": "argparse_real_063",
+      "sample_idx": 62
     },
     {
-      "blind_id": "REV-0029",
+      "blind_id": "BRV-2473CF4F",
       "benchmark": "argparse",
-      "original_sample_name": "argparse_real_069",
-      "original_sample_idx": 68,
-      "prompt_preview": "    fsdp_args.add_argument(\n        \"--fsdp_forward_prefetch\",\n        default=\"false\",\n        type=str,\n        help=\"If True, then FSDP explicitly prefetches the next upcoming \"\n        \"all-gather..."
+      "sample_name": "argparse_real_069",
+      "sample_idx": 68
     },
     {
-      "blind_id": "REV-0032",
+      "blind_id": "BRV-25029088",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_010",
-      "original_sample_idx": 9,
-      "prompt_preview": "    ALL_PRIMITIVE_TYPES = {\n        'char':               'c',\n        'short':              'i',\n        'int':                'i',\n        'long':               'i',\n        'long long':          'i..."
+      "sample_name": "dict_config_real_010",
+      "sample_idx": 9
     },
     {
-      "blind_id": "REV-0035",
+      "blind_id": "BRV-26B87933",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_021",
-      "original_sample_idx": 20,
-      "prompt_preview": "\t\tflags = {\n\t\t\t'fpu' : _is_bit_set(edx, 0),\n\t\t\t'vme' : _is_bit_set(edx, 1),\n\t\t\t'de' : _is_bit_set(edx, 2),\n\t\t\t'pse' : _is_bit_set(edx, 3),\n\t\t\t'tsc' : _is_bit_set(edx, 4),..."
+      "sample_name": "dict_config_real_021",
+      "sample_idx": 20
     },
     {
-      "blind_id": "REV-0038",
+      "blind_id": "BRV-300C65DB",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_023",
-      "original_sample_idx": 22,
-      "prompt_preview": "\t\t\textended_flags = {\n\t\t\t\t'fpu' : _is_bit_set(ebx, 0),\n\t\t\t\t'vme' : _is_bit_set(ebx, 1),\n\t\t\t\t'de' : _is_bit_set(ebx, 2),\n\t\t\t\t'pse' : _is_bit_set(ebx, 3),\n\t\t\t\t'tsc' : _is_bit_set(ebx, 4),..."
+      "sample_name": "dict_config_real_023",
+      "sample_idx": 22
     },
     {
-      "blind_id": "REV-0041",
+      "blind_id": "BRV-31735784",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_027",
-      "original_sample_idx": 26,
-      "prompt_preview": "\t\tinfo = {\n\t\t'vendor_id_raw' : vendor_id,\n\t\t'brand_raw' : processor_brand,\n\n\t\t'hz_advertised_friendly' : _hz_short_to_friendly(hz_advertised, scale),..."
+      "sample_name": "dict_config_real_027",
+      "sample_idx": 26
     },
     {
-      "blind_id": "REV-0044",
+      "blind_id": "BRV-34E16140",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_033",
-      "original_sample_idx": 32,
-      "prompt_preview": "\t\tinfo = {\n\t\t'vendor_id_raw' : vendor_id,\n\t\t'brand_raw' : processor_brand,\n..."
+      "sample_name": "dict_config_real_033",
+      "sample_idx": 32
     },
     {
-      "blind_id": "REV-0047",
+      "blind_id": "BRV-36969FAE",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_035",
-      "original_sample_idx": 34,
-      "prompt_preview": "NAMESPACES_MAP = {  # base package name, namespace\n    \"python\": \"python\",\n    \"r\": \"r\",\n    \"r-base\": \"r\",\n    \"mro-base\": \"r\",\n    \"erlang\": \"erlang\",..."
+      "sample_name": "dict_config_real_035",
+      "sample_idx": 34
     },
     {
-      "blind_id": "REV-0050",
+      "blind_id": "BRV-39F60A11",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_047",
-      "original_sample_idx": 46,
-      "prompt_preview": "    _ENUM_STR_MAP = {\n        \"NOT_SET\": DepsModifier.NOT_SET,\n        \"NO_DEPS\": DepsModifier.NO_DEPS,..."
+      "sample_name": "dict_config_real_047",
+      "sample_idx": 46
     },
     {
-      "blind_id": "REV-0053",
+      "blind_id": "BRV-40F7E908",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_052",
-      "original_sample_idx": 51,
-      "prompt_preview": "        pl = {\n            \"CFBundleName\": shortname,\n            \"CFBundleDisplayName\": name,..."
+      "sample_name": "dict_config_real_052",
+      "sample_idx": 51
     },
     {
-      "blind_id": "REV-0056",
+      "blind_id": "BRV-449DACE3",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_056",
-      "original_sample_idx": 55,
-      "prompt_preview": "COMPLETION_SCRIPTS = {\n    \"bash\": \"\"\"\n        _pip_completion()\n        {{\n            COMPREPLY=( $( COMP_WORDS=\"${{COMP_WORDS[*]}}\" \\\\\n                           COMP_CWORD=$COMP_CWORD \\\\..."
+      "sample_name": "dict_config_real_056",
+      "sample_idx": 55
     },
     {
-      "blind_id": "REV-0059",
+      "blind_id": "BRV-46461F2D",
       "benchmark": "dict_config",
-      "original_sample_name": "dict_config_real_080",
-      "original_sample_idx": 79,
-      "prompt_preview": "    tokens = {\n        'root': [\n            (r'(>>> )(.*\\n)', bygroups(Generic.Prompt, Other.Code), 'continuations'),\n            # This happens, e.g., when tracebacks are embedded in documentation;\n..."
+      "sample_name": "dict_config_real_080",
+      "sample_idx": 79
     },
     {
-      "blind_id": "REV-0062",
+      "blind_id": "BRV-4A2D9370",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_005",
-      "original_sample_idx": 4,
-      "prompt_preview": "test_pipeline = [\n    dict(type='LoadImageFromFile', backend_args=backend_args),\n    dict(type='Resize', scale=(2048, 512), keep_ratio=True),\n    dict(..."
+      "sample_name": "openmmlab_config_real_005",
+      "sample_idx": 4
     },
     {
-      "blind_id": "REV-0065",
+      "blind_id": "BRV-50C782CF",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_006",
-      "original_sample_idx": 5,
-      "prompt_preview": "val_dataloader = dict(\n    batch_size=1,\n    num_workers=2,\n    persistent_workers=True,..."
+      "sample_name": "openmmlab_config_real_006",
+      "sample_idx": 5
     },
     {
-      "blind_id": "REV-0068",
+      "blind_id": "BRV-580F5DFB",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_009",
-      "original_sample_idx": 8,
-      "prompt_preview": "train_dataloader = dict(\n    batch_size=1,\n    num_workers=2,\n    persistent_workers=True,\n    sampler=dict(type='DefaultSampler', shuffle=True),..."
+      "sample_name": "openmmlab_config_real_009",
+      "sample_idx": 8
     },
     {
-      "blind_id": "REV-0071",
+      "blind_id": "BRV-6283B5E7",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_011",
-      "original_sample_idx": 10,
-      "prompt_preview": "train_pipeline = [\n    dict(type='LoadImageFromFile', backend_args=backend_args),\n    dict(type='LoadAnnotations', with_bbox=True, with_mask=True),..."
+      "sample_name": "openmmlab_config_real_011",
+      "sample_idx": 10
     },
     {
-      "blind_id": "REV-0074",
+      "blind_id": "BRV-6380EACE",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_015",
-      "original_sample_idx": 14,
-      "prompt_preview": "test_pipeline = [\n    dict(\n        type='LoadImageFromFile',\n        imdecode_backend='pillow',..."
+      "sample_name": "openmmlab_config_real_015",
+      "sample_idx": 14
     },
     {
-      "blind_id": "REV-0077",
+      "blind_id": "BRV-66B11352",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_041",
-      "original_sample_idx": 40,
-      "prompt_preview": "val_dataloader = dict(\n    batch_size=16,\n    num_workers=5,\n    dataset=dict(..."
+      "sample_name": "openmmlab_config_real_041",
+      "sample_idx": 40
     },
     {
-      "blind_id": "REV-0080",
+      "blind_id": "BRV-6B13FE70",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_044",
-      "original_sample_idx": 43,
-      "prompt_preview": "train_dataloader = dict(\n    batch_size=16,\n    num_workers=8,\n    dataset=dict(\n        type='COCOVQA',..."
+      "sample_name": "openmmlab_config_real_044",
+      "sample_idx": 43
     },
     {
-      "blind_id": "REV-0083",
+      "blind_id": "BRV-6DDEC289",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_061",
-      "original_sample_idx": 60,
-      "prompt_preview": "val_dataloader = dict(\n    batch_size=24,\n    num_workers=2,\n    persistent_workers=True,\n    drop_last=False,..."
+      "sample_name": "openmmlab_config_real_061",
+      "sample_idx": 60
     },
     {
-      "blind_id": "REV-0086",
+      "blind_id": "BRV-6EE1884A",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_077",
-      "original_sample_idx": 76,
-      "prompt_preview": "test_pipeline = [\n    dict(type='LoadImageFromFile', color_type='color_ignore_orientation'),\n    dict(type='Resize', scale=(4068, 1024), keep_ratio=True),\n    dict(..."
+      "sample_name": "openmmlab_config_real_077",
+      "sample_idx": 76
     },
     {
-      "blind_id": "REV-0089",
+      "blind_id": "BRV-71CBAFB0",
       "benchmark": "openmmlab_config",
-      "original_sample_name": "openmmlab_config_real_080",
-      "original_sample_idx": 79,
-      "prompt_preview": "test_pipeline = [\n    dict(type='LoadImageFromFile', color_type='color_ignore_orientation'),\n    dict(type='Resize', scale=(1333, 736), keep_ratio=True),\n    dict(..."
+      "sample_name": "openmmlab_config_real_080",
+      "sample_idx": 79
     },
     {
-      "blind_id": "REV-0092",
+      "blind_id": "BRV-785F35C3",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_003",
-      "original_sample_idx": 2,
-      "prompt_preview": "train_pipeline = [\n    dict(type='LoadImage'),\n    dict(type='GetBBoxCenterScale'),\n    dict(type='RandomFlip', direction='horizontal'),..."
+      "sample_name": "pipeline_stage_config_003",
+      "sample_idx": 2
     },
     {
-      "blind_id": "REV-0095",
+      "blind_id": "BRV-79A25AE4",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_009",
-      "original_sample_idx": 8,
-      "prompt_preview": "sup_pipeline = [\n    dict(type='LoadImageFromFile', backend_args=backend_args),\n    dict(type='LoadAnnotations', with_bbox=True),\n    dict(type='RandomResize', scale=scale, keep_ratio=True),..."
+      "sample_name": "pipeline_stage_config_009",
+      "sample_idx": 8
     },
     {
-      "blind_id": "REV-0098",
+      "blind_id": "BRV-7DA56FB6",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_012",
-      "original_sample_idx": 11,
-      "prompt_preview": "train_pipeline = [\n    dict(type='LoadImage'),\n    dict(type='GetBBoxCenterScale'),..."
+      "sample_name": "pipeline_stage_config_012",
+      "sample_idx": 11
     },
     {
-      "blind_id": "REV-0101",
+      "blind_id": "BRV-873FA473",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_014",
-      "original_sample_idx": 13,
-      "prompt_preview": "train_pipeline = [\n    dict(type='LoadImageFromFile', ignore_empty=True, min_size=2),\n    dict(type='LoadOCRAnnotations', with_text=True),\n    dict(..."
+      "sample_name": "pipeline_stage_config_014",
+      "sample_idx": 13
     },
     {
-      "blind_id": "REV-0104",
+      "blind_id": "BRV-88B13933",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_021",
-      "original_sample_idx": 20,
-      "prompt_preview": "view_pipeline = [\n    dict(\n        type='RandomResizedCrop',\n        scale=224,\n        crop_ratio_range=(0.2, 1.),\n        backend='pillow'),..."
+      "sample_name": "pipeline_stage_config_021",
+      "sample_idx": 20
     },
     {
-      "blind_id": "REV-0107",
+      "blind_id": "BRV-8AC4C77C",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_026",
-      "original_sample_idx": 25,
-      "prompt_preview": "train_pipeline = [\n    dict(type='LoadImageFromFile', backend_args={{_base_.backend_args}}),\n    dict(type='LoadAnnotations', with_bbox=True),\n    dict(type='CachedMosaic', img_scale=(640, 640), pad_v..."
+      "sample_name": "pipeline_stage_config_026",
+      "sample_idx": 25
     },
     {
-      "blind_id": "REV-0110",
+      "blind_id": "BRV-8EC4BC47",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_047",
-      "original_sample_idx": 46,
-      "prompt_preview": "train_pipeline = [\n    dict(type='LoadImageFromFile', backend_args=backend_args),\n    dict(type='LoadAnnotations', with_bbox=True),\n    dict(\n        type='Expand',..."
+      "sample_name": "pipeline_stage_config_047",
+      "sample_idx": 46
     },
     {
-      "blind_id": "REV-0113",
+      "blind_id": "BRV-929E82F2",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_066",
-      "original_sample_idx": 65,
-      "prompt_preview": "test_pipeline = [\n    dict(type='LoadImageFromFile'),\n    dict(type='Resize', scale=(896, 896), keep_ratio=True),..."
+      "sample_name": "pipeline_stage_config_066",
+      "sample_idx": 65
     },
     {
-      "blind_id": "REV-0116",
+      "blind_id": "BRV-93FA3858",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_068",
-      "original_sample_idx": 67,
-      "prompt_preview": "test_pipeline = [\n    dict(type='DecordInit'),\n    dict(\n        type='SampleFrames',..."
+      "sample_name": "pipeline_stage_config_068",
+      "sample_idx": 67
     },
     {
-      "blind_id": "REV-0119",
+      "blind_id": "BRV-9860EEF2",
       "benchmark": "pipeline_stage_config",
-      "original_sample_name": "pipeline_stage_config_079",
-      "original_sample_idx": 78,
-      "prompt_preview": "train_pipeline = [\n    dict(type='LoadImage'),\n    dict(type='GetBBoxCenterScale'),..."
+      "sample_name": "pipeline_stage_config_079",
+      "sample_idx": 78
     },
     {
-      "blind_id": "REV-0122",
+      "blind_id": "BRV-9BCAE8AE",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_005",
-      "original_sample_idx": 4,
-      "prompt_preview": "_PACKAGED_DATASETS_MODULES = {\n\n    \"csv\": (csv.__name__, _hash_python_lines(inspect.getsource(csv).splitlines())),\n\n    \"json\": (json.__name__, _hash_python_lines(inspect.getsource(json).splitlines()..."
+      "sample_name": "complex_nested_config_005",
+      "sample_idx": 4
     },
     {
-      "blind_id": "REV-0125",
+      "blind_id": "BRV-9DBC585B",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_009",
-      "original_sample_idx": 8,
-      "prompt_preview": "    tokens = {\n\n        \"commentsandwhitespace\": [(r\"\\s+\", Whitespace), (r\";.+$\", Comment.Single)],\n\n        \"root\": [\n\n            include(\"commentsandwhitespace\"),\n\n            # tag types\n\n        ..."
+      "sample_name": "complex_nested_config_009",
+      "sample_idx": 8
     },
     {
-      "blind_id": "REV-0128",
+      "blind_id": "BRV-9FF0E1DA",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_019",
-      "original_sample_idx": 18,
-      "prompt_preview": "    skeleton_info={\n\n        0: dict(link=('nose', 'neck'), id=0, color=[51, 153, 255]),\n\n        1: dict(link=('neck', 'left_shoulder'), id=1, color=[0, 255, 0]),\n\n        2: dict(link=('neck', 'righ..."
+      "sample_name": "complex_nested_config_019",
+      "sample_idx": 18
     },
     {
-      "blind_id": "REV-0131",
+      "blind_id": "BRV-A806DB20",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_025",
-      "original_sample_idx": 24,
-      "prompt_preview": "        meta={\n\n            **_COMMON_META,\n\n            \"num_params\": 87930848,\n\n            \"min_size\": (256, 256),\n\n            \"recipe\": \"https://github.com/pytorch/vision/tree/main/references/cla..."
+      "sample_name": "complex_nested_config_025",
+      "sample_idx": 24
     },
     {
-      "blind_id": "REV-0134",
+      "blind_id": "BRV-AB147B1D",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_032",
-      "original_sample_idx": 31,
-      "prompt_preview": "    RULES = {\n\n        # a single whitespace to '*'\n\n        'whitespace': (\n\n            re.compile(r'''\n\n                (?:(?<=[a-zA-Z\\d])|(?<=\\d\\.))     # a letter or a number\n\n                \\s+..."
+      "sample_name": "complex_nested_config_032",
+      "sample_idx": 31
     },
     {
-      "blind_id": "REV-0137",
+      "blind_id": "BRV-ADD07C68",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_037",
-      "original_sample_idx": 36,
-      "prompt_preview": "    tokens = {\n\n        'root': [\n\n            (r'[C*].*\\n', Comment),\n\n            (r'#.*\\n', Comment.Preproc),\n\n            (r' {0,4}!.*\\n', Comment),\n\n            (r'(.{5})', Name.Label, 'cont-char..."
+      "sample_name": "complex_nested_config_037",
+      "sample_idx": 36
     },
     {
-      "blind_id": "REV-0140",
+      "blind_id": "BRV-B2D13875",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_046",
-      "original_sample_idx": 45,
-      "prompt_preview": "    tokens = {\n\n        'root': [\n\n            (r'//.*?$', Comment.Single),\n\n            (r'/\\*', Comment.Multiline, 'comment'),\n\n            (r'\"(?:[^\"\\\\]|\\\\.)*\"', String),\n\n            (r'\\(|\\)|\\[|\\..."
+      "sample_name": "complex_nested_config_046",
+      "sample_idx": 45
     },
     {
-      "blind_id": "REV-0143",
+      "blind_id": "BRV-B9250D5C",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_047",
-      "original_sample_idx": 46,
-      "prompt_preview": "    skeleton_info={\n\n        0:\n\n        dict(link=('wrist', 'thumb1'), id=0, color=[255, 128, 0]),\n\n        1:\n\n        dict(link=('thumb1', 'thumb2'), id=1, color=[255, 128, 0]),\n\n        2:\n\n      ..."
+      "sample_name": "complex_nested_config_047",
+      "sample_idx": 46
     },
     {
-      "blind_id": "REV-0146",
+      "blind_id": "BRV-C5C2B8BD",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_053",
-      "original_sample_idx": 52,
-      "prompt_preview": "    __props__ = {\n\n        \"seq\": {\n\n            \"type\": \"integer\",\n\n            \"description\": \"Sequence number of the message (also known as message ID). The `seq` for the first message sent by a cl..."
+      "sample_name": "complex_nested_config_053",
+      "sample_idx": 52
     },
     {
-      "blind_id": "REV-0149",
+      "blind_id": "BRV-CC442C4B",
       "benchmark": "complex_nested_config",
-      "original_sample_name": "complex_nested_config_054",
-      "original_sample_idx": 53,
-      "prompt_preview": "    tokens = {\n\n        # the root rules\n\n        'root': [\n\n            # ignored whitespaces\n\n            (r'[ ]+(?=#|$)', Whitespace),\n\n            # line breaks\n\n            (r'\\n+', Whitespace),\n..."
+      "sample_name": "complex_nested_config_054",
+      "sample_idx": 53
     },
     {
-      "blind_id": "REV-0152",
+      "blind_id": "BRV-D3A55609",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_001",
-      "original_sample_idx": 0,
-      "prompt_preview": "    resource_args.add_argument(\n        \"--mixed_precision\",\n        type=str,\n        choices=[\"no\", \"fp16\", \"bf16\", \"fp8\"],\n        help=\"Whether or not to use mixed precision training. \"\n        \"C..."
+      "sample_name": "rich_cli_option_groups_001",
+      "sample_idx": 0
     },
     {
-      "blind_id": "REV-0155",
+      "blind_id": "BRV-D8A1EACC",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_006",
-      "original_sample_idx": 5,
-      "prompt_preview": "    fp8_args.add_argument(\n        \"--fp8_backend\",\n        type=str,\n        choices=[\"ao\", \"te\", \"msamp\"],\n        help=\"Choose a backend to train with FP8 (ao: torchao, te: TransformerEngine, msamp..."
+      "sample_name": "rich_cli_option_groups_006",
+      "sample_idx": 5
     },
     {
-      "blind_id": "REV-0158",
+      "blind_id": "BRV-DD82BFD0",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_008",
-      "original_sample_idx": 7,
-      "prompt_preview": "    parser.add_argument(\"--version\", action=\"version\", version=__version__)\n    parser.add_argument(\"url\", type=str, help=\"fs url\")..."
+      "sample_name": "rich_cli_option_groups_008",
+      "sample_idx": 7
     },
     {
-      "blind_id": "REV-0161",
+      "blind_id": "BRV-E26C7C7E",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_013",
-      "original_sample_idx": 12,
-      "prompt_preview": "    parallelism_config_args.add_argument(\n        \"--parallelism_config_dp_replicate_size\",\n        type=int,\n        default=1,\n        help=\"The number of processes for data parallel training. Defau..."
+      "sample_name": "rich_cli_option_groups_013",
+      "sample_idx": 12
     },
     {
-      "blind_id": "REV-0164",
+      "blind_id": "BRV-E6783297",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_015",
-      "original_sample_idx": 14,
-      "prompt_preview": "    setup_type_group.add_argument(\n        \"--install\",\n        action=\"store_true\",\n        help=SUPPRESS,\n        default=NULL,\n    )\n    setup_type_group.add_argument(\n        \"--user\",\n        act..."
+      "sample_name": "rich_cli_option_groups_015",
+      "sample_idx": 14
     },
     {
-      "blind_id": "REV-0167",
+      "blind_id": "BRV-EAA314F8",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_027",
-      "original_sample_idx": 26,
-      "prompt_preview": "        parser.add_argument(\n            '--activation-fn',\n            choices=utils.get_available_activation_fns(),\n            help='activation function to use')\n        parser.add_argument(\n      ..."
+      "sample_name": "rich_cli_option_groups_027",
+      "sample_idx": 26
     },
     {
-      "blind_id": "REV-0170",
+      "blind_id": "BRV-EB40B2E8",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_028",
-      "original_sample_idx": 27,
-      "prompt_preview": "    parser.add_argument(\"-n\", \"--name\", type=str, help=\"Name of the profiling session\")\n    parser.add_argument(\"-b\", \"--backend\", type=str, help=\"Profiling backend\", default=None,\n                   ..."
+      "sample_name": "rich_cli_option_groups_028",
+      "sample_idx": 27
     },
     {
-      "blind_id": "REV-0173",
+      "blind_id": "BRV-F24F9EAD",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_045",
-      "original_sample_idx": 44,
-      "prompt_preview": "    parser.add_argument(\n        \"input_fea\", metavar=\"FEATURES\", help=\"Path to the feature file\"\n    )\n    parser.add_argument(\n        \"input_font\", metavar=\"INPUT_FONT\", help=\"Path to the input fon..."
+      "sample_name": "rich_cli_option_groups_045",
+      "sample_idx": 44
     },
     {
-      "blind_id": "REV-0176",
+      "blind_id": "BRV-F42FD14D",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_056",
-      "original_sample_idx": 55,
-      "prompt_preview": "        self.cmd_opts.add_option(\n            \"--user\",\n            dest=\"use_user_site\",\n            action=\"store_true\",\n            help=(\n                \"Install to the Python user install direct..."
+      "sample_name": "rich_cli_option_groups_056",
+      "sample_idx": 55
     },
     {
-      "blind_id": "REV-0179",
+      "blind_id": "BRV-FBDEC839",
       "benchmark": "rich_cli_option_groups",
-      "original_sample_name": "rich_cli_option_groups_066",
-      "original_sample_idx": 65,
-      "prompt_preview": "    parser.add_argument(\n        '-V',\n        '--version',\n        action='store_true',\n        help=f'show JSON5 library version ({__version__})',\n    )\n    parser.add_argument(\n        '-c',\n      ..."
+      "sample_name": "rich_cli_option_groups_066",
+      "sample_idx": 65
     }
   ],
   "other_missing": []

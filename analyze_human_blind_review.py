@@ -50,7 +50,9 @@ def load_annotations(json_path):
 
 
 def load_private_mapping():
-    """Load ground truth method labels for each blind_id."""
+    """Load ground truth method labels for each blind_id.
+    Supports both v1 (original_sample_name, original_sample_idx) and
+    v2 (sample_name, sample_idx) formats."""
     if not os.path.exists(MAPPING_FILE):
         print(f"  ERROR: {MAPPING_FILE} not found")
         return None
@@ -58,11 +60,16 @@ def load_private_mapping():
         mapping = json.load(f)
     result = {}
     for item in mapping:
-        result[item["blind_id"]] = {
+        # Normalize keys
+        entry = {
             "method": item["method"],
             "benchmark": item["benchmark"],
-            "original_sample_name": item["original_sample_name"],
+            "sample_name": item.get("sample_name", item.get("original_sample_name", "")),
+            "sample_idx": item.get("sample_idx", item.get("original_sample_idx", -1)),
         }
+        if "br_rerun" in item:
+            entry["br_rerun"] = item["br_rerun"]
+        result[item["blind_id"]] = entry
     return result
 
 
@@ -262,7 +269,7 @@ def main(annotator_a_path=None, annotator_b_path=None,
                 "annotator_B_score": int(sb),
                 "method": mapping[bid]["method"],
                 "benchmark": mapping[bid]["benchmark"],
-                "original_sample_name": mapping[bid]["original_sample_name"],
+                "sample_name": mapping[bid]["sample_name"],
             })
     print(f"  Disagreements: {len(disagreements)}/{n_common}")
 
@@ -272,7 +279,7 @@ def main(annotator_a_path=None, annotator_b_path=None,
     with open(disp_path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=[
             "blind_id", "annotator_A_score", "annotator_B_score",
-            "method", "benchmark", "original_sample_name",
+            "method", "benchmark", "sample_name",
             "adjudicated_score"
         ])
         writer.writeheader()
@@ -356,7 +363,7 @@ def main(annotator_a_path=None, annotator_b_path=None,
     def by_sample(pairs, mapping):
         result = {}
         for bid, s in pairs:
-            sample_key = mapping[bid]["original_sample_name"]
+            sample_key = mapping[bid]["sample_name"]
             result[sample_key] = (bid, s)
         return result
 
@@ -411,36 +418,48 @@ def main(annotator_a_path=None, annotator_b_path=None,
 
     # Load automatic scores
     auto_file = "results/all_methods_structural_recoverability.json"
-    auto_scores = {}  # {(method, benchmark, sample_idx): score}
+    # Build two lookup structures because TASD-FG uses 'name' not 'sample_idx'
+    auto_by_idx = {}   # {(method, benchmark, sample_idx): score}  for AR, FLY
+    auto_by_name = {}  # {(method, benchmark, sample_name): score} for TASD-FG
     if os.path.exists(auto_file):
         with open(auto_file) as f:
             auto_data = json.load(f)
         for method_key in ["AR", "FLY"]:
             if method_key in auto_data:
                 for s in auto_data[method_key]:
-                    key = (method_key, s["benchmark"], s["sample_idx"])
-                    auto_scores[key] = s["score"]
+                    auto_by_idx[(method_key, s["benchmark"], s["sample_idx"])] = s["score"]
+        # TASD-FG uses 'name' field
+        if "TASD-FG" in auto_data:
+            for s in auto_data["TASD-FG"]:
+                auto_by_name[("TASD-FG", s["benchmark"], s["name"])] = s["score"]
 
-    # Map human scores to automatic scores using benchmark + sample_idx from mapping
+    # Map human scores to automatic scores
     human_auto_pairs = []
     for bid, info in mapping.items():
         method = info["method"]
         s_human = get_final_score(bid)
         if s_human is None:
             continue
-        # Use sample_idx from mapping
-        sample_idx = info.get("original_sample_idx")
-        if sample_idx is None:
-            continue
+        sample_idx = info.get("sample_idx")
+        sample_name = info.get("sample_name")
         bname = info["benchmark"]
-        # For AR and FLY, use direct mapping
-        # For TASD-BR, auto score is not directly available (skip)
-        auto_method = method if method != "TASD-BR" else None
-        if auto_method:
-            key = (auto_method, bname, sample_idx)
-            if key in auto_scores:
-                s_auto = auto_scores[key]
-                human_auto_pairs.append((s_human, s_auto))
+
+        s_auto = None
+        if method == "TASD-BR":
+            br_rerun = info.get("br_rerun", False)
+            if br_rerun:
+                if sample_idx is not None:
+                    s_auto = auto_by_idx.get(("AR", bname, sample_idx))
+            else:
+                if sample_name:
+                    s_auto = auto_by_name.get(("TASD-FG", bname, sample_name))
+        elif method == "AR":
+            s_auto = auto_by_idx.get(("AR", bname, sample_idx))
+        elif method == "FLY":
+            s_auto = auto_by_idx.get(("FLY", bname, sample_idx))
+
+        if s_auto is not None:
+            human_auto_pairs.append((s_human, s_auto))
 
     if human_auto_pairs:
         n_ha = len(human_auto_pairs)
